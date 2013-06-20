@@ -1,3 +1,25 @@
+<?php 
+    $DOCUMENT_ROOT="";
+	$recMode="";
+	$custNumber = $_GET['custnumber'];
+	
+	if(isset($_GET['status'])) {
+		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	}
+	
+	// Setup the case
+	switch ( $recMode )  {
+	    case "A":
+	        $recStatusDesc = "Adding new customer";
+	        break; 
+		case "D":	
+			$recStatusDesc = "Making customer Inactive";
+			break;
+		case "E":
+			$recStatusDesc = "Updating customer information";
+			break;
+		}
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
@@ -34,7 +56,7 @@
 	</div>
 	<div id="content">
 		<h2>
-			Customer Maintenance
+			Customer Maintenance - <?php echo( $recStatusDesc ); ?>
 		</h2>
 		<hr />
 	
@@ -149,7 +171,7 @@
 											
 			</table>
 		</div>
-		
+		<hr/>
 		<div id="formCommands">
 			<?php
 			require($DOCUMENT_ROOT . "includes/formCommand.php");

@@ -1,14 +1,32 @@
 <?php 
 	$partCat="";
+	$recMode="";
+	if(isset($_GET['status'])) {
+		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	}
 	if(isset($_GET['cat'])) {
 		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
 	}
-?>
+	
+	// Setup the case
+	switch ( $recMode )  {
+	    case "A":
+	        $recStatusDesc = "Adding new chain";
+	        break; 
+		case "D":	
+			$recStatusDesc = "Making chain Inactive";
+			break;
+		case "E":
+			$recStatusDesc = "Updating chain information";
+			break;
+		}
+?>	
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
-	<title><?php echo($partCat)?> Sprocket Maintenance</title>
+	<title><?php echo($partCat)?>Chain Maintenance</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -96,7 +114,7 @@
 	</div>
 	<div id="content">
 		<h2>
-			<?php echo($partCat)?> Maintenance
+			<?php echo($recStatusDesc)?> 
 		</h2>
 		<hr />
 	
@@ -107,11 +125,7 @@
 						<Label>Part Category</>
 					</td>
 					<td colspan="3">
-						<select id="cat">
-							<option value="FS">Front Sprocket</option>
-							<option value="RS">Rear Sprocket</option>
-							<option value="CH" SELECTED>Chain</option>
-						</select>
+						<strong>&nbsp;Chain</strong> <input type="hidden" id="cat" value="CH" />
 					</td>
 				</tr>
 				<tr>
@@ -205,7 +219,7 @@
 				</tr>											
 			</table>
 		</div>
-		
+		<hr />
 		<div id="formCommands">
 			<?php
 			require($DOCUMENT_ROOT . "includes/formCommand.php");

@@ -29,14 +29,8 @@
 		<hr />
 		<div id="commandBar">
 			<div id="actionBox">
-			  <form id="frmAction">
-		  		<label>Action:</label>
-				<select>
-					<option value="N">New Customer</option>
-					<option value="E">Edit Customer</option>
-					<option value="D">Delete Customer</option>
-				</select>
-				<input type="button" value="Go" />
+			  <form action="customer.php?status=A" method="post" accept-charset="utf-8">
+				<input id="createCustomer" type="submit" value="Create a new Customer" />
 			  </form>
 			</div>
 			<div id="searchBox">
@@ -56,7 +50,8 @@
 			</tr>
 			<tr class="row">
 				<td><!- Action -->
-					<input type="checkbox" value="0" />
+					<a href="customer.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="customer.php?id=CU009&status=D"><div class="actionStatus"></div></a>
 				</td>
 				<td> <!- Dealer Name -->
 					Huntington Honda
@@ -76,7 +71,8 @@
 			</tr>
 			<tr class="row">
 				<td><!- Action -->
-					<input type="checkbox" value="0" />
+					<a href="customer.php?id=CU009&s=E"><div class="actionEdit"></div></a>
+					<a href="customer.php?id=CU009&s=D"><div class="actionStatus"></div></a>
 				</td>
 				<td> <!- Dealer Name -->
 					Huntington Honda
@@ -93,7 +89,71 @@
 				<td> <!- Discount -->
 					34%
 				</td>
-			</tr>			
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="customer.php?id=CU009&s=E"><div class="actionEdit"></div></a>
+					<a href="customer.php?id=CU009&s=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Dealer Name -->
+					Huntington Honda
+				</td>
+				<td> <!- City -->
+					Huntington Beach
+				</td>
+				<td> <!- State -->
+					CA
+				</td>
+				<td> <!- Phone -->
+					888 909-9090
+				</td>
+				<td> <!- Discount -->
+					34%
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="customer.php?id=CU009&s=E"><div class="actionEdit"></div></a>
+					<a href="customer.php?id=CU009&s=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Dealer Name -->
+					Huntington Honda
+				</td>
+				<td> <!- City -->
+					Huntington Beach
+				</td>
+				<td> <!- State -->
+					CA
+				</td>
+				<td> <!- Phone -->
+					888 909-9090
+				</td>
+				<td> <!- Discount -->
+					34%
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="customer.php?id=CU009&s=E"><div class="actionEdit"></div></a>
+					<a href="customer.php?id=CU009&s=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Dealer Name -->
+					Huntington Honda
+				</td>
+				<td> <!- City -->
+					Huntington Beach
+				</td>
+				<td> <!- State -->
+					CA
+				</td>
+				<td> <!- Phone -->
+					888 909-9090
+				</td>
+				<td> <!- Discount -->
+					34%
+				</td>
+			</tr>
+			
 		</table>
 	
 

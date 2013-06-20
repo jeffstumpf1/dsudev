@@ -12,9 +12,25 @@
 	<title>Customer Listing</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
+  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script>
+		$(function() {
+			
+			// Selects Chains based on pitch
+			$(function () {
+			    $("#radio").buttonset();
 
+			    $("input[name='pitch']").on("change", function () {
+			        $pitch = $(this).val();
+					$("#pitchNumber").html($pitch + " - Chain Chart");
+			    });
+
+			});    		
+
+  		});
+    </script>
 	
 </head>
 <body>
@@ -31,20 +47,27 @@
 	</div>
 <div id="content">
 		<h2>
-			<?php echo($pitch);?> - Chain Chart
+			<label id="pitchNumber" /> 
 		</h2>
 		<hr />
 		<div id="commandBar">
 			<div id="actionBox">
 			  <form id="frmAction">
-		  		<label>Action:</label>
-				<select>
-					<option value="N">New <?php echo($pitch);?> Chain</option>
-					<option value="E">Edit <?php echo($pitch);?> Chain</option>
-					<option value="D">Delete <?php echo($pitch);?> Chain</option>
-				</select>
-				<input type="button" value="Go" />
+		  		<label>Select Pitch Options:</label>
+				<div id="radio">
+					<input id="r1" type="radio" class="radioPitch" name="pitch" value="420" />
+					<label for="r1">420</label>
+					<input id="r2" type="radio" class="radioPitch" name="pitch" value="428" />
+					<label for="r2">428</label>
+					<input id="r3" type="radio" class="radioPitch" name="pitch" value="520" checked="checked" />
+					<label for="r3">520</label>
+					<input id="r4" type="radio" class="radioPitch" name="pitch" value="525" />
+					<label for="r4">525</label>
+					<input id="r5" type="radio" class="radioPitch" name="pitch" value="530" />
+					<label for="r5">530</label>
+				</div>
 			  </form>
+			  <br />
 			</div>
 
 		</div>
@@ -58,7 +81,8 @@
 			</tr>
 			<tr class="row">
 				<td><!- Action -->
-					<input type="checkbox" value="0" />
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
 				</td>
 				<td> <!- Chain Description -->
 					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -73,6 +97,151 @@
 					$0.00
 				</td>
 			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="chain-chart.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain-chart.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Chain Description -->
+					xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+				</td>
+				<td> <!- MSRP -->
+					$0.00
+				</td>
+				<td> <!- Dealer Cost -->
+					$0.00
+				</td>
+				<td> <!- Import Cost -->
+					$0.00
+				</td>
+			</tr>
+			
 		</table>
 	
 

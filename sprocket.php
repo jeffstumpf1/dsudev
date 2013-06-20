@@ -1,7 +1,34 @@
 <?php 
 	$partCat="";
+	$recMode="";
+	if(isset($_GET['status'])) {
+		$partCat = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	}
 	if(isset($_GET['cat'])) {
 		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
+	}
+	
+	// Setup the case
+	switch ( $recMode )  {
+	    case "A":
+	        $recStatusDesc = "Adding new part";
+	        break; 
+		case "D":	
+			$recStatusDesc = "Making part Inactive";
+			break;
+		case "E":
+			$recStatusDesc = "Updating part information";
+			break;
+		}
+	
+	
+	switch ($partCat) {
+		case "FS":
+			$partTypeDesc = "Front";
+			break;
+		case "RS":
+			$partTypeDesc = "Rear";
+			break;
 	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -36,7 +63,7 @@
 	</div>
 	<div id="content">
 		<h2>
-			<?php echo($partCat)?> Sprocket Maintenance
+			<?php echo($partTypeDesc)?> Sprocket Maintenance
 		</h2>
 		<hr />
 	
@@ -44,12 +71,22 @@
 			<table id="tablePartMaint" align="center">
 				<tr>
 					<td> 
-						<Label>Rear Sprocket</>
+						<Label>Product Category</label>
 					</td>
 					<td colspan="3">
-						<select id="cat">
-							<option value="FS">Front Sprocket</option>
-							<option value="RS" SELECTED>Rear Sprocket</option>
+						<select id="productCategory">
+						<?php 
+							if($partCat == "FS") { 
+								echo("<option value='FS' SELECTED>Front Sprocket</option>");
+								} else {
+								echo ("<option value='FS'>Front Sprocket</option>");
+							}
+							if($partCat == "RS") { 
+								echo("<option value='RS' SELECTED>Rear Sprocket</option>");
+								} else {
+								echo ("<option value='RS'>Rear Sprocket</option>");
+							}
+						?>
 						</select>
 					</td>
 				</tr>
@@ -143,7 +180,7 @@
 				</tr>											
 			</table>
 		</div>
-		
+		<hr/>
 		<div id="formCommands">
 			<?php
 			require($DOCUMENT_ROOT . "includes/formCommand.php");

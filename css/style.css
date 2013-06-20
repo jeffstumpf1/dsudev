@@ -48,9 +48,10 @@ hr {
 	}
 #customerTable td:first-child, #partTable td:first-child, #chainChartTable td:first-child {
 	text-align: center;
+	width:100px;
 	}
-#customerTable td:second-child {
-	width: 190px;
+#customerTable td:first-child + td {
+	width: 300px;
 	}
 
 #customerTable td+td ,#partTable td+td, #chainChartTable td+td {
@@ -65,6 +66,7 @@ hr {
 #chainChartTable td:first-child + td{
 	text-align: left;
 }
+
 /* Field Declaratives */
 #search {
 	color: #ccc;
@@ -75,7 +77,7 @@ hr {
 #dbaName, #address, #email ,#notes, #chainSelectedDesc {
 	width: 97%;
 }
-#save, #cancel {
+#submit, #cancel {
 	width:100px;
 	margin: 1em;
 }
@@ -83,4 +85,20 @@ hr {
 /* Dialogs */
 #dialog-form, #dialog {
 	display: none;
+}
+
+/* Images for Edit/Delete on Listing Forms */
+.actionEdit {
+	background-image:url('images/glyphicons_150_edit.png');
+	width: 24px;
+	height: 21px;
+	margin: 3px 6px 3px 15px;
+	float:left;
+}
+.actionStatus {
+	background-image:url('images/glyphicons_256_delete.png');
+	width: 27px;
+	height: 17px;
+	margin: 6px 0 6px 10px;
+	float:left;	
 }

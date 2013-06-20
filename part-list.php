@@ -32,14 +32,11 @@
 			  <form id="frmAction">
 		  		<label>Action:</label>
 				<select>
-					<option value="NFS">New Front Sprocket</option>
-					<option value="NRS">New Rear Sprocket</option>
-					<option value="NCH">New Chain</option>
-					<option value="NKT">New Kit</option>
-					<option value="NOT">New Other</option>
-					<option value="-">----------</option>
-					<option value="E">Edit Customer</option>
-					<option value="D">Delete Customer</option>
+					<option value="FS">New Front Sprocket</option>
+					<option value="RS">New Rear Sprocket</option>
+					<option value="CH">New Chain</option>
+					<option value="KT">New Kit</option>
+					<option value="OT">New Other</option>
 				</select>
 				<input type="button" value="Go" />
 			  </form>
@@ -64,7 +61,8 @@
 			</tr>
 			<tr class="row">
 				<td><!- Action -->
-					<input type="checkbox" value="0" />
+					<a href="sprocket.php?id=CU009&status=E&cat=FS"><div class="actionEdit"></div></a>
+					<a href="sprocket.php?id=CU009&status=D&cat=FS"><div class="actionStatus"></div></a>
 				</td>
 				<td> <!- Part Number -->
 					21603R-15
@@ -93,7 +91,248 @@
 			</tr>
 			<tr class="row">
 				<td><!- Action -->
-					<input type="checkbox" value="0" />
+					<a href="chain.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="chain.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Chain 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
+				</td>
+				<td> <!- Part Number -->
+					21603R-15
+				</td>
+				<td> <!- Description -->
+					Superlite 520 Drilled Race C/S
+				</td>
+				<td> <!- Size -->
+					15
+				</td>
+				<td> <!- Pitch -->
+					520
+				</td>
+				<td> <!- Brand -->
+					Superlite
+				</td>
+				<td> <!- MSRP -->
+					$33.95
+				</td>
+				<td> <!- Dealer Cost -->
+					$22.07
+				</td>
+				<td> <!- Import Cost -->
+					$4.50
+				</td>
+			</tr>
+			<tr class="row">
+				<td><!- Action -->
+					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
+					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
 				</td>
 				<td> <!- Part Number -->
 					21603R-15
