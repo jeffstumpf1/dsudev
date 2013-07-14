@@ -1,7 +1,7 @@
 <?php 
     if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'On';
+    $debug = 'Off';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 
@@ -36,7 +36,7 @@
 	}
 
     // fetch data
-	$sql = sprintf( "select a.*,b.chain_id, b.product_brand_id, b.linked_chain_part_number, b.linked_chain_part_description, b.clip_id from PartMaster a, Chain b where a.part_number = b.part_number and a.part_id = %s", $part_id );
+	$sql = sprintf( "select a.*,b.chain_id, b.product_brand_id, b.linked_chain_part_number, b.linked_chain_part_description, b.clip_id from PartMaster a, Chain b where a.part_number = b.part_number and a.rec_status=0 and a.part_id = %s", $part_id );
     $rs = $db->query( $sql); 
     $row = $rs->fetch();
 

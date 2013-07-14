@@ -1,28 +1,33 @@
 <?php 
-    require_once 'db/global.inc.php';
-    error_reporting(E_ALL|E_STRICT);
+	$debug = 'Off';
+	
+	require_once 'db/global.inc.php';
+    error_reporting(E_ALL);
 
     $searchInput='';
 	$DOCUMENT_ROOT="";
 	$status="";
 	$recMode="";
+	$search='';
 	
+	$sql = "SELECT * FROM Customer WHERE rec_status = 0 ORDER BY dba";
 	if(isset($_GET['status'])) {
 		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
 	}
 	if(isset($_GET['cat'])) {
 		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
 	}
-	if(isset($_POST['searchInput'])) {
-		$searchInput = (get_magic_quotes_gpc()) ? $_POST['searchInput'] : addslashes($_POST['searchInput']);
+	if(isset($_GET['search'])) {
+		$search = (get_magic_quotes_gpc()) ? $_GET['search'] : addslashes($_GET['search']);
+		$sql = sprintf("select * from Customer where rec_status=0 and dba like '%s%s'", $search,'%');
 	}
 
     // fetch data
-	$sql = "SELECT * FROM Customer WHERE rec_status = 0 ORDER BY dba";
-    $rs = $db->query( $sql); echo 'Number of Customer(s) found ( '. $rs->size() . ')';
+    $rs = $db->query( $sql);  
     $row = $rs->fetch();
-
-	//todo: $formatter = new NumberFormatter('en-US', NumberFormatter::PERCENT);
+    if($debug=='On') {
+    	echo "sql: " . $sql . "<br>";
+	}
 	
 ?>
 
@@ -38,8 +43,7 @@
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
 	
 	<script>
-		$(function() {
-			
+		$(function() {			
 			$( "#searchInput" ).live('mouseup', function() { $(this).select(); });
 		});
 	</script>
@@ -58,7 +62,7 @@
 	</div>
 <div id="content">
 		<h2>
-			Customer Listing
+			Customer Listing - [ <?php echo  $rs->size() ?> ]
 		</h2>
 		<hr />
 		<div id="commandBar">
@@ -68,10 +72,9 @@
 			  </form>
 			</div>
 			<div id="searchBox">
-			  <form id="formSearch" action="<?php $PHP_SELF;?>" method="post" accept-charset="utf-8">
-				<input id="searchInput" type="text" value="Customer Search" />
-				<input id="searchButton" type="submit" value="Go" />
-			  </form>
+			  <form id="frmSearch">				
+				<input id="search" name="search" type="text" value="<?php echo $search ?>" />
+				<input type="submit" value="Search" />
 			</div>
 		</div>
 		<table id="customerTable">

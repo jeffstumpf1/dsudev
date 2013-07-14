@@ -1,4 +1,6 @@
 <?php
+    if ( isset($_POST['formAction']) ) { header("Location: customer-list.php"); }
+
 	$debug = 'Off';
 	
     require_once 'db/global.inc.php';
