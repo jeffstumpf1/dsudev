@@ -1,7 +1,7 @@
 <?php 
     if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'Off';
+    $debug = 'On';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 
@@ -28,9 +28,9 @@
 	// Update Controller
 	if (isset( $_POST['formAction'] )) {
 			
-		if($recMode == "E" || $recMode == "A") {
+		if(strtolower($recMode) == "e" || strtolower($recMode) == "a") {
 			$part_id = $chain->UpdateChain( $db, $_POST['frm'], $recMode );
-		} else if ($recMode == "D") {
+		} else if (strtolower($recMode) == "d") {
 			$chain->UpdateChainStatus($db, $_POST['frm'] );
 		}
 	}
@@ -44,14 +44,14 @@
 	
 	
 	// Setup the case
-	switch ( $recMode )  {
-	    case "A":
+	switch ( strtolower($recMode) )  {
+	    case "a":
 	        $recStatusDesc = "Adding new Chain";
 	        break; 
-		case "D":	
+		case "d":	
 			$recStatusDesc = "Making Chain Inactive";
 			break;
-		case "E":
+		case "e":
 			$recStatusDesc = "Updating Chain information";
 			break;
 		}
@@ -69,52 +69,52 @@
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	
-    <script>
+<script>
  $(function() {	
  
-		// Attempt at Getting binding to work after 
-		// Dynamically generated code from ajax call
-		 $('#dialog-form' ).on('click', 'a.chainSelected', function(event) {
-		 	ChainSelected($(this));
-		 });
-		 
-		  $( "#dialog-form" ).dialog({
-		      autoOpen: false,
-		      height: 400,
-		      width: 750,
-		      modal: true,
-				Cancel: function() {
-				          $( this ).dialog( "close" );
-			      }				
-			});
+	// Attempt at Getting binding to work after 
+	// Dynamically generated code from ajax call
+	 $('#dialog-form' ).on('click', 'a.chainSelected', function(event) {
+		ChainSelected($(this));
+	 });
+	 
+	  $( "#dialog-form" ).dialog({
+		  autoOpen: false,
+		  height: 400,
+		  width: 750,
+		  modal: true,
+			Cancel: function() {
+					  $( this ).dialog( "close" );
+			  }				
+		});
+		
+		$( "#selectChain" )
+		  .click(function(event) {
+			if($('#pitch').val() == '*' ) {
+			   event.preventDefault();
+			   alert ('You have to pick a chain pitch first.');
+			   $('#pitch').focus();
+			} else {
+				
+				$.ajax({
+					  type: 'GET',
+					  url: 'includes/select-chain.php',
+					  data: { pitch: +  $('#pitch').val() },
+					  beforeSend:function(){
+						// load a temporary image in a div
+					  },
+					  success:function(data){
+						$('#dialog-form').html(data);
+					  },
+					  error:function(){
+						$('#dialog-form').html('<p class="error"><strong>Oops!</strong></p>');
+					  }
+					});
+				
+				 $( "#dialog-form" ).dialog( "open" );	
+				 
+		  }
 			
-			$( "#selectChain" )
-		      .click(function(event) {
-			    if($('#pitch').val() == '*' ) {
-				   event.preventDefault();
-				   alert ('You have to pick a chain pitch first.');
-				   $('#pitch').focus();
-				} else {
-					
-					$.ajax({
-					      type: 'GET',
-					      url: 'includes/select-chain.php',
-					      data: { pitch: +  $('#pitch').val() },
-					      beforeSend:function(){
-					        // load a temporary image in a div
-					      },
-					      success:function(data){
-					        $('#dialog-form').html(data);
-					      },
-					      error:function(){
-					        $('#dialog-form').html('<p class="error"><strong>Oops!</strong></p>');
-					      }
-					    });
-					
-					 $( "#dialog-form" ).dialog( "open" );	
-					 
-			  }
-		        
 		      });
 		
 	/* Once a chain is selected update the contents to the form field for storing */	      
@@ -139,8 +139,7 @@
 
 	}
 });		   
-
-  	</script
+</script>
 </head>
 <body>
 <!-- Dialog box Used to show Chains -->
@@ -183,12 +182,9 @@
 						<label>Part Number</label>
 					</td>
 					<td>
-					<?php if( strtolower($recMode) == 'e' ) { ?>
-						<input id="masterPartNumber" name="frm[partNumber]" type="hidden" value="<?php echo $row['part_number']?>"/>
-						<span id="masterPartNumberSpan"><?php echo $row['part_number']?></span>
-					<?php } else  {?>
-						<input id="masterPartNumber" name="frm[partNumber]" type="text" value="<?php echo $row['part_number']?>"/>
-					<?php } ?>
+<?php
+include 'includes/part_logic.php';
+?>					
 					</td>
 					<td align="right">
 						<label>Stock Level</label>
@@ -293,9 +289,8 @@
 			?>
 			<input id="partID" name="frm[partID]" value="<?php echo $part_id; ?>" type="hidden" />
 			<input id="chainID" name="frm[chainID]" value="<?php echo $row['chain_id']; ?>" type="hidden" />	
-			<input id="recsStatus" name="frm[recStatus]" value="<?php echo $row['rec_status']; ?>" type="hidden" />
+			<input id="recStatus" name="frm[recStatus]" value="<?php echo $row['rec_status']; ?>" type="hidden" />
 			<input id="linkedChainPartDescription" name="frm[linkedChainPartDescription]" value="<?php echo $row['linked_chain_part_description']; ?>" type="hidden" />		
-			<input id="RECADD" name="frm[RECADD]" value="ADD" type="hidden" />			
 		</div>
 		
 </div>

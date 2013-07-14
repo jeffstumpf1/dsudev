@@ -3,7 +3,7 @@
 body {
 	font-family:Verdana, Arial, Helvetica, sans-serif; 
 	font-size:12px;
-	background-image:url('/images/applelinen.jpg');
+	background-image:url('/images/applelinen.jpg1');
 	}
 h2 {
 	/*text-shadow: 2px 2px 2px;*/
@@ -81,7 +81,7 @@ hr {
 	backgound-color: #efefef;
 }
 
-#dbaName, #address, #email, #customerNumber, #city, #phone1, #cc1, #cc2 ,#notes, #partDesc, #partNumber, #size, #pitch, #msrp, #dealerCost, #importCost, #chainSelectedDesc , #productBrand, #productCategory, #brand, #partDescription, #notes {
+#dbaName, #address, #email, #customerNumber, #city, #phone1, #cc1, #cc2 ,#notes, #partDesc, #partNumber, #size, #pitch, #msrp, #dealerCost, #importCost, #chainSelectedDesc , #productBrand, #productCategory, #brand, #partDescription, #notes, #masterPartNumberSpan, #masterPartNumber {
 	margin-left: 5px;
 }
 #dbaName, #address, #email ,#notes , #chainSelectedDesc, #partDescription {
@@ -89,8 +89,14 @@ hr {
 }
 #submit, #cancel {
 	width:100px;
-	margin: 1em;
+	margin: 1
+	3em;
 }
+
+#masterPartNumberSpan {
+	margin-right: 1em;
+	}
+
 
 /* Dialogs */
 #dialog-form, #dialog {

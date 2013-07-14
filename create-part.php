@@ -1,6 +1,7 @@
 <?php
 /* Controller to direct which part php page */
     $url = '';
+    $category='';
 	$category = $_POST['category'];
 	
 	switch ( strtolower($category) ) {

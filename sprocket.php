@@ -1,12 +1,8 @@
 <?php 
-/*
-if($debug=="On") {
 	
-}
-*/
+	if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+
 	$debug = 'Off';
-	$retval ='';
-	//echo "[".$debug."]<br>";
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsSprocket.php';
@@ -18,6 +14,7 @@ if($debug=="On") {
 	$status="";
 	$recMode="";
 	$sprocket = new Sprocket(); 
+	$utility = new Utility();
 	$sprocket->SetDebug($debug);	
 	
 	if(isset($_GET['part_id'])) {
@@ -33,11 +30,11 @@ if($debug=="On") {
 	}
 
 	// Update Controller
-	if (isset( $_POST['formAction'] )) {
-			
-		if($recMode == "E" || $recMode == "A") {
+	if (isset( $_POST['formAction'] )) {	
+		
+		if( strtolower($recMode) == "e" || strtolower($recMode) == "a") {
 			$retval = $sprocket->UpdateSprocket( $db, $_POST['frm'], $recMode );
-		} else if ($recMode == "D") {
+		} else if ( strtolower($recMode) == "d") {
 			$retval = $sprocket->UpdateSprocketStatus($db, $_POST['frm'] );
 		}
 		if($debug=='On') { echo 'Records updated ('.$recMode.') '. $retval .'<br>';}
@@ -48,31 +45,27 @@ if($debug=="On") {
     $rs = $db->query( $sql); 
     $row = $rs->fetch();
 
-	if($debug=="On") {
-		echo $sql;
-	}
-	
-	$utility = new Utility();
+	if ($debug=='On') { echo $sql."<br>"; }	
 	
 	// Setup the case
-	switch ( $recMode )  {
-	    case "A":
-	        $recStatusDesc = "Adding Sprocket";
+	switch ( strtolower($recMode) )  {
+	    case "a":
+	        $revViewDesc = "Adding Sprocket";
 	        break; 
-		case "D":	
-			$recStatusDesc = "Making Sprocket Inactive";
+		case "d":	
+			$revViewDesc = "Making Sprocket Inactive";
 			break;
-		case "E":
-			$recStatusDesc = "Updating Sprocket information";
+		case "e":
+			$revViewDesc = "Updating Sprocket information";
 			break;
 		}
 	
 	
-	switch ($partCat) {
-		case "FS":
+	switch (strtolower($partCat)) {
+		case "fs":
 			$partTypeDesc = "Front";
 			break;
-		case "RS":
+		case "rs":
 			$partTypeDesc = "Rear";
 			break;
 	}
@@ -89,11 +82,6 @@ if($debug=="On") {
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <script>
-		$(function() {
-    		
-  		});
-  	</script
 </head>
 <body>
 <div id="container">
@@ -142,7 +130,9 @@ if($debug=="On") {
 						<label>Part Number</label>
 					</td>
 					<td>
-						<input id="partNumber" name="frm[partNumber]" type="text" value="<?php echo $row['part_number']?>"/>
+<?php
+include 'includes/part_logic.php';
+?>						
 					</td>
 					<td align="right">
 						<label>Stock Level</label>
@@ -241,12 +231,11 @@ if($debug=="On") {
 			<?php
 			require($DOCUMENT_ROOT . "includes/formCommand.php");
 			?>
-		</div>
+
 		<input id="partID" name="frm[partID]" value="<?php echo $part_id ?>" type="hidden"/>
 		<input id="sprocketID" name="frm[sprocketID]" value="<?php echo $row['sprocket_id'] ?>" type="hidden"/>	
 		<input id="recsStatus" name="frm[recStatus]" value="<?php echo $row['rec_status'] ?>" type="hidden"/>	
-		</form>
-	</div>
+		</div>
 </div>
 	<div id="footer">
 		Copyright © Site name, 20XX

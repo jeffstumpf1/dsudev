@@ -10,7 +10,7 @@ class Sprocket {
 	
 	
 	function UpdateSprocket($db, $formData, $recMode) {
-				
+	
 		if($this->debug=='On') {
 			echo "---UpdateSprocket---".$recMode."<br>";
 		}
@@ -31,28 +31,38 @@ class Sprocket {
 		
 		if( strtolower($recMode) == "e") {
 			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
-			
 			$sqlSprocket = "UPDATE Sprocket SET part_number='". $partNumber ."', category_id='". $productCategory ."', sprocket_notes='".  $notes ."', sprocket_size=". $size ." WHERE sprocket_id=". $sprocketID;			
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .") WHERE part_id=". $partID;
-			
-			$sqlSprocket = "INSERT INTO Sprocket(part_number, category_id, sprocket_notes, sprocket_size) VALUES ('". $partNumber ."','". $productCategory. "','". $sprocketNotes ."',". $size .") WHERE sprocket_id=". $sprocketID;			
+			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
+			$sqlSprocket = "INSERT INTO Sprocket(part_number, category_id, sprocket_notes, sprocket_size) VALUES ('". $partNumber ."','". $productCategory. "','". $notes ."',". $size .")";			
 		}
 				
 		
 		$cmd = $db->query( $sqlPartMaster );
+		$retPartID = $cmd->insertID();
 		$cnt = $cmd->affected();
-		if ($this->debug=='On') { echo $sqlPartMaster ." [".$cnt."]<br>"; }
+		if ($this->debug=='On') { 
+			echo $sqlPartMaster ." [".$cnt."]<br>";
+			echo "$retPartID [".$retPartID."]<br>";
+			echo "Error:" .$cmd->isError();
+		 }
 		
 		$cmd = $db->query( $sqlSprocket );
 		$cnt = $cnt + $cmd->affected();
-		if ($this->debug=='On') { echo $sqlSprocket ." [".$cnt."]<br>"; }
+		if ($this->debug=='On') { 
+			echo $sqlSprocket ." [".$cnt."]<br>";
+		 }
 
-		if ($this->debug=='On') { "------------"; }	
+		if ($this->debug=='On') { "------------<br>"; }	
 		
-		return $cnt;
+		// need to send back the part_id
+		if (strtolower($recMode) == 'a') { 
+			return $retPartID;	
+		} else  
+		    return $partID;
+	
 	}
 	
 	
@@ -70,7 +80,7 @@ class Sprocket {
 			} else {
 				$flag ='0';
 			}
-			
+		
 			$sqlPart = "UPDATE PartMaster SET rec_status='". $flag ."' WHERE part_id=". $partID;
 			$cmd = $db->query( $sqlPart );
 			$cnt = $cmd->affected();
@@ -79,9 +89,11 @@ class Sprocket {
 			$cmd = $db->query( $sql );
 			$cnt = $cnt + $cmd->affected();
 			
-			if($debug=="On") {
-				echo $sqlPart. "<br/>";
-				echo $sql. "<br/>";
+			if($this->debug=="On") {
+				echo "UpdateSprocketStatus Delete";
+				echo $sqlPart. "[" . $cnt. "]<br/>";
+				echo $sql. "["  .$cnt. "]<br/>";
+				echo "Error:" .$cmd->isError();
 			}
 			
 			return $cnt;

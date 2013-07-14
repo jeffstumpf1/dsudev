@@ -46,23 +46,26 @@ if($debug=="On") {
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
-	<script>
-       	$(function() {
-			$( "#search" ).live('mouseup', function() {
-				 $(this).select(); });	
+<script>
+$(function() {
+    	
+    	$("#category").val(0);
+    	$("#createSubmit").attr('disabled','disabled');
+    	
+		$( "#search" ).live('mouseup', function() {
+			 $(this).select(); 	
 		});
 		
-		$("#createSubmit").click(function() {
-		  $sel = $('#category').val();
-		  $.ajax({
-			url: "create-part.php", type: "GET", data: $sel, cache: false, 
-			success: function(html) {
-				// code would go here
-			}
-			});
-		  return false;
+		$("#category").change(function() {
+		  	$sel = $('#category').val();
+		 	if($sel != '*') {
+		 		$('#createSubmit').removeAttr('disabled');
+		 	} else
+		 	  $("#createSubmit").attr('disabled','disabled');  
 		});
-	</script>
+		
+});
+</script>
 	
 </head>
 <body>
@@ -87,7 +90,7 @@ if($debug=="On") {
 			  <form id="frmAction" name="frmAction" method="post" action="create-part.php">
 		  		<label>Action:</label>
 				<select id="category" name="category">
-				<!--<option value="*">Select...</option>-->
+				<option value="*">Select...</option>
 				<?php
 				 echo $utility->GetCategoryList($db, '');  
 				?>
@@ -142,7 +145,7 @@ if($debug=="On") {
 						<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=E&cat=<?php echo $row['category_id'];?>"><div class="actionEdit"></div></a>
 					<a href="<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=D&cat=<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>
 				</td>
-				<td> <!-- Part Number -->
+				<td style="text-align:left;"> <!-- Part Number -->
 					<?php echo $row['part_number'] ?>
 				</td>
 				<td style="text-align:left;padding-left:1em;"> <!-- Description -->
