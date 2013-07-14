@@ -1,13 +1,68 @@
+<?php
+/*
+if($debug=="On") {
+	
+}
+*/
+	$debug = 'Off';
+ 
+    require_once 'db/global.inc.php';
+    require_once 'classes/clsUtility.php';
+
+	error_reporting(E_ALL|E_STRICT);
+
+    $searchInput='';
+	$DOCUMENT_ROOT="";
+	$status="";
+	$recMode="";
+	$search='';
+	
+	$utility = new Utility();
+	$sql = "select * from PartMaster where rec_status='0'";
+	
+	if(isset($_GET['status'])) {
+		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	}
+	if(isset($_GET['cat'])) {
+		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
+	}
+	if(isset($_GET['search'])) {
+		$search = (get_magic_quotes_gpc()) ? $_GET['search'] : addslashes($_GET['search']);
+		$sql = sprintf("select * from PartMaster where rec_status='0' and part_number like '%s%s'", $search,'%');
+	}
+    // fetch data
+	
+    $rs = $db->query( $sql); 
+    $row = $rs->fetch();
+	if($debug=="On") { echo $sql; }
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
-	<title>Customer Listing</title>
+	<title>Part Listing</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
-
+	<script>
+       	$(function() {
+			$( "#search" ).live('mouseup', function() {
+				 $(this).select(); });	
+		});
+		
+		$("#createSubmit").click(function() {
+		  $sel = $('#category').val();
+		  $.ajax({
+			url: "create-part.php", type: "GET", data: $sel, cache: false, 
+			success: function(html) {
+				// code would go here
+			}
+			});
+		  return false;
+		});
+	</script>
 	
 </head>
 <body>
@@ -24,342 +79,95 @@
 	</div>
 <div id="content">
 		<h2>
-			Part Listing
+		 <?php echo "Part Listing - [ ".  $rs->size() ." ]"; ?>
 		</h2>
 		<hr />
 		<div id="commandBar">
 			<div id="actionBox">
-			  <form id="frmAction">
+			  <form id="frmAction" name="frmAction" method="post" action="create-part.php">
 		  		<label>Action:</label>
-				<select>
-					<option value="FS">New Front Sprocket</option>
-					<option value="RS">New Rear Sprocket</option>
-					<option value="CH">New Chain</option>
-					<option value="KT">New Kit</option>
-					<option value="OT">New Other</option>
+				<select id="category" name="category">
+				<!--<option value="*">Select...</option>-->
+				<?php
+				 echo $utility->GetCategoryList($db, '');  
+				?>
 				</select>
-				<input type="button" value="Go" />
+				<input id="createSubmit" name="createSubmit" type="submit" value="Go" />
 			  </form>
 			</div>
 			<div id="searchBox">
-			  <form id="frmSearch">
-				<input id="search" type="text" value="Part Search" />
-				<input type="button" value="Go" />
+			  <form id="frmSearch">				
+				<input id="search" name="search" type="text" value="<?php echo $search ?>" />
+				<input type="submit" value="Search" />
 			</div>
 		</div>
 		<table id="partTable">
 			<tr>
 				<th>Action</th>
 				<th>Part Number</th>
-				<th>Description</th>
+				<th style=
+				"text-align:left;padding-left:1em">Description</th>
 				<th>Size</th>
 				<th>Pitch</th>
-				<th>Brand</th>
+				<th>Stock</th>
 				<th>MSRP</th>
 				<th>Dealer Cost</th>
 				<th>Import Cost</th>
 			</tr>
 			<tr class="row">
-				<td><!- Action -->
-					<a href="sprocket.php?id=CU009&status=E&cat=FS"><div class="actionEdit"></div></a>
-					<a href="sprocket.php?id=CU009&status=D&cat=FS"><div class="actionStatus"></div></a>
+				<?php Do {
+				$page=''; 
+				switch ( $row['category_id'] ) {
+					case 'FS';
+						$page = 'sprocket.php';
+						break;
+					case 'RS':
+						$page = 'sprocket.php';
+						break;
+					case 'CH':
+						$page = 'chain.php';
+						break;
+					case 'KT':
+						$page = 'kit.php';
+						break;
+					case 'OT':
+						$page = "other.php";
+				}						
+	
+				?>
+				
+				 
+				<td><!-- Action -->
+					<a href="
+						<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=E&cat=<?php echo $row['category_id'];?>"><div class="actionEdit"></div></a>
+					<a href="<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=D&cat=<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>
 				</td>
-				<td> <!- Part Number -->
-					21603R-15
+				<td> <!-- Part Number -->
+					<?php echo $row['part_number'] ?>
 				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
+				<td style="text-align:left;padding-left:1em;"> <!-- Description -->
+					<?php echo $row['part_description'] ?>
 				</td>
-				<td> <!- Size -->
-					15
+				<td> <!-- Category -->
+					<?php echo $row['category_id'] ?>
 				</td>
-				<td> <!- Pitch -->
-					520
+				<td> <!-- Pitch -->
+					<?php echo $row['pitch_id'] ?>
 				</td>
-				<td> <!- Brand -->
-					Superlite
+				<td> <!-- Stock Level -->
+					<?php echo $row['stock_level'] ?>
 				</td>
-				<td> <!- MSRP -->
-					$33.95
+				<td> <!-- MSRP -->
+					<?php echo $utility->NumberFormat( $row['msrp'], '$') ?>
 				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
+				<td> <!-- Dealer Cost -->
+					<?php echo $utility->NumberFormat($row['dealer_cost'], '$') ?>
 				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="chain.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="chain.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Chain 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
+				<td> <!-- Import Cost -->
+					<?php echo $utility->NumberFormat($row['import_cost'], '$') ?>
 				</td>
 			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			<tr class="row">
-				<td><!- Action -->
-					<a href="part.php?id=CU009&status=E"><div class="actionEdit"></div></a>
-					<a href="part.php?id=CU009&status=D"><div class="actionStatus"></div></a>
-				</td>
-				<td> <!- Part Number -->
-					21603R-15
-				</td>
-				<td> <!- Description -->
-					Superlite 520 Drilled Race C/S
-				</td>
-				<td> <!- Size -->
-					15
-				</td>
-				<td> <!- Pitch -->
-					520
-				</td>
-				<td> <!- Brand -->
-					Superlite
-				</td>
-				<td> <!- MSRP -->
-					$33.95
-				</td>
-				<td> <!- Dealer Cost -->
-					$22.07
-				</td>
-				<td> <!- Import Cost -->
-					$4.50
-				</td>
-			</tr>
-			
+			<?php } while ($row = $rs->fetch( $rs )); ?>
 		</table>
 	
 	

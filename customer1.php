@@ -1,67 +1,61 @@
 <?php 
-	$debug = 'Off';
-	
     require_once 'db/global.inc.php';
-	require_once 'classes/clsSprocket.php';
-    require_once 'classes/clsUtility.php'; 
-
+    require_once 'classes/clsUtility.php';
+	require_once 'classes/clsCustomer.php';
     error_reporting(E_ERROR);
 
 	$DOCUMENT_ROOT="";
 	$status="";
 	$recMode="";
 	
-	if(isset($_GET['part_id'])) {
-		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
+	if(isset($_GET['customer_id'])) {
+		$customer_id = (get_magic_quotes_gpc()) ? $_GET['customer_id'] : addslashes($_GET['customer_id']);
 	}
 	
 	if(isset($_GET['status'])) {
 		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
 	}
 
-	// Update Controller
+	// Was there a POST ACTION
+	//echo '('. $_POST['formAction'] . ')';
+	
 	if (isset( $_POST['formAction'] )) {
-		$sprocket = new Sprocket();
-			
-		if($recMode == "E" || $recMode == "A") {
-			$sprocket->UpdateSprocket( $db, $_POST['frm'], $recMode );
+		$customer = new Customer();
+	
+		
+		if($recMode == "E") {
+			$customer->UpdateCustomer($db, $_POST['frm']);
 		} else if ($recMode == "D") {
-			$sprocket->UpdateSprocketStatus($db, $_POST['frm'] );
+			$customer->UpdateCustomerStatus($db, $status);
+			//$sql = "UPDATE Customer SET rec_status='1' WHERE customer_id=". $customer_id;
 		}
 	}
 
     // fetch data
-	$sql = sprintf( "select a.*,b.sprocket_id, b.sprocket_size, b.sprocket_notes from PartMaster a, Sprocket b where a.part_number = b.part_number and a.part_id = %s", $part_id );
+	$sql = sprintf( "SELECT * FROM Customer WHERE customer_id = %s", $customer_id );
     $rs = $db->query( $sql); 
     $row = $rs->fetch();
-
-	//todo: echo $sql;
+	
 	$utility = new Utility();
+    
+	//todo: $formatter = new NumberFormatter('en-US', NumberFormatter::PERCENT);
+	
+
+
 	
 	// Setup the case
 	switch ( $recMode )  {
 	    case "A":
-	        $recStatusDesc = "Adding new part";
+	        $recStatusDesc = "Adding new customer";
 	        break; 
 		case "D":	
-			$recStatusDesc = "Making part Inactive";
+			$recStatusDesc = "Making customer Inactive";
 			break;
 		case "E":
-			$recStatusDesc = "Updating part information";
+			$recStatusDesc = "Updating customer information";
 			break;
 		}
-	
-	
-	switch ($partCat) {
-		case "FS":
-			$partTypeDesc = "Front";
-			break;
-		case "RS":
-			$partTypeDesc = "Rear";
-			break;
-	}
 ?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
@@ -98,18 +92,19 @@
 	</div>
 	<div id="content">
 		<h2>
-			Customer Maintenance
+			Customer Maintenance - <?php echo( $recStatusDesc ); ?>
 		</h2>
 		<hr />
 	
 		<div id="formContent">
+		  <form id="formCustomer" method="post" action="<?php $PHP_SELF ?>" >
 			<table id="tableCustomerMaint" align="center">
 				<tr>
 					<td> 
 						<Label>DBA Name</>
 					</td>
 					<td colspan="3">
-						<input id="dbaName" type="text" />
+						<input id="dbaName" name="frm[dbaName]" type="text" value="<?php echo $row['dba']; ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -117,13 +112,13 @@
 						<label>Customer Number</label>
 					</td>
 					<td>
-						<input id="customerNumber" type="text" />
+						<input id="customerNumber" name="frm[customerNumber]" type="text" value="<?php echo $row['customer_number'];?>" />
 					</td>
 					<td align="right">
 						<label>Discount Level</label>
 					</td>
 					<td>
-						<input id="discountPct" type="text" />
+						<input id="discountPct" name="frm[discountPct]" type="text" value="<?php echo $row['discount'];?>" />
 					</td>
 				</tr>
 				<tr>
@@ -131,24 +126,26 @@
 						<label>Address</label>
 					</td>
 					<td colspan="3">
-						<input id="address" type="text"/>
-					</tr>
+						<input id="address" name="frm[address]" type="text" value="<?php echo $row['address'];?>"/>
+					</td>
 				</tr>
 				<tr>
 					<td>
 						<label>City/State/Zip</label>
 					</td>
 					<td>
-						<input id="city" type="text" />
+						<input id="city" name="frm[city]" type="text" value="<?php echo $row['city'];?>"/>
 					</td>
 					<td>
-						<select id="state">
+						<select id="state" name="frm[state]">
 							<option value="*">Select...</option>
-							<option value="CA">California</option>
+							<?php
+							 echo $utility->GetStatesList($db, $row['state']);  
+							?>
 						</select>
 					</td>
 					<td>
-						<input id="zip" type="text">
+						<input id="zip" name="frm[zip]" type="text" value="<?php echo $row['zip'];?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -156,13 +153,13 @@
 						<label>Phone#1/Phone#2/Fax</label>
 					</td>
 					<td>
-						<input id="phone1" type="text" />
+						<input id="phone1" name="frm[phone1]" type="text" value="<?php echo $row['phone1'];?>"/>
 					</td>
 					<td>
-						<input id="phone2" type="text" />
+						<input id="phone2" name="frm[phone2]" type="text" value="<?php echo $row['phone2'];?>"/>
 					</td>
 					<td>
-						<input id="fax" type="text">
+						<input id="fax" name="frm[fax]" type="text" value="<?php echo $row['fax'];?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -170,21 +167,7 @@
 						<label>email</label>
 					</td>
 					<td colspan="3">
-						<input id="email" type="text"/>
-					</tr>
-				</tr>
-				<tr>
-					<td>
-						<label>Credit Card/Exp/CVV</label>
-					</td>
-					<td>
-						<input id="cc1" type="text" />
-					</td>
-					<td>
-						<input id="exp1" type="text" />
-					</td>
-					<td>
-						<input id="cvv1" type="text">
+						<input id="email" name="frm[email]" type="text" value="<?php echo $row['email'];?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -192,13 +175,27 @@
 						<label>Credit Card/Exp/CVV</label>
 					</td>
 					<td>
-						<input id="cc2" type="text" />
+						<input id="cc1" name="frm[cc1]" type="text" value="<?php echo $row['cc_num1'];?>"/>
 					</td>
 					<td>
-						<input id="exp2" type="text" />
+						<input id="exp1" name="frm[exp1]" type="text" value="<?php echo $row['cc_exp1'];?>"/>
 					</td>
 					<td>
-						<input id="cvv2" type="text">
+						<input id="cvv1" name="frm[cvv1]" type="text"value="<?php echo $row['cc_cvv1'];?>"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Credit Card/Exp/CVV</label>
+					</td>
+					<td>
+						<input id="cc2" name="frm[cc2]" type="text" value="<?php echo $row['cc_num2'];?>"/>
+					</td>
+					<td>
+						<input id="exp2" name="frm[exp2]" type="text" value="<?php echo $row['cc_exp2'];?>"/>
+					</td>
+					<td>
+						<input id="cvv2" name="frm[cvv2]" type="text" value="<?php echo $row['cc_cvv2'];?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -206,24 +203,35 @@
 						<label>Notes</label>
 					</td>
 					<td colspan="3">
-						<textarea id="notes">
-						</textarea>
-					</tr>
+						<textarea id="notes" name="frm[notes]"><?php echo $row['notes'];?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Status</label>
+					</td>
+					<td>
+						<label><?php echo $utility->GetRecStatus( $row['rec_status'] );?></label>
+					</td>
 				</tr>
 											
 			</table>
-		</div>
 		
+		<hr/>
 		<div id="formCommands">
 			<?php
 			require($DOCUMENT_ROOT . "includes/formCommand.php");
 			?>
 		</div>
-		
+	<!-- end of form -->
+		<input type="hidden" id="customer_id" name="frm[customer_id]" value="<?php echo $row['customer_id'];?>"
+	</form>
+	</div>
 </div>
 	<div id="footer">
 		Copyright © Site name, 20XX
 	</div>
 </div>
+
 </body>
 </html>

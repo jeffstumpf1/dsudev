@@ -1,23 +1,69 @@
 <?php 
-	$partCat="";
+/*
+if($debug=="On") {
+	
+}
+*/
+	$debug = 'Off';
+	$retval ='';
+	//echo "[".$debug."]<br>";
+	
+    require_once 'db/global.inc.php';
+	require_once 'classes/clsSprocket.php';
+    require_once 'classes/clsUtility.php'; 
+
+    error_reporting(E_ERROR);
+
+	$DOCUMENT_ROOT="";
+	$status="";
 	$recMode="";
-	if(isset($_GET['status'])) {
-		$partCat = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	$sprocket = new Sprocket(); 
+	$sprocket->SetDebug($debug);	
+	
+	if(isset($_GET['part_id'])) {
+		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
 	}
+	
+	if(isset($_GET['status'])) {
+		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	}
+
 	if(isset($_GET['cat'])) {
 		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
 	}
+
+	// Update Controller
+	if (isset( $_POST['formAction'] )) {
+			
+		if($recMode == "E" || $recMode == "A") {
+			$retval = $sprocket->UpdateSprocket( $db, $_POST['frm'], $recMode );
+		} else if ($recMode == "D") {
+			$retval = $sprocket->UpdateSprocketStatus($db, $_POST['frm'] );
+		}
+		if($debug=='On') { echo 'Records updated ('.$recMode.') '. $retval .'<br>';}
+	}
+
+    // fetch data
+	$sql = sprintf( "select a.*,b.sprocket_id, b.sprocket_size, b.sprocket_notes from PartMaster a, Sprocket b where a.part_number = b.part_number and a.part_id = %s", $part_id );
+    $rs = $db->query( $sql); 
+    $row = $rs->fetch();
+
+	if($debug=="On") {
+		echo $sql;
+	}
+	
+	$utility = new Utility();
 	
 	// Setup the case
 	switch ( $recMode )  {
 	    case "A":
-	        $recStatusDesc = "Adding new part";
+	        $recStatusDesc = "Adding Sprocket";
 	        break; 
 		case "D":	
-			$recStatusDesc = "Making part Inactive";
+			$recStatusDesc = "Making Sprocket Inactive";
 			break;
 		case "E":
-			$recStatusDesc = "Updating part information";
+			$recStatusDesc = "Updating Sprocket information";
 			break;
 		}
 	
@@ -68,20 +114,21 @@
 		<hr />
 	
 		<div id="formContent">
-			<table id="tablePartMaint" align="center">
+		   <form id="formSprocket" name="formSprocket" method="post" action="<?php echo $_PHP_SELF; ?>" >
+ 			<table id="tablePartMaint" align="center">
 				<tr>
 					<td> 
 						<Label>Product Category</label>
 					</td>
 					<td colspan="3">
-						<select id="productCategory">
+						<select id="productCategory" name="frm[productCategory]">
 						<?php 
-							if($partCat == "FS") { 
+							if($row['category_id'] == "FS" || $partCat == "FS") { 
 								echo("<option value='FS' SELECTED>Front Sprocket</option>");
 								} else {
 								echo ("<option value='FS'>Front Sprocket</option>");
 							}
-							if($partCat == "RS") { 
+							if($row['category_id'] == "RS" || $partCat == "RS") { 
 								echo("<option value='RS' SELECTED>Rear Sprocket</option>");
 								} else {
 								echo ("<option value='RS'>Rear Sprocket</option>");
@@ -95,13 +142,13 @@
 						<label>Part Number</label>
 					</td>
 					<td>
-						<input id="partNumber" type="text" />
+						<input id="partNumber" name="frm[partNumber]" type="text" value="<?php echo $row['part_number']?>"/>
 					</td>
 					<td align="right">
 						<label>Stock Level</label>
 					</td>
 					<td>
-						<input id="stockLevel" type="text" />
+						<input id="stockLevel" name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -109,7 +156,7 @@
 						<label>Size</label>
 					</td>
 					<td colspan="3">
-						<input id="size" type="text"/>
+						<input id="size" name="frm[size]" type="text" value="<?php echo $row['sprocket_size']?>"/>
 					</tr>
 				</tr>
 				<tr>
@@ -117,12 +164,11 @@
 						<label>Pitch</label>
 					</td>
 					<td colspan="3">
-						<select id="pitch">
-							<option value="420">420 Pitch</option>
-							<option value="428">428 Pitch</option>
-							<option value="520" SELECTED>520 Pitch</option>
-							<option value="525">525 Pitch</option>
-							<option value="530">530 Pitch</option>
+						<select id="pitch" name="frm[pitch]">
+						<option value="*">Select...</option>
+						<?php
+						 echo $utility->GetPitchList($db, $row['pitch_id']);  
+						?>
 						</select>
 					</tr>
 				</tr>
@@ -131,9 +177,11 @@
 						<label>Product Brand</label>
 					</td>
 					<td colspan="3">
-						<select id="pitch">
-							<option value="*">Select</option>
-							<option value="428">Superlite</option>
+						<select id="brand" name="frm[brand]">
+						<option value="*">Select...</option>
+						<?php
+						 echo $utility->GetBrandList($db, $row['']);  
+						?>
 						</select>
 					</tr>
 				</tr>
@@ -142,7 +190,7 @@
 						<label>Description</label>
 					</td>
 					<td colspan="3">
-						<input id="partDesc" type="text"/>
+						<input id="partDescription" name="frm[partDescription]" type="text" value="<?php echo $row['part_description']?>"/>
 					</tr>
 				</tr>
 				<tr>
@@ -150,8 +198,7 @@
 						<label>Notes</label>
 					</td>
 					<td colspan="3">
-						<textarea id="notes">
-						</textarea>
+						<textarea id="notes" name="frm[notes]"><?php echo $row['sprocket_notes']?></textarea>
 					</tr>
 				</tr>				
 				<tr>
@@ -159,7 +206,7 @@
 						<label>MSRP</label>
 					</td>
 					<td colspan="3">
-						<input id="msrp" type="text"/>
+						<input id="msrp" name="frm[msrp]" type="text" value="<?php echo $row['msrp']?>"/>
 					</tr>
 				</tr>
 				<tr>
@@ -167,7 +214,7 @@
 						<label>Dealer Cost</label>
 					</td>
 					<td colspan="3">
-						<input id="dealerCost" type="text"/>
+						<input id="dealerCost" name="frm[dealerCost]" type="text" value="<?php echo $row['dealer_cost']?>"/>
 					</tr>
 				</tr>
 				<tr>
@@ -175,9 +222,18 @@
 						<label>Import Cost</label>
 					</td>
 					<td colspan="3">
-						<input id="importCost" type="text"/>
+						<input id="importCost" name="frm[importCost]" type="text" value="<?php echo $row['import_cost']?>"/>
 					</tr>
-				</tr>											
+				</tr>	
+				<tr>
+					<td>
+						<label>Status</label>
+					</td>
+					<td>
+						<span class="statusMessage"><?php echo $utility->GetRecStatus( $row['rec_status'] );?></span>
+					</td>
+				</tr>
+														
 			</table>
 		</div>
 		<hr/>
@@ -186,11 +242,17 @@
 			require($DOCUMENT_ROOT . "includes/formCommand.php");
 			?>
 		</div>
-		
+		<input id="partID" name="frm[partID]" value="<?php echo $part_id ?>" type="hidden"/>
+		<input id="sprocketID" name="frm[sprocketID]" value="<?php echo $row['sprocket_id'] ?>" type="hidden"/>	
+		<input id="recsStatus" name="frm[recStatus]" value="<?php echo $row['rec_status'] ?>" type="hidden"/>	
+		</form>
+	</div>
 </div>
 	<div id="footer">
 		Copyright © Site name, 20XX
 	</div>
 </div>
+</form>
+
 </body>
 </html>

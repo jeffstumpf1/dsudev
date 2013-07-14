@@ -1,5 +1,5 @@
 <!- Commands used on forms -->
-<form id="formPartCmd">
-	<input id="submit" value="Submit" type="button"/>
-	<input id="cancel" value="Cancel" type="button" />
-</form>
+
+	<input id="submit" name="submit" value="Submit" type="submit"/>
+	<input id="recMode" name="recMode" value="<?php echo $recMode;?>" type="hidden"/>
+	<input id="formAction" name="formAction" value="UPDATE" type="hidden"/>

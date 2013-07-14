@@ -1,0 +1,2 @@
+INSERT INTO Customer (rowid, dba, contact_name, customer_number, address, city, state, zip, phone1, phone2, fax, email, discount, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, notes, rec_status, create_dt, modified_dt) VALUES (null, 'Huntington Beach Honda', 'Mike Moto', '121212', '1234 Dirt Track Way', 'Huntington Beach ', 'CA', '92649', '714-888-8888', '714-888-8881', '714-888-8882', 'mikemoto@gmail.com', 17, '4532-1111-1111-1111', '01/2013', '123', '4532-1111-1111-1111', '01/2014', '123', 'This is a really nice customer allways pays bills on time', '00', '', '');
+
