@@ -90,7 +90,7 @@ class Utility {
 	    
 		while ($row = $rs->fetch()) {
 			$html = "";
-			if( $pitch == strtoupper( $row['short_code'])) {
+			if( $clip == strtoupper( $row['short_code'])) {
 				echo "<option value='". $row['short_code'] ."' SELECTED>". $row['description'] ."</option>";
 			} else {
 				echo "<option value='". $row['short_code'] ."'>". $row['description'] ."</option>";

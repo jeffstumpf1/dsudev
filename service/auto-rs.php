@@ -16,7 +16,7 @@
 	
 	$sql = sprintf("select part_number, msrp, dealer_cost, import_cost from PartMaster where rec_status='0' and category_id='RS' and pitch_id='%s' and part_number like '%s%s' limit 25",$pitch, $search,'%');
 	$rs = $db->query( $sql); 
-    $row = $rs->fetch();
+
 	if($debug=="On") {
 		echo $sql."<br>";
 	}

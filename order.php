@@ -70,7 +70,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<link href="css/square/square.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
-	<script type="text/javascript" src="js/kit.js"></script>
+	<script type="text/javascript" src="js/chain_kit.js"></script>
 	 
 </head>
 <body>
@@ -97,12 +97,6 @@
 				<legend>Chain Kt</legend>
 				
 					<table width="100%">
-						<tr>
-							<th nowrap>Part Description</th>
-							<th nowrap>MSRP</th>
-							<th nowrap>Dealer Cost</th>
-							<th nowrap>Import Cost</th>
-						</tr>
 						<tr>
 							<td width="25%" nowrap>Front Sprocket</td>
 							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
@@ -135,13 +129,11 @@
 		<div id="formContent">
 			<div class="group">
 				<div class="kitSpacers">
-					<label class="titleTop" style="margin-left:0">Chain Kit Part Number</label><br/>
+					<label class="titleTop" style="margin-left:0">Part</label><br/>
 <?php
 include 'includes/part_logic.php';
 ?>					
 				</div>
-			</div>
-			<div class="group">
 				<div class="kitSpacers">
 					<label class="titleTop" for="pitch">Pitch</label><br/>
 <?php 
@@ -188,32 +180,14 @@ include 'includes/brand-list.php';
 				</div>	
 			</div>		
 			
-			<div class="group">
-				<div class="kitSpacers">
-					<label class="titleTop" for="msrp">MSRP</label><br/>
-					<input id="msrp"  name="frm[msrp']" type="text" />
-				</div>
-				
-				<div class="kitSpacers">
-					<label  class="titleTop" for="dealerCost">Dealer Cost</label><br/>
-					<input id="dealerCost"  name="frm[dealerCost']" type="text" />
-				</div>
-				<div class="kitSpacers">
-					<label  class="titleTop" for="importCost">Import Cost</label><br/>
-					<input id="importCost"  name="frm[importCost']" type="text" />
-				</div>
-				
-			</div>
-			
-			<div class="groupCommand">	
-			<br/>		
+			<div class="groupCommand">			
 				<div id="formCommands">
 					<?php
 					require($DOCUMENT_ROOT . "includes/formCommand.php");
 					?>
-					<input type="hidden" id="fs" value=""/>
-					<input type="hidden" id="rs" value=""/>
-					<input type="hidden" id="ch" value=""/>
+					<input type="text" id="fs" value=""/>
+					<input type="text" id="rs" value=""/>
+					<input type="text" id="ch" value=""/>
 				</div>
 			</div>
 			
