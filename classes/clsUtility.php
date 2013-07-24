@@ -128,5 +128,23 @@ class Utility {
 		return $retVal;
 	}
 
+
+	// Number Format
+	function CalculateChainCost( $val, $chainLength, $out ) {
+		$retVal = 0;
+
+		$val = $val * $chainLength;
+		switch ($out) {
+			case '$':
+				$retVal = money_format('$%i', $val);
+				break;
+			case '0':
+				$retVal = money_format('%i', $val);
+				break;
+		}		
+		
+		return $retVal;
+	}
+
 }
 ?>

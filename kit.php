@@ -1,22 +1,57 @@
 <?php 
-	$partCat="";
+    //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+    
+    $debug = 'Off';
+	
+    require_once 'db/global.inc.php';
+	require_once 'classes/clsChain.php'; 
+	require_once 'classes/clsKit.php'; 
+	require 'classes/clsUtility.php';
+    
+    error_reporting(E_ERROR);
+
+	$DOCUMENT_ROOT="";
+	$status="";
 	$recMode="";
+	$kit = new Kit();
+	$utility = new Utility();
+	$kit->SetDebug($debug);
+
+
+	if(isset($_GET['part_id'])) {
+		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
+	}
+	
 	if(isset($_GET['status'])) {
 		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
 	}
-	if(isset($_GET['cat'])) {
-		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
+
+	// Update Controller
+	if (isset( $_POST['formAction'] )) {
+			
+		if(strtolower($recMode) == "e" || strtolower($recMode) == "a") {
+			$part_id = $chain->UpdateKit( $db, $_POST['frm'], $recMode );
+		} else if (strtolower($recMode) == "d") {
+			$chain->UpdateKitStatus($db, $_POST['frm'] );
+		}
 	}
+
+    // fetch data
+	$sql = sprintf( "select a.*,b.chain_id, b.product_brand_id, b.linked_chain_part_number, b.clip_id from PartMaster a, Chain b where a.part_number = b.part_number and a.rec_status=0 and a.part_id = %s", $part_id );
+    $rs = $db->query( $sql); 
+    $row = $rs->fetch();
+
+	if ($debug=='On') { echo $sql."<br>"; }	
 	
 	// Setup the case
-	switch ( $recMode )  {
-	    case "A":
+	switch ( strtolower($recMode ) ) {
+	    case "a":
 	        $recStatusDesc = "Adding new Kit";
 	        break; 
-		case "D":	
+		case "d":	
 			$recStatusDesc = "Making Kit Inactive";
 			break;
-		case "E":
+		case "e":
 			$recStatusDesc = "Updating Kit information";
 			break;
 		}
@@ -29,19 +64,15 @@
 	<title><?php echo($partCat)?>Chain Maintenance</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>	
+  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<link href="css/square/square.css" rel="stylesheet">
-	<script src="js/jquery.icheck.js"></script>
-	
-	<script>
-	$(document).ready(function(){
-	  $('input').iCheck({
-	    checkboxClass: 'icheckbox_square',
-	    radioClass: 'iradio_square',
-	  });
-	});
-	</script></head>
+	<script type="text/javascript" src="js/jquery.icheck.js"></script>
+	<script type="text/javascript" src="js/chain_kit.js"></script>
+	 
+</head>
 <body>
 
 <div id="container">
@@ -56,197 +87,121 @@
 		?>
 	</div>
 	<div id="content">
-		<h2>
-			<?php echo($recStatusDesc)?> 
-		</h2>
-		<hr />
 	
-		<div id="formContent">
-		  <fieldset id="kitInfo" class="kitFieldset">
-		  	<legend>General Kit Information</legend>
-				<div class="kitSpacers">
-					<label>Part Number</label>
-					<input id="partNumber" type="text" />
-					<input type="hidden" id="cat" value="KT" />
-				</div>
-				<div class="kitSpacers">
-					<label>Pitch</label>
-					<select id="pitch">
-						<option value="420">420 Pitch</option>
-						<option value="428">428 Pitch</option>
-						<option value="520" SELECTED>520 Pitch</option>
-						<option value="525">525 Pitch</option>
-						<option value="530">530 Pitch</option>
-					</select>
-				</div>
-				<div class="kitSpacers">
-					<label>Product Brand</label>
-					<select id="brand">
-						<option value="*">Select</option>
-						<option value="YAM">Yamaha</option>
-					</select>
-				</div>
-				<div class="kitSpacersDesc">	
-					<p><label>Description</label>
-					<textarea id="notes">
-					</textarea></p>
-				</div>
+		<h2>
+			<?php echo($recStatusDesc)?> <hr />
+		</h2>
+		
+				<div id="KitContent">
+			<fieldset>
+				<legend>Chain Kt</legend>
+				
+					<table width="100%">
+						<tr>
+							<td width="25%" nowrap>Front Sprocket</td>
+							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
+							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
+							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+						</tr>
+						<tr>
+							<td width="25%">Rear Sprocket</td>
+							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
+							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
+							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+						</tr>
+						<tr>
+							<td width="25%">Chain Length</td>
+							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
+							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
+							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+						</tr>
+						<tr>
+							<td width="25%">Total</td>
+							<td id="totalMSRP" style="text-align:right"></td>
+							<td id="totalDealer" style="text-align:right"></td>
+							<td id="totalImport" style="text-align:right"></td>
+						</tr>
+					</table>
 			</fieldset>
-			
-			<!-- Kit Specifics -->
-			<fieldset id="kitDetails" class="kitFieldset">
-		  	<legend>Kit Details</legend>
+		</div>
+
+
+		<div id="formContent">
+			<div class="group">
 				<div class="kitSpacers">
-					<label>Front Sprocket</label><br/>
-					<input id="frontSprocket" type="text" />
+					<label class="titleTop" style="margin-left:0">Part</label><br/>
+<?php
+include 'includes/part_logic.php';
+?>					
 				</div>
 				<div class="kitSpacers">
-					<label>Sprocket Size</label><br/>
-					<input id="frontSprocketSize" type="text" />
+					<label class="titleTop" for="pitch">Pitch</label><br/>
+<?php 
+include 'includes/pitch-list.php';
+?>
 				</div>
 				<div class="kitSpacers">
-					<label>Rear Sprocket</label><br/>
-					<input id="rearSprocket" type="text" />
+					<label class="titleTop" for="brand">MFG</label><br/>
+<?php 
+include 'includes/brand-list.php';
+?>
 				</div>
 				<div class="kitSpacers">
-					<label>Sprocket Size</label><br/>
-					<input id="rearSprocketSize" type="text" />
-				</div>
-				<div class="kitSpacers">
-					<label>Chain Length</label><br/>
-					<input id="chainLength" type="text" />
-				</div>
-				<div class="kitSpacers">
-					<label>M/L</label><br/>
-					<select id="ML">
+					<label class="titleTop" for="ML">Master</label><br/>
+					<select id="ML"  name="frm[ml']" >
 						<option value="*">Select</option>
 						<option value="ML">M/L</option>
 					</select>
 				</div>
-		  	</fieldset>
+
+			</div>
+			<div class="group">
+				<div class="kitSpacers">
+					<label class="titleTop" for="fsPartNumber">Front Sprocket</label><br/>
+					<input id="fsPartNumber"  name="frm[fsPartNumber']" type="text" />
+				</div>
+				
+				<div class="kitSpacers">
+					<label  class="titleTop" for="rsPartNumber">Rear Sprocket</label><br/>
+					<input id="rsPartNumber"  name="frm[rsPartNumber']" type="text" />
+				</div>
+				<div class="kitSpacers">
+					<label  class="titleTop" for="chainLength">Chain Length</label><br/>
+					<input id="chainLength"  name="frm[chainLength']" type="text" />
+				</div>
+
+			</div>
+			<div class="group">
+			</div>
+			<div class='group'>
+				<div class="kitSpacersDesc">	
+					<label class="titleTop" style="margin-left:0" for="fsPartNumber">Description</label>
+					<textarea id="notes" nam="frm[notes]" style="margin-left:0"><?php echo $row['notes']?></textarea>
+				</div>	
+			</div>		
 			
-			<!-- Chain in Kit -->
-			<fieldset id="kitDetails" class="kitFieldset">
-		  	<legend>Chains</legend>
-			<table id="chainChartTable">
-				<tr>
-					<th>Action</th>
-					<th style="text-align:left;">Chain Description</th>
-					<th>MSRP</th>
-					<th>Dealer Cost</th>
-					<th>Import Cost</th>
-				</tr>
-				<tr class="row">
-					<td><!- Action -->
-						<input type="radio" name="iCheck" />
-					</td>
-					<td> <!- Chain Description -->
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					</td>
-					<td> <!- MSRP -->
-						$0.00
-					</td>
-					<td> <!- Dealer Cost -->
-						$0.00
-					</td>
-					<td> <!- Import Cost -->
-						$0.00
-					</td>
-				</tr>
-				<tr class="row">
-					<td><!- Action -->
-						<input type="radio" name="iCheck" />
-					</td>
-					<td> <!- Chain Description -->
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					</td>
-					<td> <!- MSRP -->
-						$0.00
-					</td>
-					<td> <!- Dealer Cost -->
-						$0.00
-					</td>
-					<td> <!- Import Cost -->
-						$0.00
-					</td>
-				</tr>
-				<tr class="row">
-					<td><!- Action -->
-						<input type="radio" name="iCheck" />
-					</td>
-					<td> <!- Chain Description -->
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					</td>
-					<td> <!- MSRP -->
-						$0.00
-					</td>
-					<td> <!- Dealer Cost -->
-						$0.00
-					</td>
-					<td> <!- Import Cost -->
-						$0.00
-					</td>
-				</tr>
-				<tr class="row">
-					<td><!- Action -->
-						<input type="radio" name="iCheck" />
-					</td>
-					<td> <!- Chain Description -->
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					</td>
-					<td> <!- MSRP -->
-						$0.00
-					</td>
-					<td> <!- Dealer Cost -->
-						$0.00
-					</td>
-					<td> <!- Import Cost -->
-						$0.00
-					</td>
-				</tr>
-				<tr class="row">
-					<td><!- Action -->
-						<input type="radio" name="iCheck" />
-					</td>
-					<td> <!- Chain Description -->
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					</td>
-					<td> <!- MSRP -->
-						$0.00
-					</td>
-					<td> <!- Dealer Cost -->
-						$0.00
-					</td>
-					<td> <!- Import Cost -->
-						$0.00
-					</td>
-				</tr>
-				<tr class="row">
-					<td><!- Action -->
-						<input type="radio" name="iCheck" />
-					</td>
-					<td> <!- Chain Description -->
-						xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-					</td>
-					<td> <!- MSRP -->
-						$0.00
-					</td>
-					<td> <!- Dealer Cost -->
-						$0.00
-					</td>
-					<td> <!- Import Cost -->
-						$0.00
-					</td>
-				</tr>
-			</table>	
-			</fieldset>
+			<div class="groupCommand">			
+				<div id="formCommands">
+					<?php
+					require($DOCUMENT_ROOT . "includes/formCommand.php");
+					?>
+					<input type="text" id="fs" value=""/>
+					<input type="text" id="rs" value=""/>
+					<input type="text" id="ch" value=""/>
+				</div>
+			</div>
+			
+			
 			
 		</div>
-		<hr />
-		<div id="formCommands">
-			<?php
-			require($DOCUMENT_ROOT . "includes/formCommand.php");
-			?>
+		
+
+		
+		
+		<hr>
+		
+		<div id="chainChart">
+			<div id="chartList">Please select a pitch to select a chain</div>
 		</div>
 		
 </div>
@@ -254,5 +209,6 @@
 		Copyright © Site name, 20XX
 	</div>
 </div>
+<div id="log"></div>
 </body>
 </html>

@@ -154,26 +154,20 @@ include 'includes/part_logic.php';
 						<label>Pitch</label>
 					</td>
 					<td colspan="3">
-						<select id="pitch" name="frm[pitch]">
-						<option value="*">Select...</option>
-						<?php
-						 echo $utility->GetPitchList($db, $row['pitch_id']);  
-						?>
-						</select>
-					</tr>
+<?php 
+include 'includes/pitch-list.php';
+?>			
+				</tr>
 				</tr>
 				<tr>
 					<td>
 						<label>Product Brand</label>
 					</td>
 					<td colspan="3">
-						<select id="brand" name="frm[brand]">
-						<option value="*">Select...</option>
-						<?php
-						 echo $utility->GetBrandList($db, $row['']);  
-						?>
-						</select>
-					</tr>
+<?php 
+include 'includes/brand-list.php';
+?>	
+				</tr>
 				</tr>
 				<tr>
 					<td>

@@ -81,11 +81,11 @@ class Sprocket {
 				$flag ='0';
 			}
 		
-			$sqlPart = "UPDATE PartMaster SET rec_status='". $flag ."' WHERE part_id=". $partID;
+			$sqlPart = "DELETE FROM PartMaster WHERE part_id=". $partID;
 			$cmd = $db->query( $sqlPart );
 			$cnt = $cmd->affected();
 			
-			$sql = "UPDATE Sprocket SET rec_status='". $flag ."' WHERE sprocket_id=". $sprocketID;
+			$sql = "DELETE FROM Sprocket WHERE sprocket_id=". $sprocketID;
 			$cmd = $db->query( $sql );
 			$cnt = $cnt + $cmd->affected();
 			

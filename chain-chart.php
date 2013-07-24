@@ -96,7 +96,9 @@
 		<table id="chainChartTable">
 			<tr>
 				<th>Action</th>
+				<th>Part Number</th>
 				<th style="text-align:left;">Chain Description</th>
+				<th>Stock Level</th>
 				<th>MSRP</th>
 				<th>Dealer Cost</th>
 				<th>Import Cost</th>
@@ -113,6 +115,9 @@
 				</td>
 				<td style="text-align:left;"> <!- Chain Description -->
 					<?php echo $row['part_description'];?>
+				</td>
+				<td> <!-- Stock Level -->
+					<?php echo $row['stock_level'] ?>
 				</td>
 				<td> <!-- MSRP -->
 					<?php echo $utility->NumberFormat( $row['msrp'], '$') ?>

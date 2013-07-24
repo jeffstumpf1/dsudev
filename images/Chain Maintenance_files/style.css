@@ -98,10 +98,6 @@ hr {
 	margin-right: 1em;
 	}
 
-#chainChartTable {
-	font-size: 10px;
-	
-}
 
 /* Dialogs */
 #dialog-form, #dialog {
@@ -132,8 +128,3 @@ label.titleTop {
 	margin-left: .5em;
 	}
 
-
-/*  Auto Complete */
- .ui-autocomplete-loading {
-background: white url('images/16x16-cc.gif') right center no-repeat;
-}

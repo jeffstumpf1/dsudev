@@ -108,8 +108,7 @@ $(function() {
 			<tr>
 				<th>Action</th>
 				<th>Part Number</th>
-				<th style=
-				"text-align:left;padding-left:1em">Description</th>
+				<th style="text-align:left;padding-left:1em">Description</th>
 				<th>Size</th>
 				<th>Pitch</th>
 				<th>Stock</th>

@@ -1,7 +1,7 @@
 <?php 
-    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+    //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'Off';
+    $debug = 'On';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 
@@ -36,7 +36,7 @@
 	}
 
     // fetch data
-	$sql = sprintf( "select a.*,b.chain_id, b.product_brand_id, b.linked_chain_part_number, b.linked_chain_part_description, b.clip_id from PartMaster a, Chain b where a.part_number = b.part_number and a.rec_status=0 and a.part_id = %s", $part_id );
+	$sql = sprintf( "select a.*,b.chain_id, b.product_brand_id, b.linked_chain_part_number, b.clip_id from PartMaster a, Chain b where a.part_number = b.part_number and a.rec_status=0 and a.part_id = %s", $part_id );
     $rs = $db->query( $sql); 
     $row = $rs->fetch();
 
@@ -66,80 +66,6 @@
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  	
-<script>
- $(function() {	
- 
-	// Attempt at Getting binding to work after 
-	// Dynamically generated code from ajax call
-	 $('#dialog-form' ).on('click', 'a.chainSelected', function(event) {
-		ChainSelected($(this));
-	 });
-	 
-	  $( "#dialog-form" ).dialog({
-		  autoOpen: false,
-		  height: 400,
-		  width: 750,
-		  modal: true,
-			Cancel: function() {
-					  $( this ).dialog( "close" );
-			  }				
-		});
-		
-		$( "#selectChain" )
-		  .click(function(event) {
-			if($('#pitch').val() == '*' ) {
-			   event.preventDefault();
-			   alert ('You have to pick a chain pitch first.');
-			   $('#pitch').focus();
-			} else {
-				
-				$.ajax({
-					  type: 'GET',
-					  url: 'includes/select-chain.php',
-					  data: { pitch: +  $('#pitch').val() },
-					  beforeSend:function(){
-						// load a temporary image in a div
-					  },
-					  success:function(data){
-						$('#dialog-form').html(data);
-					  },
-					  error:function(){
-						$('#dialog-form').html('<p class="error"><strong>Oops!</strong></p>');
-					  }
-					});
-				
-				 $( "#dialog-form" ).dialog( "open" );	
-				 
-		  }
-			
-		      });
-		
-	/* Once a chain is selected update the contents to the form field for storing */	      
-	function ChainSelected(obj) {
-		$partNumber = obj.attr('href');
-		$partNumber = $partNumber.substring(1);
-		$partDesc = obj.text();
-		$( "#chainSelectedPartNumber").val( $partNumber );
-		$( "#chainSelectedDesc" ).text( $partNumber + '-' + $partDesc );
-		$( "#linkedChainPartDescription").val( $( "#chainSelectedDesc" ).text() );
-		// Reformat the part number per Brian's Request
-		$masterPartNumber = $('#masterPartNumber').val();
-		if( $masterPartNumber.indexOf('-') != -1) {   // xxxxxxxx-9
-			hyph = $masterPartNumber.indexOf('-');
-			$masterPartNumber = $masterPartNumber.substr(0, hyph) + '-' + obj.attr('alt');
-		} else {
-			$masterPartNumber = $masterPartNumber + "-" + obj.attr('alt');
-		}				
-		$('#masterPartNumber').val( $masterPartNumber );  // main part number
-		$('#masterPartNumberSpan').text( $masterPartNumber );  // main part number
-		$( "#dialog-form" ).dialog( "close" );
-
-	}
-});		   
-</script>
 </head>
 <body>
 <!-- Dialog box Used to show Chains -->
@@ -198,12 +124,9 @@ include 'includes/part_logic.php';
 					<label>Pitch</label>
 				</td>
 				<td>
-				<select id="pitch" name="frm[pitch]">
-				<option value="*">Select...</option>
-					<?php
-					 echo $utility->GetPitchList($db, $row['pitch_id']);  
-					?>
-				</select>
+<?php 
+include 'includes/pitch-list.php';
+?>
 				</td>
 				<td align="right">
 					<label>Clip</label>
@@ -221,12 +144,9 @@ include 'includes/part_logic.php';
 					<label>Product Brand</label>
 				</td>
 				<td colspan="3">
-				<select id="brand" name="frm[brand]">
-					<option value="*">Select...</option>
-					<?php
-					 echo $utility->GetBrandList($db, $row['brand_id']);  
-					?>
-				</select>
+<?php
+include 'includes/brand-list.php';
+?>
 				</td>
 			</tr>
 
@@ -270,7 +190,7 @@ include 'includes/part_logic.php';
 						<span class="statusMessage"><?php echo $utility->GetRecStatus( $row['rec_status'] );?></span>
 					</td>
 				</tr>
-				
+	<!--  This is used in Chain Kit 			
 				<tr>
 					<td>
 						<input id="selectChain" name="frm[selectChain]" type="button" value="Select Chain" />
@@ -279,7 +199,8 @@ include 'includes/part_logic.php';
 						<label id="chainSelectedDesc"><?php echo $row['linked_chain_part_description']?></label>
 						<input id="chainSelectedPartNumber" name="frm[linkedChainPart]" type="hidden" value="<?php echo $row['linked_chain_part_number']?>"/>
 					</td>
-				</tr>											
+				</tr>	
+	-->										
 			</table>
 		</div>
 		<hr />
@@ -290,7 +211,6 @@ include 'includes/part_logic.php';
 			<input id="partID" name="frm[partID]" value="<?php echo $part_id; ?>" type="hidden" />
 			<input id="chainID" name="frm[chainID]" value="<?php echo $row['chain_id']; ?>" type="hidden" />	
 			<input id="recStatus" name="frm[recStatus]" value="<?php echo $row['rec_status']; ?>" type="hidden" />
-			<input id="linkedChainPartDescription" name="frm[linkedChainPartDescription]" value="<?php echo $row['linked_chain_part_description']; ?>" type="hidden" />		
 		</div>
 		
 </div>
