@@ -29,7 +29,7 @@ class Kit {
 	function UpdateKit($db, $formData, $recMode) {
 		
 		if($this->debug=='On') {
-			echo "---UpdateKit---";
+			echo "---UpdateKit---".$recMode."<br>";
 		}
 
 		// PartMaster
@@ -37,10 +37,10 @@ class Kit {
 		$productCategory = $formData['productCategory'];
 		$partNumber = $formData['partNumber'];
 		$partDescription = addslashes($formData['notes']);
-		$stockLevel = 0;
-		$msrp=0;
-		$dealerCost=0;
-		$importCost=0;
+		$stockLevel = $formData['stockLevel'];
+		$msrp= $formData['msrp'];
+		$dealerCost=$formData['dealerCost'];
+		$importCost= $formData['importCost'];
 		
 		$pitch = $formData['pitch'];	
 		// Kit
@@ -48,20 +48,24 @@ class Kit {
 		$rsPartNumber= $formData['rsPartNumber'];
 		$brand = $formData['brand'];	
 		$clip = $formData['ml']; 
-		$chainLength= $formData['chainLength'];
+		$chainLength= 0 + $formData['chainLength'];
 		
 		// Unique ID's
 		$partID = $formData['partID'];
 		$kitID = $formData['kitID'];
+		$fsPrice = $formData['fs'];
+		$rsPrice = $formData['rs'];
+		$chPrice = $formData['ch'];
+		$chainPartNumber = $formData['chainPartNumber'];
 		
 		if( strtolower($recMode) == "e") {
-			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription ."', category_id='". $productCategory ."', pitch_id='". $pitch ."' WHERE part_id=". $partID;
-			$sqlKit = "UPDATE ChainKit SET part_number='". $partNumber ."', category_id='". $productCategory ."', product_brand_id='".  $brand  ."', frontSprocket_part_number='" . $fsPartNumber  ."',rearSprocket_part_number='". $rsPartNumber . "', chain_length=". $chainLength .", ml_id='". $clip ."' WHERE chain_kit_id=". $kitID;			
+			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
+			$sqlKit = "UPDATE ChainKit SET part_number='". $partNumber ."', category_id='". $productCategory ."', product_brand_id='".  $brand  ."', frontSprocket_part_number='" . $fsPartNumber  ."',rearSprocket_part_number='". $rsPartNumber . "', chain_length=". $chainLength .", ml_id='". $clip ."', ch_price='". $chPrice. "', fs_price='". $fsPrice. "', rs_price='". $rsPrice. "', chain_part_number='". $chainPartNumber ."' WHERE chain_kit_id=". $kitID;			
 		}
 		
 		if( strtolower($recMode) == "a") {
 			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
-			$sqlKit = "INSERT INTO ChainKit(part_number, category_id, product_brand_id, frontSprocket_part_number, rearSprocket_part_number, chain_length, ml_id) VALUES ('". $partNumber ."','". $productCategory. "','". $brand ."','". $fsPartNumber ."','" . $rsPartNumber. "',". $chainLength. ",'". $clip. "')";		
+			$sqlKit = "INSERT INTO ChainKit(part_number, category_id, product_brand_id, frontSprocket_part_number, rearSprocket_part_number, chain_length, ch_price, rs_price, fs_price, chain_part_number, ml_id) VALUES ('". $partNumber ."','". $productCategory. "','". $brand ."','". $fsPartNumber ."','" . $rsPartNumber. "',". $chainLength. ",'". $chPrice. "','". $rsPrice ."','". $fsPrice."','". $chainPartNumber. "','". $clip. "')";		
 		}
 
 		$cmd = $db->query( $sqlPartMaster );

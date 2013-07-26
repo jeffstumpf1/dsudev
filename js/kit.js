@@ -1,15 +1,39 @@
  $(function() {	
  
  	// Setup the form 
- 	$( "#pitch" ).val(0);
-	$( "#chainLength").attr('disabled','disabled').val(1);
-	$('#fsPartNumber').attr('disabled','disabled').val('');
-	$('#rsPartNumber').attr('disabled','disabled').val('');
-	$('#masterPartNumber').attr('style','width:50em;')
+ 	if ( $('#recMode').val() != "E" ) {
+		$( "#pitch" ).val(0);
+		$( "#chainLength").attr('disabled','disabled').val(1);
+		$('#fsPartNumber').attr('disabled','disabled').val('');
+		$('#rsPartNumber').attr('disabled','disabled').val('');
+		$('#masterPartNumber').attr('style','width:35em;')
+		$('#stockLevel').val(0);
+		ResetForm();
+	} else {
+		if( $('#fs').val() != '') {UpdatePriceInChart( $('#fs').val(), 'FS');}
+		if( $('#rs').val() != '') {UpdatePriceInChart( $('#rs').val(), 'RS');}
+		if( $('#ch').val() != '') {UpdatePriceInChart( $('#ch').val(), 'CH');}
+		LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#ch').val() );
+	}
+	
 	$('#log').hide();
 
- 	ResetForm();
+ 	// stops enter key submit the form
+ 	$('input').keypress(function(event){
+        var enterOkClass =  $(this).attr('class');
+        if (event.which == 13 && enterOkClass != 'enterSubmit') {
+            event.preventDefault();
+            return false;   
+        } 
+    });
  
+ 	// Process Form stuff here
+ 	$('#submit').click(function(event){
+ 		// validation code goes here
+ 		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
+ 	});
+ 	
+ 	
  	function ResetForm(){
 		$('#fs').val('');
 		$('#rs').val('');
@@ -34,7 +58,9 @@
 	 $('#chainChart').on('ifClicked', '#chainChartTable input', function(event) {
 	 	var part = $(this).val();
 	 	$('#ch').val( part );						// saves part in form
-		partNumber = UpdatePriceInChart($(this).val(), 'CH');		
+		partNumber = UpdatePriceInChart($(this).val(), 'CH');	
+		$('#chainPartNumber').val( partNumber );
+			
 		$masterPartNumber = $('#masterPartNumber').val();
 		if( $masterPartNumber.indexOf('-') != -1) {   // xxxxxxxx-9
 			hyph = $masterPartNumber.indexOf('-');
@@ -45,6 +71,8 @@
 		$('#masterPartNumber').val( $masterPartNumber );  // main part number
 		$('#masterPartNumberSpan').text( $masterPartNumber );  // main part number
 	 });
+	 
+	 
 	 
 	$('#fsPartNumber').autocomplete({
     // source: function() { return "GetState.php?country=" + $('#Country').val();},
@@ -109,13 +137,14 @@
 		   alert ('You have to pick a chain pitch first.');
 		   $('#pitch').focus();
 		} else {
+		    
 			$( '#chainLength' ).removeAttr('disabled'); 
 			$('#fsPartNumber').removeAttr('disabled');
  			$('#rsPartNumber').removeAttr('disabled');
 			if( $('#chainLength').val()=='') { $('#chainLength').val(1); }
 			ResetForm();
 			LoadChainChart( $(this).val(), $('#chainLength').val() );
-			
+			//$.unblockUI();
 		}
 
 	});

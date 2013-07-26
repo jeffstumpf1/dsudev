@@ -1,7 +1,7 @@
 <?php 
     //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'On';
+    $debug = 'Off';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 

@@ -18,7 +18,7 @@ if($debug=="On") {
 	$search='';
 	
 	$utility = new Utility();
-	$sql = "select * from PartMaster where rec_status='0'";
+	$sql = "select * from PartMaster where rec_status='0' LIMIT 50";
 	
 	if(isset($_GET['status'])) {
 		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
@@ -28,7 +28,7 @@ if($debug=="On") {
 	}
 	if(isset($_GET['search'])) {
 		$search = (get_magic_quotes_gpc()) ? $_GET['search'] : addslashes($_GET['search']);
-		$sql = sprintf("select * from PartMaster where rec_status='0' and part_number like '%s%s'", $search,'%');
+		$sql = sprintf("select * from PartMaster where rec_status='0' and part_number like '%s%s' LIMIT 50", $search,'%');
 	}
     // fetch data
 	
