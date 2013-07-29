@@ -2,6 +2,14 @@
 /* Customer **/
 
 class Customer {
+
+	public $debug='Off';
+	
+	function SetDebug($debug) {
+		$this->debug = $debug;
+	}
+	
+
 	
 	function UpdateCustomer($db, $formData, $recMode) {
 		$dba = $formData['dbaName'];
@@ -24,21 +32,32 @@ class Customer {
 		$notes = $formData['notes']; 
 		$customer_id = $formData['customerID'];
 		$rec_mode = $formData['rec_mode'];
-		//echo $rec_mode. "->";
+		$taxable = $formData['taxable'];
+		
+		$cnt =0;
 		
 		if( strtolower($recMode) == "e") {
 			$sql = "UPDATE Customer SET dba='". $dba ."', customer_number='". $custnum ."', address='". $addr ."',";
 			$sql = $sql . "city='". $city ."', state='". $st ."', zip='". $zip ."', phone1='". $ph1 ."', phone2='". $ph2 ."', fax='". $fax ."',";
 			$sql = $sql . "discount='". $disc ."', email='". $email ."', notes='". $notes ."',";
 			$sql = $sql . "cc_num1='". $cc1 ."', cc_exp1='". $exp1 ."', cc_cvv1='". $cvv1 ."',";
-			$sql = $sql . "cc_num2='". $cc2 ."', cc_exp2='". $exp2 ."', cc_cvv2='". $cvv2 ."' ";
+			$sql = $sql . "cc_num2='". $cc2 ."', cc_exp2='". $exp2 ."', cc_cvv2='". $cvv2 ."',taxable=" .$taxable;
 			$sql = $sql . " WHERE customer_id=". $customer_id;
 		}
 		if( strtolower($recMode) == "a") {
-			$sql = "INSERT INTO Customer(dba, customer_number, address, city, state, zip, phone1, phone2, fax , discount, email, notes, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, rec_status, create_dt) VALUES('". $dba ."','". $custnum ."','". $addr ."','". $city ."','". $st ."','". $zip ."','". $ph1 ."','". $ph2 ."','". $fax ."','". $disc ."','". $email ."','". $notes ."','". $cc1 ."','". $exp1 ."','". $cvv1 ."','". $cc2 ."','". $exp2 ."','". $cvv2 ."','0','')";
+			$sql = "INSERT INTO Customer(dba, customer_number, address, city, state, zip, phone1, phone2, fax , discount, taxable, email, notes, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, rec_status, create_dt) VALUES('". $dba ."','". $custnum ."','". $addr ."','". $city ."','". $st ."','". $zip ."','". $ph1 ."','". $ph2 ."','". $fax ."','". $disc ."','". $taxable. "','". $email ."','". $notes ."','". $cc1 ."','". $exp1 ."','". $cvv1 ."','". $cc2 ."','". $exp2 ."','". $cvv2 ."','0','')";
 		}
 		$cmd = $db->query( $sql );
-		return $cmd->affected();
+		$cnt = $cmd->affected();
+		
+		if($this->debug=='On') {
+			echo $sql . "<br>";
+			echo "Error: ". $cmd->isError();
+			echo "[".$cnt."]";
+			
+		}
+		
+	return $cnt;
 		
 	}
 	

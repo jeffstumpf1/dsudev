@@ -21,21 +21,22 @@ class Sprocket {
 		$stockLevel = $formData['stockLevel'];
 		$pitch = $formData['pitch'];	
 		$brand = $formData['brand'];	
-		$partDescription = $formData['partDescription']; 	
+		$partDescription = addslashes($formData['partDescription']); 	
 		$notes = $formData['notes']; 
 		$msrp = $formData['msrp'];   
 		$dealerCost = $formData['dealerCost'];
 		$importCost = $formData['importCost'];
 		$partID = $formData['partID'];
 		$sprocketID = $formData['sprocketID'];
-		
+		$partApplication=addslashes($formData['partApplication']);
+
 		if( strtolower($recMode) == "e") {
-			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
+			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription."',part_application='". $partApplication. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
 			$sqlSprocket = "UPDATE Sprocket SET part_number='". $partNumber ."', category_id='". $productCategory ."', sprocket_notes='".  $notes ."', sprocket_size=". $size ." WHERE sprocket_id=". $sprocketID;			
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
+			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, part_application, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."','".$partApplication."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
 			$sqlSprocket = "INSERT INTO Sprocket(part_number, category_id, sprocket_notes, sprocket_size) VALUES ('". $partNumber ."','". $productCategory. "','". $notes ."',". $size .")";			
 		}
 				

@@ -28,17 +28,18 @@ class Chain {
 		// Chain
 		$brand = $formData['brand'];	
 		$clip = $formData['clip']; 
+		$partApplication=$formData['partApplication'];
 		// Unique ID's
 		$partID = $formData['partID'];
 		$chainID = $formData['chainID'];
 		
 		if( strtolower($recMode) == "e") {
-			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
+			$sqlPartMaster = "UPDATE PartMaster SET part_number='". $partNumber ."', part_description='". $partDescription."',part_application='". $partApplication. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
 			$sqlChain = "UPDATE Chain SET part_number='". $partNumber ."', category_id='". $productCategory ."', product_brand_id='".  $brand  ."', clip_id='" . $clip ."' WHERE chain_id=". $chainID;			
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
+			$sqlPartMaster = "INSERT INTO PartMaster(part_number, part_description, part_application, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."','".$partApplication."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
 			$sqlChain = "INSERT INTO Chain(part_number, category_id, product_brand_id, clip_id) VALUES ('". $partNumber ."','". $productCategory. "','". $brand ."','". $clip ."')";		
 		}
 		

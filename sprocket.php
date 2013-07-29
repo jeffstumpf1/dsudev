@@ -41,7 +41,7 @@
 	}
 
     // fetch data
-	$sql = sprintf( "select a.*,b.sprocket_id, b.sprocket_size, b.sprocket_notes from PartMaster a, Sprocket b where a.part_number = b.part_number and a.part_id = %s", $part_id );
+	$sql = sprintf( "select a.*,b.* from PartMaster a, Sprocket b where a.rec_status='0' and a.part_number = b.part_number and a.part_id = %s", $part_id );
     $rs = $db->query( $sql); 
     $row = $rs->fetch();
 
@@ -141,14 +141,14 @@ include 'includes/part_logic.php';
 						<input id="stockLevel" name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>"/>
 					</td>
 				</tr>
-				<tr>
+<!--				<tr>
 					<td>
 						<label>Size</label>
 					</td>
 					<td colspan="3">
 						<input id="size" name="frm[size]" type="text" value="<?php echo $row['sprocket_size']?>"/>
 					</tr>
-				</tr>
+				</tr>  -->
 				<tr>
 					<td>
 						<label>Pitch</label>
@@ -169,6 +169,15 @@ include 'includes/brand-list.php';
 ?>	
 				</tr>
 				</tr>
+				<tr>
+					<td valign="top">
+						<label>Application</label>
+					</td>
+					<td colspan="3">
+						<textarea id="partApplication" name="frm[partApplication]"><?php echo $row['part_application']?></textarea>
+					</td>
+				</tr>				
+				
 				<tr>
 					<td>
 						<label>Description</label>

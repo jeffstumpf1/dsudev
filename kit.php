@@ -189,6 +189,13 @@ include 'includes/clip-list.php';
 			</div>
 			<div class='group'>
 				<div class="kitSpacersDesc">	
+					<label class="titleTop" style="margin-left:0" for="partApplication">Application</label>
+					<textarea id="partApplication" name="frm[partApplication]" style="margin-left:0"><?php echo $row['part_application']?></textarea>
+				</div>	
+			</div>		
+			
+			<div class='group'>
+				<div class="kitSpacersDesc">	
 					<label class="titleTop" style="margin-left:0" for="fsPartNumber">Description</label>
 					<textarea id="notes" name="frm[notes]" style="margin-left:0"><?php echo $row['part_description']?></textarea>
 				</div>	

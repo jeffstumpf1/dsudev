@@ -1,7 +1,7 @@
 <?php 
     //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'Off';
+    $debug = 'On';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 
@@ -149,6 +149,14 @@ include 'includes/brand-list.php';
 ?>
 				</td>
 			</tr>
+				<tr>
+					<td valign="top">
+						<label>Application</label>
+					</td>
+					<td colspan="3">
+						<textarea id="partApplication" name="frm[partApplication]"><?php echo $row['part_application']?></textarea>
+					</td>
+				</tr>				
 
 				<tr>
 					<td valign="top">

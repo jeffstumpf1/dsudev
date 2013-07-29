@@ -1,7 +1,7 @@
 <?php
     if ( isset($_POST['formAction']) ) { header("Location: customer-list.php"); }
 
-	$debug = 'Off';
+	$debug = 'On';
 	
     require_once 'db/global.inc.php';
     require_once 'classes/clsUtility.php';
@@ -22,6 +22,7 @@
 	
 	if (isset( $_POST['formAction'] )) {
 		$customer = new Customer();
+		$customer->SetDebug($debug);
 			
 		if($recMode == "E" || $recMode == "A") {
 			$customer->UpdateCustomer( $db, $_POST['frm'], $recMode );
@@ -59,7 +60,6 @@
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script>
@@ -115,6 +115,15 @@
 						<input id="discountPct" name="frm[discountPct]" type="text" value="<?php echo $row['discount'];?>" />
 					</td>
 				</tr>
+				<tr>
+					<td>
+						<label>Tax rate</label>
+					</td>
+					<td>
+						<input id="taxable" name="frm[taxable]" type="text" value="<?php echo $row['taxable'];?>" />
+					</td>
+				</tr>
+				
 				<tr>
 					<td>
 						<label>Address</label>
