@@ -19,6 +19,10 @@ class Customer {
 		$city = $formData['city'];	
 		$st = $formData['state']; 	
 		$zip = $formData['zip']; 
+		$billAddr = $formData['billingAddress'];
+		$billCity = $formData['billingCity'];
+		$billState = $formData['billingState'];
+		$billZip = $formData['billingZip'];
 		$ph1 = $formData['phone1'];    
 		$ph2 = $formData['phone2'];   				
 		$fax = $formData['fax'];	
@@ -41,11 +45,12 @@ class Customer {
 			$sql = $sql . "city='". $city ."', state='". $st ."', zip='". $zip ."', phone1='". $ph1 ."', phone2='". $ph2 ."', fax='". $fax ."',";
 			$sql = $sql . "discount='". $disc ."', email='". $email ."', notes='". $notes ."',";
 			$sql = $sql . "cc_num1='". $cc1 ."', cc_exp1='". $exp1 ."', cc_cvv1='". $cvv1 ."',";
-			$sql = $sql . "cc_num2='". $cc2 ."', cc_exp2='". $exp2 ."', cc_cvv2='". $cvv2 ."',taxable=" .$taxable;
+			$sql = $sql . "cc_num2='". $cc2 ."', cc_exp2='". $exp2 ."', cc_cvv2='". $cvv2 ."',taxable='" .$taxable."',";
+			$sql = $sql . "billing_address='" . $billAddr . "', billing_city='". $billCity ."', billing_state='". $billState . "', billing_zip='".$billZip."'";
 			$sql = $sql . " WHERE customer_id=". $customer_id;
 		}
 		if( strtolower($recMode) == "a") {
-			$sql = "INSERT INTO Customer(dba, customer_number, address, city, state, zip, phone1, phone2, fax , discount, taxable, email, notes, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, rec_status, create_dt) VALUES('". $dba ."','". $custnum ."','". $addr ."','". $city ."','". $st ."','". $zip ."','". $ph1 ."','". $ph2 ."','". $fax ."','". $disc ."','". $taxable. "','". $email ."','". $notes ."','". $cc1 ."','". $exp1 ."','". $cvv1 ."','". $cc2 ."','". $exp2 ."','". $cvv2 ."','0','')";
+			$sql = "INSERT INTO Customer(dba, customer_number, address, city, state, zip, phone1, phone2, fax , discount, taxable, email, notes, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, rec_status, create_dt, billing_address, billing_city, billing_state, billing_zip) VALUES('". $dba ."','". $custnum ."','". $addr ."','". $city ."','". $st ."','". $zip ."','". $ph1 ."','". $ph2 ."','". $fax ."','". $disc ."','". $taxable. "','". $email ."','". $notes ."','". $cc1 ."','". $exp1 ."','". $cvv1 ."','". $cc2 ."','". $exp2 ."','". $cvv2 ."','0','','". $billAddr."','".$billCity."','". $billState."','".$billZip."')";
 		}
 		$cmd = $db->query( $sql );
 		$cnt = $cmd->affected();

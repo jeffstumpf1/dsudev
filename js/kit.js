@@ -16,7 +16,7 @@
 		LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#ch').val() );
 	}
 	
-	$('#log').hide();
+	$('#log').show();
 
  	// stops enter key submit the form
  	$('input').keypress(function(event){
@@ -29,6 +29,10 @@
  
  	// Process Form stuff here
  	$('#submit').click(function(event){
+ 		// validation code goes here
+ 		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
+ 	});
+ 	$('#submitCustomer').click(function(event){
  		// validation code goes here
  		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
  	});
@@ -162,7 +166,6 @@
  
     function LoadChainChart($p, $l, $partNumber) {
     
-    	$data = "pitch:" + $p +", chainLength:" + $l;
 		$.ajax({
 			  type: 'GET',
 			  url: 'service/select-chain.php',
@@ -269,4 +272,70 @@
 		$('#importCost').val(t3);
 	}
 	
+	
+	/** CUSTOMER Information **/
+		$('#customerNumber').autocomplete({ 
+      source: function(request, response) {
+        $.ajax({
+          url: "service/auto-customer.php",
+               dataType: "json",
+          data: {
+            term : request.term
+          },
+          success: function(data) {
+            
+            response(data);
+          }
+        });
+      },
+    minLength: 2,
+    select: function( event, ui ) {
+		log( ui.item ?
+		"Selected: " + ui.item.value + " aka " + ui.item.id :
+		"Nothing selected, input was " + this.value );
+		$('#cust_id').val(ui.item.value);
+		}
+		
+  	});
+
+
+    function LoadCustomer($CustNumber) {
+    
+		$.ajax({
+			  type: 'GET',
+			  url: 'service/select-customer.php',
+			  data: { customer_id: $CustNumber },
+			  beforeSend:function(){
+				// load a temporary image in a div
+			  },
+			  success:function(data){
+				$('#customer').html(data);
+		
+			  },
+			  error:function(){
+				$('#customer').html('<p class="error"><strong>Oops!</strong></p>');
+			  }
+			});
+    }
+    
+    /** Handler Customer **/
+    $('#editCustomer').click(function(event) {
+    
+     	$( "#dialog-customer" ).dialog({
+		  autoOpen: false,
+		  height: 550,
+		  width: 960,
+		  modal: true,
+			Cancel: function() {
+					  $( this ).dialog( "close" );
+			  }				
+		});
+		event.preventDefault();
+		
+		LoadCustomer($('#cust_id').val());
+		$('#dialog-customer').dialog( "open","title", "Customer Information" );	
+		$('#submit').attr('style','display:none;')
+    
+    });
+
 });		

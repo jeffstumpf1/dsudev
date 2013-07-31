@@ -41,18 +41,23 @@ if($debug=="On") {
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
+	<meta charset="utf-8" />
 	<title>Part Listing</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
 <script>
+
 $(function() {
     	
     	$("#category").val(0);
     	$("#createSubmit").attr('disabled','disabled');
     	
-		$( "#search" ).live('mouseup', function() {
+    	
+		$( "#search" ).on('mouseup', function() {
 			 $(this).select(); 	
 		});
 		
@@ -64,11 +69,55 @@ $(function() {
 		 	  $("#createSubmit").attr('disabled','disabled');  
 		});
 		
+		$('.actionStatus').click(function(e){
+			$part = $(this).parent().attr('pn');
+			$ct = $(this).parent().attr('ct');
+			$title = 'Deleting Part ('+ $part + ')';
+			$( "#dialog-confirm" ).attr('title',$title);
+			$( "#dialog-confirm" ).dialog({
+			  resizable: false,
+			  height:200,
+			  modal: true,
+			  buttons: {
+				"Delete": function() {
+				  $( this ).dialog( "close" );
+				  DeletePartSelected($part, $ct);
+				},
+				Cancel: function() {
+				  $( this ).dialog( "close" );
+				}
+			  }
+			});
+			
+		});
+		
+		function DeletePartSelected($part, $cat) {
+		$.ajax({ 
+			  type: 'GET',
+			  url: 'service/delete-part.php',
+			  data: { part_number: $part, cat: $cat },
+			  beforeSend:function(){
+				// load a temporary image in a div
+			  },
+			  success:function(data){
+				alert(data);
+				location.reload();
+			  },
+			  error:function(){
+				alert('Error: part not deleted');
+			  }
+			});
+		}
 });
 </script>
 	
 </head>
 <body>
+
+<div id="dialog-confirm" title="Remove Part?">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This part will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+
 <div id="container">
 	<div id="header">
 		<h1>
@@ -140,9 +189,7 @@ $(function() {
 				
 				 
 				<td><!-- Action -->
-					<a href="
-						<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=E&cat=<?php echo $row['category_id'];?>"><div class="actionEdit"></div></a>
-					<a href="<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=D&cat=<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>
+<?php include 'includes/action-logic.php'?>
 				</td>
 				<td style="text-align:left;"> <!-- Part Number -->
 					<?php echo $row['part_number'] ?>

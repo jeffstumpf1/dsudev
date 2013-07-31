@@ -1,7 +1,7 @@
 <?php 
-    //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'On';
+    $debug = 'Off';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 
@@ -15,7 +15,6 @@
 	$chain = new Chain();
 	$utility = new Utility();
 	$chain->SetDebug($debug);
-
 
 	if(isset($_GET['part_id'])) {
 		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
@@ -73,7 +72,6 @@
   <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
 </div>
 
-<div id="dialog-form" title="Select Chain"></div>
 
 <div id="container">
 	<div id="header">

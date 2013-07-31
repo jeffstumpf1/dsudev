@@ -32,7 +32,7 @@ hr {
     line-height: 130%;
     }
 
-#customerTable, #partTable, #chainChartTable {
+#customerTable, #partTable, #chainChartTable ,#formCustomer{
 	width: 100%;
 	font: 11px/24px Verdana, Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -82,10 +82,10 @@ hr {
 	backgound-color: #efefef;
 }
 
-#partApplication, #taxable, #dbaName, #address, #email, #customerNumber, #city, #phone1, #cc1, #cc2 ,#notes, #partDesc, #partNumber, #size, #pitch, #msrp, #dealerCost, #importCost, #chainSelectedDesc , #productBrand, #productCategory, #brand, #partDescription, #notes, #masterPartNumberSpan, #masterPartNumber {
+#billingCity, #billingAddress, #partApplication, #taxable, #dbaName, #address, #email, #customerNumber, #city, #phone1, #cc1, #cc2 ,#notes, #partDesc, #partNumber, #size, #pitch, #msrp, #dealerCost, #importCost, #chainSelectedDesc , #productBrand, #productCategory, #brand, #partDescription, #notes, #masterPartNumberSpan, #masterPartNumber {
 	margin-left: 5px;
 }
-#dbaName, #address, #email ,#notes , #chainSelectedDesc, #partDescription, #partApplication {
+#dbaName, #address, #billingAddress, #email ,#notes , #chainSelectedDesc, #partDescription, #partApplication {
 	width: 97%;
 }
 #submit, #cancel {
@@ -104,7 +104,7 @@ hr {
 }
 
 /* Dialogs */
-#dialog-form, #dialog {
+#dialog-form, #dialog-confirm {
 	display: none;
 }
 
