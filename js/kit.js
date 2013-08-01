@@ -1,20 +1,26 @@
  $(function() {	
  
+ 	// Initialize
+ 	$('#formChainKit').show();
+ 	$('#KitContent').show();
+		
  	// Setup the form 
- 	if ( $('#recMode').val() != "E" ) {
-		$( "#pitch" ).val(0);
-		$( "#chainLength").attr('disabled','disabled').val(1);
-		$('#fsPartNumber').attr('disabled','disabled').val('');
-		$('#rsPartNumber').attr('disabled','disabled').val('');
-		$('#masterPartNumber').attr('style','width:35em;')
-		$('#stockLevel').val(0);
-		ResetForm();
-	} else {
-		if( $('#fs').val() != '') {UpdatePriceInChart( $('#fs').val(), 'FS');}
-		if( $('#rs').val() != '') {UpdatePriceInChart( $('#rs').val(), 'RS');}
-		if( $('#ch').val() != '') {UpdatePriceInChart( $('#ch').val(), 'CH');}
-		LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#ch').val() );
-	}
+
+		if ( $('#recMode').val() != "E" ) {
+			$( "#pitch" ).val(0);
+			$( "#chainLength").attr('disabled','disabled').val(1);
+			$('#fsPartNumber').attr('disabled','disabled').val('');
+			$('#rsPartNumber').attr('disabled','disabled').val('');
+			$('#masterPartNumber').attr('style','width:35em;')
+			$('#stockLevel').val(0);
+			ResetForm();
+		} else {
+			if( $('#fs').val() != '') {UpdatePriceInChart( $('#fs').val(), 'FS');}
+			if( $('#rs').val() != '') {UpdatePriceInChart( $('#rs').val(), 'RS');}
+			if( $('#ch').val() != '') {UpdatePriceInChart( $('#ch').val(), 'CH');}
+			LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#ch').val() );
+		}
+
 	
 	$('#log').show();
 
@@ -29,10 +35,6 @@
  
  	// Process Form stuff here
  	$('#submit').click(function(event){
- 		// validation code goes here
- 		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
- 	});
- 	$('#submitCustomer').click(function(event){
  		// validation code goes here
  		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
  	});
@@ -272,70 +274,6 @@
 		$('#importCost').val(t3);
 	}
 	
-	
-	/** CUSTOMER Information **/
-		$('#customerNumber').autocomplete({ 
-      source: function(request, response) {
-        $.ajax({
-          url: "service/auto-customer.php",
-               dataType: "json",
-          data: {
-            term : request.term
-          },
-          success: function(data) {
-            
-            response(data);
-          }
-        });
-      },
-    minLength: 2,
-    select: function( event, ui ) {
-		log( ui.item ?
-		"Selected: " + ui.item.value + " aka " + ui.item.id :
-		"Nothing selected, input was " + this.value );
-		$('#cust_id').val(ui.item.value);
-		}
-		
-  	});
 
-
-    function LoadCustomer($CustNumber) {
-    
-		$.ajax({
-			  type: 'GET',
-			  url: 'service/select-customer.php',
-			  data: { customer_id: $CustNumber },
-			  beforeSend:function(){
-				// load a temporary image in a div
-			  },
-			  success:function(data){
-				$('#customer').html(data);
-		
-			  },
-			  error:function(){
-				$('#customer').html('<p class="error"><strong>Oops!</strong></p>');
-			  }
-			});
-    }
-    
-    /** Handler Customer **/
-    $('#editCustomer').click(function(event) {
-    
-     	$( "#dialog-customer" ).dialog({
-		  autoOpen: false,
-		  height: 550,
-		  width: 960,
-		  modal: true,
-			Cancel: function() {
-					  $( this ).dialog( "close" );
-			  }				
-		});
-		event.preventDefault();
-		
-		LoadCustomer($('#cust_id').val());
-		$('#dialog-customer').dialog( "open","title", "Customer Information" );	
-		$('#submit').attr('style','display:none;')
-    
-    });
 
 });		

@@ -1,7 +1,8 @@
 <?php 
+	header('Content-type: text/html; charset=utf-8');
     if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'On';
+    $debug = 'Off';
 	
     require_once 'db/global.inc.php';
 	require_once 'classes/clsChain.php'; 
@@ -68,7 +69,7 @@
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
-	<title><?php echo($partCat)?>Chain Maintenance</title>
+	<title>Order Entry</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
@@ -79,6 +80,7 @@
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
 	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="js/kit.js"></script>
+	<script type="text/javascript" src="js/customer.js"></script>
 </head>
 <body>
 
@@ -96,10 +98,10 @@
 	<div id="content">
 	
 		<h2>
-			<?php echo($recStatusDesc)?> <hr />
+			Order Entry
 		</h2>
 		
-				<div id="KitContent">
+		<div id="KitContent">
 			<fieldset>
 				<legend>Order Status</legend>
 				
@@ -137,144 +139,31 @@
 					</table>
 			</fieldset>
 		</div>
-
+		<div id="dialog-customer" title="Customer Information">
+			<div id="customer"></div>
+		</div>
+		
 <!-- Customer Dialog -->
-		<div id="dialog-customer">
-			<div id="customer" title="Customer Information"></div>
-		</div>
+	<div id="customer-banner">
+	<fieldset class="fs">
+	<legend>Customer Information</legend>
+		<div class="kitSpacers">
+		<input id="customerDBA"  name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
+	</fieldset>
+	</div>
 
-		<div id="formContent">
-		
-		<form id="customerForm" name="customerForm" method="post">
-			<div class="group">
-				<div class="kitSpacers">
-					<label class="titleTop" for="customerNumber">Customer</label><br/>
-					<input id="customerNumber"  name="frm[customerNumber]" type="text" value="<?php echo $row['customer_number']?>" />
-					<input type="button" id="editCustomer" value="Update Customer"/>
-				</div>
-			</div>			
-		</form>
-		
-		<form id="formChainKit" name="formChainKit" method="post" style="display:none;">
-			<div class="group">
-				<div class="kitSpacers">
-					<label class="titleTop" style="margin-left:0">Chain Kit Part Number</label><br/>
-<?php
-include 'includes/part_logic.php';
-?>					
-				</div>
-				<div class="kitSpacers">
-					<label class="titleTop" for="stockLevel">Stock Level</label><br/>
-					<input id="stockLevel"  name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>" />
-				</div>
-				
-			</div>
-			<div id="step1" class="group">
-				<div class="kitSpacers">
-					<label class="titleTop" for="pitch">Pitch</label><br/>
-<?php 
-include 'includes/pitch-list.php';
-?>
-				</div>
-			</div>
-				<div class="kitSpacers">
-					<label class="titleTop" for="brand">MFG</label><br/>
-<?php 
-include 'includes/brand-list.php';
-?>
-				</div>
-				<div class="kitSpacers">
-					<label class="titleTop" for="ml">Masterlink</label><br/>
-<?php 
-include 'includes/clip-list.php';
-?>
-				</div>
 
-			</div>
-			<div class="group">
-				<div class="kitSpacers">
-					<label class="titleTop" for="fsPartNumber">Front Sprocket</label><br/>
-					<input id="fsPartNumber"  name="frm[fsPartNumber]" type="text" value="<?php echo $row['frontSprocket_part_number']?>" />
-				</div>
-				
-				<div class="kitSpacers">
-					<label  class="titleTop" for="rsPartNumber">Rear Sprocket</label><br/>
-					<input id="rsPartNumber"  name="frm[rsPartNumber]" type="text" value="<?php echo $row['rearSprocket_part_number']?>" />
-				</div>
-				<div class="kitSpacers">
-					<label  class="titleTop" for="chainLength">Chain Length</label><br/>
-					<input id="chainLength"  name="frm[chainLength]" type="text" value="<?php echo $row['chain_length']?>" />
-				</div>
 
-			</div>
-			<div class="group">
-			</div>
-			<div class='group'>
-				<div class="kitSpacersDesc">	
-					<label class="titleTop" style="margin-left:0" for="partApplication">Application</label>
-					<textarea id="partApplication" name="frm[partApplication]" style="margin-left:0"><?php echo $row['part_application']?></textarea>
-				</div>	
-			</div>		
-			
-			<div class='group'>
-				<div class="kitSpacersDesc">	
-					<label class="titleTop" style="margin-left:0" for="fsPartNumber">Description</label>
-					<textarea id="notes" name="frm[notes]" style="margin-left:0"><?php echo $row['part_description']?></textarea>
-				</div>	
-			</div>		
-			
-			<div class="group">
-				<div class="kitSpacers">
-					<label class="titleTop" for="msrp">MSRP</label><br/>
-					<input id="msrp"  name="frm[msrp]" type="text" value="<?php echo $row['msrp']?>" />
-				</div>
-				
-				<div class="kitSpacers">
-					<label  class="titleTop" for="dealerCost">Dealer Cost</label><br/>
-					<input id="dealerCost"  name="frm[dealerCost]" type="text" value="<?php echo $row['dealer_cost']?>" />
-				</div>
-				<div class="kitSpacers">
-					<label  class="titleTop" for="importCost">Import Cost</label><br/>
-					<input id="importCost"  name="frm[importCost]" type="text" value="<?php echo $row['import_cost']?>" />
-				</div>
-				
-			</div>
-			
-			<div class="groupCommand">	
-			<br/>		
-				<div id="formCommands">
-					<?php
-					require($DOCUMENT_ROOT . "includes/formCommand.php");
-					?>
-					<input type="hidden" id="cust_id" name="frm[cust_id]" value="<?php echo $row['customer_number']?>" />
-					
-					<input type="hidden" id="rs" name="frm[rs]" value="<?php echo $row['rs_price']?>" />
-					<input type="hidden" id="ch" name="frm[ch]" value="<?php echo $row['ch_price']?>" />
-					<input type="hidden" id="productCategory" name="frm[productCategory]" value="KT" />
-					<input type="hidden" id="partID" name="frm[partID]" value="<?php echo $row['part_id']?>" />
-					<input type="hidden" id="kitID" name="frm[kitID]" value="<?php echo $row['chain_kit_id']?>" />
-					<input type="hidden" id="chainPartNumber" name="frm[chainPartNumber]" value="<?php echo $row['chain_part_number']?>" />
-				</div>
-			</div>
-			
-			
-		</form>	
-		</div>
-		
-
-		
-		
-		<hr>
-		
 		<div id="chainChart">
 			<div id="chartList">Please select a pitch to select a chain</div>
 		</div>
-		
-</div>
+</div>		
 	<div id="footer">
 		Copyright © Site name, 20XX
 	</div>
-</div>
+
 <div id="log"></div>
+<input type="hidden" id="cust_id" name="frm[cust_id]" value=""/>
+<input type="hidden" id="cust_number" name="frm[cust_number]" value=""/>
 </body>
 </html>

@@ -9,7 +9,6 @@ class Customer {
 		$this->debug = $debug;
 	}
 	
-
 	
 	function UpdateCustomer($db, $formData, $recMode) {
 		$dba = $formData['dbaName'];
@@ -56,9 +55,9 @@ class Customer {
 		$cnt = $cmd->affected();
 		
 		if($this->debug=='On') {
-			echo $sql . "<br>";
-			echo "Error: ". $cmd->isError();
-			echo "[".$cnt."]";
+			echo $sql."<br/>";
+			echo "Error: ". $cmd->isError()."<br/>";
+			echo "[".$cnt."]<br/>";
 			
 		}
 		

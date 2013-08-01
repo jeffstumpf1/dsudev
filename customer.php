@@ -1,7 +1,7 @@
 <?php
-    //if ( isset($_POST['formAction']) ) { header("Location: customer-list.php"); }
+    if ( isset($_POST['formAction']) ) { header("Location: customer-list.php"); }
 
-	$debug = 'On';
+	$debug = 'Off';
 	
     require_once 'db/global.inc.php';
     require_once 'classes/clsUtility.php';
@@ -65,14 +65,9 @@
     <script>
 		$(function() {
     		$( "#exp1" ).datepicker();
-  		});
-		$(function() {
     		$( "#exp2" ).datepicker();
-  		});
-
-		// Hide common submit
-
-		
+			$('#submitCustomer').remove();
+		});
 		
   	</script
 </head>

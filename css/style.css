@@ -1,7 +1,7 @@
 /* style.css Document */
 
-body {
-	font-family:Verdana, Arial, Helvetica, sans-serif; 
+body, label {
+	font-family: Verdana,Arial,sans-serif;
 	font-size:12px;
 	background-image:url('/images/applelinen.jpg1');
 	}

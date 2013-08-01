@@ -161,9 +161,10 @@
 			<input id="submitCustomer" name="submitCustomer" value="Save Customer" type="submit"/>
 			<?php
 			require("formCommand.php");
+			$recMode='';
 			?>
 		</div>
-	<!-- end of form -->
+	<!-- end of form --> 
 		<input type="hidden" id="customerID" name="frm[customerID]" value="<?php echo $row['customer_id'];?>" />
 		<input type="hidden" id="rec_mode" name="frm[rec_mode]" value="<?php echo $recMode;?>" />
 		<input id="recstStatus" name="frm[recStatus]" value="<?php echo $row['rec_status'] ?>" type="hidden"/>
