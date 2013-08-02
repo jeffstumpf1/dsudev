@@ -25,13 +25,8 @@
 		echo $sql."<br>";
 	}
 ?>	
-<style type="text/css">
- .fs {background-color:#efefef;width:500px}
- .fs p { font-weight: bold; margin-top:5px; margin-bottom: 5px;}
- .custInfo { float:left; margin 5px 5px; padding:5px; width:225px;}
- #useBillingforShipping { margin-left:20px;}
-</style>
-<fieldset class="fs">
+
+<fieldset class="fsCustomer">
 	<legend>Customer Information [ #<?php echo $row['customer_number']?> ]</legend>
 	<p>				
 		<div class="kitSpacers">
@@ -51,5 +46,11 @@
 		<label><?php echo $row['billing_city']?>, <?php echo $row['billing_state']?> <?php echo $row['billing_zip']?></label><br/>
 		<label>Phone:<?php echo $row['phone1']?> fax: <?php $row['fax']?></label><br/> 
 		<label>Discount: <?php echo $row['discount']?>%  Taxable: <?php echo $row['taxable']?></label>
+	</div>
+
+	<div class="specialInstructions" >	
+		<p><label>Special Instructions</label></p>
+		<textarea rows="2" cols="75">Special instructions for this order.</textarea>
 	</div>	
 </fieldset>
+

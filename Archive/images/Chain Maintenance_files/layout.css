@@ -1,0 +1,111 @@
+
+#container
+{
+	margin: 0 30px;
+	background: #fff;
+}
+
+#header
+{
+	background: #ccc;
+	padding: 20px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+	float: left;
+	width: 100%;
+	background: #333;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color: #fff;
+	text-decoration: none;
+	border-right: 1px solid #fff;
+	width: 80px;
+	text-align: center;
+}
+
+#navigation li a:hover { background: #666; }
+
+#content
+{
+	clear: left;
+	padding: 20px;
+	
+}
+
+#content h2
+{
+	color: #000;
+	font-size: 160%;
+	margin: 0 0 .5em;
+}
+
+#formCommands {
+	text-align: center;
+}
+
+#footer
+{
+	clear: both;
+	background: #ccc;
+	text-align: right;
+	padding: 20px;
+	height: .5%;
+}
+
+/* Kit Layout */
+.kitFieldset {
+	margin: 0em 5em 1em 5em;
+}
+.kitSpacers {
+	text-align: center;
+	float:left;
+	width: auto;
+	padding-right:2em;
+}
+
+.kitSpacersDesc {
+	text-align: left;
+	float: left;
+	width: 600px;
+	clear: left;
+}
+
+#formContent { 
+    width:650px;
+    margin-left: auto;
+    margin-right: auto;
+ 	clear: left;
+ 	padding:.5em;
+ 	
+ }
+ 
+.group { 
+	float: left; 
+	clear:left;
+	padding:.5em;	
+}
+.groupCommand{ 
+	clear:left;	
+	text-align: center;
+}

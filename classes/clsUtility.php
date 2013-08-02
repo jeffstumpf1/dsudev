@@ -3,8 +3,12 @@
 
 
 class Utility {
+
+	function GetDate() {
+		return date('Y-m-d H:i:s', strtotime('today midnight'));
+	}
 	
-	/**
+	/*
     * MySQL server hostname
     * @access public
     * @retuns string

@@ -6,7 +6,7 @@
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Site name

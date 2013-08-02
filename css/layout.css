@@ -1,9 +1,4 @@
 
-#container
-{
-	margin: 0 30px;
-	background: #fff;
-}
 
 #header
 {
@@ -48,11 +43,9 @@
 
 #content
 {
-	clear: left;
+	float: left;
 	padding: 20px;
-	
 }
-
 #content h2
 {
 	color: #000;

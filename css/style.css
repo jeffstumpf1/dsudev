@@ -1,17 +1,23 @@
 /* style.css Document */
 
-body, label {
+
+body, html {
+
+}
+
+body, label, input, textarea {
 	font-family: Verdana,Arial,sans-serif;
 	font-size:12px;
 	background-image:url('/images/applelinen.jpg1');
+		
 	}
+	
 h2 {
 	/*text-shadow: 2px 2px 2px;*/
-	font-color: white;
+	width:300px;
 }
 hr {
 	hieght:1px;
-	width: 100%;
 }
 #commandBar {
 	margin-bottom: 3em;
@@ -137,3 +143,18 @@ label.titleTop {
  .ui-autocomplete-loading {
 background: white url('images/16x16-cc.gif') right center no-repeat;
 }
+
+
+/*  Order Info Banner*/
+ .fsOrderInfo {float:left; margin:20px; background-color:#efefef;width:300px}
+ .orderInfo { margin 5px 5px; padding:0px; width:300px;}
+ .tableOrderInfo {width:300px; }
+ .tableOrderInfo td { border-bottom: none; padding: 0;}
+
+/* Customer Info Banner */
+ .fsCustomer {background-color:#efefef;width:500px}
+ .fsCustomer p { font-weight: bold; margin-top:5px; margin-bottom: 5px;}
+ .custInfo { float:left; margin 5px 5px; padding:5px; width:225px;}
+ #useBillingforShipping { margin-left:20px;}
+ 
+.specialInstructions { float: left; clear:left; margin-top: 10px 10px;}

@@ -80,86 +80,101 @@
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
 	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="js/kit.js"></script>
+
 	<script type="text/javascript" src="js/customer.js"></script>
+	<script type="text/javascript" src="js/order.js"></script>
+	
 </head>
 <body>
 
-<div id="container">
-	<div id="header">
-		<h1>
-			Drive Systems
-		</h1>
-	</div>
-	<div id="navigation">
+
+<div id="header">
+	<h1>
+		Drive Systems
+	</h1>
+</div>
+<div id="wrapper">
+
+<div id="navigation">
 		<?php
 		require($DOCUMENT_ROOT . "includes/nav.php");
 		?>
 	</div>
-	<div id="content">
+<div id="content">
+
+	<!-- Customer Banner -->
+	<div id="customer-banner" >
+		<fieldset class="fsCustomer" >
+		<legend>Customer Information</legend>
+			<div class="kitSpacers">
+			<input id="customerDBA"  name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
+		</fieldset>
+	</div>
+</div>
+
+
+<div id="rightCol">
+	<!-- Order Info -->
+	<div id="order-banner"></div>
+</div>
+
 	
-		<h2>
-			Order Entry
-		</h2>
-		
-		<div id="KitContent">
-			<fieldset>
-				<legend>Order Status</legend>
-				
-					<table width="100%">
-						<tr>
-							<th nowrap>Part Description</th>
-							<th nowrap>MSRP</th>
-							<th nowrap>Dealer Cost</th>
-							<th nowrap>Import Cost</th>
-						</tr>
-						<tr>
-							<td width="25%" nowrap>Front Sprocket</td>
-							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
-						</tr>
-						<tr>
-							<td width="25%">Rear Sprocket</td>
-							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
-						</tr>
-						<tr>
-							<td width="25%">Chain Length</td>
-							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
-						</tr>
-						<tr>
-							<td width="25%">Total</td>
-							<td id="totalMSRP" style="text-align:right"></td>
-							<td id="totalDealer" style="text-align:right"></td>
-							<td id="totalImport" style="text-align:right"></td>
-						</tr>
-					</table>
-			</fieldset>
-		</div>
-		<div id="dialog-customer" title="Customer Information">
-			<div id="customer"></div>
-		</div>
-		
-<!-- Customer Dialog -->
-	<div id="customer-banner">
-	<fieldset class="fs">
-	<legend>Customer Information</legend>
-		<div class="kitSpacers">
-		<input id="customerDBA"  name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
-	</fieldset>
+	<div class="Push"></div>	
+</div>		
+<div id="footer">
+	Copyright © Site name, 20XX
+</div>
+
+
+<!-- Chain Chart -->
+	<div id="chainChart">
+		<div id="chartList">Please select a pitch to select a chain</div>
 	</div>
 
 
-
-		<div id="chainChart">
-			<div id="chartList">Please select a pitch to select a chain</div>
-		</div>
-</div>		
-	<div id="footer">
-		Copyright © Site name, 20XX
+<!-- Chain Kit MSRP ect -->		
+	<div id="KitContent">
+		<fieldset>
+			<legend>Order Status</legend>
+			
+				<table width="100%">
+					<tr>
+						<th nowrap>Part Description</th>
+						<th nowrap>MSRP</th>
+						<th nowrap>Dealer Cost</th>
+						<th nowrap>Import Cost</th>
+					</tr>
+					<tr>
+						<td width="25%" nowrap>Front Sprocket</td>
+						<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
+						<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
+						<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+					</tr>
+					<tr>
+						<td width="25%">Rear Sprocket</td>
+						<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
+						<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
+						<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+					</tr>
+					<tr>
+						<td width="25%">Chain Length</td>
+						<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
+						<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
+						<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+					</tr>
+					<tr>
+						<td width="25%">Total</td>
+						<td id="totalMSRP" style="text-align:right"></td>
+						<td id="totalDealer" style="text-align:right"></td>
+						<td id="totalImport" style="text-align:right"></td>
+					</tr>
+				</table>
+		</fieldset>
+	</div>
+	
+<!-- Customer Update Dialog -->
+	<div id="dialog-customer" title="Customer Information">
+		<div id="customer"></div>
 	</div>
 
 <div id="log"></div>

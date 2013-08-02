@@ -5,19 +5,19 @@ class Order {
 	
 	public $debug='On';
 		
-	var $partNumber='';
-	var $productCategory='';
-	var $pitch='';
-	var $brand='';
-	var $description='';
-	var $fsPartNumber='';
-	var $fsSize;
-	var $rsPartNumber='';
-	var $rsSize='';
-	var $ml='';
-	var $chainLength=0;
-	var $linkedPart='';
-	var $linkedDesc='';
+	var $po_number='';
+	var $paymentTerms='';
+	var $invoice_date='';
+	var $invoice_number=0;
+	var $customer_name='';
+	var $customer_number='';
+	var $order_total=0;
+	var $frieght_total=0;
+	var $taxable_total=0;
+	
+	var $orderItems = '';  
+	
+	//$orderItems = new OrderItems();	
 	
 	
 	function SetDebug($debug) {
@@ -118,6 +118,15 @@ class Order {
 			
 			return $cnt;
 		
+	}
+	
+	function GetNextOrderNumber($db) {
+		$invoice ='';
+		$sql = "select propValue+1 as invoiceNumber from properties where propName='invoiceNumber'";
+		$rs = $db->query( $sql); 
+    	$row = $rs->fetch();
+		
+		return $row['invoiceNumber'];
 	}
 			
 }

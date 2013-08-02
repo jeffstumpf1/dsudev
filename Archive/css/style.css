@@ -1,0 +1,139 @@
+/* style.css Document */
+
+body, label {
+	font-family: Verdana,Arial,sans-serif;
+	font-size:12px;
+	background-image:url('/images/applelinen.jpg1');
+	}
+h2 {
+	/*text-shadow: 2px 2px 2px;*/
+	font-color: white;
+}
+hr {
+	hieght:1px;
+	width: 100%;
+}
+#commandBar {
+	margin-bottom: 3em;
+}
+#actionBox {
+	float:left;
+	width: auto;
+}
+#searchBox {
+	float:right;
+}
+#container {
+    margin: 10px auto;
+    width: 90%;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid gray;
+    line-height: 130%;
+    }
+
+#customerTable, #partTable, #chainChartTable ,#formCustomer{
+	width: 100%;
+	font: 11px/24px Verdana, Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#customerTable th, #partTable th, #chainChartTable th {
+	padding: 0 0.5em;
+	text-align: center;
+	}
+
+#customerTable tr.yellow td , #partTable tr.yellow td, #chainChartTable tr.yellow td {
+	border-top: 1px solid #FB7A31;
+	border-bottom: 1px solid #FB7A31;
+	background: #FFC;
+	}
+
+#customerTable td, #partTable td, #chainChartTable td {
+	border-bottom: 1px solid #CCC;
+	padding: 0 0.5em;
+	}
+#customerTable td:first-child, #partTable td:first-child, #chainChartTable td:first-child {
+	text-align: center;
+	width:100px;
+	}
+#customerTable td:first-child + td {
+	width: 300px;
+	}
+
+#customerTable td+td ,#partTable td+td, #chainChartTable td+td {
+	border-left: 1px solid #CCC;
+	text-align: center;
+	}
+
+/* Maint */
+#tableCustomerMaint	td:first-child, #tablePartMaint td:first-child {
+	text-align:right;
+}
+#chainChartTable td:first-child + td{
+	text-align: left;
+}
+
+/* Field Declaratives */
+#search {
+	color: #666;
+	backgound-color: #efefef;
+}
+
+#billingCity, #billingAddress, #partApplication, #taxable, #dbaName, #address, #email, #customerNumber, #city, #phone1, #cc1, #cc2 ,#notes, #partDesc, #partNumber, #size, #pitch, #msrp, #dealerCost, #importCost, #chainSelectedDesc , #productBrand, #productCategory, #brand, #partDescription, #notes, #masterPartNumberSpan, #masterPartNumber {
+	margin-left: 5px;
+}
+#dbaName, #address, #billingAddress, #email ,#notes , #chainSelectedDesc, #partDescription, #partApplication {
+	width: 97%;
+}
+#submit, #cancel {
+	width:100px;
+	margin: 1
+	3em;
+}
+
+#masterPartNumberSpan {
+	margin-right: 1em;
+	}
+
+#chainChartTable {
+	font-size: 10px;
+	
+}
+
+/* Dialogs */
+#dialog-form, #dialog-confirm {
+	display: none;
+}
+
+/* Images for Edit/Delete on Listing Forms */
+.actionEdit {
+	background-image:url('images/glyphicons_150_edit.png');
+	width: 24px;
+	height: 21px;
+	margin: 3px 6px 3px 15px;
+	float:left;
+}
+.actionStatus {
+	background-image:url('images/glyphicons_256_delete.png');
+	width: 27px;
+	height: 17px;
+	margin: 6px 0 6px 10px;
+	float:left;	
+}
+.statusMessage {
+	font-weight: normal;
+}
+
+label.titleTop {
+	float:left;
+	margin-left: .5em;
+	}
+
+
+/*  Auto Complete */
+ .ui-autocomplete-loading {
+background: white url('images/16x16-cc.gif') right center no-repeat;
+}

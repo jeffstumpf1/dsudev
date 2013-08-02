@@ -55,7 +55,7 @@
 	
 </head>
 <body>
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Drive Systems
@@ -66,7 +66,7 @@
 		require($DOCUMENT_ROOT . "includes/nav.php");
 		?>
 	</div>
-<div id="content">
+<div id="wrapper">
 		<h2>
 			<label id="pitchNumber"><? echo $pitch ?> - Chain Chart [ <?php echo $rs->size() ?> ]</label>
 			<input type="hidden" id="pitch" name="pitch" value="<?php echo $pitch?>"/>

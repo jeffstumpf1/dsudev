@@ -7,10 +7,6 @@
  	// Initialize
 	$('#log').show();
 	$('#chainChart').hide();
-	
-	
-	
-	
 
 	function ShowCustomerBanner($custNumber) {
 	
@@ -23,13 +19,15 @@
 			  },
 			  success:function(data){
 				$('#customer-banner').html(data);
-				//alert(data);
+				$('.fsCustomer').height($('.fsOrderInfo').height());
+
 			  },
 			  error:function(){
 				$('#customer-banner').html('<p class="error"><strong>Oops!</strong></p>');
 			  }
 			});
-			
+
+		
 	}
 
     function SaveCustomer($id) {
@@ -80,7 +78,6 @@
 		SaveCustomer( $('#cust_id').val());	// hidden field
 		$('#dialog-customer').dialog('close');
 		ShowCustomerBanner ( $('#cust_number').val() );
-	
 	});
     
     /* 
@@ -118,6 +115,7 @@
 			$('#customerDBA').val(ui.item.label);
 			$('#cust_number').val(ui.item.value);
 			ShowCustomerBanner(ui.item.value);			// need to build the banner
+
 			}
 		
 		});
@@ -129,13 +127,12 @@
 	$( "#dialog-customer" ).dialog({
 	  autoOpen: false,
 	  height: 500,
-	  width: 800,
+	  width: 650,
 	  modal: true,
 		Cancel: function() {
 				  $( this ).dialog( "close" );
 		  }				
 	});
-
     
 });  
 /** End of customer.js **/
