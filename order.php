@@ -1,55 +1,19 @@
 <?php 
 	header('Content-type: text/html; charset=utf-8');
-    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
-    
-    $debug = 'Off';
 	
-    require_once 'db/global.inc.php';
-	require_once 'classes/clsChain.php'; 
-	require_once 'classes/clsOrder.php'; 
-	require 'classes/clsUtility.php';
-    
-    error_reporting(E_ERROR);
-
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$order = new Order();
-	$utility = new Utility();
-	$order->SetDebug($debug);
-	$cust_id='';
-	$part_id='';
+	$debug = 'Off';
+	require_once 'db/global.inc.php';
 	
-
-	if(isset($_GET['cust_id'])) {
-		$cust_id = (get_magic_quotes_gpc()) ? $_GET['cust_id'] : addslashes($_GET['cust_id']);
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
-
-
-	if(isset($_GET['part_id'])) {
-		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
-	}
-	
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
-	}
-
-	// Update Controller
-	if (isset( $_POST['formAction'] )) {
-			
-		if(strtolower($recMode) == "e" || strtolower($recMode) == "a") {
-			$part_id = $kit->UpdateOrder( $db, $_POST['frm'], $recMode );
-		} else if (strtolower($recMode) == "d") {
-			$kit->UpdateOrderStatus($db, $_POST['frm'] );
-		}
-	}
-
-    // fetch data
-	$sql = sprintf( "select a.*,b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.rec_status=0 and a.category_id='KT' and a.part_id = %s", $part_id );
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-
-	if ($debug=='On') { echo $sql."<br>"; }	
+   
+   	// Create Object Customer and Request
+	$constants = new Constants;
+	$order = new Order($debug, $db);
+	$request  = new Request;
+	$utility  = new Utility($debug);
+	$utilityDB  = new UtilityDB($debug, $db);
 	
 	// Setup the case
 	switch ( strtolower($recMode ) ) {
@@ -70,21 +34,38 @@
 
 <head>
 	<title>Order Entry</title>
+	
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="ui/jquery.ui.core.js"></script>
+	<script src="ui/jquery.ui.widget.js"></script>
+	<script src="ui/jquery.ui.menu.js"></script>
+
+	<script src="ui/jquery.ui.mouse.js"></script>
+	<script src="ui/jquery.ui.draggable.js"></script>
+	<script src="ui/jquery.ui.position.js"></script>
+	<script src="ui/jquery.ui.resizable.js"></script>
+	<script src="ui/jquery.ui.button.js"></script>
+	<script src="ui/jquery.ui.dialog.js"></script>
+	<script src="ui/jquery.ui.autocomplete.js"></script>	
+	
+
+	<script type="text/javascript" src="js/jquery.icheck.js"></script>
+	
+	<script type="text/javascript" src="js/customer.js"></script>
+	<script type="text/javascript" src="js/order.js"></script>  
+	<script type="text/javascript" src="js/part.js"></script>  
+	
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>	
-  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<link href="css/square/square.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery.icheck.js"></script>
-	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
-	<script type="text/javascript" src="js/kit.js"></script>
 
-	<script type="text/javascript" src="js/customer.js"></script>
-	<script type="text/javascript" src="js/order.js"></script>
+	<link href="css/square/square.css" rel="stylesheet">
+	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
+	<link href="css/demo.css" rel="stylesheet">
 	
+
 </head>
+
+
 <body>
 
 
@@ -97,7 +78,7 @@
 
 <div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
 <div id="content">
@@ -107,16 +88,22 @@
 		<fieldset class="fsCustomer" >
 		<legend>Customer Information</legend>
 			<div class="kitSpacers">
-			<input id="customerDBA"  name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
+			<div class="ui-widget">
+				<input id="customerDBA"  name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
+			</div>			
 		</fieldset>
 	</div>
+	
 </div>
-
 
 <div id="rightCol">
 	<!-- Order Info -->
 	<div id="order-banner"></div>
 </div>
+
+
+
+
 
 	
 	<div class="Push"></div>	
@@ -126,59 +113,23 @@
 </div>
 
 
-<!-- Chain Chart -->
-	<div id="chainChart">
-		<div id="chartList">Please select a pitch to select a chain</div>
-	</div>
 
 
-<!-- Chain Kit MSRP ect -->		
-	<div id="KitContent">
-		<fieldset>
-			<legend>Order Status</legend>
-			
-				<table width="100%">
-					<tr>
-						<th nowrap>Part Description</th>
-						<th nowrap>MSRP</th>
-						<th nowrap>Dealer Cost</th>
-						<th nowrap>Import Cost</th>
-					</tr>
-					<tr>
-						<td width="25%" nowrap>Front Sprocket</td>
-						<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-						<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-						<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
-					</tr>
-					<tr>
-						<td width="25%">Rear Sprocket</td>
-						<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-						<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-						<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
-					</tr>
-					<tr>
-						<td width="25%">Chain Length</td>
-						<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-						<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-						<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
-					</tr>
-					<tr>
-						<td width="25%">Total</td>
-						<td id="totalMSRP" style="text-align:right"></td>
-						<td id="totalDealer" style="text-align:right"></td>
-						<td id="totalImport" style="text-align:right"></td>
-					</tr>
-				</table>
-		</fieldset>
-	</div>
+
+
 	
 <!-- Customer Update Dialog -->
 	<div id="dialog-customer" title="Customer Information">
 		<div id="customer"></div>
 	</div>
+	<div id="dialog-orderItem" title="Order Entry">
+	<?php include "inc/order-form.inc.php"; ?>
+	</div>
+<input type="hidden" id="cust_id" name="frm[cust_id]" value="id" />
+<input type="hidden" id="cust_number" name="frm[cust_number]" value="" />
+<input type="hidden" id="grand-total" name="frm[grand-total]" value="0.00" />
 
 <div id="log"></div>
-<input type="hidden" id="cust_id" name="frm[cust_id]" value=""/>
-<input type="hidden" id="cust_number" name="frm[cust_number]" value=""/>
+
 </body>
 </html>

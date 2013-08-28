@@ -1,28 +1,23 @@
 <?php 
-    $debug = 'Off';
+	header('Content-type: text/html; charset=utf-8');
 	
-    require_once 'db/global.inc.php';
-	require 'classes/clsUtility.php';
-    
-    error_reporting(E_ERROR);
-
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$utility = new Utility();
-	$pitch="";
+	$debug = 'Off';
+	require_once 'db/global.inc.php';
 	
-	if(isset($_GET['pitch'])) {
-		$pitch = (get_magic_quotes_gpc()) ? $_GET['pitch'] : addslashes($_GET['pitch']);
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
+   
+   	// Create Object Customer and Request
+	$constants = new Constants;
+	$kit = new Kit($debug, $db);
+	$request  = new Request;
+	$utility  = new Utility($debug);
 	
-	// fetch data
-	$sql = sprintf( "select a.*,b.chain_id, b.product_brand_id, b.linked_chain_part_number, b.linked_chain_part_description, b.clip_id from PartMaster a, Chain b where a.part_number = b.part_number and a.rec_status=0 and a.pitch_id = %s", $pitch );
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-
-	if ($debug=='On') { echo $sql."<br>"; }	
-
+	//queryString
+	$pitch = $request->getParam('pitch');
+	$rs = $kit->GetChainChart($pitch);
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
@@ -63,7 +58,7 @@
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
 <div id="wrapper">
@@ -103,7 +98,7 @@
 				<th>Dealer Cost</th>
 				<th>Import Cost</th>
 			</tr>
-<?php Do { ?>			
+<?php while ($row = $rs->fetch( )){ ?>			
 			<tr class="row">
 				<td><!- Action -->
 					<!-- Logic to handle editing graphic panels -->
@@ -129,7 +124,7 @@
 					<?php echo $utility->NumberFormat($row['import_cost'], '$') ?>
 				</td>
 			</tr>
-<?php } while ($row = $rs->fetch( $rs )); ?>	
+<?php } ?>	
 		</table>
 	
 

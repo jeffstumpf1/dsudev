@@ -1,47 +1,40 @@
 <?php 
     if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'Off';
+	$debug = 'Off';
+	require_once 'db/global.inc.php';
 	
-    require_once 'db/global.inc.php';
-	require_once 'classes/clsChain.php'; 
-	require_once 'classes/clsKit.php'; 
-	require 'classes/clsUtility.php';
-    
-    error_reporting(E_ERROR);
-
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$kit = new Kit();
-	$utility = new Utility();
-	$kit->SetDebug($debug);
-
-
-	if(isset($_GET['part_id'])) {
-		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
 	
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	// Create Object Customer and Request
+	$constants = new Constants;
+	$kit = new Kit($debug, $db);
+	$request  = new Request;
+	$utilityDB = new UtilityDB($debug, $db);
+	$utility  = new Utility($debug);
+
+	// Get Query Parameters
+	$recMode  = $request->getParam('status','');
+	$search  = $request->getParam('search','');
+	$part_id = $request->getParam('part_id');
+	$action  = $request->getParam('formAction','');
+
+	if ($recMode == "E"){
+		// Get Info and Display
+		$row = $kit->GetChainKit($part_id);
 	}
 
-	// Update Controller
-	if (isset( $_POST['formAction'] )) {
-			
-		if(strtolower($recMode) == "e" || strtolower($recMode) == "a") {
-			$part_id = $kit->UpdateKit( $db, $_POST['frm'], $recMode );
-		} else if (strtolower($recMode) == "d") {
-			$kit->UpdateKitStatus($db, $_POST['frm'] );
-		}
+	// Was form Submitted?
+	if ($action) {
+		if($recMode == "E" || $recMode == "A") {
+			$kit->UpdateChainKit( $_POST['frm'], $recMode );
+		} else if ($recMode == "D") {
+			$kit->UpdateChainKitStatus($_POST['frm']);
+		}		
 	}
 
-    // fetch data
-	$sql = sprintf( "select a.*,b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.rec_status=0 and a.category_id='KT' and a.part_id = %s", $part_id );
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-
-	if ($debug=='On') { echo $sql."<br>"; }	
 	
 	// Setup the case
 	switch ( strtolower($recMode ) ) {
@@ -76,7 +69,7 @@
 </head>
 <body>
 
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Drive Systems
@@ -84,10 +77,10 @@
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require  "inc/nav.inc.php";
 		?>
 	</div>
-	<div id="content">
+	<div id="">
 	
 		<h2>
 			<?php echo($recStatusDesc)?> <hr />
@@ -133,13 +126,13 @@
 		</div>
 
 
-		<div id="formContent">
+		<div id="">
 		<form id="formChainKit" name="formChainKit" method="post" >
 			<div class="group">
 				<div class="kitSpacers">
 					<label class="titleTop" style="margin-left:0">Chain Kit Part Number</label><br/>
 <?php
-include 'includes/part_logic.php';
+include 'inc/part_logic.inc.php';
 ?>					
 				</div>
 				<div class="kitSpacers">
@@ -152,19 +145,19 @@ include 'includes/part_logic.php';
 				<div class="kitSpacers">
 					<label class="titleTop" for="pitch">Pitch</label><br/>
 <?php 
-include 'includes/pitch-list.php';
+include 'inc/pitch-list.inc.php';
 ?>
 				</div>
 				<div class="kitSpacers">
 					<label class="titleTop" for="brand">MFG</label><br/>
 <?php 
-include 'includes/brand-list.php';
+include 'inc/brand-list.inc.php';
 ?>
 				</div>
 				<div class="kitSpacers">
-					<label class="titleTop" for="ml">Masterlink</label><br/>
+					<label class="titleTop" for="clip">Masterlink</label><br/>
 <?php 
-include 'includes/clip-list.php';
+include 'inc/clip-list.inc.php';
 ?>
 				</div>
 
@@ -222,7 +215,7 @@ include 'includes/clip-list.php';
 			<br/>		
 				<div id="formCommands">
 					<?php
-					require($DOCUMENT_ROOT . "includes/formCommand.php");
+					require "inc/formCommand.inc.php";
 					?>
 					<input type="hidden" id="fs" name="frm[fs]" value="<?php echo $row['fs_price']?>" />
 					<input type="hidden" id="rs" name="frm[rs]" value="<?php echo $row['rs_price']?>" />

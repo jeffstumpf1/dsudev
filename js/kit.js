@@ -1,8 +1,8 @@
  $(function() {	
  
- 	// Initialize
+ 	// Initialize!
  	$('#formChainKit').show();
- 	$('#KitContent').hide();
+ 	$('#KitContent').show();
 		
  	// Setup the form 
 
@@ -18,7 +18,7 @@
 			if( $('#fs').val() != '') {UpdatePriceInChart( $('#fs').val(), 'FS');}
 			if( $('#rs').val() != '') {UpdatePriceInChart( $('#rs').val(), 'RS');}
 			if( $('#ch').val() != '') {UpdatePriceInChart( $('#ch').val(), 'CH');}
-			LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#ch').val() );
+			LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#chainPartNumber').val() );    
 		}
 
 	
@@ -84,11 +84,12 @@
     // source: function() { return "GetState.php?country=" + $('#Country').val();},
       source: function(request, response) {
         $.ajax({
-          url: "service/auto-fs.php",
+          url: "service/auto-sprocket.service.php",
                dataType: "json",
           data: {
             term : request.term,
-            pitch : $('#pitch').val()
+            pitch : $('#pitch').val(),
+            cat: 'FS'
           },
           success: function(data) {
             
@@ -111,13 +112,15 @@
     // source: function() { return "GetState.php?country=" + $('#Country').val();},
       source: function(request, response) {
         $.ajax({
-          url: "service/auto-rs.php",
+          url: "service/auto-sprocket.service.php",
                dataType: "json",
           data: {
             term : request.term,
-            pitch : $('#pitch').val()
+            pitch : $('#pitch').val(),
+            cat: 'RS'
           },
           success: function(data) {
+          	
             response(data);
           }
         });
@@ -170,7 +173,7 @@
     
 		$.ajax({
 			  type: 'GET',
-			  url: 'service/select-chain.php',
+			  url: 'service/select-chain.service.php',
 			  data: { pitch: $p ,chainLength: $l, part: $partNumber},
 			  beforeSend:function(){
 				// load a temporary image in a div

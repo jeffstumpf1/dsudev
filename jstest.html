@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Javascript Functions</title>
+	<meta name="generator" content="BBEdit 10.5" />
+	<script src="js/jquery-1.9.1.js"></script>
+	<script src="ui/jquery.ui.core.js"></script>
+	<script src="ui/jquery.ui.widget.js"></script>
+	<script src="ui/jquery.ui.menu.js"></script>
+	<script src="ui/jquery.ui.autocomplete.js"></script>	
+
+	<script type="text/Javascript">
+
+
+$(function() {
+    var $json='jeff';
+
+	$(document).on('focus.autocomplete','#partNumber', function(event) {
+		$(this).autocomplete({ 
+		  source: function(request, response) {
+			$.ajax({
+			  url: "service/auto-part.service.php",
+				   dataType: "json",
+			  data: {
+				term : request.term
+			  },
+			  success: function(data) {
+			  	//alert(data);
+				response(data);
+			  }
+			});
+		  },
+		minLength: 2,
+		select: function( event, ui ) {
+			//event.preventDefault();
+			LoadMasterPart(ui.item.id);
+			//alert($json.part_number);
+			}
+		
+		});
+		
+	});
+
+	function handle_MasterPart(json) {
+		$json = new MasterPart(json);
+		alert($json.part_description);
+		
+	}
+	
+	function LoadMasterPart($part_number) {
+
+		$.ajax({
+		  url: "service/select-masterPart.service.php",
+		  dataType: "json",
+		  data: { part_number : $part_number },
+		  success: handle_MasterPart
+		});
+		
+	}
+
+	function MasterPart(obj) {
+		//$json = '[{"part_id":"908", "part_number":"JEFFSTESTKIT909:ER-5", "part_description":"the form will no longer submit on enter chain recalculates on leaving the field.  Added a wait screen for the save or submit.", "part_application":"test application", "stock_level":"101", "category_id":"KT", "pitch_id":"520", "msrp":"267.9", "dealer_cost":"171.5", "import_cost":"82.92", "rec_status":"0"}]';
+		//var obj = $.parseJSON($json);
+		this.part_id = obj.part_id;
+		this.part_number = obj.part_number;
+		this.part_description = obj.part_description;
+		this.part_application = obj.part_application;
+		this.stock_level = obj.stock_level;
+		this.category_id = obj.category_id;
+		this.pitch_id = obj.pitch_id;
+		this.msrp = obj.msrp;
+		this.dealer_cost = obj.dealer_cost;
+		this.import_cost = obj.import_cost;
+	}
+});
+
+</script>	
+
+</head>
+<body>
+				<div class="ui-widget">
+					<label for="partNumber">Part Number</label><br/>
+					<input id="partNumber"  name="frm[partNumber]" type="text" value="" size="25" />
+				</div>
+
+</body>
+</html>

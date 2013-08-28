@@ -1,52 +1,43 @@
 <?php 
-	
-	if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
-
+    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+    
 	$debug = 'Off';
+	require_once 'db/global.inc.php';
 	
-    require_once 'db/global.inc.php';
-	require_once 'classes/clsSprocket.php';
-    require_once 'classes/clsUtility.php'; 
-
-    error_reporting(E_ERROR);
-
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$sprocket = new Sprocket(); 
-	$utility = new Utility();
-	$sprocket->SetDebug($debug);	
-	
-	if(isset($_GET['part_id'])) {
-		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
 	
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
+	// Create Object Customer and Request
+	$constants = new Constants;
+	$sprocket = new Sprocket($debug, $db);
+	$request  = new Request;
+	$utilityDB = new UtilityDB($debug, $db);
+	$utility  = new Utility($debug);
+
+	// Get Query Parameters
+	$recMode  = $request->getParam('status','');
+	$search  = $request->getParam('search','');
+	$part_id = $request->getParam('part_id');
+	$action  = $request->getParam('formAction','');
+	$partCat = $request->getParam('cat');
+
+
+
+	// Was form Submitted?
+	if ($action) {
+		if($recMode == "E" || $recMode == "A") {
+			$sprocket->UpdateSprocket( $_POST['frm'], $recMode );
+		} else if ($recMode == "D") {
+			$sprocket->UpdateSprocketStatus($_POST['frm']);
+		}		
 	}
 
-	if(isset($_GET['cat'])) {
-		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
+	if ($recMode == "E"){
+		// Get Info and Display
+		$row = $sprocket->GetSprocket($part_id);
 	}
 
-	// Update Controller
-	if (isset( $_POST['formAction'] )) {	
-		
-		if( strtolower($recMode) == "e" || strtolower($recMode) == "a") {
-			$retval = $sprocket->UpdateSprocket( $db, $_POST['frm'], $recMode );
-		} else if ( strtolower($recMode) == "d") {
-			$retval = $sprocket->UpdateSprocketStatus($db, $_POST['frm'] );
-		}
-		if($debug=='On') { echo 'Records updated ('.$recMode.') '. $retval .'<br>';}
-	}
-
-    // fetch data
-	$sql = sprintf( "select a.*,b.* from PartMaster a, Sprocket b where a.rec_status='0' and a.part_number = b.part_number and a.part_id = %s", $part_id );
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-
-	if ($debug=='On') { echo $sql."<br>"; }	
-	
 	// Setup the case
 	switch ( strtolower($recMode) )  {
 	    case "a":
@@ -79,7 +70,6 @@
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 </head>
@@ -92,16 +82,16 @@
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
-	<div id="content">
+	<div id="">
 		<h2>
 			<?php echo($partTypeDesc)?> Sprocket Maintenance
 		</h2>
 		<hr />
 	
-		<div id="formContent">
+		<div id="">
 		   <form id="formSprocket" name="formSprocket" method="post" action="<?php echo $_PHP_SELF; ?>" >
  			<table id="tablePartMaint" align="center">
 				<tr>
@@ -131,7 +121,7 @@
 					</td>
 					<td>
 <?php
-include 'includes/part_logic.php';
+include 'inc/part_logic.inc.php';
 ?>						
 					</td>
 					<td align="right">
@@ -155,7 +145,7 @@ include 'includes/part_logic.php';
 					</td>
 					<td colspan="3">
 <?php 
-include 'includes/pitch-list.php';
+include 'inc/pitch-list.inc.php';
 ?>			
 				</tr>
 				</tr>
@@ -165,7 +155,7 @@ include 'includes/pitch-list.php';
 					</td>
 					<td colspan="3">
 <?php 
-include 'includes/brand-list.php';
+include 'inc/brand-list.inc.php';
 ?>	
 				</tr>
 				</tr>
@@ -232,7 +222,7 @@ include 'includes/brand-list.php';
 		<hr/>
 		<div id="formCommands">
 			<?php
-			require($DOCUMENT_ROOT . "includes/formCommand.php");
+			require "inc/formCommand.inc.php";
 			?>
 
 		<input id="partID" name="frm[partID]" value="<?php echo $part_id ?>" type="hidden"/>

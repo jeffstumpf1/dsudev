@@ -6,6 +6,7 @@
 	padding: 20px;
 }
 
+
 #header h1 { margin: 0; }
 
 #navigation
@@ -113,4 +114,11 @@
 .groupCommand{ 
 	clear:left;	
 	text-align: center;
+}
+
+
+#lineitem-banner {
+	float:left;
+	clear:both;
+	display: none;
 }

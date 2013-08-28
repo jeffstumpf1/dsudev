@@ -1,43 +1,28 @@
-<?php
-/*
-if($debug=="On") {
-	
-}
-*/
+<?php 
 	$debug = 'Off';
- 
-    require_once 'db/global.inc.php';
-    require_once 'classes/clsUtility.php';
+	require_once 'db/global.inc.php';
+	
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
+	}
+	
+	// Create Objects
+	$constants = new Constants;
+	$part = new Part($debug, $db);
+	$request  = new Request;
+	$utility = new Utility($debug);
+	$utilityDB = new UtilityDB($debug, $db);
+	
+	// Get Query Parameters
+	$status  = $request->getParam('status','');
+	$recMode = $request->getParam('cat','');
+	$search  = $request->getParam('search','');
 
-	error_reporting(E_ALL|E_STRICT);
-
-    $searchInput='';
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$search='';
-	
-	$utility = new Utility();
-	$sql = "select * from PartMaster where rec_status='0' LIMIT 50";
-	
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
-	}
-	if(isset($_GET['cat'])) {
-		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
-	}
-	if(isset($_GET['search'])) {
-		$search = (get_magic_quotes_gpc()) ? $_GET['search'] : addslashes($_GET['search']);
-		$sql = sprintf("select * from PartMaster where rec_status='0' and part_number like '%s%s' LIMIT 50", $search,'%');
-	}
-    // fetch data
-	
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-	if($debug=="On") { echo $sql; }
+	// Get List
+	$rs = $part->ListParts($search);
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE>
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
@@ -49,72 +34,15 @@ if($debug=="On") {
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
+  	<script src="js/part.js"></script>
 <script>
 
-$(function() {
-    	
-    	$("#category").val(0);
-    	$("#createSubmit").attr('disabled','disabled');
-    	
-    	
-		$( "#search" ).on('mouseup', function() {
-			 $(this).select(); 	
-		});
-		
-		$("#category").change(function() {
-		  	$sel = $('#category').val();
-		 	if($sel != '*') {
-		 		$('#createSubmit').removeAttr('disabled');
-		 	} else
-		 	  $("#createSubmit").attr('disabled','disabled');  
-		});
-		
-		$('.actionStatus').click(function(e){
-			$part = $(this).parent().attr('pn');
-			$ct = $(this).parent().attr('ct');
-			$title = 'Deleting Part ('+ $part + ')';
-			$( "#dialog-confirm" ).attr('title',$title);
-			$( "#dialog-confirm" ).dialog({
-			  resizable: false,
-			  height:200,
-			  modal: true,
-			  buttons: {
-				"Delete": function() {
-				  $( this ).dialog( "close" );
-				  DeletePartSelected($part, $ct);
-				},
-				Cancel: function() {
-				  $( this ).dialog( "close" );
-				}
-			  }
-			});
-			
-		});
-		
-		function DeletePartSelected($part, $cat) {
-		$.ajax({ 
-			  type: 'GET',
-			  url: 'service/delete-part.php',
-			  data: { part_number: $part, cat: $cat },
-			  beforeSend:function(){
-				// load a temporary image in a div
-			  },
-			  success:function(data){
-				alert(data);
-				location.reload();
-			  },
-			  error:function(){
-				alert('Error: part not deleted');
-			  }
-			});
-		}
-});
 </script>
 	
 </head>
 <body>
 
-<div id="dialog-confirm" title="Remove Part?">
+<div id="dialog-confirm" title="">
   <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This part will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
 
@@ -126,10 +54,10 @@ $(function() {
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
-<div id="content">
+<div id="wrapper">
 		<h2>
 		 <?php echo "Part Listing - [ ".  $rs->size() ." ]"; ?>
 		</h2>
@@ -141,7 +69,7 @@ $(function() {
 				<select id="category" name="category">
 				<option value="*">Select...</option>
 				<?php
-				 echo $utility->GetCategoryList($db, '');  
+				 echo $utilityDB->LookupList('', Constants::TABLE_CATEGORY_LIST);   
 				?>
 				</select>
 				<input id="createSubmit" name="createSubmit" type="submit" value="Go" />
@@ -158,7 +86,7 @@ $(function() {
 				<th>Action</th>
 				<th>Part Number</th>
 				<th style="text-align:left;padding-left:1em">Description</th>
-				<th>Size</th>
+				<th>Category</th>
 				<th>Pitch</th>
 				<th>Stock</th>
 				<th>MSRP</th>
@@ -166,7 +94,7 @@ $(function() {
 				<th>Import Cost</th>
 			</tr>
 			<tr class="row">
-				<?php Do {
+				<?php while ($row = $rs->fetch()) { 
 				$page=''; 
 				switch ( $row['category_id'] ) {
 					case 'FS';
@@ -189,7 +117,7 @@ $(function() {
 				
 				 
 				<td><!-- Action -->
-<?php include 'includes/action-logic.php'?>
+<?php include 'inc/action-logic.inc.php'?>
 				</td>
 				<td style="text-align:left;"> <!-- Part Number -->
 					<?php echo $row['part_number'] ?>
@@ -216,7 +144,7 @@ $(function() {
 					<?php echo $utility->NumberFormat($row['import_cost'], '$') ?>
 				</td>
 			</tr>
-			<?php } while ($row = $rs->fetch( $rs )); ?>
+			<?php }  ?>
 		</table>
 	
 	

@@ -14,7 +14,7 @@
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
 	<div id="content">

@@ -1,34 +1,24 @@
 <?php 
 	$debug = 'Off';
-	
 	require_once 'db/global.inc.php';
-    error_reporting(E_ALL);
-
-    $searchInput='';
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$search='';
 	
-	$sql = "SELECT * FROM Customer WHERE rec_status = 0 ORDER BY dba";
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
-	}
-	if(isset($_GET['cat'])) {
-		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
-	}
-	if(isset($_GET['search'])) {
-		$search = (get_magic_quotes_gpc()) ? $_GET['search'] : addslashes($_GET['search']);
-		$sql = sprintf("select * from Customer where rec_status=0 and dba like '%s%s'", $search,'%');
-	}
-
-    // fetch data
-    $rs = $db->query( $sql);  
-    $row = $rs->fetch();
-    if($debug=='On') {
-    	echo "sql: " . $sql . "<br>";
+	
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
 	
+	// Create Object Customer and Request
+	$constants = new Constants;
+	$customer = new Customer($debug, $db);
+	$request  = new Request;
+
+	// Get Query Parameters
+	$status  = $request->getParam('status','');
+	$recMode = $request->getParam('cat','');
+	$search  = $request->getParam('search','');
+
+	// Get Customers
+	$rs = $customer->ListCustomers($search);
 ?>
 
 
@@ -49,7 +39,7 @@
 	</script>
 </head>
 <body>
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Drive Systems
@@ -57,10 +47,10 @@
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
-<div id="content">
+<div id="wrapper">
 		<h2>
 			Customer Listing - [ <?php echo  $rs->size() ?> ]
 		</h2>
@@ -86,11 +76,12 @@
 				<th>Phone</th>
 				<th>Discount %</th>
 			</tr>
-			<?php do{ ?>
+			<?php 
+			while ($row = $rs->fetch() ) {?>
 			
 			<tr class="row">
 				<td><!- Action -->
-					<a href="customer.php?customer_id=<?php echo $row['customer_id'];?>&status=E"><div class="actionEdit"></div></a>
+					<a href="customer.php?customer_number=<?php echo $row['customer_number'];?>&status=E"><div class="actionEdit"></div></a>
 					<a href="customer.php?customer_id=<?php echo $row['customer_id'];?>&status=D"><div class="actionStatus"></div></a>
 				</td>
 				<td> <!- Dealer Name -->
@@ -109,7 +100,7 @@
 					<?php echo $row['discount'].' %';?>
 				</td>
 			</tr>
-			<?php } while ($row = $rs->fetch( $rs )); ?>
+			<?php }  ?>
 		</table>
 </div>
 	<div id="footer">

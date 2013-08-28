@@ -14,11 +14,9 @@ body, label, input, textarea {
 	
 h2 {
 	/*text-shadow: 2px 2px 2px;*/
-	width:300px;
+	
 }
-hr {
-	hieght:1px;
-}
+
 #commandBar {
 	margin-bottom: 3em;
 }
@@ -122,6 +120,13 @@ hr {
 	margin: 3px 6px 3px 15px;
 	float:left;
 }
+.actionCalculator {
+	background-image:url('images/161-calculator.png');
+	width: 22px;
+	height: 28px;
+	margin: 3px 6px 3px 15px;
+	float:left;
+}
 .actionStatus {
 	background-image:url('images/glyphicons_256_delete.png');
 	width: 27px;
@@ -150,11 +155,21 @@ background: white url('images/16x16-cc.gif') right center no-repeat;
  .orderInfo { margin 5px 5px; padding:0px; width:300px;}
  .tableOrderInfo {width:300px; }
  .tableOrderInfo td { border-bottom: none; padding: 0;}
-
+ 
 /* Customer Info Banner */
  .fsCustomer {background-color:#efefef;width:500px}
  .fsCustomer p { font-weight: bold; margin-top:5px; margin-bottom: 5px;}
  .custInfo { float:left; margin 5px 5px; padding:5px; width:225px;}
  #useBillingforShipping { margin-left:20px;}
- 
 .specialInstructions { float: left; clear:left; margin-top: 10px 10px;}
+
+
+.label #line-part-description, 
+
+{ 
+ 	text-align: left; 
+ }
+
+
+#entryKit, #entryChain, #entrySprocket { display: none }
+#entryPricing { display: block }

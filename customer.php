@@ -1,43 +1,39 @@
-<?php
+<?php 
     if ( isset($_POST['formAction']) ) { header("Location: customer-list.php"); }
 
 	$debug = 'Off';
+	require_once 'db/global.inc.php';
 	
-    require_once 'db/global.inc.php';
-    require_once 'classes/clsUtility.php';
-	require_once 'classes/clsCustomer.php';
-
-
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	
-	if(isset($_GET['customer_id'])) {
-		$customer_id = (get_magic_quotes_gpc()) ? $_GET['customer_id'] : addslashes($_GET['customer_id']);
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
 	
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
-	}
+	// Create Object Customer and Request
+	$constants = new Constants;
 	
-	if (isset( $_POST['formAction'] )) {
-		$customer = new Customer();
-		$customer->SetDebug($debug);
-			
+	$customer = new Customer($debug, $db);
+	$request  = new Request;
+	$utilityDB = new UtilityDB($debug, $db);
+	$utility  = new Utility($debug);
+
+	// Get Query Parameters
+	$recMode  = $request->getParam('status','');
+	$search  = $request->getParam('search','');
+	$customer_number = $request->getParam('customer_number');
+	$action  = $request->getParam('formAction','');
+
+	// Was form Submitted?
+	if ($action) {
 		if($recMode == "E" || $recMode == "A") {
-			$customer->UpdateCustomer( $db, $_POST['frm'], $recMode );
+			$customer->UpdateCustomer( $_POST['frm'], $recMode );
 		} else if ($recMode == "D") {
-			$customer->UpdateCustomerStatus($db, $_POST['frm']);
+			$customer->UpdateCustomerStatus($_POST['frm']);
 		}		
 	}
 
-    // fetch data
-	$sql = sprintf( "SELECT * FROM Customer WHERE customer_id = %s", $customer_id );
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-	
-	$utility = new Utility();
-    	
+	// Get Info and Display
+	$row = $customer->GetCustomer($customer_number);
+	    	
 	// Setup the case
 	switch ( $recMode )  {
 	    case "A":
@@ -72,25 +68,26 @@
   	</script
 </head>
 <body>
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Drive Systems
 		</h1>
 	</div>
+
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
-	<div id="content">
+	<div id="wrapper">
 		<h2>
 			Customer Maintenance - <?php echo( $recStatusDesc ); ?>
 		</h2>
 		<hr />
 	
-		<div id="formContent">
-		<?php include 'includes/customer-form.php';?>
+		<div id="">
+		<?php include 'inc/customer-form.inc.php';?>
 		</div>
 </div>
 	<div id="footer">

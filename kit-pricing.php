@@ -1,39 +1,31 @@
 <?php 
-    //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
     
-    $debug = 'Off';
+	$debug = 'Off';
+	require_once 'db/global.inc.php';
 	
-    require_once 'db/global.inc.php';
-	require_once 'classes/clsKit.php'; 
-	require 'classes/clsUtility.php';
-    
-    error_reporting(E_ERROR);
-
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$kit = new Kit();
-	$utility = new Utility();
-	$kit->SetDebug($debug);
-
-
-	if(isset($_GET['part_id'])) {
-		$part_id = (get_magic_quotes_gpc()) ? $_GET['part_id'] : addslashes($_GET['part_id']);
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
 	}
 	
+	// Create Object Customer and Request
+	$constants = new Constants;
+	$kit = new Kit($debug, $db);
+	$request  = new Request;
+	$utilityDB = new UtilityDB($debug, $db);
+	$utility  = new Utility($debug);
 
+	// Get Query Parameters
+	$recMode  = $request->getParam('status','');
+	$search  = $request->getParam('search','');
+	$part_id = $request->getParam('part_id');
 
-    // fetch data
-	$sql = sprintf( "select a.*,b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.rec_status=0 and and a.category_id='KT' a.part_id = %s", $part_id );
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
+	$row = $kit->GetChainKit($part_id);
 
-	if ($debug=='On') { echo $sql."<br>"; }	
-	
 
 ?>	
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
 
 <head>
@@ -46,12 +38,13 @@
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<link href="css/square/square.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
+	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="js/kit-pricing.js"></script>
-	 
+	<script type="text/javascript" src="js/ui.js"></script>
 </head>
 <body>
 
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Drive Systems
@@ -59,76 +52,131 @@
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require  "inc/nav.inc.php";
 		?>
 	</div>
-	<div id="content">
+	<div id="">
 	
 		<h2>
-			Chain Kit Pricing Estimator<hr />
+			Kit Calculator <hr />
 		</h2>
 		
+				<div id="KitContent">
+			<fieldset>
+				<legend>Chain Kt</legend>
+				
+					<table width="100%">
+						<tr>
+							<th nowrap>Part Description</th>
+							<th nowrap>MSRP</th>
+							<th nowrap>Dealer Cost</th>
+							<th nowrap>Import Cost</th>
+						</tr>
+						<tr>
+							<td width="25%" nowrap>Front Sprocket</td>
+							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'$')?></td>
+							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'$')?></td>
+							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'$')?></td>
+						</tr>
+						<tr>
+							<td width="25%">Rear Sprocket</td>
+							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'$')?></td>
+							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'$')?></td>
+							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'$')?></td>
+						</tr>
+						<tr>
+							<td width="25%">Chain Length</td>
+							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'$')?></td>
+							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'$')?></td>
+							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'$')?></td>
+						</tr>
+						<tr>
+							<td width="25%">Total</td>
+							<td id="totalMSRP" style="text-align:right"></td>
+							<td id="totalDealer" style="text-align:right"></td>
+							<td id="totalImport" style="text-align:right"></td>
+						</tr>
+					</table>
+			</fieldset>
+		</div>
 
 
-		<div id="formContent">
+		<div id="">
+		<form id="formChainKit" name="formChainKit" method="post" >
 			<div class="group">
 				<div class="kitSpacers">
-					<label class="titleTop" style="margin-left:0">Part</label><br/>
-<?php
-include 'includes/part_logic.php';
-?>					
+					<label class="titleTop" style="margin-left:0">Part Number</label><br/>
+					<label><?php echo $row['part_number']?></label>
 				</div>
+				
+			</div>
 				<div class="kitSpacers">
 					<label class="titleTop" for="pitch">Pitch</label><br/>
 <?php 
-include 'includes/pitch-list.php';
+include 'inc/pitch-list.inc.php';
 ?>
 				</div>
-				<div class="kitSpacers">
-					<label class="titleTop" for="brand">MFG</label><br/>
-<?php 
-include 'includes/brand-list.php';
-?>
-				</div>
-				<div class="kitSpacers">
-					<label class="titleTop" for="ML">Master</label><br/>
-					<select id="ML"  name="frm[ml']" >
-						<option value="*">Select</option>
-						<option value="ML">M/L</option>
-					</select>
-				</div>
-
-
 				<div class="kitSpacers">
 					<label class="titleTop" for="fsPartNumber">Front Sprocket</label><br/>
-					<input id="fsPartNumber"  name="frm[fsPartNumber']" type="text" />
+					<input id="fsPartNumber"  name="frm[fsPartNumber]" type="text" value="<?php echo $row['frontSprocket_part_number']?>" />
 				</div>
 				
 				<div class="kitSpacers">
 					<label  class="titleTop" for="rsPartNumber">Rear Sprocket</label><br/>
-					<input id="rsPartNumber"  name="frm[rsPartNumber']" type="text" />
+					<input id="rsPartNumber"  name="frm[rsPartNumber]" type="text" value="<?php echo $row['rearSprocket_part_number']?>" />
 				</div>
 				<div class="kitSpacers">
 					<label  class="titleTop" for="chainLength">Chain Length</label><br/>
-					<input id="chainLength"  name="frm[chainLength']" type="text" />
+					<input id="chainLength"  name="frm[chainLength]" type="text" value="<?php echo $row['chain_length']?>" />
 				</div>
 
 			</div>
-	
+			<div class="group">
+			</div>
+				
 			
-			<div class="groupCommand">			
+			<div class="group">
+				<div class="kitSpacers">
+					<label class="titleTop" for="msrp">MSRP</label><br/>
+					<input id="msrp"  name="frm[msrp]" type="text" value="<?php echo $row['msrp']?>" />
+				</div>
+				
+				<div class="kitSpacers">
+					<label  class="titleTop" for="dealerCost">Dealer Cost</label><br/>
+					<input id="dealerCost"  name="frm[dealerCost]" type="text" value="<?php echo $row['dealer_cost']?>" />
+				</div>
+				<div class="kitSpacers">
+					<label  class="titleTop" for="importCost">Import Cost</label><br/>
+					<input id="importCost"  name="frm[importCost]" type="text" value="<?php echo $row['import_cost']?>" />
+				</div>
+				
+			</div>
+			
+			<div class='group'>
+				<div class="kitSpacersDesc">	
+					<label class="titleTop" style="margin-left:0" for="fsPartNumber">Description</label>
+					<textarea id="notes" name="frm[notes]" style="margin-left:0"><?php echo $row['part_description']?></textarea>
+				</div>	
+			</div>			
+			
+			<div class="groupCommand">	
+			<br/>		
 				<div id="formCommands">
 					<?php
-					require($DOCUMENT_ROOT . "includes/formCommand.php");
+					require "inc/formCommand.inc.php";
 					?>
-					<input type="text" id="fs" value=""/>
-					<input type="text" id="rs" value=""/>
-					<input type="text" id="ch" value=""/>
+					<input type="hidden" id="fs" name="frm[fs]" value="<?php echo $row['fs_price']?>" />
+					<input type="hidden" id="rs" name="frm[rs]" value="<?php echo $row['rs_price']?>" />
+					<input type="hidden" id="ch" name="frm[ch]" value="<?php echo $row['ch_price']?>" />
+					<input type="hidden" id="productCategory" name="frm[productCategory]" value="KT" />
+					<input type="hidden" id="partID" name="frm[partID]" value="<?php echo $row['part_id']?>" />
+					<input type="hidden" id="kitID" name="frm[kitID]" value="<?php echo $row['chain_kit_id']?>" />
+					<input type="hidden" id="chainPartNumber" name="frm[chainPartNumber]" value="<?php echo $row['chain_part_number']?>" />
 				</div>
 			</div>
 			
 			
-			
+		</form>	
 		</div>
 		
 
@@ -145,6 +193,7 @@ include 'includes/brand-list.php';
 		Copyright © Site name, 20XX
 	</div>
 </div>
+<input type="hidden" id="masterPartNumber"/>
 <div id="log"></div>
 </body>
 </html>

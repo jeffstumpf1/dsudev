@@ -1,40 +1,24 @@
 <?php
-/*
-if($debug=="Off") {
-	
-}
-*/
 	$debug = 'Off';
- 
-    require_once 'db/global.inc.php';
-    require_once 'classes/clsUtility.php';
+	require_once 'db/global.inc.php';
+	
+	function __autoload($class) {
+		include 'classes/' . $class . '.class.php';
+	}
+	
+	// Create Objects
+	$constants = new Constants;
+	$part = new part($debug, $db);
+	$request  = new Request;
+	$utility = new Utility($debug);
+	
+	// Get Query Parameters
+	$status  = $request->getParam('status','');
+	$search  = $request->getParam('search','');
 
-	error_reporting(E_ALL|E_STRICT);
+	// Get List
+	$rs = $part->ListKits($search);
 
-    $searchInput='';
-	$DOCUMENT_ROOT="";
-	$status="";
-	$recMode="";
-	$search='';
-	
-	$utility = new Utility();
-	$sql = "select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.rec_status=0 and a.category_id='KT'";
-	
-	if(isset($_GET['status'])) {
-		$recMode = (get_magic_quotes_gpc()) ? $_GET['status'] : addslashes($_GET['status']);
-	}
-	if(isset($_GET['cat'])) {
-		$partCat = (get_magic_quotes_gpc()) ? $_GET['cat'] : addslashes($_GET['cat']);
-	}
-	if(isset($_GET['search'])) {
-		$search = (get_magic_quotes_gpc()) ? $_GET['search'] : addslashes($_GET['search']);
-		$sql = sprintf( "select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_id = %s", $search );
-	}
-    // fetch data
-	
-    $rs = $db->query( $sql); 
-    $row = $rs->fetch();
-	if($debug=="On") { echo $sql; }
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -60,7 +44,7 @@ $(function() {
 	
 </head>
 <body>
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<h1>
 			Drive Systems
@@ -68,10 +52,10 @@ $(function() {
 	</div>
 	<div id="navigation">
 		<?php
-		require($DOCUMENT_ROOT . "includes/nav.php");
+		require "inc/nav.inc.php";
 		?>
 	</div>
-<div id="content">
+<div id="">
 		<h2>
 		 <?php echo "Chain Kit Listing - [ ".  $rs->size() ." ]"; ?>
 		</h2>
@@ -123,7 +107,7 @@ $(function() {
 				?>
 				<td><!-- Action -->
 					<a href="
-						<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>"><div class="actionEdit"></div></a>
+						<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>"><div class="actionCalculator"></div></a>
 					<!--<a href="<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=D&cat=<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>-->
 				</td>
 				<td style="text-align:left;"> <!-- Part Number -->

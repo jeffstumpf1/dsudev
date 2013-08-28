@@ -7,12 +7,13 @@
  	// Initialize
 	$('#log').show();
 	$('#chainChart').hide();
+	//$('#lineitem-banner').hide();
 
 	function ShowCustomerBanner($custNumber) {
 	
 		$.ajax({
 			  type: 'GET',
-			  url: 'service/customer-banner.php',
+			  url: 'service/customer-banner.service.php',
 			  data: { customer_number: $custNumber },
 			  beforeSend:function(){
 				// load a temporary image in a div
@@ -26,15 +27,14 @@
 				$('#customer-banner').html('<p class="error"><strong>Oops!</strong></p>');
 			  }
 			});
-
-		
+			
 	}
 
     function SaveCustomer($id) {
     	
 		$.ajax({
 			  type: 'POST',
-			  url: 'service/save-customer.php',
+			  url: 'service/save-customer.service.php',
 			  data: $('#formCustomer').serialize(), customer_number: $id,
 			  beforeSend:function(){
 				// load a temporary image in a div
@@ -53,7 +53,7 @@
     
 		$.ajax({
 			  type: 'GET',
-			  url: 'service/select-customer.php',
+			  url: 'service/select-customer.service.php',
 			  data: { customer_number: $CustNumber },
 			  beforeSend:function(){
 				// load a temporary image in a div
@@ -99,12 +99,13 @@
 		$(this).autocomplete({ 
 		  source: function(request, response) {
 			$.ajax({
-			  url: "service/auto-customer.php",
+			  url: "service/auto-customer.service.php",
 				   dataType: "json",
 			  data: {
 				term : request.term
 			  },
 			  success: function(data) {
+			  	//alert(data);
 				response(data);
 			  }
 			});
@@ -114,16 +115,17 @@
 			event.preventDefault();
 			$('#customerDBA').val(ui.item.label);
 			$('#cust_number').val(ui.item.value);
+			$('#lineitem-banner').show();
 			ShowCustomerBanner(ui.item.value);			// need to build the banner
-
+			$('#createOrderItem').removeAttr('disabled');  // order banner form
 			}
 		
 		});
 		
 	});
-    
-    
-    /******** Dialog's ************/
+	
+	
+ /******** Dialog's *********/
 	$( "#dialog-customer" ).dialog({
 	  autoOpen: false,
 	  height: 500,

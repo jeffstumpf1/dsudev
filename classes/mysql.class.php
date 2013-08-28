@@ -109,6 +109,8 @@ class MySQL {
                            ' SQL: '.$sql);
         return new MySQLResult($this,$queryResource);
     }
+    
+
 }
 
 /**

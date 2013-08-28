@@ -13,7 +13,7 @@
 	
 		$.ajax({
 			  type: 'GET',
-			  url: 'service/order-banner.php',
+			  url: 'service/order-banner.service.php',
 			  data: { order_number: $orderNumber },
 			  beforeSend:function(){
 				// load a temporary image in a div
@@ -27,6 +27,22 @@
 			  }
 			});
 	}
+
+
+	$( "#dialog-orderItem" ).dialog({
+	  autoOpen: false,
+	  height: 750,
+	  width: 950,
+	  modal: true,
+		Cancel: function() {
+				  $( this ).dialog( "close" );
+		  }				
+	});
+
+	// Delegates
+	$(document).on('click', 'input#createOrderItem', function(event) {
+		$( "#dialog-orderItem").dialog( "open" );
+	});
 
 });
 
