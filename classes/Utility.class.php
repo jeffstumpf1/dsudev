@@ -40,7 +40,9 @@ class Utility {
 			case '$':
 				$retVal = money_format('$%i', $val);
 				break;
-			
+			case '':
+				$retVal = money_format('%i', $val);
+				break;
 		}		
 		
 		return $retVal;

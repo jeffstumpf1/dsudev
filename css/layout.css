@@ -117,8 +117,12 @@
 }
 
 
-#lineitem-banner {
-	float:left;
+
+#orderItemsBanner
+{
 	clear:both;
-	display: none;
+	float:left;
+	padding:20px;
+	width:97%;
 }
+

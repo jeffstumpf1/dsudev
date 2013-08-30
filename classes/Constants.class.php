@@ -15,7 +15,7 @@ class Constants {
 	const TABLE_CHAIN_KIT		= "ChainKit";	
 	const TABLE_SPROCKET		= "Sprocket";
 	const TABLE_CUSTOMER		= "Customer";	
-	const TABLE_ORDER			= "Order";	
+	const TABLE_ORDER			= "Orders";	
 	const TABLE_ORDER_ITEMS		= "OrderItems";	
 	const TABLE_PART			= "PartMaster";	
 	const TABLE_INVOICE			= "Invoice";	

@@ -1,10 +1,10 @@
 <?php 
-$filename = $_SERVER['DOCUMENT_ROOT'] . 'classes/mysql.class.php';
+$filename = $_SERVER['DOCUMENT_ROOT'] . 'classes/MySQL.class.php';
 
 if(file_exists( $filename )) {
 	require_once $filename;
 } else {
-	$filename = 'common/error-404.inc';
+	//$filename = 'common/error-404.inc';
 	require_once $filename;
 }
 $host = 'localhost';

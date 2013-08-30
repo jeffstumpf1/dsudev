@@ -2,10 +2,6 @@
 //   chain-kit.service.php
 
 
-
-
-
-
 ?>
 
 			<div class="group">

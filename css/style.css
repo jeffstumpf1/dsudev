@@ -127,7 +127,7 @@ h2 {
 	margin: 3px 6px 3px 15px;
 	float:left;
 }
-.actionStatus {
+.actionStatus, .actionOrder {
 	background-image:url('images/glyphicons_256_delete.png');
 	width: 27px;
 	height: 17px;

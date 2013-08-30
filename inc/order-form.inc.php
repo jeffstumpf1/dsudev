@@ -1,3 +1,5 @@
+<form id="order-form">
+
 <div id="dialog-orderItem" >
 	<fieldset class="entryForm">
 		<legend>Part Information</legend>
@@ -16,11 +18,11 @@
 		<div class="group">
 			<div class="kitSpacers">
 				<label for="description">Description</label><br/>
-				<textarea  id="description" cols="40"></textarea>
+				<textarea  id="description" name="frm[description]" cols="40"></textarea>
 			</div>
 			<div class="kitSpacers">
 				<label for="application">Application</label><br/>
-				<textarea  id="application" cols="40"></textarea>
+				<textarea  id="application" name="frm[application]" cols="40"></textarea>
 			</div>
 		</div>		
 
@@ -39,50 +41,38 @@
 			</div>			
 			<div class="kitSpacers">
 				<label for="chainLength">Length</label><br/>
-				<input class="calculate" id="chainLength" name="frm[chainLength]" type="text" value="" size="5"/>
+				<input class="calculate" id="chainLength" name="frm[chainLength]" type="text" value="0" size="5"/>
 			</div>
+			<!--
+			<div class="kitSpacers">
+				<label for="clip">Clip</label><br/>
+				<select id="clip">
+				    <option>ML</option>
+				    <option>R/C</option>
+				</select>
+			</div>
+			
+			<div class="kitSpacers">
+				<div class="ui-widget">
+					<label for="clip">Misc Part#</label><br/>
+					<input class="" id="miscPartNumber" name="frm[miscPartNumber]" type="text" value="0" size="25"/>
+				</div>
+			</div>
+			-->
 		</div>
 
-		<div class="group" id="entrySprocket">	
-			<div class="kitSpacers">
-				<div class="ui-widget">
-					<label for="category">Category</label><br/>
-					<input id="category"  name="frm[category]" type="text" value="" size="10"/>
-				</div>
-			</div>
-	
-			<div class="kitSpacers">
-				<div class="ui-widget">
-					<label for="frontSprocket">Sprocket</label><br/>
-					<input id="frontSprocket"  name="frm[frontSprocket]" type="text" value="<?php echo $row['part_number']?>" size="25"/>
-				</div>
-			</div>
-			<div class="kitSpacers">
-				<div class="ui-widget">
-					<label for="rearSprocket">Rear Sprocket</label><br/>
-					<input id="rearSprocket"  name="frm[rearSprocket]" type="text" value="<?php echo $row['part_number']?>" size="25"/>
-				</div>
-			</div>			
-			<div class="kitSpacers">
-				<label for="chainLength">Length</label><br/>
-				<input class="calculate" id="chainLength" name="frm[chainLength]" type="text" value="" size="5"/>
-			</div>
-		</div>
 
-		
 		<div class="group" id="entryChain">		
 			<div class="kitSpacers">
 				<div class="ui-widget">
-				<?php
-				include 'inc/brand-list.inc.php';
-				?>
+					<label for="brand">Product Brand</label><br/>
+					<input id="brand"  name="frm[brand]" type="text" value="" size="25"/>
 				</div>
 			</div>
 			<div class="kitSpacers">
 				<div class="ui-widget">
-				<?php 
-				include 'inc/clip-list.inc.php';
-				?>
+					<label for="clip">Clip</label><br/>
+					<input id="clip"  name="frm[clip]" type="text" value="" size="25"/>
 				</div>
 			</div>			
 		</div>
@@ -120,7 +110,7 @@
 	<div class="group">
 		<div class="kitSpacers">
 			<br/>
-			<input type="button" id="line-createItem" name="frm[createItem]" value="Create Order Item"/>
+			<input type="button" id="line-createItem" name="frm[createItem]" value="Save Order Item"/>
 		</div>
 	</div>
 	
@@ -131,11 +121,15 @@
 			<div id="chartList">Please select a pitch to select a chain</div>
 		</div>
 	</div>
-
+<input type="hidden" id="h_cat" name="frm[h_cat]" value=""/>
+<input type="hidden" id="h_order" name="frm[h_order]" value=""/>
+<input type="hidden" id="h_misc" name="frm[miscPartNumber"/>
 <input type="hidden" id="h_pitch"/>
 <input type="hidden" id="h_length"/>
 <input type="hidden" id="h_chain"/>
 <input type="hidden" id="h_fs"/>
 <input type="hidden" id="h_rs"/>
 <input type="hidden" id="h_ch"/>
+
 </div>
+</form>

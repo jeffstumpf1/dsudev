@@ -5,10 +5,10 @@
  $(function() {	
  
  	// Initialize
-	$('#log').show();
-	$('#chainChart').hide();
-	//$('#lineitem-banner').hide();
+ 	$('#createOrderItem').attr('disabled');  // order banner form
+	$('#saveOrder').attr('disabled');  // order banner form
 
+	
 	function ShowCustomerBanner($custNumber) {
 	
 		$.ajax({
@@ -115,9 +115,7 @@
 			event.preventDefault();
 			$('#customerDBA').val(ui.item.label);
 			$('#cust_number').val(ui.item.value);
-			$('#lineitem-banner').show();
 			ShowCustomerBanner(ui.item.value);			// need to build the banner
-			$('#createOrderItem').removeAttr('disabled');  // order banner form
 			}
 		
 		});

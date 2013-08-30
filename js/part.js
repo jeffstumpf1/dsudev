@@ -7,9 +7,9 @@ $(function() {
     	
     	$("#category").val(0);
     	$("#createSubmit").attr('disabled','disabled');
-    	$('#line-save-price').attr('disabled','disabled');
-    	$('#line-total').attr('disabled','disabled');
-    	$('#line-price').attr('disabled','disabled');
+    	$('#discount-price').attr('disabled','disabled');
+    	$('#total').attr('disabled','disabled');
+    	$('#unit-price').attr('disabled','disabled');
     	
     	
     	
@@ -129,6 +129,32 @@ $(function() {
   		});
 	});
 	
+	
+	$(document).on('focus.autocomplete','#miscPartNumber', function(event) {
+		$(this).autocomplete({ 
+		  source: function(request, response) {
+			$.ajax({
+			  url: "service/auto-part.service.php",
+				   dataType: "json",
+			  data: {
+				term : request.term
+			  },
+			  success: function(data) {
+				response(data);
+			  }
+			});
+		  },
+		minLength: 2,
+		select: function( event, ui ) { 
+		event.preventDefault();
+		$('#miscPartNumber').val(ui.item.value);
+		$('#h_misc').val( GetMSRPFromSTRING(ui.item.id) );
+		CalculateKitItem();
+		} 
+		});
+		
+	});
+
 			
 	$(document).on('focus.autocomplete','#partNumber', function(event) {
 		$(this).autocomplete({ 
@@ -158,8 +184,8 @@ $(function() {
 		GetPartInfoThenDisplay($mp);
 	}
 
-	function handle_FrontSprocket(json) {
-		$fs = new MasterPart(json);
+	function handle_Sprocket(json) {
+		$fs = new Sprocket(json);
 	}
 
 	function handle_RearSprocket(json) {
@@ -189,27 +215,24 @@ $(function() {
 		
 	}
 	
-	function LoadFrontSprocket($part_number) {
-		hyph = $part_number.indexOf('-');
-		$part_number = $part_number.substr(0, hyph) 
+	function LoadSprocketInfo($part_number) {
 		$.ajax({
-		  url: "service/select-masterPart.service.php",
+		  url: "service/select-sprocket.service.php",
 		  dataType: "json",
 		  async: false,
 		  data: { part_number : $part_number },
-		  success: handle_FrontSprocket
+		  success: handle_Sprocket
 		});
 		
 	}
 
-	function LoadRearSprocket($part_number) {
-
+	function LoadChainInfo($part_number) {
 		$.ajax({
-		  url: "service/select-masterPart.service.php",
+		  url: "service/select-chain.service.php",
 		  dataType: "json",
 		  async: false,
 		  data: { part_number : $part_number },
-		  success: handle_RearSprocket
+		  success: handle_Sprocket
 		});
 		
 	}
@@ -244,16 +267,15 @@ $(function() {
 		} 
 				
 		if ($mp.category_id == 'FS' || $mp.category_id == 'RS') {
-			GetSprocketInfo($mp.part_number);
-			var $sprocket = new Sprocket($mp.part_number);
+			LoadSprocketInfo($mp.part_number);
 			$('#entrySprocket').show();
 		} 
 			
 		
 		// Set master items
 		$('#discount').val( $('#customer-discount').val() );
-		$('#description').text( $mp.part_description );
-		$('#application').text( $mp.part_application );
+		$('#description').val( $mp.part_description );
+		$('#application').val( $mp.part_application );
 		$('#msrp').val(parseFloat( $mp.msrp).toFixed(2));
 		
 				
@@ -379,6 +401,7 @@ $(function() {
 		this.import_cost = obj.import_cost;
 		
 		$('#h_pitch').val( this.pitch_id );
+		$('#h_cat').val( this.category_id );
 		
 	}
 	

@@ -9,7 +9,7 @@
 	}
    
    	// Create Object Customer and Request
-	$constants = new Constants;
+	$constants = new Constants();
 	$order = new Order($debug, $db);
 	$request  = new Request;
 	$utility  = new Utility($debug);
@@ -67,6 +67,9 @@
 
 
 <body>
+<div id="dialog-confirm" title="">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This item will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
 
 
 <div id="header">
@@ -100,13 +103,16 @@
 	<!-- Order Info -->
 	<div id="order-banner"></div>
 </div>
-
-
-
-
-
 	
-	<div class="Push"></div>	
+<div class="Push"></div>	
+
+<div id="orderItemsBanner">
+	<!-- Order Items Go here -->
+</div>
+
+
+
+
 </div>		
 <div id="footer">
 	Copyright © Site name, 20XX
@@ -128,8 +134,19 @@
 <input type="hidden" id="cust_id" name="frm[cust_id]" value="id" />
 <input type="hidden" id="cust_number" name="frm[cust_number]" value="" />
 <input type="hidden" id="grand-total" name="frm[grand-total]" value="0.00" />
+<input type="hidden" id="order_number" name="frm[order_number]" />
 
 <div id="log"></div>
-
+<form id="order">
+	<input type="hidden" id="order_number" name="frm[order_number]"  />
+	<input type="hidden" id="customer_number" name="frm[customer_number]" />
+	<input type="hidden" id="order_date" name="frm[order_date]" />
+	<input type="hidden" id="order_total" name="frm[order_total]" />
+	<input type="hidden" id="order_tax" name="frm[order_tax]"  />
+	<input type="hidden" id="order_shipping" name="frm[order_shipping]"  />
+	<input type="hidden" id="customer_po" name="frm[customer_po]"  />
+	<input type="hidden" id="order_discount" name="frm[order_discount]" value="0" />
+	<input type="hidden" id="order_status" name="frm[order_status]" value="NEW" />
+</form>
 </body>
 </html>

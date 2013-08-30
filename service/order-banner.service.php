@@ -1,7 +1,7 @@
 <?php 
 	/* Load Order Information in banner , Used in Ajax call
 	
-	   /service/order-banner.service.php?order_number=10
+	   /service/order-banner.service.php?order_number=130705564
 	*/
 	$debug = 'Off';
 	require_once '../db/global.inc.php';
@@ -22,11 +22,25 @@
 	$part = $request->getParam('part');
 	$action  = $request->getParam('formAction','');   
 	$order_date = $utility->GetDate();
+	
+	// Query parameters
 	$order_number = $request->getParam('order_number');
-			
+	$tax_rate = $request->getParam('tax_rate');
+	if($tax_rate == '') { $tax_rate= .00000000000001; }
+	
 	// Get Info and Display
-	//$row = $order->GetOrderInformation($order_number);
-
+	$row = $order->SummarizeOrder($order_number, $tax_rate);
+	
+	
+	$order_items_total = $row['order_items_total'];
+	$order_shipping = $row['order_shipping'];
+	$order_taxable = $row['order_taxable'];
+	
+	$total = $order_items_total + $order_taxable + $order_shipping;
+	
+	if($debug=='On') {
+		echo "Order Items Total = ". $order_items_total . "<br/>";
+	}
 ?>	
 
 <fieldset class="fsOrderInfo">
@@ -35,7 +49,7 @@
 		<table class="tableOrderInfo">
 			<tr>
 				<td norwrap="true">Order Number:</td>
-				<td id="orderNumber" style="text-align:right;"><?php echo $order->GetNextOrderNumber() ?></td>
+				<td id="orderNumber" style="text-align:right;"><?php echo $order_number?></td>
 			</tr>
 			<tr>
 				<td>Order Date:</td> 
@@ -43,34 +57,36 @@
 			</tr>
 			<tr>
 				<td>Order PO:</td>
-				<td id="orderPO" style="text-align:right;"><input id="orderPO" type="text" value="" /></td>
+				<td id="" style="text-align:right;"><input id="orderPO" type="text" value="<?php echo $row['customer_po']?>" style="text-align:right;"/></td>
 			</tr>
 		    <tr><td colspan="2" style="border:none;">&nbsp;</td>
 		    </tr>
-		</table>
+		</table>  
 		<table class="tableOrderInfo" style="border:1px solid #ccc;">
 			<tr >
 				<th style="text-align:left;">Description</th><th style="text-align:right;">Cost $</th>
 			</tr>
 			<tr>
-				<td>Item count <span id="itemCount"></span></td>
-				<td id="itemCountCost" style="text-align:right;">$0.00</td>
+				<td>Order Items <span id="itemCount"></span></td>
+				
+				<td  style="text-align:right;"><?php echo $utility->NumberFormat($order_items_total,'')?></td>
 			</tr>
 			<tr>
 				<td>Freight</td> 
-				<td id="freightCost" style="text-align:right;">$0.00</td>
+				<td id="" style="text-align:right;"><input type="text" id="freightCost" style="text-align:right;" value="<?php echo $utility->NumberFormat($order_shipping,'')?>"/></td>
 			</tr>
 			<tr>
-				<td>Surcharge</td>
-				<td id="surchargeCost" style="text-align:right;"><input id="orderPO" type="text" value="0.00" style="text-align:right;"/></td>
+				<td>Tax</td>
+				<td id="" style="text-align:right;"><span id="tax"><?php echo $utility->NumberFormat($order_taxable,'')?></span></td>
 			</tr>
 			<tr>
 				<td>Total<span id="itemCount"></span></td>
-				<td id="totalCost" style="text-align:right;">$0.00</td>
+				<td style="text-align:right;"><span id="totalCost"><?php echo $utility->NumberFormat($total,'')?></span></td>
 			</tr>
 		</table>
 	</div>
 	<p>
-	<input type="button" value="Create Order Item" id="createOrderItem" disabled="true"/>
+	<input type="button" value="New Order Item" id="createOrderItem" />
+	<input type="button" value="Update Order" id="updateOrder" />
 	</p>
 </fieldset>

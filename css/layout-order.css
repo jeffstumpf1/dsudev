@@ -133,6 +133,11 @@ body, html {
 }
 
 
-
+#orderItemsBanner
+{
+	clear:both;
+	float:left;
+	width:100%;
+}
 
 
