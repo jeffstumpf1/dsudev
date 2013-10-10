@@ -65,14 +65,20 @@
 	 	var part = $(this).val();
 	 	$('#ch').val( part );						// saves part in form
 		partNumber = UpdatePriceInChart($(this).val(), 'CH');	
-		$('#chainPartNumber').val( partNumber );
+		$('#chainPartNumber').val( partNumber+'-'+ $(this).attr('alt'));
 			
 		$masterPartNumber = $('#masterPartNumber').val();
 		if( $masterPartNumber.indexOf('-') != -1) {   // xxxxxxxx-9
 			hyph = $masterPartNumber.indexOf('-');
-			$masterPartNumber = $masterPartNumber.substr(0, hyph) + '-' + $(this).attr('alt');
+			$nbr = $(this).attr('alt');
+			$masterPartNumber = $masterPartNumber.substr(0, hyph)  +'-'+ $nbr;
 		} else {
-			$masterPartNumber = $masterPartNumber + "-" + $(this).attr('alt');
+			$chainSelected = partNumber;
+			hyph = $chainSelected.indexOf('-');
+			$nbr = $(this).attr('alt');
+			//$nbr = $chainSelected.substr(hyph, $chainSelected.length - hyph);
+			$masterPartNumber = $masterPartNumber + '-'+ $nbr;
+			//$masterPartNumber = $masterPartNumber.substr(0, hyph)  +'-'+ $nbr;
 		}				
 		$('#masterPartNumber').val( $masterPartNumber );  // main part number
 		$('#masterPartNumberSpan').text( $masterPartNumber );  // main part number
@@ -173,7 +179,7 @@
     
 		$.ajax({
 			  type: 'GET',
-			  url: 'service/select-chain.service.php',
+			  url: 'service/select-chain-chart.service.php',
 			  data: { pitch: $p ,chainLength: $l, part: $partNumber},
 			  beforeSend:function(){
 				// load a temporary image in a div

@@ -18,9 +18,15 @@
 			$url = "kit.php?status=A&cat=KT";
 			break;
 		case 'ot':
-			$url = "part.php?status=A&cat=OT";
+			$url = "other.php?status=A&cat=OT";
 			break;			
-			
+		case 'cr':
+			$url = "other.php?status=A&cat=CR";
+			break;	
+		case 'ri':
+			$url = "other.php?status=A&cat=RI";
+			break;			
+					
 	}
 	
 	header ("location:".$url);

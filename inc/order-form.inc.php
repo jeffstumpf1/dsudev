@@ -14,6 +14,11 @@
 				<label for="discount">Cust %</label><br/>
 				<input class="calculate" id="discount" name="frm[discount]" type="text"  value="" size="5"/>
 			</div>
+			<div class="kitSpacers">
+				<label for="stockLevel">Stock Level</label><br/>
+				<input class="" id="stockLevel" name="frm[stockLevel]" type="text"  value="<?php echo $row['stockLevel']?>" size="10"/>
+			</div>
+			
 		</div>
 		<div class="group">
 			<div class="kitSpacers">
@@ -124,12 +129,13 @@
 <input type="hidden" id="h_cat" name="frm[h_cat]" value=""/>
 <input type="hidden" id="h_order" name="frm[h_order]" value=""/>
 <input type="hidden" id="h_misc" name="frm[miscPartNumber"/>
-<input type="hidden" id="h_pitch"/>
+<input type="hidden" id="h_pitch" name="frm[h_pitch]" value="<?php echo $row['pitch_id']?>"/>
 <input type="hidden" id="h_length"/>
 <input type="hidden" id="h_chain"/>
 <input type="hidden" id="h_fs"/>
 <input type="hidden" id="h_rs"/>
 <input type="hidden" id="h_ch"/>
-
+<input type="hidden" id="h_status" name="frm[h_status]" value="A"/>
+<input type="hidden" id="h_order_item_id" name="frm[h_order_item_id]"/>
 </div>
 </form>

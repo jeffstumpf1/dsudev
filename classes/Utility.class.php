@@ -65,6 +65,31 @@ class Utility {
 		
 		return $retVal;
 	}
+	
+	
+	public function unescape($string){
+
+		$search = array("\\x00", "\\n", "\\r", "\\\x1a");
+
+		$replace = array("\x00","\n", "\r", "\x1a");
+
+		$retString = str_replace($search, $replace, $string);
+
+		$search = array("\'", '\\'.'"');
+
+		$replace = array(  "'", '"',);
+
+		$retString = str_replace($search, $replace, $retString);
+
+		$search = array("\\\\");
+
+		$replace = array( "\\");
+
+		$retString = str_replace($search, $replace, $retString);
+
+		return $retString;
+
+}
 
 }
 ?>

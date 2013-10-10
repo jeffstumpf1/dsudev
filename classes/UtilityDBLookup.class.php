@@ -37,5 +37,23 @@ class UtilityDBLookup {
 		}
 	}
 	
+	
+	function GetPitchList($db, $pitch){
+		// fetch data
+		$sql = "SELECT * FROM PitchList WHERE rec_status = 0 ORDER BY short_code";
+	    $rs = $db->query( $sql);
+	    
+		while ($row = $rs->fetch()) {
+			$html = "";
+			
+			if( $pitch == $row['short_code']) {
+				echo "<option value='". $row['short_code'] ."' SELECTED>". $row['description'] ."</option>";
+			} else {
+				echo "<option value='". $row['short_code'] ."'>". $row['description'] ."</option>";
+			} 
+			//mysql_free_result($rs);
+		}
+	}
+	
 }
 ?>

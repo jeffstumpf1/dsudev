@@ -46,8 +46,10 @@
 <tr class="row">
 	<td><!-- Action -->
 		<!-- Logic to handle editing graphic panels -->
-		<!--<a class="edit" href="<?php echo $page; ?>?part_id=<?php echo $row['part_id'];?>&status=E&cat=<?php echo $row['category_id'];?>"><div class="actionEdit"></div></a>-->
-		<a class="delete" oid="<?php echo $row['order_item_id'];?>" pn="<?php echo $row['part_number'];?>" ct="<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>
+		<a href="" title="Edit Order Item" class="edit" oid="<?php echo $row['order_item_id'];?>" pn="<?php echo $row['part_number'];?>" ct="<?php echo $row['category_id']?>"><div class="actionCalculator"></div></a>
+		<a href="" title="Delete Order Item" class="delete" oid="<?php echo $row['order_item_id'];?>" pn="<?php echo $row['part_number'];?>" ct="<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>
+		<a href="" title="Print Pick Ticket" class="print" oid="<?php echo $row['order_item_id'];?>"><div class="printTicket"></div></a>
+
 	</td>
 	<td style="text-align:left;"> <!-- Part Number -->
 		<?php echo $row['part_number'] ?>

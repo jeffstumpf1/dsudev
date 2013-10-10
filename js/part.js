@@ -1,15 +1,16 @@
 // part.js
+
+$(function() {
 var $mp;
 var $kit; 
 var $fs;
-var $rs;
-$(function() {
-    	
+var $rs;    	
     	$("#category").val(0);
     	$("#createSubmit").attr('disabled','disabled');
     	$('#discount-price').attr('disabled','disabled');
     	$('#total').attr('disabled','disabled');
     	$('#unit-price').attr('disabled','disabled');
+    	$('#stockLevel').attr('disabled','disabled');
     	
     	
     	
@@ -261,9 +262,9 @@ $(function() {
 		} 
 					
 		if ($mp.category_id == 'CH') {
-			GetChainInfo($mp.part_number);
-			var $chain = new Chain($mp.part_number);
-			$('#entryChain').show();
+			//GetChainInfo($mp.part_number);
+			//var $chain = new Chain($mp.part_number);
+			//$('#entryChain').show();
 		} 
 				
 		if ($mp.category_id == 'FS' || $mp.category_id == 'RS') {
@@ -277,6 +278,8 @@ $(function() {
 		$('#description').val( $mp.part_description );
 		$('#application').val( $mp.part_application );
 		$('#msrp').val(parseFloat( $mp.msrp).toFixed(2));
+		$('#stockLevel').val( $mp.stock_level );
+		$('#h_pitch').val( $mp.pitch_id );
 		
 				
 		total = CalculateLineItem();
@@ -306,6 +309,7 @@ $(function() {
 
 			
 	function CalculateKitItem() {
+		disc = $('#discount').val();
 		qty = parseInt( $('#qty').val() );
 		cl = parseFloat($('#chainLength').val());
 		ch_price = parseFloat( $('#h_ch').val() );

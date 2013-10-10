@@ -8,8 +8,31 @@
  	$('#createOrderItem').attr('disabled');  // order banner form
 	$('#saveOrder').attr('disabled');  // order banner form
 
+	$.urlParam = function(name){
+		var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+		if (!results)
+		{ 
+			return 0; 
+		}
+		return results[1] || 0;
+	}
+
+	// Init form on load
+	var $custNumber = $.urlParam('customer_number');
+	var $status = $.urlParam('status');
+	if($custNumber) {
+		$('#cust_number').val($custNumber);
+	}
+
+	$(document).on('click', '#copyAddress', function(event) {
+		$("#billingAddress").val( $("#address").val() );
+		$("#billingCity").val( $("#city").val() );
+		$("#billingState").val( $("#state").val() );
+		$("#billingZip").val( $("#zip").val() );
+	});
+		
 	
-	function ShowCustomerBanner($custNumber) {
+	 function ShowCustomerBanner($custNumber) {
 	
 		$.ajax({
 			  type: 'GET',
@@ -21,12 +44,13 @@
 			  success:function(data){
 				$('#customer-banner').html(data);
 				$('.fsCustomer').height($('.fsOrderInfo').height());
-
+				if($status) { $('#saveOrder').hide() }
 			  },
 			  error:function(){
 				$('#customer-banner').html('<p class="error"><strong>Oops!</strong></p>');
 			  }
 			});
+			
 			
 	}
 
@@ -79,6 +103,8 @@
 		$('#dialog-customer').dialog('close');
 		ShowCustomerBanner ( $('#cust_number').val() );
 	});
+	
+	
     
     /* 
     	Update Customer Dialog
@@ -121,6 +147,58 @@
 		});
 		
 	});
+
+
+	$(document).on('click', '.actionDeleteCustomer', function(event) {
+		event.preventDefault();
+		$ct = $(this).parent().attr('ct');
+		$title = 'Deleting Customer ('+ $ct + ')';
+		$id = $(this).parent().attr('oid');
+		$( "#dialog-confirm" ).dialog({
+		  resizable: false,
+		  height:200,
+		  modal: true,
+		  title: $title,
+		  buttons: {
+			"Delete": function() {
+			  $( this ).dialog( "close" );
+			  DeleteCustomerSelected($id);
+			},
+			Cancel: function() {
+			  $( this ).dialog( "close" );
+			}
+		  }
+		});
+		
+	});
+
+	$(document).on('click', '.actionEditCustomer', function(event) {
+		event.preventDefault();
+		$ct = $(this).parent().attr('ct');
+		$title = 'Editing Customer ('+$ct + ')';
+		$id = $(this).parent().attr('oid');
+		$('#dialog-customer').dialog( "open","title", "Customer Information" );	
+		LoadCustomer($ct);	
+		$('#cust_id').val( $id );
+	});
+
+	function DeleteCustomerSelected($id) {
+	$.ajax({ 
+		  type: 'GET',
+		  url: 'service/delete-customer.service.php',
+		  data: { customer_id: $id },
+		  beforeSend:function(){
+			// load a temporary image in a div
+		  },
+		  success:function(data){
+		  	alert("Customer Deleted");
+			location.reload();
+		  },
+		  error:function(){
+			alert('Error: Customer not deleted');
+		  }
+		});
+	}
 	
 	
  /******** Dialog's *********/
@@ -133,6 +211,18 @@
 				  $( this ).dialog( "close" );
 		  }				
 	});
+	
+	
+	
+
+var $custNumber = $.urlParam('customer_number');
+var $status = $.urlParam('status');
+if($custNumber) { ShowCustomerBanner($custNumber)}
+if($status) { $('#saveOrder').hide() }
     
 });  
+
+
+	
+
 /** End of customer.js **/

@@ -29,6 +29,7 @@
   	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  	  	<script src="js/part.js"></script>
 	<script>
 		$(function() {
 			
@@ -50,6 +51,11 @@
 	
 </head>
 <body>
+<div id="dialog-confirm" title="">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This part will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+
+
 <div id="wrapper">
 	<div id="header">
 		<h1>
@@ -100,13 +106,13 @@
 			</tr>
 <?php while ($row = $rs->fetch( )){ ?>			
 			<tr class="row">
-				<td><!- Action -->
-					<!-- Logic to handle editing graphic panels -->
-					<a href="chain.php?part_id=<?php echo $row['part_id'];?>&status=E&cat=<?php echo $row['category_id'];?>"><div class="actionEdit"></div></a>
-					<a href="chain.php?part_id=<?php echo $row['part_id'];?>&status=D&cat=<?php echo $row['category_id']?>"><div class="actionStatus"></div></a>
+				<td>
+<!-- Logic to handle editing graphic panels -->
+<a class="edit" href="chain.php?part_id=<?php echo $row['part_id'];?>&status=E&cat=<?php echo $row['category_id'];?>"><div class="actionEdit"></div></a>
+						
 				</td>
 				<td style="text-align:left;">
-					<?php echo $row['part_number']?>
+					<?php echo $row['part_number']?>-<?php echo $row['sequence']?>
 				</td>
 				<td style="text-align:left;"> <!- Chain Description -->
 					<?php echo $row['part_description'];?>

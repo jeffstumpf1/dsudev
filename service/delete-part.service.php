@@ -4,7 +4,7 @@
  
  /service/delete-part.service.php?part_number=DA520ZVMXN&cat=CH
 */
-	$debug = 'On';
+	$debug = 'Off';
 	require_once '../db/global.inc.php';
 	
 	function __autoload($class) {

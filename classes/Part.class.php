@@ -66,9 +66,12 @@ class Part {
 
 	
 	public function ListParts($search) {
-		$sql = "select * from ". Constants::TABLE_PART ." where rec_status='0' LIMIT ". Constants::LIMIT_ROWS ;
-		if( $search ) {
+		if($search=='KT' || $search=='CH' || $search=='FS' || $search=='RS' || $search=='CR' || $search=='RI' ||$search=='OT') {
+			$sql = "select * from ". Constants::TABLE_PART ." where rec_status='0' and category_id='". $search ."' Order by part_number";
+		} else if($search) {
 			$sql = sprintf("select * from %s where rec_status=0 and part_number like '%s%s' limit %s", Constants::TABLE_PART, $search,'%',Constants::LIMIT_ROWS); 
+		} else {
+			$sql = "select * from ". Constants::TABLE_PART ." where rec_status='0' LIMIT ". Constants::LIMIT_ROWS ;
 		}
 		
 		// fetch data

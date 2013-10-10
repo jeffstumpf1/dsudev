@@ -15,26 +15,29 @@
 	$order = new Order($debug, $db);
 	$request  = new Request;
 	$utility  = new Utility($debug);
+	$utilityDB  = new UtilityDB($debug, $db);
 
 	// Get Query Parameters
-	$pitch  = $request->getParam('pitch','');
-	$chainLength  = $request->getParam('chainLength','');
-	$part = $request->getParam('part');
-	$action  = $request->getParam('formAction','');   
-	$order_date = $utility->GetDate();
-	
-	// Query parameters
+	$status = $request->GetParam('status');
 	$order_number = $request->getParam('order_number');
 	$tax_rate = $request->getParam('tax_rate');
-	if($tax_rate == '') { $tax_rate= .00000000000001; }
-	
+
+	if ($debug=='On') echo "order: ", $order_number, "rate: ", $tax_rate, "status: ", $status;
+
 	// Get Info and Display
 	$row = $order->SummarizeOrder($order_number, $tax_rate);
-	
+	//print_r($row);
 	
 	$order_items_total = $row['order_items_total'];
 	$order_shipping = $row['order_shipping'];
 	$order_taxable = $row['order_taxable'];
+	$order_date = $row['order_date'];
+	
+	if(empty($order_date)) {
+		$order_date = $utility->GetDate();
+		//echo $utility->GetDate();
+	}
+	
 	
 	$total = $order_items_total + $order_taxable + $order_shipping;
 	
@@ -42,7 +45,7 @@
 		echo "Order Items Total = ". $order_items_total . "<br/>";
 	}
 ?>	
-
+<form id="order">
 <fieldset class="fsOrderInfo">
 	<legend>Order Information</legend>
 	<div class="orderInfo">
@@ -53,12 +56,23 @@
 			</tr>
 			<tr>
 				<td>Order Date:</td> 
-				<td id="orderDate" style="text-align:right;"><input style="text-align:right;" type="text" value="<?php echo $order_date?>" id="orderDate" /></td>
+				<td id="orderDate" style="text-align:right;"><input style="text-align:right;" type="text" value="<?php echo $order_date ?>" id="order_date" name="frm[order_date]"/></td>
 			</tr>
 			<tr>
 				<td>Order PO:</td>
-				<td id="" style="text-align:right;"><input id="orderPO" type="text" value="<?php echo $row['customer_po']?>" style="text-align:right;"/></td>
+				<td id="" style="text-align:right;"><input id="customer_po" name="frm[customer_po]" type="text" value="<?php echo $row['customer_po']?>" style="text-align:right;"/></td>
 			</tr>
+			<tr>
+				<td>Payment Terms:</td>
+				<td id="" style="text-align:right;">
+					<select id="payment_terms" name="frm[payment_terms]">
+						<option value="*">Select...</option>
+						<?php
+						 echo $utilityDB->LookupList($row['payment_terms_id'], Constants::TABLE_PAYMENT_LIST);   
+						?>
+					</select>
+				</td>
+			</tr>			
 		    <tr><td colspan="2" style="border:none;">&nbsp;</td>
 		    </tr>
 		</table>  
@@ -73,7 +87,7 @@
 			</tr>
 			<tr>
 				<td>Freight</td> 
-				<td id="" style="text-align:right;"><input type="text" id="freightCost" style="text-align:right;" value="<?php echo $utility->NumberFormat($order_shipping,'')?>"/></td>
+				<td id="" style="text-align:right;"><input type="text" id="order_shipping" name="frm[order_shipping]" style="text-align:right;" value="<?php echo $utility->NumberFormat($order_shipping,'')?>"/></td>
 			</tr>
 			<tr>
 				<td>Tax</td>
@@ -87,6 +101,12 @@
 	</div>
 	<p>
 	<input type="button" value="New Order Item" id="createOrderItem" />
-	<input type="button" value="Update Order" id="updateOrder" />
+	<input type="button" value="Save Order" id="updateOrder" />
 	</p>
 </fieldset>
+
+	<input type="hidden" id="tax_rate" name="frm[tax_rate]" value="<?php echo $row['tax_rate']?>" />
+	<input type="hidden" id="order_status" name="frm[order_status]" />
+	<input type="hidden" id="order_number" name="frm[order_number]" value="<?php echo $order_number?>" />
+</form>
+<!--<script>$('#specialInstructions').val(<?php echo $row['special_instructions']?>)</script>-->

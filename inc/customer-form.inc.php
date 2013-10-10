@@ -28,8 +28,15 @@
 						<label>Tax rate</label>
 					</td>
 					<td>
-						<input id="taxable" name="frm[taxable]" type="text" value="<?php echo $row['taxable'];?>" />
+						<input id="taxable" name="frm[taxable]" type="text" value="<?php echo $row['taxable']?>"/>
 					</td>
+					<td align="right">
+						<label>Customer Type (R/D)</label>
+					</td>
+					<td>
+						<input id="taxable" name="frm[customer_type]" type="text" value="<?php echo $row['customer_type']?>" size="5"/>
+					</td>
+					
 				</tr>
 				
 				<tr>
@@ -51,7 +58,7 @@
 						<select id="state" name="frm[state]">
 							<option value="*">Select...</option>
 							<?php
-							 echo $utilityDB->LookupList($row['state'], Constants::TABLE_STATE_LIST);  
+							 echo $utilityDB->GetStateList($db, $row['state']);  
 							?>
 						</select>
 					</td>
@@ -79,7 +86,7 @@
 						<select id="billingState" name="frm[billingState]">
 							<option value="*">Select...</option>
 							<?php
-							 echo $utilityDB->LookupList($row['billing_state'], Constants::TABLE_STATE_LIST);  
+							 echo $utilityDB->GetStateList($db, $row['billing_state']);  
 							?>
 						</select>
 					</td>
@@ -113,14 +120,14 @@
 					<td>
 						<label>Credit Card/Exp/CVV</label>
 					</td>
-					<td>
-						<input id="cc1" name="frm[cc1]" type="text" value="<?php echo $row['cc_num1'];?>"/>
+					<td >
+						<input size="25" id="cc1" name="frm[cc1]" type="text" value="<?php echo $row['cc_num1'];?>"/>
 					</td>
 					<td>
-						<input id="exp1" name="frm[exp1]" type="text" value="<?php echo $row['cc_exp1'];?>"/>
+						<input size="10" id="exp1" name="frm[exp1]" type="text" value="<?php echo $row['cc_exp1'];?>"/>
 					</td>
 					<td>
-						<input id="cvv1" name="frm[cvv1]" type="text"value="<?php echo $row['cc_cvv1'];?>"/>
+						<input size="10" id="cvv1" name="frm[cvv1]" type="text"value="<?php echo $row['cc_cvv1'];?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -128,13 +135,13 @@
 						<label>Credit Card/Exp/CVV</label>
 					</td>
 					<td>
-						<input id="cc2" name="frm[cc2]" type="text" value="<?php echo $row['cc_num2'];?>"/>
+						<input size="25" id="cc2" name="frm[cc2]" type="text" value="<?php echo $row['cc_num2'];?>"/>
 					</td>
 					<td>
-						<input id="exp2" name="frm[exp2]" type="text" value="<?php echo $row['cc_exp2'];?>"/>
+						<input size="10" id="exp2" name="frm[exp2]" type="text" value="<?php echo $row['cc_exp2'];?>"/>
 					</td>
 					<td>
-						<input id="cvv2" name="frm[cvv2]" type="text" value="<?php echo $row['cc_cvv2'];?>"/>
+						<input size="10" id="cvv2" name="frm[cvv2]" type="text" value="<?php echo $row['cc_cvv2'];?>"/>
 					</td>
 				</tr>
 				<tr>
@@ -159,6 +166,7 @@
 		<hr/>
 		<div id="formCommands">
 			<input id="submitCustomer" name="submitCustomer" value="Save Customer" type="submit"/>
+			<input id="copyAddress" name="copyAddress" value="Billing Same as Shipping" type="button"/>
 			<?php
 			require "formCommand.inc.php";
 			$recMode='';

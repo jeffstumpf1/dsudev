@@ -16,10 +16,10 @@
 	$utility  = new Utility($debug);
 
 	// Get Query Parameters
-	$recMode  = $request->getParam('status','');
-	$search  = $request->getParam('search','');
+	$recMode  = $request->getParam('status');
+	$search  = $request->getParam('search');
 	$part_id = $request->getParam('part_id');
-	$action  = $request->getParam('formAction','');
+	$action  = $request->getParam('formAction');
 	$partCat = $request->getParam('cat');
 
 
@@ -36,8 +36,24 @@
 	if ($recMode == "E"){
 		// Get Info and Display
 		$row = $sprocket->GetSprocket($part_id);
+		//print_r($row);
 	}
 
+/**
+	$d=$row['part_description'];
+	$e=$row['part_application'];
+	echo "<p>",$d,"</p>";
+	echo "<p>",$e, "</p>";
+	$d = json_encode(addslashes($d));
+	$e = json_encode(addslashes($e));
+	echo $d;
+	echo $e;
+	$d= json_decode($d);
+	$e= json_decode($e);
+	echo "<p>",$d,"</p>";
+	echo "<p>",$e,"</p>";
+*/
+	
 	// Setup the case
 	switch ( strtolower($recMode) )  {
 	    case "a":
@@ -93,7 +109,7 @@
 	
 		<div id="">
 		   <form id="formSprocket" name="formSprocket" method="post" action="<?php echo $_PHP_SELF; ?>" >
- 			<table id="tablePartMaint" align="center">
+ 			<table id="tablePartMaint" align="center" style="width:950px">
 				<tr>
 					<td> 
 						<Label>Product Category</label>
@@ -164,7 +180,7 @@ include 'inc/brand-list.inc.php';
 						<label>Application</label>
 					</td>
 					<td colspan="3">
-						<textarea id="partApplication" name="frm[partApplication]"><?php echo $row['part_application']?></textarea>
+						<textarea id="partApplication" name="frm[partApplication]"><?php echo stripslashes($row['part_application'])?></textarea>
 					</td>
 				</tr>				
 				
@@ -173,7 +189,7 @@ include 'inc/brand-list.inc.php';
 						<label>Description</label>
 					</td>
 					<td colspan="3">
-						<input id="partDescription" name="frm[partDescription]" type="text" value="<?php echo $row['part_description']?>"/>
+						<input id="partDescription" name="frm[partDescription]" type="text" value="<?php echo stripslashes($row['part_description'])?>"/>
 					</tr>
 				</tr>
 				<tr>

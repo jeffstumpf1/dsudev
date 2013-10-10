@@ -5,18 +5,19 @@ body, html {
 
 }
 
-body, label, input, textarea {
+body {
 	font-family: Verdana,Arial,sans-serif;
 	font-size:12px;
+	background-color: #fff;
 	background-image:url('/images/applelinen.jpg1');
-		
 	}
 	
-h2 {
+label, input, textarea  {
+	font-family: Verdana,Arial,sans-serif;
+	font-size:12px;h2; 
 	/*text-shadow: 2px 2px 2px;*/
-	
 }
-
+#wrapper { background-color: #fff; }
 #commandBar {
 	margin-bottom: 3em;
 }
@@ -61,7 +62,7 @@ h2 {
 	}
 #customerTable td:first-child, #partTable td:first-child, #chainChartTable td:first-child {
 	text-align: center;
-	width:100px;
+	width:130px;
 	}
 #customerTable td:first-child + td {
 	width: 300px;
@@ -108,12 +109,12 @@ h2 {
 }
 
 /* Dialogs */
-#dialog-form, #dialog-confirm {
+#dialog-form, #dialog-confirm, #dialog-print, #dialog-print-tickets {
 	display: none;
 }
 
 /* Images for Edit/Delete on Listing Forms */
-.actionEdit {
+.actionEdit, .actionEditItem, .actionEditCustomer{
 	background-image:url('images/glyphicons_150_edit.png');
 	width: 24px;
 	height: 21px;
@@ -127,7 +128,15 @@ h2 {
 	margin: 3px 6px 3px 15px;
 	float:left;
 }
-.actionStatus, .actionOrder {
+
+.actionPrint {
+	background-image:url('images/glyphicons_039_notes.png');
+	width: 20px;
+	height: 25px;
+	margin: 3px 6px 3px 15px;
+	float:left;
+}
+.actionStatus, .actionOrder, .actionDeleteCustomer {
 	background-image:url('images/glyphicons_256_delete.png');
 	width: 27px;
 	height: 17px;
@@ -143,6 +152,48 @@ label.titleTop {
 	margin-left: .5em;
 	}
 
+.printCustomer {
+	background-image:url('images/customer_copy.png');
+	width: 24px;
+	height: 26px;
+	margin: 6px 0 6px 10px;
+	float:left;	
+}
+.printShop {
+	background-image:url('images/shop_copy.png');
+	width: 24px;
+	height: 26px;
+	margin: 6px 0 6px 10px;
+	float:left;	
+}
+.printPacking {
+	background-image:url('images/packing_slip.png');
+	width: 24px;
+	height: 26px;
+	margin: 6px 0 6px 10px;
+	float:left;	
+}
+.emailInvoice {
+	background-image:url('images/emailInvoice.png');
+	width: 24px;
+	height: 28px;
+	margin: 6px 0 6px 10px;
+	float:left;	
+}
+.printTicket, .printTickets{
+	background-image:url('images/print_ticket.png');
+	width: 24px;
+	height: 24px;
+	margin: 6px 0 6px 10px;
+	float:left;	
+}
+.customerOrder {
+	background-image:url('images/usd.png');
+	width: 17px;
+	height: 26px;
+	margin: 3px 0 8px 15px;
+	float:left;	
+}
 
 /*  Auto Complete */
  .ui-autocomplete-loading {
@@ -151,19 +202,21 @@ background: white url('images/16x16-cc.gif') right center no-repeat;
 
 
 /*  Order Info Banner*/
- .fsOrderInfo {float:left; margin:20px; background-color:#efefef;width:300px}
+ .fsOrderInfo {float:left; margin:10px; background-color:#efefef;width:300px}
  .orderInfo { margin 5px 5px; padding:0px; width:300px;}
  .tableOrderInfo {width:300px; }
  .tableOrderInfo td { border-bottom: none; padding: 0;}
  
 /* Customer Info Banner */
- .fsCustomer {background-color:#efefef;width:500px}
+ .fsCustomer {background-color:#efefef;width:350px}
  .fsCustomer p { font-weight: bold; margin-top:5px; margin-bottom: 5px;}
  .custInfo { float:left; margin 5px 5px; padding:5px; width:225px;}
- #useBillingforShipping { margin-left:20px;}
+ #useBillingforShipping { margin-left:0px;}
 .specialInstructions { float: left; clear:left; margin-top: 10px 10px;}
 
-
+/* Customer Notes */
+.fsCustomerNotes {float:left; margin:10px 10px 10px 10px; background-color:#efefef;width:300px;}
+.fsPrintInvoice {float:left; margin:10px 10px 10px 10px; background-color:#efefef;width:300px;}
 .label #line-part-description, 
 
 { 

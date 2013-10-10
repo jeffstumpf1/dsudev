@@ -99,21 +99,21 @@
 						</tr>
 						<tr>
 							<td width="25%" nowrap>Front Sprocket</td>
-							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'')?></td>
+							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
+							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
 						</tr>
 						<tr>
 							<td width="25%">Rear Sprocket</td>
-							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'0')?></td>
+							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
+							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
 						</tr>
 						<tr>
 							<td width="25%">Chain Length</td>
-							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'])?></td>
-							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'])?></td>
-							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'])?></td>
+							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'')?></td>
+							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
+							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
 						</tr>
 						<tr>
 							<td width="25%">Total</td>

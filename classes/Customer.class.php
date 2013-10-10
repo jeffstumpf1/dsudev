@@ -106,6 +106,7 @@ class Customer {
 		$customer_id = $formData['customerID'];
 		$rec_mode = $formData['rec_mode'];
 		$taxable = $formData['taxable'];
+		$custType = $formData['customer_type'];
 		
 		$cnt =0;
 		
@@ -115,11 +116,12 @@ class Customer {
 			$sql = $sql . "discount='". $disc ."', email='". $email ."', notes='". $notes ."',";
 			$sql = $sql . "cc_num1='". $cc1 ."', cc_exp1='". $exp1 ."', cc_cvv1='". $cvv1 ."',";
 			$sql = $sql . "cc_num2='". $cc2 ."', cc_exp2='". $exp2 ."', cc_cvv2='". $cvv2 ."',taxable='" .$taxable."',";
+			$sql = $sql . "customer_type='". $custType."',";
 			$sql = $sql . "billing_address='" . $billAddr . "', billing_city='". $billCity ."', billing_state='". $billState . "', billing_zip='".$billZip."'";
 			$sql = $sql . " WHERE customer_id=". $customer_id;
 		}
 		if( strtolower($recMode) == "a") {
-			$sql = "INSERT INTO ". Constants::TABLE_CUSTOMER . "(dba, customer_number, address, city, state, zip, phone1, phone2, fax , discount, taxable, email, notes, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, rec_status, create_dt, billing_address, billing_city, billing_state, billing_zip) VALUES('". $dba ."','". $custnum ."','". $addr ."','". $city ."','". $st ."','". $zip ."','". $ph1 ."','". $ph2 ."','". $fax ."','". $disc ."','". $taxable. "','". $email ."','". $notes ."','". $cc1 ."','". $exp1 ."','". $cvv1 ."','". $cc2 ."','". $exp2 ."','". $cvv2 ."','0','','". $billAddr."','".$billCity."','". $billState."','".$billZip."')";
+			$sql = "INSERT INTO ". Constants::TABLE_CUSTOMER . "(dba, customer_number, address, city, state, zip, phone1, phone2, fax , discount, taxable, email, notes, cc_num1, cc_exp1, cc_cvv1, cc_num2, cc_exp2, cc_cvv2, rec_status, create_dt, billing_address, billing_city, billing_state, billing_zip, customer_type) VALUES('". $dba ."','". $custnum ."','". $addr ."','". $city ."','". $st ."','". $zip ."','". $ph1 ."','". $ph2 ."','". $fax ."','". $disc ."','". $taxable. "','". $email ."','". $notes ."','". $cc1 ."','". $exp1 ."','". $cvv1 ."','". $cc2 ."','". $exp2 ."','". $cvv2 ."','0','','". $billAddr."','".$billCity."','". $billState."','".$billZip."','".$custType."')";
 		}
 		$cmd = $this->db->query( $sql );
 		$cnt = $cmd->affected();
@@ -138,11 +140,9 @@ class Customer {
 	}
 	
 	
-	function UpdateCustomerStatus($formData) {
-		$customer_id = $formData['customerID'];
-		$rec_status = $formData['recStatus'];
+	function DeleteCustomer($id) {
 			
-		$sql = "DELETE FROM ". Constants::TABLE_CUSTOMER . " WHERE customer_id=". $customer_id;
+		$sql = "DELETE FROM ". Constants::TABLE_CUSTOMER . " WHERE customer_id=". $id;
 		$cmd = $this->db->query( $sql );
 		
 		return $cmd->affected();

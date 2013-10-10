@@ -3,7 +3,7 @@
  
  /service/delete-order-item.service.php?order_id=x
 */
-	$debug = 'On';
+	$debug = 'Off';
 	require_once '../db/global.inc.php';
 	
 	function __autoload($class) {

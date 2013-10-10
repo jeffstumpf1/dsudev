@@ -9,6 +9,7 @@ class Constants {
 	const TABLE_PITCH_LIST		= "PitchList";	
 	const TABLE_BRAND_LIST		= "ProductBrandList";	
 	const TABLE_STATE_LIST		= "StateList";	
+	const TABLE_PAYMENT_LIST	= "PaymentList";	
 
 	// Master Table Names
 	const TABLE_CHAIN			= "Chain";	

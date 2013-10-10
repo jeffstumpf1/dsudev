@@ -119,12 +119,15 @@ include 'inc/pitch-list.inc.php';
 ?>
 				</td>
 				<td align="right">
-					<label>Clip</label>
+					<label>Sequence</label>
 				</td>
+					<td>
+						<input id="sequence" name="frm[sequence]" type="text" value="<?php echo $row['sequence']?>"/>
+					</td>
+				
 				<td>
-<?php 
-include 'inc/clip-list.inc.php';
-?>				</td>				
+					
+				</td>				
 				</tr>
 				<td>
 					<label>Product Brand</label>
@@ -135,14 +138,14 @@ include 'inc/brand-list.inc.php';
 ?>
 				</td>
 			</tr>
-				<tr>
+<!--				<tr>
 					<td valign="top">
 						<label>Application</label>
 					</td>
 					<td colspan="3">
 						<textarea id="partApplication" name="frm[partApplication]"><?php echo $row['part_application']?></textarea>
 					</td>
-				</tr>				
+				</tr>		-->		
 
 				<tr>
 					<td valign="top">

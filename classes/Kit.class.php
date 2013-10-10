@@ -45,7 +45,7 @@ class Kit {
 
 
 	public function GetChainChart($pitch) {
-		$sql = sprintf("select a.*, b.* from ". Constants::TABLE_PART . " a, ". Constants::TABLE_CHAIN . " b where a.part_number = b.part_number and a.category_id='CH' and a.rec_status=0 and a.pitch_id='%s'", $pitch );
+		$sql = sprintf("select a.*, b.* from ". Constants::TABLE_PART . " a, ". Constants::TABLE_CHAIN . " b where a.part_number = b.part_number and a.category_id='CH' and a.rec_status=0 and a.pitch_id='%s' order by b.sequence, b.product_brand_id", $pitch );
 		
 		// fetch data
 		$rs = $this->db->query( $sql);  

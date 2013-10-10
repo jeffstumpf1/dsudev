@@ -47,7 +47,7 @@
 	<script src="ui/jquery.ui.button.js"></script>
 	<script src="ui/jquery.ui.dialog.js"></script>
 	<script src="ui/jquery.ui.autocomplete.js"></script>	
-	
+	<script src="ui/jquery.ui.datepicker.js"></script>
 
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
 	
@@ -60,7 +60,6 @@
 
 	<link href="css/square/square.css" rel="stylesheet">
 	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
-	<link href="css/demo.css" rel="stylesheet">
 	
 
 </head>
@@ -70,7 +69,12 @@
 <div id="dialog-confirm" title="">
   <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This item will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
-
+<div id="dialog-print" title="">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Print Pick Ticket?</p>
+</div>
+<div id="dialog-print-tickets" title="">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Print All Pick Tickets?</p>
+</div>
 
 <div id="header">
 	<h1>
@@ -85,7 +89,7 @@
 		?>
 	</div>
 <div id="content">
-
+	
 	<!-- Customer Banner -->
 	<div id="customer-banner" >
 		<fieldset class="fsCustomer" >
@@ -102,6 +106,10 @@
 <div id="rightCol">
 	<!-- Order Info -->
 	<div id="order-banner"></div>
+	<div style="float:left; width:300px">
+		<div id="notes-banner"></div>
+		<div id="print-banner"></div>
+	</div>
 </div>
 	
 <div class="Push"></div>	
@@ -147,6 +155,9 @@
 	<input type="hidden" id="customer_po" name="frm[customer_po]"  />
 	<input type="hidden" id="order_discount" name="frm[order_discount]" value="0" />
 	<input type="hidden" id="order_status" name="frm[order_status]" value="NEW" />
+	<input type="hidden" id="tax_rate" name="frm[tax_rate]" value="" />
+	<input type="hidden" id="special_instructions" name="frm[special_instructions]" value="" />
+
 </form>
 </body>
 </html>

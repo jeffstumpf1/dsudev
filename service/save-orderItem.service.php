@@ -22,6 +22,6 @@
 	// queryString
 	$mode = $request->getParam('mode');
 	
-	$order->UpdateOrderItem($_POST['frm'] , 'A' );
+	$order->UpdateOrderItem($_POST['frm'] , $mode );
 
 ?>

@@ -36,9 +36,19 @@
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
   	<script src="js/part.js"></script>
 <script>
+	// Selects Chains based on pitch
+	$(function () {
+		$("#radio").buttonset();
+		$cat='';
+		$("input[name='cat']").on("change", function () {
+			$cat = $(this).val();
+			$('#search').val($cat);
+			$('#frmActionCat').submit();
+		});
+
+	});    		
 
 </script>
-	
 </head>
 <body>
 
@@ -75,11 +85,33 @@
 				<input id="createSubmit" name="createSubmit" type="submit" value="Go" />
 			  </form>
 			</div>
-			<div id="searchBox">
-			  <form id="frmSearch">				
-				<input id="search" name="search" type="text" value="<?php echo $search ?>" />
-				<input type="submit" value="Search" />
-			</div>
+			
+		<div id="searchBox">
+			<form id="frmActionCat" method="get" action="<?php echo $_PHP_SELF?>">
+				<div id="radio">
+					<input id="r1" type="radio" class="radioPitch" name="cat" value="KT" />
+					<label for="r1">Chain Kits</label>
+					<input id="r2" type="radio" class="radioPitch" name="cat" value="FS" />
+					<label for="r2">Front Sprockets</label>
+					<input id="r3" type="radio" class="radioPitch" name="cat" value="RS" />
+					<label for="r3">Rear Sprockets</label>
+					<input id="r4" type="radio" class="radioPitch" name="cat" value="CH" />
+					<label for="r4">Chains</label>
+					<input id="r5" type="radio" class="radioPitch" name="cat" value="CR" />
+					<label for="r5">Carriers</label>
+					<input id="r6" type="radio" class="radioPitch" name="cat" value="RI" />
+					<label for="r6">Rims</label>
+					<input id="r7" type="radio" class="radioPitch" name="cat" value="OT" />
+					<label for="r7">Other</label>
+					
+				</div>
+				<input type="hidden" id="search" value="" name="search"/>
+			  </form>
+		  
+		  <form id="frmSearch">				
+			<input id="search" name="search" type="text" value="<?php echo $search ?>" />
+			<input type="submit" value="Search" />
+		</div>
 		</div>
 		<table id="partTable">
 			<tr>
@@ -109,7 +141,7 @@
 					case 'KT':
 						$page = 'kit.php';
 						break;
-					case 'OT':
+					case 'OT' || 'CR' || 'RI':
 						$page = "other.php";
 				}						
 	
@@ -123,7 +155,7 @@
 					<?php echo $row['part_number'] ?>
 				</td>
 				<td style="text-align:left;padding-left:1em;"> <!-- Description -->
-					<?php echo $row['part_description'] ?>
+					<?php echo stripslashes($row['part_description']) ?>
 				</td>
 				<td> <!-- Category -->
 					<?php echo $row['category_id'] ?>

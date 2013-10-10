@@ -2,7 +2,7 @@
 /** Save Customer Information, Ajax Call 
 	Passed the form data to the Customer Class
 **/
-	$debug = 'On';
+	$debug = 'Off';
 	require_once '../db/global.inc.php';
 	
 	function __autoload($class) {

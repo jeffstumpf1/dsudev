@@ -29,9 +29,9 @@
 	<legend>Customer Information [ #<?php echo $row['customer_number']?> ]</legend>
 	<p>				
 		<div class="kitSpacers">
-			<input id="customerDBA"  name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
+			<input id="customerDBA" size="30" name="frm[customerDBA]" type="text" value="<?php echo $row['dba']?>" />
 			<input type="button" id="editCustomer" value="Update"/>
-			<input type="checkbox" value="0" id="useBillingforShipping">&nbsp;Billing Address for Shipping
+			
 		</div>
 	</p>
 	<div class="custInfo">
@@ -41,18 +41,22 @@
 		<label><?php echo $row['email']?></label> 
 	</div>
 	<div class="custInfo">
+		<input type="checkbox" value="0" id="useBillingforShipping">Billing Address for Shipping</br>
 		<label><?php echo $row['billing_address']?></label><br/>
 		<label><?php echo $row['billing_city']?>, <?php echo $row['billing_state']?> <?php echo $row['billing_zip']?></label><br/>
 		<label>Phone:<?php echo $row['phone1']?> fax: <?php $row['fax']?></label><br/> 
 		<label>Discount: <?php echo $row['discount']?></label><label>%  Taxable: <?php echo $row['taxable']?></label>
 	</div>
-
+<!--
 	<div class="specialInstructions" >	
 		<p><label>Special Instructions</label></p>
-		<textarea rows="2" cols="75">Special instructions for this order.</textarea>
+		<textarea rows="3" cols="75" id="specialInstructions"></textarea>
 	</div>	
+-->
+	
 	<div class="group">
-	<input type="button" value="Create New Order" id="saveOrder"/>
+
+<input type="button" value="Create New Order" id="saveOrder"/> 
 	</div>
 	<input type="hidden" id="customer-discount" value="<?php echo $row['discount']?>"/>
 	<input type="hidden" id="customer-taxable" value="<?php echo $row['taxable']?>"/>

@@ -30,15 +30,25 @@
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/libs/jquery-1.8.1.min.js"><\/script>')</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+	
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
+
+  	<script src="js/customer.js"></script>
 	
 	<script>
 		$(function() {			
-			$( "#searchInput" ).live('mouseup', function() { $(this).select(); });
+			$( "#searchInput" ).on('mouseup', function() { $(this).select(); });
 		});
 	</script>
 </head>
 <body>
+<div id="dialog-confirm" title="">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This customer will be permanently deleted and cannot be recovered. Are you sure?</p>
+</div>
+
 <div id="wrapper">
 	<div id="header">
 		<h1>
@@ -81,8 +91,10 @@
 			
 			<tr class="row">
 				<td><!- Action -->
-					<a href="customer.php?customer_number=<?php echo $row['customer_number'];?>&status=E"><div class="actionEdit"></div></a>
-					<a href="customer.php?customer_id=<?php echo $row['customer_id'];?>&status=D"><div class="actionStatus"></div></a>
+					<a href="" ct="<?php echo $row['customer_number']?>" title="Edit Customer"><div class="actionEditCustomer"></div></a>
+					<a href="" class="delete" oid="<?php echo $row['customer_id'];?>" ct="<?php echo $row['customer_number']?>" title="Delete Customer"><div class="actionDeleteCustomer"></div></a>
+					<a href="order-list.php?customer=<?php echo $row['customer_number']?>" title="Customer Orders"><div class="customerOrder"></div></a>
+
 				</td>
 				<td> <!- Dealer Name -->
 					<?php echo $row['dba'];?>
@@ -107,5 +119,10 @@
 		Copyright © Site name, 20XX
 	</div>
 </div>
+<!-- Customer Update Dialog -->
+	<div id="dialog-customer" title="Customer Information">
+		<div id="customer"></div>
+	</div>
+
 </body>
 </html>

@@ -44,10 +44,6 @@ class Sprocket {
 	}
 
 
-
-
-
-
 	
 	/** Used for the JQuery Autocomplete box **/
 	public function SprocketAutoComplete($cat, $pitch, $search) {
@@ -82,6 +78,8 @@ class Sprocket {
 	
 	
 	function UpdateSprocket($formData, $recMode) {
+		
+		echo json_encode($formData);
 		
 		$productCategory = $formData['productCategory'];
 		$partNumber = $formData['partNumber'];

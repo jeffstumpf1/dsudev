@@ -2,7 +2,7 @@
 	/* Load chain chart based on pitch , Used in Ajax call
 	   select-chain.php
 	   
-	   /service/select-chain.service.php?pitch=520&part=DS520HRXK-12&chainLength=10
+	   /service/select-chain-chart.service.php?pitch=520&part=DS520HRXK-12&chainLength=10
 	*/
 	$debug = 'Off';
 	require_once '../db/global.inc.php';
@@ -37,13 +37,15 @@ echo  '<th style="text-align:right;">MSRP</th>';
 echo  '<th style="text-align:right;">Dealer Cost</th>';
 echo  '<th style="text-align:right;">Import Cost</th></tr>';
 	 while ($row = $rs->fetch()) {
-		 $idx++;	
-		 $val = $row['part_number'] .'-'. $idx. '|' . 
+		 //$idx++;	
+		 //$val = $row['part_number'] .'-'. $idx. '|' . 
+		 $val = $row['part_number'] . '|' . 
 		 	$utility->CalculateChainCost( $row['msrp'], $chainLength, '0') .':'. 
 		 	$utility->CalculateChainCost( $row['dealer_cost'], $chainLength, '0'). ':' . 
 		 	$utility->CalculateChainCost( $row['import_cost'], $chainLength, '0');
 
-	$find = $row['part_number'] .'-'. $idx;
+	//$find = $row['part_number'] .'-'. $idx;
+	$find = $row['part_number'];
 
 	$pos = strpos($part, $find);
 	$checked="";
@@ -54,13 +56,13 @@ echo  '<th style="text-align:right;">Import Cost</th></tr>';
 	}
 		
 	if($debug=='On') { 
-		echo "DEBUG - part:".$row['part_number'] .'-'. $idx.  " -> ". $part."<br>"; 
+		echo "DEBUG - part:".$row['part_number']  ." -> ". $part."<br>"; 
 		echo "Search:" .$search. " - " . "find: ". $find."<br>";		
 	}
 		
 echo  '<tr class="row">';
-echo  '<td><input type="radio" name="iCheck" value="'. $val . '"'. $checked. ' alt="'. $idx. '"/></td>';
-echo  '<td> <!-- Part Number -->'. $row['part_number'] . "-" . $idx . '</td>';
+echo  '<td><input type="radio" name="iCheck" value="'. $val . '"'. $checked. ' alt="'. $row['sequence']. '"/></td>';
+echo  '<td> <!-- Part Number -->'. $row['part_number'] . '-' . $row['sequence'].'</td>';
 echo  '<td style="text-align:left;"> <!-- Chain Description -->' . $row['part_description'].'</td>';
 echo  '<td style="text-align:right;"> <!-- MSRP -->'. $utility->CalculateChainCost( $row['msrp'], $chainLength, '$') . '</td>';
 echo  '<td style="text-align:right;"> <!-- Dealer Cost -->'. $utility->CalculateChainCost( $row['dealer_cost'], $chainLength, '$') . '</td>';

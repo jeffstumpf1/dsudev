@@ -63,6 +63,13 @@
     		$( "#exp1" ).datepicker();
     		$( "#exp2" ).datepicker();
 			$('#submitCustomer').remove();
+			
+			$("#copyAddress").click(function(event) {
+				$("#billingAddress").val( $("#address").val() );
+				$("#billingCity").val( $("#city").val() );
+				$("#billingState").val( $("#state").val() );
+				$("#billingZip").val( $("#zip").val() );
+			});
 		});
 		
   	</script

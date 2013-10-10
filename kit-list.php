@@ -8,7 +8,7 @@
 	
 	// Create Objects
 	$constants = new Constants;
-	$part = new part($debug, $db);
+	$part = new Part($debug, $db);
 	$request  = new Request;
 	$utility = new Utility($debug);
 	
