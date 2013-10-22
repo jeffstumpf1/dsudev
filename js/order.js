@@ -263,6 +263,7 @@ var $rs;
 			$('#h_cat').val('');
 			$('#frontSprocket').val('');
 			$('#rearSprocket').val('');
+			$('#carrier').val('');
 			$('#description').val('');
 			$('#application').val('');
 			$('#chainLength').val('');
@@ -392,6 +393,7 @@ var $rs;
 				$('#order_status').val('OPEN');
 				ShowOrderBanner( $.trim(data), $('#customer-taxable').val(), "OPEN" ); // off the banner itself
 				ShowNotesBanner( $.trim(data) );
+				ShowPrintBanner($.trim(data), $taxRate);
 				$("#dialog-orderItem").dialog("open");
 				//$('#h_status').val( 'A' );			  	
 			  },
@@ -505,6 +507,7 @@ var $rs;
 		//$('#chainLength').val( $oi.chain_length );
 		$('#msrp').val( $oi.msrp );
 		$('#qty').val( $oi.qty );
+		$('#bo-qty').val( $oi.bo_Qty);
 		$('#discount-price').val( $oi.discount_price );
 		$('#unit-price').val( $oi.unit_price );
 		$('#total').val( $oi.total );
@@ -560,6 +563,7 @@ var $rs;
 		$kit = new ChainKit(json);
 		$('#frontSprocket').val( $kit.frontSprocket_part_number );
 		$('#rearSprocket').val( $kit.rearSprocket_part_number );
+		$('#carrier').val( $kit.carrier_part_number );
 		$('#chainLength').val( $kit.chain_length );
 		$('#partNumber').val( $kit.part_number );
 		LoadChainChart( $oi.pitch_id, $kit.chain_length, $kit.chain_part_number);
@@ -588,11 +592,13 @@ var $rs;
 		this.part_number = obj.part_number;
 		this.frontSprocket_part_number = obj.frontSprocket_part_number;
 		this.rearSprocket_part_number = obj.rearSprocket_part_number;
+		this.carrier_part_number = obj.carrier_part_number;
 		this.description = obj.description;
 		this.application = obj.application;
 		this.chain_length = obj.chain_length;
 		this.msrp = obj.msrp;
 		this.qty = obj.qty;
+		this.bo_Qty = obj.bo_qty;
 		this.discount_price = obj.discount_price;
 		this.unit_price = obj.unit_price;
 		this.total = obj.total;
@@ -606,20 +612,24 @@ var $rs;
 		this.product_brand_id = obj.product_brand_id;
 		this.rearSprocket_part_number = obj.rearSprocket_part_number;
 		this.frontSprocket_part_number = obj.frontSprocket_part_number;
+		this.carrier_part_number = obj.carrier_part_number;
 		this.chain_length = obj.chain_length;
 		this.chain_part_number = obj.chain_part_number;
 		this.ch_price = obj.ch_price;
 		this.fs_price = obj.fs_price;
 		this.rs_price = obj.rs_price;
+		this.cr_price = obj.cr_price
 		this.clip_id = obj.clip_id;
 		
 		$('#h_fs').val( GetMSRPFromSTRING(this.fs_price) );
 		$('#h_rs').val( GetMSRPFromSTRING(this.rs_price) );
 		$('#h_ch').val( GetMSRPFromSTRING(this.ch_price) );
+		$('#h_misc').val( GetMSRPFromSTRING(this.cr_price) );
 	}
 
 
 	function GetMSRPFromSTRING($s) {
+		if(!$s) return;
 		var prices = []; 
 		var part = $s.split('|');
 		if(part[1]!="") {

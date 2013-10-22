@@ -11,6 +11,7 @@
 			$( "#chainLength").attr('disabled','disabled').val(1);
 			$('#fsPartNumber').attr('disabled','disabled').val('');
 			$('#rsPartNumber').attr('disabled','disabled').val('');
+			$('#crPartNumber').attr('disabled','disabled').val('');
 			$('#masterPartNumber').attr('style','width:35em;')
 			$('#stockLevel').val(0);
 			ResetForm();
@@ -18,6 +19,13 @@
 			if( $('#fs').val() != '') {UpdatePriceInChart( $('#fs').val(), 'FS');}
 			if( $('#rs').val() != '') {UpdatePriceInChart( $('#rs').val(), 'RS');}
 			if( $('#ch').val() != '') {UpdatePriceInChart( $('#ch').val(), 'CH');}
+			if( $('#cr').val() != '') {
+				UpdatePriceInChart( $('#cr').val(), 'CR');
+			} else {
+				$('#crMSRP').text(0);
+				$('#crDealer').text(0);
+				$('#crImport').text(0);
+			}
 			LoadChainChart( $('#pitch').val(), $('#chainLength').val(), $('#chainPartNumber').val() );    
 		}
 
@@ -44,6 +52,7 @@
 		$('#fs').val('');
 		$('#rs').val('');
 		$('#ch').val('');
+		$('#cr').val('');
 		$('#fsMSRP').text('0');
 		$('#fsDealer').text('0');
 		$('#fsImport').text('0');
@@ -141,6 +150,31 @@
 		}
   	});
   	
+
+	$('#crPartNumber').autocomplete({
+    // source: function() { return "GetState.php?country=" + $('#Country').val();},
+      source: function(request, response) {
+        $.ajax({
+          url: "service/auto-cr.service.php",
+               dataType: "json",
+          data: {
+            term : request.term,
+          },
+          success: function(data) {
+          	
+            response(data);
+          }
+        });
+      },
+    minLength: 2,
+    select: function( event, ui ) {
+		log( ui.item ?
+		"Selected: " + ui.item.value + " aka " + ui.item.id :
+		"Nothing selected, input was " + this.value );
+		$('#cr').val(ui.item.id);
+		part=UpdatePriceInChart(ui.item.id, 'CR');			// brings back part number in string
+		}
+  	});
 	 
 	 
 
@@ -156,6 +190,7 @@
 			$( '#chainLength' ).removeAttr('disabled'); 
 			$('#fsPartNumber').removeAttr('disabled');
  			$('#rsPartNumber').removeAttr('disabled');
+ 			$('#crPartNumber').removeAttr('disabled');
 			if( $('#chainLength').val()=='') { $('#chainLength').val(1); }
 			ResetForm();
 			LoadChainChart( $(this).val(), $('#chainLength').val() );
@@ -257,6 +292,12 @@
 					$('#clDealer').text(dealer);
 					$('#clImport').text(imp);	
 					break;
+				case 'CR':
+					$('#crMSRP').text(msrp);
+					$('#crDealer').text(dealer);
+					$('#crImport').text(imp);	
+					break;
+
 			}
 			UpdateTotalLines();
 		}
@@ -267,9 +308,9 @@
 
 	function UpdateTotalLines(){
 		// Update Total line
-		t1 = parseFloat($('#fsMSRP').text()) + parseFloat($('#rsMSRP').text()) + parseFloat($('#clMSRP').text());
-		t2 = parseFloat($('#fsDealer').text()) + parseFloat($('#rsDealer').text()) + parseFloat($('#clDealer').text());
-		t3 = parseFloat($('#fsImport').text()) + parseFloat($('#rsImport').text()) + parseFloat($('#clImport').text());
+		t1 = parseFloat($('#fsMSRP').text()) + parseFloat($('#rsMSRP').text()) + parseFloat($('#clMSRP').text()) + parseFloat($('#crMSRP').text());
+		t2 = parseFloat($('#fsDealer').text()) + parseFloat($('#rsDealer').text()) + parseFloat($('#clDealer').text()) + parseFloat($('#crDealer').text());
+		t3 = parseFloat($('#fsImport').text()) + parseFloat($('#rsImport').text()) + parseFloat($('#clImport').text()) + parseFloat($('#crImport').text());
 		t1 = parseFloat(t1).toFixed(2);
 		t2 = parseFloat(t2).toFixed(2);
 		t3 = parseFloat(t3).toFixed(2);

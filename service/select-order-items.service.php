@@ -38,6 +38,7 @@
 	<th style="text-align:center;">Length</th>
 	<th style="text-align:right;">MSRP</th>
 	<th style="text-align:center;">QTY</th>
+	<th style="text-align:center;">BO</th>
 	<th style="text-align:right;">Discount</th>
 	<th style="text-align:right;">Unit Price</th>
 	<th style="text-align:right;">Total</th>
@@ -78,6 +79,10 @@
 	<td style="text-align:center;"> 
 		<?php echo $row['qty'] ?>
 	</td>
+	<td style="text-align:center;"> 
+		<?php echo $row['bo_qty'] ?>
+	</td>
+
 	<td style="text-align:right;"> 
 		<?php echo $utility->NumberFormat($row['discount_price'],'$') ?>
 	</td>

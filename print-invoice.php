@@ -99,7 +99,7 @@ body {
 
 .labelSpan { padding:5px; margin: 5px; }
 #footer {position: fixed: bottom:0;}
-#logo {position: absolute; left:350px; top:0px; width:250px;}
+#logo {position: absolute; left:0px; top:0px; width:100px; display:none}
 
 </style>
 </head>
@@ -157,6 +157,7 @@ body {
 						<th width="55">RS</th>
 						<th width="30">LT</th>
 						<th width="25">QTY</th>
+						<th width="25">BO</th>
 						<?php if($code != 2) { ?>
 						<th style="text-align:right" width="50">MSRP</th>
 						<th style="text-align:right" width="50">COST</th>
@@ -173,6 +174,7 @@ body {
 						<td><?php echo $itemRow['rearSprocket_part_number']?></td>
 						<td><?php echo $itemRow['chain_length']?></td>
 						<td><?php echo $itemRow['qty']?></td>
+						<td><?php echo $itemRow['bo_qty']?></td>
 						<?php if($code != 2) { ?>
 							<td style="text-align:right"><?php echo $utility->NumberFormat($itemRow['msrp'],'')?></td>
 							<td style="text-align:right"><?php echo $utility->NumberFormat($itemRow['unit_price'],'')?></td>
@@ -188,8 +190,8 @@ body {
 					<tr><td style="border:none">&nbsp;</td></tr>
 
 					<tr>
-						<td colspan="6" cellpadding="5px" rowspan="4" 
-							style="border-top:1px solid #ccc;border-left:none;border-bottom:none;background-image:url(images/inv_banner_ghost.jpg);background-repeat:no-repeat; text-align:left;vertical-align:text-top;">
+						<td colspan="7" cellpadding="5px" rowspan="4" 
+							style="border-top:1px solid #ccc;border-left:none;border-bottom:none;text-align:left;vertical-align:text-top;">
 							<strong>Customer Notes: </strong></br><?php echo $orderRow['special_instructions']?> </td>
 						<td colspan="2" style="text-align:right; border-top:1px solid #ccc">Subtotal</td>
 						<td style="text-align:right; border-top:1px solid #ccc"><?php echo $utility->NumberFormat($total['subtotal'],'$')?></td>
@@ -205,7 +207,7 @@ body {
 				</tbody>
 				<tfoot>		
 					<tr>
-						<td colspan="6" style="border-left: none;border-bottom:none;">&nbsp;</td>
+						<td colspan="7" style="border-left: none;border-bottom:none;">&nbsp;</td>
 						<td colspan="2" style="background-color:#ccc; text-align:right">TOTAL:</td>
 						<td style="text-align:right"><?php echo $utility->NumberFormat($orderRow['order_total'],'$')?></td>
 					</tr>

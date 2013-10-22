@@ -32,11 +32,13 @@
 	$json .= $utilityDB->BuildJSONKeyValue($row,"part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"frontSprocket_part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"rearSprocket_part_number");
+	$json .= $utilityDB->BuildJSONKeyValue($row,"carrier_part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"description");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"application");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_length");		
 	$json .= $utilityDB->BuildJSONKeyValue($row,"msrp");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"qty");		
+	$json .= $utilityDB->BuildJSONKeyValue($row,"bo_qty");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"discount_price");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"unit_price");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"total");	

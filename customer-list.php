@@ -13,12 +13,15 @@
 	$request  = new Request;
 
 	// Get Query Parameters
-	$status  = $request->getParam('status','');
-	$recMode = $request->getParam('cat','');
-	$search  = $request->getParam('search','');
+	$status  = $request->getParam('status');
+	$recMode = $request->getParam('cat');
+	$search  = $request->getParam('search');
 
 	// Get Customers
-	$rs = $customer->ListCustomers($search);
+	if($search=='D' || $search=='R') {
+		$rs = $customer->ListCustomersByType($search);
+	} else
+		$rs = $customer->ListCustomers($search);
 ?>
 
 
@@ -41,6 +44,8 @@
 	<script>
 		$(function() {			
 			$( "#searchInput" ).on('mouseup', function() { $(this).select(); });
+			$('tr:odd').css({backgroundColor: '#efefef'});
+
 		});
 	</script>
 </head>

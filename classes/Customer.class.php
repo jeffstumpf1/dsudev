@@ -32,6 +32,24 @@ class Customer {
 
 	}
 	
+
+	public function ListCustomersByType($search) {
+		if( $search ) {
+			$sql = sprintf("select * from ". Constants::TABLE_CUSTOMER . " where rec_status=0 and customer_type='%s'", $search,'%'); 
+		}
+		
+		// fetch data
+		$rs = $this->db->query( $sql);  
+		if($this->debug=='On') {
+			echo "sql: " . $sql . "<br>";
+			print_r($rs);
+		}
+		
+		return $rs;
+
+	}
+
+
 	
 	public function GetCustomer($customer_number) {
 

@@ -35,6 +35,8 @@
 			
 			// Selects Chains based on pitch
 			$(function () {
+			$('tr:odd').css({backgroundColor: '#efefef'});
+
 			    $("#radio").buttonset();
 
 			    $("input[name='pitch']").on("change", function () {

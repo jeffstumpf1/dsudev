@@ -1,5 +1,5 @@
 <?php 
-    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+	require "inc/back-to-referer.inc.php";
     
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
@@ -98,25 +98,32 @@
 							<th nowrap>Import Cost</th>
 						</tr>
 						<tr>
-							<td width="25%" nowrap>Front Sprocket</td>
+							<td width="20%" nowrap>Front Sprocket</td>
 							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'')?></td>
 							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
 							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
 						</tr>
 						<tr>
-							<td width="25%">Rear Sprocket</td>
+							<td width="20%">Rear Sprocket</td>
 							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'0')?></td>
 							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
 							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
 						</tr>
 						<tr>
-							<td width="25%">Chain Length</td>
+							<td width="20%">Chain Length</td>
 							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'')?></td>
 							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
 							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
 						</tr>
 						<tr>
-							<td width="25%">Total</td>
+							<td width="20%">Carrier</td>
+							<td id="crMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'0')?></td>
+							<td id="crDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
+							<td id="crImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
+						</tr>
+						
+						<tr>
+							<td width="20%">Total</td>
 							<td id="totalMSRP" style="text-align:right"></td>
 							<td id="totalDealer" style="text-align:right"></td>
 							<td id="totalImport" style="text-align:right"></td>
@@ -130,7 +137,7 @@
 		<form id="formChainKit" name="formChainKit" method="post" >
 			<div class="group">
 				<div class="kitSpacers">
-					<label class="titleTop" style="margin-left:0">Chain Kit Part Number</label><br/>
+					<label class="titleTop" style="margin-left:0">Kit Part Number</label><br/>
 <?php
 include 'inc/part_logic.inc.php';
 ?>					
@@ -176,7 +183,10 @@ include 'inc/clip-list.inc.php';
 					<label  class="titleTop" for="chainLength">Chain Length</label><br/>
 					<input id="chainLength"  name="frm[chainLength]" type="text" value="<?php echo $row['chain_length']?>" />
 				</div>
-
+				<div class="kitSpacers">
+					<label  class="titleTop" for="crPartNumber">Carrier</label><br/>
+					<input id="crPartNumber"  name="frm[crPartNumber]" type="text" value="<?php echo $row['carrier_part_number']?>" />
+				</div>
 			</div>
 			<div class="group">
 			</div>
@@ -220,6 +230,7 @@ include 'inc/clip-list.inc.php';
 					<input type="hidden" id="fs" name="frm[fs]" value="<?php echo $row['fs_price']?>" />
 					<input type="hidden" id="rs" name="frm[rs]" value="<?php echo $row['rs_price']?>" />
 					<input type="hidden" id="ch" name="frm[ch]" value="<?php echo $row['ch_price']?>" />
+					<input type="hidden" id="cr" name="frm[cr]" value="<?php echo $row['cr_price']?>" />
 					<input type="hidden" id="productCategory" name="frm[productCategory]" value="KT" />
 					<input type="hidden" id="partID" name="frm[partID]" value="<?php echo $row['part_id']?>" />
 					<input type="hidden" id="kitID" name="frm[kitID]" value="<?php echo $row['chain_kit_id']?>" />

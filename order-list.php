@@ -53,6 +53,8 @@
 	<script>
 		$(function() {			
 			$( "#searchInput" ).on('mouseup', function() { $(this).select(); });
+			$('tr:odd').css({backgroundColor: '#efefef'});
+
 		});
 	</script>
 </head>

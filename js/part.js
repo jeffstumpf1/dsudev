@@ -131,11 +131,11 @@ var $rs;
 	});
 	
 	
-	$(document).on('focus.autocomplete','#miscPartNumber', function(event) {
+	$(document).on('focus.autocomplete','#carrier', function(event) {
 		$(this).autocomplete({ 
 		  source: function(request, response) {
 			$.ajax({
-			  url: "service/auto-part.service.php",
+			  url: "service/auto-cr.service.php",
 				   dataType: "json",
 			  data: {
 				term : request.term
@@ -148,7 +148,7 @@ var $rs;
 		minLength: 2,
 		select: function( event, ui ) { 
 		event.preventDefault();
-		$('#miscPartNumber').val(ui.item.value);
+		$('#carrier').val(ui.item.value);
 		$('#h_misc').val( GetMSRPFromSTRING(ui.item.id) );
 		CalculateKitItem();
 		} 
@@ -198,6 +198,7 @@ var $rs;
 		$kit = new ChainKit(json);
 		$('#frontSprocket').val( $kit.frontSprocket_part_number );
 		$('#rearSprocket').val( $kit.rearSprocket_part_number );
+		$('#carrier').val( $kit.carrier_part_number );
 		$('#chainLength').val( $kit.chain_length );
 		$('#partNumber').val( $kit.part_number );
 		LoadChainChart( $mp.pitch_id, $kit.chain_length, $kit.chain_part_number);
@@ -315,10 +316,11 @@ var $rs;
 		ch_price = parseFloat( $('#h_ch').val() );
 		fs_price = parseFloat( $('#h_fs').val() );
 		rs_price = parseFloat( $('#h_rs').val() );
+		cr_price = parseFloat( $('#h_misc').val() );
 		
 		if(disc == '') disc=1;
 		
-		msrp = ch_price  + fs_price + rs_price;
+		msrp = ch_price  + fs_price + rs_price + cr_price;
 		total = (qty * msrp) - ( qty * msrp * disc) / 100;		
 		price = msrp - msrp * disc /100;
 		savedPrice = msrp - price;
@@ -432,20 +434,25 @@ var $rs;
 		this.product_brand_id = obj.product_brand_id;
 		this.rearSprocket_part_number = obj.rearSprocket_part_number;
 		this.frontSprocket_part_number = obj.frontSprocket_part_number;
+		this.carrier_part_number = obj.carrier_part_number;
+		
 		this.chain_length = obj.chain_length;
 		this.chain_part_number = obj.chain_part_number;
 		this.ch_price = obj.ch_price;
 		this.fs_price = obj.fs_price;
 		this.rs_price = obj.rs_price;
+		this.cr_price = obj.cr_price;
 		this.clip_id = obj.clip_id;
 		
 		$('#h_fs').val( GetMSRPFromSTRING(this.fs_price) );
 		$('#h_rs').val( GetMSRPFromSTRING(this.rs_price) );
 		$('#h_ch').val( GetMSRPFromSTRING(this.ch_price) );
+		$('#h_misc').val( GetMSRPFromSTRING(this.cr_price) );
 	}
 
 
 	function GetMSRPFromSTRING($s) {
+		if(!$s) return;
 		var prices = []; 
 		var part = $s.split('|');
 		if(part[1]!="") {

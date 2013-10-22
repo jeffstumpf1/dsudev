@@ -30,10 +30,12 @@
 	$json .= $utilityDB->BuildJSONKeyValue($row,"product_brand_id");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"frontSprocket_part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"rearSprocket_part_number");	
+	$json .= $utilityDB->BuildJSONKeyValue($row,"carrier_part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_length");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"ch_price");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"rs_price");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"fs_price");	
+	$json .= $utilityDB->BuildJSONKeyValue($row,"cr_price");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_part_number");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"clip_id");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"rec_status");

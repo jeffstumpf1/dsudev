@@ -76,6 +76,8 @@ class Kit {
 		// Kit
 		$fsPartNumber = $formData['fsPartNumber'];
 		$rsPartNumber= $formData['rsPartNumber'];
+		$crPartNumber= $formData['crPartNumber'];
+	
 		$brand = $formData['brand'];	
 		$clip = $formData['clip']; 
 		$chainLength= 0 + $formData['chainLength'];
@@ -86,16 +88,17 @@ class Kit {
 		$fsPrice = $formData['fs'];
 		$rsPrice = $formData['rs'];
 		$chPrice = $formData['ch'];
+		$crPrice = $formData['cr'];
 		$chainPartNumber = $formData['chainPartNumber'];
 		
 		if( strtolower($recMode) == "e") {
 			$sqlPartMaster = "UPDATE ". Constants::TABLE_PART. " SET part_number='". $partNumber ."', part_description='". $partDescription."',part_application='". $partApplication. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', pitch_id='". $pitch ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
-			$sqlKit = "UPDATE ". Constants::TABLE_CHAIN_KIT. " SET part_number='". $partNumber ."', category_id='". $productCategory ."', product_brand_id='".  $brand  ."', frontSprocket_part_number='" . $fsPartNumber  ."',rearSprocket_part_number='". $rsPartNumber . "', chain_length=". $chainLength .", clip_id='". $clip ."', ch_price='". $chPrice. "', fs_price='". $fsPrice. "', rs_price='". $rsPrice. "', chain_part_number='". $chainPartNumber ."' WHERE chain_kit_id=". $kitID;			
+			$sqlKit = "UPDATE ". Constants::TABLE_CHAIN_KIT. " SET part_number='". $partNumber ."', category_id='". $productCategory ."', product_brand_id='".  $brand  ."', frontSprocket_part_number='" . $fsPartNumber  ."',rearSprocket_part_number='". $rsPartNumber ."',carrier_part_number='". $crPartNumber ."', chain_length=". $chainLength .", clip_id='". $clip ."', ch_price='". $chPrice. "', fs_price='". $fsPrice. "', rs_price='". $rsPrice."', cr_price='". $crPrice. "', chain_part_number='". $chainPartNumber ."' WHERE chain_kit_id=". $kitID;			
 		}
 		
 		if( strtolower($recMode) == "a") {
 			$sqlPartMaster = "INSERT INTO ". Constants::TABLE_PART ."(part_number, part_description, part_application, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."','".$partApplication."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
-			$sqlKit = "INSERT INTO ". Constants::TABLE_CHAIN_KIT. "(part_number, category_id, product_brand_id, frontSprocket_part_number, rearSprocket_part_number, chain_length, ch_price, rs_price, fs_price, chain_part_number, clip_id) VALUES ('". $partNumber ."','". $productCategory. "','". $brand ."','". $fsPartNumber ."','" . $rsPartNumber. "',". $chainLength. ",'". $chPrice. "','". $rsPrice ."','". $fsPrice."','". $chainPartNumber. "','". $clip. "')";		
+			$sqlKit = "INSERT INTO ". Constants::TABLE_CHAIN_KIT. "(part_number, category_id, product_brand_id, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number,chain_length, ch_price, rs_price, fs_price, cr_price, chain_part_number, clip_id) VALUES ('". $partNumber ."','". $productCategory. "','". $brand ."','". $fsPartNumber ."','" . $rsPartNumber. "','" . $crPartNumber. "',". $chainLength. ",'". $chPrice. "','". $rsPrice ."','". $fsPrice."','". $crPrice."','". $chainPartNumber. "','". $clip. "')";		
 		}
 
 		//Process Master part

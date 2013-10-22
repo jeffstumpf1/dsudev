@@ -1,7 +1,7 @@
 <?php 
-    //if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
+	require "inc/back-to-referer.inc.php";
     
-	$debug = 'On';
+	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	
 	function __autoload($class) {
@@ -10,7 +10,7 @@
 	
 	// Create Object Customer and Request
 	$constants = new Constants;
-	$sprocket = new Other($debug, $db);
+	$other = new Other($debug, $db);
 	$request  = new Request;
 	$utilityDB = new UtilityDB($debug, $db);
 	$utility  = new Utility($debug);
@@ -26,15 +26,15 @@
 	// Was form Submitted?
 	if ($action) {
 		if($recMode == "E" || $recMode == "A") {
-			$sprocket->UpdateOther( $_POST['frm'], $recMode );
+			$other->UpdateOther( $_POST['frm'], $recMode );
 		} else if ($recMode == "D") {
-			$sprocket->UpdateOtherStatus($_POST['frm']);
+			$other->UpdateOtherStatus($_POST['frm']);
 		}		
 	}
 
 	if ($recMode == "E"){
 		// Get Info and Display
-		$row = $sprocket->GetOther($part_id, $cat);
+		$row = $other->GetOther($part_id, $cat);
 	}
 
 	// Setup the case
@@ -118,6 +118,15 @@ include 'inc/part_logic.inc.php';
 						<input id="size" name="frm[size]" type="text" value="<?php echo $row['sprocket_size']?>"/>
 					</tr>
 				</tr>  -->
+				<tr>
+					<td>
+						<label>Application</label>
+					</td>
+					<td colspan="3">
+						<input id="partApplication" name="frm[partApplication]" type="text" value="<?php echo $row['part_application']?>"/>
+					</tr>
+				</tr>
+				
 				<tr>
 					<td>
 						<label>Description</label>

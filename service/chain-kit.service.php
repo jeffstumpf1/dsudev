@@ -30,6 +30,10 @@ include 'inc/pitch-list.inc.php';
 					<label  class="titleTop" for="chainLength">Chain Length</label><br/>
 					<input id="chainLength"  name="frm[chainLength]" type="text" value="<?php echo $row['chain_length']?>" />
 				</div>
+				<div class="kitSpacers">
+					<label  class="titleTop" for="crPartNumber">Carrier</label><br/>
+					<input id="crPartNumber"  name="frm[crPartNumber]" type="text" value="<?php echo $row['carrier_part_number']?>" />
+				</div>
 
 			</div>
 			<div class="group">

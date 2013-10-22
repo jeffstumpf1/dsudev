@@ -388,6 +388,7 @@ class Order {
 		$category = $formData['h_cat'];
 		$fs = $formData['frontSprocket'];
 		$rs = $formData['rearSprocket'];
+		$cr = $formData['carrier'];
 		$description = addslashes($formData['description']);
 		$application = addslashes($formData['application']);
 		$chainLength = $formData['chainLength'];
@@ -395,6 +396,7 @@ class Order {
 		
 		$msrp = $formData['msrp'];
 		$qty = $formData['qty'];
+		$boQty = $formData['bo-qty'];
 		$discountPrice = $formData['discount-price'];
 		$unitPrice = $formData['unit-price'];
 		$total = $formData['total'];
@@ -409,11 +411,11 @@ class Order {
 		}
 				
 		if( strtolower($recMode) == "e") {
-			$sql = "UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET pitch_id=".$pitch.",order_number='".$orderNumber."', discount=". $discount.",category_id='".$category."', part_number='".$partNumber."', frontSprocket_part_number='". $fs. "', rearSprocket_part_number='". $rs. "',description='".$description."',application='".$application."',chain_length=". $chainLength.",msrp=".$msrp.",qty=".$qty.",discount_price=".$discountPrice.",unit_price=".$unitPrice.",total=".$total." where order_item_id=".$id;
+			$sql = "UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET bo_qty=". $boQty. ",pitch_id=".$pitch.",order_number='".$orderNumber."', discount=". $discount.",category_id='".$category."', part_number='".$partNumber."', frontSprocket_part_number='". $fs. "', rearSprocket_part_number='". $rs. "', carrier_part_number='". $cr. "',description='".$description."',application='".$application."',chain_length=". $chainLength.",msrp=".$msrp.",qty=".$qty.",discount_price=".$discountPrice.",unit_price=".$unitPrice.",total=".$total." where order_item_id=".$id;
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sql = "INSERT INTO ". Constants::TABLE_ORDER_ITEMS . " (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, description, application, chain_length, msrp, qty, discount_price, unit_price, total) VALUES (".$pitch.",'".$orderNumber. "',".$discount.",'". $category. "','".$partNumber."','".$fs."','". $rs ."','". $description."','".$application."',". $chainLength.",". $msrp. ",". $qty. ",". $discountPrice . ",". $unitPrice. ",". $total. ")";
+			$sql = "INSERT INTO ". Constants::TABLE_ORDER_ITEMS . " (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (".$pitch.",'".$orderNumber. "',".$discount.",'". $category. "','".$partNumber."','".$fs."','". $rs. "','". $cr ."','". $description."','".$application."',". $chainLength.",". $msrp. ",". $qty. ",". $discountPrice . ",". $boQty. ",". $unitPrice. ",". $total. ")";
 		}
 		
 		$cmd = $this->db->query( $sql );

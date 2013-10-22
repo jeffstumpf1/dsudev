@@ -52,6 +52,7 @@ class Other {
 		$size = $formData['size'];	
 		$stockLevel = $formData['stockLevel'];
 		$partDescription = addslashes($formData['partDescription']); 	
+		$partApplication = addslashes($formData['partApplication']); 
 		$msrp = $formData['msrp'];   
 		$dealerCost = $formData['dealerCost'];
 		$importCost = $formData['importCost'];
@@ -60,11 +61,11 @@ class Other {
 		$partApplication=addslashes($formData['partApplication']);
 
 		if( strtolower($recMode) == "e") {
-			$sqlPartMaster = "UPDATE ". Constants::TABLE_PART. " SET part_number='". $partNumber ."', part_description='". $partDescription. "', stock_level=". $stockLevel .", category_id='". $productCategory ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
+			$sqlPartMaster = "UPDATE ". Constants::TABLE_PART. " SET part_number='". $partNumber ."', part_description='". $partDescription. "', part_application='". $partApplication."', stock_level=". $stockLevel .", category_id='". $productCategory ."', msrp=". $msrp .", dealer_cost=". $dealerCost .", import_cost=". $importCost ." WHERE part_id=". $partID;
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sqlPartMaster = "INSERT INTO ". Constants::TABLE_PART ."(part_number, part_description, stock_level, category_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription."',". $stockLevel .",'". $productCategory ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
+			$sqlPartMaster = "INSERT INTO ". Constants::TABLE_PART ."(part_number, part_description, part_application, stock_level, category_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription."','". $partApplication."',". $stockLevel .",'". $productCategory ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
 		}
 				
 		

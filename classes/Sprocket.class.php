@@ -103,7 +103,7 @@ class Sprocket {
 		
 		if( strtolower($recMode) == "a") {
 			$sqlPartMaster = "INSERT INTO ". Constants::TABLE_PART ."(part_number, part_description, part_application, stock_level, category_id, pitch_id, msrp, dealer_cost, import_cost) VALUES ('". $partNumber ."','". $partDescription ."','".$partApplication."',". $stockLevel .",'". $productCategory ."','". $pitch ."'," .$msrp .",". $dealerCost .",". $importCost .")";			
-			$sqlSprocket = "INSERT INTO ". Constants::TABLE_SPROCKET. "(part_number, category_id, sprocket_notes, sprocket_size) VALUES ('". $partNumber ."','". $productCategory. "','". $notes ."',". $size .")";			
+			$sqlSprocket = "INSERT INTO ". Constants::TABLE_SPROCKET. "(part_number, category_id, sprocket_notes) VALUES ('". $partNumber ."','". $productCategory. "','". $notes ."')";			
 		}
 				
 		

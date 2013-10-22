@@ -1,6 +1,7 @@
 <?php 
-    if ( isset($_POST['formAction']) ) { header("Location: part-list.php"); }
-    
+
+	require "inc/back-to-referer.inc.php";
+      
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	

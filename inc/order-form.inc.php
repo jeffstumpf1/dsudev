@@ -48,7 +48,7 @@
 				<label for="chainLength">Length</label><br/>
 				<input class="calculate" id="chainLength" name="frm[chainLength]" type="text" value="0" size="5"/>
 			</div>
-			<!--
+<!--
 			<div class="kitSpacers">
 				<label for="clip">Clip</label><br/>
 				<select id="clip">
@@ -56,14 +56,13 @@
 				    <option>R/C</option>
 				</select>
 			</div>
-			
+-->			
 			<div class="kitSpacers">
 				<div class="ui-widget">
-					<label for="clip">Misc Part#</label><br/>
-					<input class="" id="miscPartNumber" name="frm[miscPartNumber]" type="text" value="0" size="25"/>
+					<label for="carrier">Carrier</label><br/>
+					<input class="" id="carrier" name="frm[carrier]" type="text" value="" size="25"/>
 				</div>
 			</div>
-			-->
 		</div>
 
 
@@ -98,6 +97,11 @@
 				<label for="qty">Qty</label><br/>
 				<input class="calculate" id="qty" name="frm[qty]" type="text" value="1" size="5"/>
 			</div>
+			<div class="kitSpacers">
+				<label for="bo-qty">BO Qty</label><br/>
+				<input class="" id="bo-qty" name="frm[bo-qty]" type="text" value="0" size="5"/>
+			</div>
+			
 			<div class="kitSpacers">
 				<label for="save-price" >Discount</label><br/>
 				<input class="nocalculate" id="discount-price" name="frm[discount-price]" type="text"  value="0.00" size="10" style="text-align:right"/>
