@@ -316,8 +316,13 @@ var $rs;
 		ch_price = parseFloat( $('#h_ch').val() );
 		fs_price = parseFloat( $('#h_fs').val() );
 		rs_price = parseFloat( $('#h_rs').val() );
-		cr_price = parseFloat( $('#h_misc').val() );
 		
+		cr_price = parseFloat( $('#h_misc').val() );
+		if (!cr_price) cr_price=0;
+		if (!rs_price) rs_price=0;
+		if (!fs_price) fs_price=0;
+		if (!ch_price) ch_price=0;
+
 		if(disc == '') disc=1;
 		
 		msrp = ch_price  + fs_price + rs_price + cr_price;
@@ -376,6 +381,11 @@ var $rs;
 	// Dynamically generated code from ajax call
 	 $('#chainChart').on('ifClicked', '#chainChartTable input', function(event) {
 	 	var part = $(this).val();
+	 	var desc = $(this).attr('di');
+	 	var oldDesc = $('#description').val();
+	 	var idx = oldDesc.indexOf('W/') +2 ;
+	 	$('#description').val( oldDesc.substr(0,idx) + desc );
+	 	
 	 	$('#h_ch').val( GetMSRPFromSTRING(part) );						// saves part in form
 		CalculateKitItem();	
 			

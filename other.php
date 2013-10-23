@@ -123,7 +123,7 @@ include 'inc/part_logic.inc.php';
 						<label>Application</label>
 					</td>
 					<td colspan="3">
-						<input id="partApplication" name="frm[partApplication]" type="text" value="<?php echo $row['part_application']?>"/>
+						<textarea id="partApplication" name="frm[partApplication]" ><?php echo $row['part_application']?></textarea>
 					</tr>
 				</tr>
 				
@@ -132,7 +132,7 @@ include 'inc/part_logic.inc.php';
 						<label>Description</label>
 					</td>
 					<td colspan="3">
-						<input id="partDescription" name="frm[partDescription]" type="text" value="<?php echo $row['part_description']?>"/>
+						<textarea id="partDescription" name="frm[partDescription]" ><?php echo $row['part_description']?></textarea>
 					</tr>
 				</tr>
 				<tr>

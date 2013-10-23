@@ -69,7 +69,9 @@ body {
 }
 
 
-#ds { position: absolute; margin:0; padding:0em; Top:0; left:0; }
+#ds { position: absolute; margin:0; padding:0em; Top:0; left:0;   font-family: Verdana,Arial,sans-serif;
+   font-size:14px; font-weight: bold;
+ }
 #custInfo {position:absolute; margin:0 padding:1em; top: 210px; left:0px; border:1px solid #ccc;padding: 0px; }
 #invInfo {position:absolute; margin:0 padding:1em; top: 40px; right:0px;}
 #billTo {position:absolute; margin:0 padding:1em; top: 130px; left:0px; border:1px solid #ccc;padding: 0px;}
@@ -79,7 +81,7 @@ body {
 
 #items{
 	width: 100%;
-	font: 10px Verdana, Arial, Helvetica, sans-serif;
+	font: 8px Verdana, Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	margin-left:auto;
 	margin-right:auto;

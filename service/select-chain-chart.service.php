@@ -61,7 +61,7 @@ echo  '<th style="text-align:right;">Import Cost</th></tr>';
 	}
 		
 echo  '<tr class="row">';
-echo  '<td><input type="radio" name="iCheck" value="'. $val . '"'. $checked. ' alt="'. $row['sequence']. '"/></td>';
+echo  '<td><input type="radio" name="iCheck" value="'. $val . '"'. $checked. ' alt="'. $row['sequence']. '" di="'.$row['part_description'].'" /></td>';
 echo  '<td> <!-- Part Number -->'. $row['part_number'] . '-' . $row['sequence'].'</td>';
 echo  '<td style="text-align:left;"> <!-- Chain Description -->' . $row['part_description'].'</td>';
 echo  '<td style="text-align:right;"> <!-- MSRP -->'. $utility->CalculateChainCost( $row['msrp'], $chainLength, '$') . '</td>';

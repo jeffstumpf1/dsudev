@@ -72,6 +72,11 @@
 	// Dynamically generated code from ajax call
 	 $('#chainChart').on('ifClicked', '#chainChartTable input', function(event) {
 	 	var part = $(this).val();
+	 	var desc = $(this).attr('di');
+	 	var oldDesc = $('#notes').text();
+	 	var idx = oldDesc.indexOf('W/') +2 ;
+	 	$('#notes').text( oldDesc.substr(0,idx) + desc );
+	 	
 	 	$('#ch').val( part );						// saves part in form
 		partNumber = UpdatePriceInChart($(this).val(), 'CH');	
 		$('#chainPartNumber').val( partNumber+'-'+ $(this).attr('alt'));
