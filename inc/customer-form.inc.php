@@ -1,3 +1,4 @@
+<?php include 'form-validation.inc.php'; ?>
 	
 	 <form id="formCustomer" method="post" >
 			<table id="tableCustomerMaint" align="center">

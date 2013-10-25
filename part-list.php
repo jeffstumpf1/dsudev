@@ -57,7 +57,9 @@
 <div id="dialog-confirm" title="">
   <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>This part will be permanently deleted and cannot be recovered. Are you sure?</p>
 </div>
-
+<div id="dialog-print" title="">
+  <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Print Pick Ticket?</p>
+</div>
 <div id="wrapper">
 	<div id="header">
 		<h1>
@@ -188,5 +190,20 @@
 		Copyright © Site name, 20XX
 	</div>
 </div>
+
+<div id="dialog-ticket" >
+	 <script>
+		$(function() {
+			var spinner = $( "#ticketNumber" ).spinner();
+		});
+	</script>
+	<form id="frmticket">
+		<p align="center">
+			<label for="ticketNumber">Number of Tickets to print:</label>
+			<input id="ticketNumber" name="value" value="1" style="width:25px;"/>
+		</p>
+	</form>
+</div>
+
 </body>
 </html>

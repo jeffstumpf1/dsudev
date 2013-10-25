@@ -26,6 +26,51 @@ var $rs;
 		 	  $("#createSubmit").attr('disabled','disabled');  
 		});
 
+
+
+	$(document).on('click', '.printPartTicket', function(event) {
+		event.preventDefault();
+		$partNumber = $(this).parent().attr('oid');
+		$category_id = $(this).parent().attr('ocat');
+		$title = "Print Part Pick Ticket(s)";
+		$( "#dialog-ticket" ).dialog({
+		  resizable: false,
+		  height:200,
+		  modal: true,
+		  title: $title,
+		  buttons: {
+			"Print Ticket": function() {
+			  $( this ).dialog( "close" );
+			  $ticketNumber = $('#ticketNumber').val();
+			  PrintPartPickTicket($partNumber, $category_id, $ticketNumber);
+			},
+			Cancel: function() {
+			  $( this ).dialog( "close" );
+			}
+		  }
+		});
+		
+	});
+
+
+	function PrintPartPickTicket($partNumber, $category_id, $ticketNumber) {
+	$.ajax({ 
+		  type: 'POST',
+		  url: 'labelprint/print-part-ticket.service.php',
+		  data: { part_number: $partNumber, category_id: $category_id, ticket_number: $ticketNumber },
+		  beforeSend:function(){
+			// load a temporary image in a div
+		  },
+		  success:function(data){
+		  	//alert( data );
+			window.open(data,'Pick Ticket','_BLANK','height=400,location=no,width=350','replace=true');
+		  },
+		  error:function(){
+			alert('Error: Ticket Not Printed');
+		  }
+		});
+	}
+
 		
 	$('input.calculate').keypress(function(event) {
 		
