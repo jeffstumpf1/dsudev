@@ -8,7 +8,7 @@
 	require_once '../db/global.inc.php';
 	// Logging
 	include '../log4php/Logger.php';
-	Logger::configure('../log4php/config.xml');
+	Logger::configure('../logconfig.xml');
 	$log = Logger::getLogger('myLogger');
  
  
@@ -39,8 +39,7 @@
 
 	if($category=='KT') {
 		$log->debug("ListKits(".$part_number.")");
-		$rs = $part->ListKits( $part_number );
-		$row=$rs->fetch();
+		$row = $part->GetKit( $part_number );
 	} else {
 		$log->debug("GetMasterPartByPartNumber(".$part_number.")");
 		$row = $part->GetMasterPartByPartNumber( $part_number );

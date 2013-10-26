@@ -19,7 +19,7 @@
 			if( $('#fs').val() != '') {UpdatePriceInChart( $('#fs').val(), 'FS');}
 			if( $('#rs').val() != '') {UpdatePriceInChart( $('#rs').val(), 'RS');}
 			if( $('#ch').val() != '') {UpdatePriceInChart( $('#ch').val(), 'CH');}
-			if( $('#cr').val() != '') {
+			if( $('#cr').val() != '0') {
 				UpdatePriceInChart( $('#cr').val(), 'CR');
 			} else {
 				$('#crMSRP').text(0);

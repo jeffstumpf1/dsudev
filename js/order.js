@@ -7,7 +7,8 @@ var $kit;
 var $fs;
 var $rs;
  $(function() {	
- 
+ 	
+ 	
  	// Initialize
 	$.urlParam = function(name){
 		var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);

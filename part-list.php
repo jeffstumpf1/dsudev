@@ -1,10 +1,15 @@
 <?php 
 	$debug = 'Off';
+	include('log4php/Logger.php');
+	Logger::configure('logconfig.xml');
+
+	spl_autoload_register(function ($class) {
+		include 'classes/' . $class . '.class.php';
+	 });
+
 	require_once 'db/global.inc.php';
 	
-	function __autoload($class) {
-		include 'classes/' . $class . '.class.php';
-	}
+	
 	
 	// Create Objects
 	$constants = new Constants;

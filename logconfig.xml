@@ -6,8 +6,25 @@
     	</layout>
     	<param name="file" value="logs/default.log" />
     </appender>
-     
-    <logger name="Foo">
+    <logger name="Orders">
+    	<appender_ref ref="myFileAppender" />
+    </logger>
+    <logger name="OrderItem">
+    	<appender_ref ref="myFileAppender" />
+    </logger>
+    <logger name="Part">
+    	<appender_ref ref="myFileAppender" />
+    </logger>
+    <logger name="Sprocket">
+    	<appender_ref ref="myFileAppender" />
+    </logger>
+    <logger name="Kit">
+    	<appender_ref ref="myFileAppender" />
+    </logger>
+    <logger name="Chain">
+    	<appender_ref ref="myFileAppender" />
+    </logger>
+    <logger name="Other">
     	<appender_ref ref="myFileAppender" />
     </logger>
     <root>

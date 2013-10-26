@@ -8,6 +8,7 @@
  	$('#createOrderItem').attr('disabled');  // order banner form
 	$('#saveOrder').attr('disabled');  // order banner form
 
+	// Get Values passed in on edits
 	$.urlParam = function(name){
 		var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
 		if (!results)
@@ -98,10 +99,15 @@
 	// Save Customer Handler
 	$(document).on('click', '#submitCustomer', function(event) {
 		event.preventDefault();
-		//alert('*');
-		SaveCustomer( $('#cust_id').val());	// hidden field
-		$('#dialog-customer').dialog('close');
-		ShowCustomerBanner ( $('#cust_number').val() );
+		if( !$("#formCustomer").validationEngine('validate') ) {
+			//errors
+			
+		} else {
+			// validates
+			SaveCustomer( $('#cust_id').val());	// hidden field
+			$('#dialog-customer').dialog('close');
+			ShowCustomerBanner ( $('#cust_number').val() );
+		}
 	});
 	
 	

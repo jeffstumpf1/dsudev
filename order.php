@@ -48,9 +48,8 @@
 	<script src="ui/jquery.ui.dialog.js"></script>
 	<script src="ui/jquery.ui.autocomplete.js"></script>	
 	<script src="ui/jquery.ui.datepicker.js"></script>
-
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
-	
+	<script src="js/jquery.printPage.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/customer.js"></script>
 	<script type="text/javascript" src="js/order.js"></script>  
 	<script type="text/javascript" src="js/part.js"></script>  
@@ -62,6 +61,7 @@
 	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
 	
 
+	
 </head>
 
 

@@ -1,5 +1,5 @@
-<?php include 'form-validation.inc.php'; ?>
-	
+
+
 	 <form id="formCustomer" method="post" >
 			<table id="tableCustomerMaint" align="center">
 				<tr>
@@ -114,7 +114,7 @@
 						<label>email</label>
 					</td>
 					<td colspan="3">
-						<input id="email" name="frm[email]" type="text" value="<?php echo $row['email'];?>"/>
+						<input class="validate[required,custom[email]]" id="email" name="frm[email]" type="text" value="<?php echo $row['email'];?>"/>
 					</td>
 				</tr>
 				<tr>
