@@ -5,6 +5,7 @@ class Order {
 	
 	public $debug='Off';
 	private $db;
+	private $log;
 		
 	private $ORDER_NUMBER='';
 	private $po_number='';
@@ -29,8 +30,45 @@ class Order {
     	if($this->debug=='On') {
         	echo 'The class "', __CLASS__, '" was initiated!<br />';  
         }
+        
+        try {
+        	$this->log = Logger::getLogger(__CLASS__);
+			$this->Log('The class "'. __CLASS__. '" was initiated!');
+
+		}
+			catch(Exception $e) {
+    		echo error($e->getMessage());
+		}
+
     }  
+
+	/** Logger can be used from any member method. */
+    public function Log($msg, $level=null) {
+    	$level = isset($level) ? $level : 'i';
+    	switch (strtolower( $level )) {
+    		case 't':
+    			$this->log->trace($msg);
+    			break;
+    		case 'd':
+    			$this->log->debug($msg);
+    			break;
+    		case 'i':
+    			$this->log->info($msg);
+    			break;
+    		case 'w':
+    			$this->log->warn($msg);
+    			break;
+    		case 'e':
+    			$this->log->error($msg);
+    			break;
+    		case 'f':
+    			$this->log->fatal($msg);
+    			break;
+    	}
+	}
 	
+
+
 	
 	public function GetActiveOrderNumber() {
 		return $this->ORDER_NUMBER;
@@ -101,6 +139,8 @@ class Order {
 
 	public function GetOrderItem($order_item_id) {
 		$sql = sprintf( "Select * from ". Constants::TABLE_ORDER_ITEMS ." where order_number <> '' and order_item_id=%s", $order_item_id);		
+		$this->Log(__METHOD__);
+		$this->Log($sql);
 		
 		// fetch data
 		$rs = $this->db->query( $sql);
@@ -389,11 +429,12 @@ class Order {
 		$fs = $formData['frontSprocket'];
 		$rs = $formData['rearSprocket'];
 		$cr = $formData['carrier'];
+
 		$description = addslashes($formData['description']);
 		$application = addslashes($formData['application']);
 		$chainLength = $formData['chainLength'];
 		if($chainLength=='') $chainLength=0;
-		
+		$chain = $formData['h_chain'];
 		$msrp = $formData['msrp'];
 		$qty = $formData['qty'];
 		$boQty = $formData['bo-qty'];
@@ -411,12 +452,14 @@ class Order {
 		}
 				
 		if( strtolower($recMode) == "e") {
-			$sql = "UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET bo_qty=". $boQty. ",pitch_id=".$pitch.",order_number='".$orderNumber."', discount=". $discount.",category_id='".$category."', part_number='".$partNumber."', frontSprocket_part_number='". $fs. "', rearSprocket_part_number='". $rs. "', carrier_part_number='". $cr. "',description='".$description."',application='".$application."',chain_length=". $chainLength.",msrp=".$msrp.",qty=".$qty.",discount_price=".$discountPrice.",unit_price=".$unitPrice.",total=".$total." where order_item_id=".$id;
+			$sql = "UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET bo_qty=". $boQty. ",pitch_id=".$pitch.",order_number='".$orderNumber."', discount=". $discount.",category_id='".$category."', part_number='".$partNumber."', frontSprocket_part_number='". $fs. "', rearSprocket_part_number='". $rs. "', chain_part_number='".$chain."', carrier_part_number='". $cr. "',description='".$description."',application='".$application."',chain_length=". $chainLength.",msrp=".$msrp.",qty=".$qty.",discount_price=".$discountPrice.",unit_price=".$unitPrice.",total=".$total." where order_item_id=".$id;
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sql = "INSERT INTO ". Constants::TABLE_ORDER_ITEMS . " (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (".$pitch.",'".$orderNumber. "',".$discount.",'". $category. "','".$partNumber."','".$fs."','". $rs. "','". $cr ."','". $description."','".$application."',". $chainLength.",". $msrp. ",". $qty. ",". $discountPrice . ",". $boQty. ",". $unitPrice. ",". $total. ")";
+			$sql = "INSERT INTO ". Constants::TABLE_ORDER_ITEMS . " (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (".$pitch.",'".$orderNumber. "',".$discount.",'". $category. "','".$partNumber."','".$fs."','". $rs. "','". $cr ."','". $chain ."','". $description."','".$application."',". $chainLength.",". $msrp. ",". $qty. ",". $discountPrice . ",". $boQty. ",". $unitPrice. ",". $total. ")";
 		}
+		$this->Log(__METHOD__);
+		$this->Log($sql);
 		
 		$cmd = $this->db->query( $sql );
 		$retPartID = $cmd->insertID();

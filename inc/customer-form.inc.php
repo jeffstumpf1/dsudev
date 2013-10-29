@@ -1,4 +1,9 @@
-
+<script>
+	$(function() {		
+		$("#formCustomer").validationEngine('attach');
+		$("#formCustomer").validationEngine('init', {promptPosition : "centerRight", scroll: false});
+	});
+</script>
 
 	 <form id="formCustomer" method="post" >
 			<table id="tableCustomerMaint" align="center">

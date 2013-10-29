@@ -50,8 +50,6 @@
 		$(function() {			
 			$( "#searchInput" ).on('mouseup', function() { $(this).select(); });
 			$('tr:odd').css({backgroundColor: '#efefef'});
-        	$("#formCustomer").validationEngine('attach');
-        	$("#formCustomer").validationEngine('init', {promptPosition : "centerRight", scroll: false});
 		});
 	</script>
 </head>

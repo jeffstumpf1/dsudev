@@ -6,18 +6,14 @@
 
 	$debug = 'Off';
 	require_once '../db/global.inc.php';
-	// Logging
+
+ 	// Start logging
 	include '../log4php/Logger.php';
 	Logger::configure('../logconfig.xml');
 	$log = Logger::getLogger('myLogger');
- 
- 
- // Start logging
- 
- spl_autoload_register(function ($class) {
- 	include '../classes/' . $class . '.class.php';
- });
-
+	 spl_autoload_register(function ($class) {
+		include '../classes/' . $class . '.class.php';
+	 });   
 
 	require 'fpdf.php';
 

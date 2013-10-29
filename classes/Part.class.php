@@ -14,13 +14,21 @@ class Part {
     	if($this->debug=='On') {
         	echo 'The class "', __CLASS__, '" was initiated!<br />';  
 		}
-    	$this->log = Logger::getLogger(__CLASS__);
-		$this->msg('The class "'. __CLASS__. '" was initiated!');
+		
+		try {
+        	$this->log = Logger::getLogger(__CLASS__);
+			$this->Log('The class "'. __CLASS__. '" was initiated!');
+
+		}
+			catch(Exception $e) {
+    		echo error($e->getMessage());
+		}
+
 		
     }  
 	
 	/** Logger can be used from any member method. */
-    public function msg($msg, $level=null) {
+    public function Log($msg, $level=null) {
     	$level = isset($level) ? $level : 'i';
     	switch (strtolower( $level )) {
     		case 't':
@@ -48,6 +56,9 @@ class Part {
 	public function MasterPartAutoComplete($search) {
 		$sql = sprintf("select part_number from %s where rec_status='0' and part_number like '%s%s' limit 25", Constants::TABLE_PART, $search,'%');
 		$rs = $this->db->query( $sql); 
+		
+		$this->Log(__METHOD__);
+		$this->Log($sql);
 		
 		// work var
 		$t='';
@@ -117,8 +128,8 @@ class Part {
 	public function GetKit($part_number) {
 		$sql = sprintf( "select a.*, b.* from %s a, %s b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = '%s'", Constants::TABLE_PART, Constants::TABLE_CHAIN_KIT, $part_number,'%' );
 
-		$this->msg(__METHOD__);
-		$this->msg($sql);
+		$this->Log(__METHOD__);
+		$this->Log($sql);
 		
 		// fetch data
 		$rs = $this->db->query( $sql);
@@ -139,8 +150,8 @@ class Part {
 		if( $pitch ) {
 			$sql = sprintf( "select a.*, b.* from %s a, %s b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_id = %s", Constants::TABLE_PART, Constants::TABLE_CHAIN_KIT, $search,'%' );
 		}
-		$this->msg(__METHOD__);
-		$this->msg($sql);
+		$this->Log(__METHOD__);
+		$this->Log($sql);
 		
 		// fetch data
 		$rs = $this->db->query( $sql);  

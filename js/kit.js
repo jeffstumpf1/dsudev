@@ -47,7 +47,58 @@
  		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
  	});
  	
- 	
+	$('#fsPartNumber').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+		 	RemovePartTotal('FS');
+		 	$('#fs').val('');
+		}
+	  });
+	$('#rsPartNumber').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+		 	RemovePartTotal('RS');
+		 	$('#rs').val('');
+		}
+	  }); 	
+	$('#chPartNumber').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+		 	RemovePartTotal('CH');
+		 	$('#ch').val('');
+		}
+	  });
+	$('#crPartNumber').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+		 	RemovePartTotal('CR');
+		 	$('#cr').val('');
+		}
+	  });
+
+	function RemovePartTotal(partType) {
+		switch (partType) {
+			case 'FS':	
+				$('#fsMSRP').text(0);
+				$('#fsDealer').text(0);
+				$('#fsImport').text(0);	
+				break;
+			case 'RS':
+				$('#rsMSRP').text(0);
+				$('#rsDealer').text(0);
+				$('#rsImport').text(0);	
+				break;
+			case 'CH':
+				$('#clMSRP').text(0);
+				$('#clDealer').text(0);
+				$('#clImport').text(0);	
+				break;
+			case 'CR':
+				$('#crMSRP').text(0);
+				$('#crDealer').text(0);
+				$('#crImport').text(0);	
+				break;
+		}
+		UpdateTotalLines();
+	}
+
+
  	function ResetForm(){
 		$('#fs').val('');
 		$('#rs').val('');
@@ -204,12 +255,12 @@
 
 	});
 	  	
-	$( "#chainLength" ).change(function(event) {
+	$( "#chainLength" ).keypress(function(event) {
 		if($('#pitch').val() == '*' ) {
 		   event.preventDefault();
 		   alert ('You have to pick a chain pitch first.');
 		   $('#pitch').focus();
-		} else {
+		} else if (event.which==13) {
 			if ( $(this).val() == '') { $(this).val(1); }
 			LoadChainChart( $('#pitch').val(), $(this).val(), $('#ch').val() );	  	// if we had a previous chain selection its stored in #ch
 		}			  	
@@ -273,7 +324,7 @@
 	// We use this to update the chart for all parts since we 
 	// store part number|msrp:dealer:import
 	function UpdatePriceInChart(search, partType) {
-		
+		if(!search || search=='0') return;
 		var prices = []; 
 		var part = search.split('|');
 		if(part[1]!="") {

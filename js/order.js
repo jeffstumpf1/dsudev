@@ -425,7 +425,7 @@ var $rs;
 			  	UpdateOrderItemsBanner( $('#orderNumber').text() );
 			  	ShowOrderBanner( $('#orderNumber').text(), $('#customer-taxable').val() ,"OPEN" );  // off the banner itself
 			  	//$('#specialInstructions').val( $('#special_instructions').val() );
-			  	alert('Item Saved!');
+			  	//alert('Item Saved!');
 			  },
 			  error:function(){
 				alert ("Could not save order item ");
@@ -503,9 +503,11 @@ var $rs;
 		//$('#stockLevel').val( $mp.stock_level );
 		$('#description').val( $oi.description );
 		$('#application').val( $oi.application );
-		//$('#frontSprocket').val( $oi.frontSprocket_part_number );
-		//$('#rearSprocket').val( $oi.rearSprocket_part_number );
-		//$('#chainLength').val( $oi.chain_length );
+		$('#frontSprocket').val( $oi.frontSprocket_part_number );
+		$('#rearSprocket').val( $oi.rearSprocket_part_number );
+		$('#carrier').val( $oi.carrier_part_number );
+		$('#chainLength').val( $oi.chain_length );
+		$('#h_chain').val( $oi.chain_part_number );
 		$('#msrp').val( $oi.msrp );
 		$('#qty').val( $oi.qty );
 		$('#bo-qty').val( $oi.bo_Qty);
@@ -519,7 +521,10 @@ var $rs;
 		
 		if($oi.category_id == 'KT') {
 			$('#entryKit').show();
-			LoadChainKitInfo($oi.part_number);
+			//LoadChainKitInfo($oi.part_number, $oi.order_item_id);
+			LoadChainChart( $oi.pitch_id, $oi.chain_length, $oi.chain_part_number);
+			$('#chainChart').show();			
+
 		}
 	}
 
@@ -548,13 +553,13 @@ var $rs;
 		});
     }
 
-	function LoadChainKitInfo($part_number) {
+	function LoadChainKitInfo($part_number, $id) {
 		  $.ajax({
 			  	type: 'GET',
 			  	async: false,
 			  	dataType: "json",
 			  	url: 'service/select-chainkit.service.php',
-		  		data: { part_number : $part_number },
+		  		data: { part_number : $part_number, order_item_id: $id},
 		  success: handle_LoadChainKitInfo
 		});
 		
@@ -594,6 +599,7 @@ var $rs;
 		this.frontSprocket_part_number = obj.frontSprocket_part_number;
 		this.rearSprocket_part_number = obj.rearSprocket_part_number;
 		this.carrier_part_number = obj.carrier_part_number;
+		this.chain_part_number = obj.chain_part_number;
 		this.description = obj.description;
 		this.application = obj.application;
 		this.chain_length = obj.chain_length;
@@ -630,7 +636,7 @@ var $rs;
 
 
 	function GetMSRPFromSTRING($s) {
-		if(!$s) return;
+		if(!$s || $s=='0') return;
 		var prices = []; 
 		var part = $s.split('|');
 		if(part[1]!="") {

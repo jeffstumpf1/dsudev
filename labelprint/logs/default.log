@@ -14,3 +14,6 @@
 2013-10-26T01:57:23+02:00 [Part] The class "Part" was initiated!
 2013-10-26T01:57:23+02:00 [Part] Part::GetKit
 2013-10-26T01:57:23+02:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R1460017-3'
+2013-10-28T18:06:36+01:00 [Part] The class "Part" was initiated!
+2013-10-28T20:30:54+01:00 [Part] The class "Part" was initiated!
+2013-10-28T20:32:00+01:00 [Part] The class "Part" was initiated!

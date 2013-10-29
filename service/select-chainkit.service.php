@@ -10,20 +10,32 @@
 	$debug = 'Off';
 	require_once '../db/global.inc.php';
 	
-	function __autoload($class) {
+ 	// Start logging
+	include '../log4php/Logger.php';
+	Logger::configure('../logconfig.xml');
+	$log = Logger::getLogger('myLogger');
+	 spl_autoload_register(function ($class) {
 		include '../classes/' . $class . '.class.php';
-	}
-   
+	 });   
+	    
    	// Create Object Customer and Request
 	$constants = new Constants;
 	$utilityDB = new UtilityDB($debug, $db);	
 	$request = new Request;
 	$kit = new Kit($debug, $db);
+	$order = new Order($debug, $db);
+	
 	
 	// queryString
 	$search	= $request->getParam('part_number');
+	$id = $request->GetParam('order_item_id');
 
-	$row = $kit->GetChainKitByPartNumber($search);
+	
+	if($orderNumber) {
+		$row = $order->GetOrderItem($id);
+	} else
+		$row = $kit->GetChainKitByPartNumber($search);
+	
 	$json = $utilityDB->BuildJSONKeyValue($row,"chain_kit_id");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"category_id");	

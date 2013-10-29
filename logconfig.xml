@@ -6,7 +6,7 @@
     	</layout>
     	<param name="file" value="logs/default.log" />
     </appender>
-    <logger name="Orders">
+    <logger name="Order">
     	<appender_ref ref="myFileAppender" />
     </logger>
     <logger name="OrderItem">

@@ -10,10 +10,14 @@
 	$debug = 'Off';
 	require_once '../db/global.inc.php';
 	
-	function __autoload($class) {
+ 	// Start logging
+	include '../log4php/Logger.php';
+	Logger::configure('../logconfig.xml');
+	$log = Logger::getLogger('myLogger');
+	 spl_autoload_register(function ($class) {
 		include '../classes/' . $class . '.class.php';
-	}
-   
+	 });   
+	    
    	// Create Object Customer and Request
 	$constants = new Constants;
 	$utilityDB = new UtilityDB($debug, $db);
@@ -35,7 +39,8 @@
 	$json .= $utilityDB->BuildJSONKeyValue($row,"carrier_part_number");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"description");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"application");
-	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_length");		
+	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_length");	
+	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_part_number");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"msrp");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"qty");		
 	$json .= $utilityDB->BuildJSONKeyValue($row,"bo_qty");	

@@ -429,9 +429,16 @@ var $rs;
 	 	var desc = $(this).attr('di');
 	 	var oldDesc = $('#description').val();
 	 	var idx = oldDesc.indexOf('W/') +2 ;
+	 	var i = part.indexOf("|");
+	 	if(i>0) {
+	 		var chain = part.substr(0,i)+"-"+$(this).attr('alt');
+	 	}
+	 	
 	 	$('#description').val( oldDesc.substr(0,idx) + desc );
 	 	
 	 	$('#h_ch').val( GetMSRPFromSTRING(part) );						// saves part in form
+	 	$('#h_chain').val( chain );
+	 	
 		CalculateKitItem();	
 			
 		$masterPartNumber = $('#partNumber').val();
@@ -506,8 +513,63 @@ var $rs;
 	}
 
 
+
+
+	$('#frontSprocket').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+	  		$('#h_fs').val('');
+		 	RemovePartTotal('FS');
+		}
+	  });
+	$('#rearSprocket').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+	  		$('#h_rs').val('');
+		 	RemovePartTotal('RS');
+		}
+	  }); 	
+	$('#chainLength').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+			$('#h_ch').val('');
+		 	RemovePartTotal('CH');
+		}
+	  });
+	$('#carrier').keypress(function(event){
+	  	if($(this).val()==0 && event.which == 13) {
+	  		$('#h_misc').val('');
+		 	RemovePartTotal('CR');	
+		}
+	  });
+
+	function RemovePartTotal(partType) {
+		switch (partType) {
+			case 'FS':	
+				$('#fsMSRP').text(0);
+				$('#fsDealer').text(0);
+				$('#fsImport').text(0);	
+				break;
+			case 'RS':
+				$('#rsMSRP').text(0);
+				$('#rsDealer').text(0);
+				$('#rsImport').text(0);	
+				break;
+			case 'CH':
+				$('#clMSRP').text(0);
+				$('#clDealer').text(0);
+				$('#clImport').text(0);	
+				break;
+			case 'CR':
+				$('#crMSRP').text(0);
+				$('#crDealer').text(0);
+				$('#crImport').text(0);	
+				break;
+		}
+		CalculateKitItem();
+	}
+
+
+
 	function GetMSRPFromSTRING($s) {
-		if(!$s) return;
+		if(!$s || $s=='0') return;
 		var prices = []; 
 		var part = $s.split('|');
 		if(part[1]!="") {

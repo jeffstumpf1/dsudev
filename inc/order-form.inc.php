@@ -134,11 +134,12 @@
 <input type="hidden" id="h_order" name="frm[h_order]" value=""/>
 <input type="hidden" id="h_misc" name="frm[miscPartNumber"/>
 <input type="hidden" id="h_pitch" name="frm[h_pitch]" value="<?php echo $row['pitch_id']?>"/>
-<input type="hidden" id="h_length"/>
-<input type="hidden" id="h_chain"/>
+<input type="hidden" id="h_length" />
+<input type="hidden" id="h_chain" name="frm[h_chain]" />
 <input type="hidden" id="h_fs"/>
 <input type="hidden" id="h_rs"/>
 <input type="hidden" id="h_ch"/>
+<input type="hidden" id="h_cr"/>
 <input type="hidden" id="h_status" name="frm[h_status]" value="A"/>
 <input type="hidden" id="h_order_item_id" name="frm[h_order_item_id]"/>
 </div>

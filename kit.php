@@ -65,7 +65,6 @@
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
 	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="js/kit.js"></script>
-	<script type="text/javascript" src="js/ui.js"></script>
 </head>
 <body>
 
@@ -99,34 +98,34 @@
 						</tr>
 						<tr>
 							<td width="20%" nowrap>Front Sprocket</td>
-							<td id="fsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'')?></td>
-							<td id="fsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
-							<td id="fsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
+							<td id="fsMSRP" style="text-align:right">0.00</td>
+							<td id="fsDealer" style="text-align:right">0.00</td>
+							<td id="fsImport" style="text-align:right">0.00</td>
 						</tr>
 						<tr>
 							<td width="20%">Rear Sprocket</td>
-							<td id="rsMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'0')?></td>
-							<td id="rsDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
-							<td id="rsImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
+							<td id="rsMSRP" style="text-align:right">0.00</td>
+							<td id="rsDealer" style="text-align:right">0.00</td>
+							<td id="rsImport" style="text-align:right">0.00</td>
 						</tr>
 						<tr>
 							<td width="20%">Chain Length</td>
-							<td id="clMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'')?></td>
-							<td id="clDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
-							<td id="clImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
+							<td id="clMSRP" style="text-align:right">0.00</td>
+							<td id="clDealer" style="text-align:right">0.00</td>
+							<td id="clImport" style="text-align:right">0.00</td>
 						</tr>
 						<tr>
 							<td width="20%">Carrier</td>
-							<td id="crMSRP" style="text-align:right"><?php echo $utility->NumberFormat($row['msrp'],'0')?></td>
-							<td id="crDealer" style="text-align:right"><?php echo $utility->NumberFormat($row['dealer_cost'],'')?></td>
-							<td id="crImport" style="text-align:right"><?php echo $utility->NumberFormat($row['import_cost'],'')?></td>
+							<td id="crMSRP" style="text-align:right">0.00</td>
+							<td id="crDealer" style="text-align:right">0.00</td>
+							<td id="crImport" style="text-align:right">0.00</td>
 						</tr>
 						
 						<tr>
 							<td width="20%">Total</td>
-							<td id="totalMSRP" style="text-align:right"></td>
-							<td id="totalDealer" style="text-align:right"></td>
-							<td id="totalImport" style="text-align:right"></td>
+							<td id="totalMSRP" style="text-align:right">0.00</td>
+							<td id="totalDealer" style="text-align:right">0.00</td>
+							<td id="totalImport" style="text-align:right">0.00</td>
 						</tr>
 					</table>
 			</fieldset>
