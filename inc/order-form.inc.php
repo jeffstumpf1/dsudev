@@ -1,3 +1,9 @@
+<script>
+	$(document).ready(function(e) {
+		$("#order-form").validationEngine('attach');
+		$("#order-form").validationEngine('init', {promptPosition : "centerRight", scroll: false});
+	});
+</script>
 <form id="order-form">
 
 <div id="dialog-orderItem" >
@@ -7,7 +13,7 @@
 			<div class="kitSpacers">
 				<div class="ui-widget">
 					<label for="partNumber">Part Number</label><br/>
-					<input id="partNumber"  name="frm[partNumber]" type="text" value="<?php echo $row['part_number']?>" size="25" />
+					<input class="validate[required] text-input" id="partNumber"  name="frm[partNumber]" type="text" value="<?php echo $row['part_number']?>" size="25" />
 				</div>
 			</div>
 			<div class="kitSpacers">
@@ -31,11 +37,24 @@
 			</div>
 		</div>		
 
+
+		<div class="group" id="entryChain">		
+			<div class="kitSpacers">
+				<label for="chainLengthEntry">Length</label><br/>
+				<input class="calculate" id="chainLengthEntry" name="frm[chainLengthEntry]" type="text" value="" size="5"/>
+			</div>
+			<div class="kitSpacers">
+				<label for="originalMSRP">Unit Cost </label><br/>
+				<input id="originalMSRP" name="frm[originalMSRP]" type="text" value="" size="5" disabled/>
+			</div>
+			
+		</div>
+		
 		<div class="group" id="entryKit">		
 			<div class="kitSpacers">
 				<div class="ui-widget">
 					<label for="frontSprocket">Front Sprocket</label><br/>
-					<input id="frontSprocket"  name="frm[frontSprocket]" type="text" value="<?php echo $row['part_number']?>" size="25"/>
+					<input class="validate[required] text-input" id="frontSprocket"  name="frm[frontSprocket]" type="text" value="<?php echo $row['part_number']?>" size="25"/>
 				</div>
 			</div>
 			<div class="kitSpacers">

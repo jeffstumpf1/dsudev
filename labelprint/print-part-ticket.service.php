@@ -78,6 +78,7 @@ function WriteLabel($pdf, $row, $spacing) {
 	$fs = $row['frontSprocket_part_number'];
 	$rs = $row['rearSprocket_part_number'];
 	$cl = $row['chain_length'];
+	$clch = $row['chain_orig_msrp'];
 
 	//Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	
@@ -95,5 +96,10 @@ function WriteLabel($pdf, $row, $spacing) {
 	if($cat=='KT') {
 		$pdf->Write(5, "\n"."FS: ".$fs. " / RS: ". $rs. " / CL: ". $cl);
 	}
+	if($cat=='CH') {
+		$pdf->Write(5, "\n"."CL: ". $clch);
+	}
+
+	
 }
 ?>

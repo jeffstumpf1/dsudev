@@ -1,0 +1,759 @@
+2013-10-29T05:59:38+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T06:01:22+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T06:15:01+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:15:01+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:15:01+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:15:01+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:18:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:18:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:18:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:18:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:20+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:20+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:20+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:20+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:46+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:46+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T06:21:46+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705826',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T06:21:47+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:21:47+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:22:38+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:22:38+01:00 [Part] term:1212
+2013-10-29T06:22:38+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:22:38+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '1212%' limit 25
+2013-10-29T06:22:56+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:22:56+01:00 [Part] term:20
+2013-10-29T06:22:56+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:22:56+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T06:23:04+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:23:04+01:00 [Part] term:201
+2013-10-29T06:23:04+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:23:04+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '201%' limit 25
+2013-10-29T06:23:07+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:23:07+01:00 [Part] term:20
+2013-10-29T06:23:07+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:23:07+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T06:23:14+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:23:14+01:00 [Part] term:20
+2013-10-29T06:23:14+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:23:14+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T06:23:30+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:23:30+01:00 [Part] term:20
+2013-10-29T06:23:30+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:23:30+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T06:23:48+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:23:48+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:23:48+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:23:48+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:23:52+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:23:52+01:00 [Order] Order::GetOrderItem
+2013-10-29T06:23:52+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=72
+2013-10-29T06:23:55+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:23:55+01:00 [Part] term:21603R-1
+2013-10-29T06:23:55+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:23:55+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '21603R-1%' limit 25
+2013-10-29T06:24:08+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:24:08+01:00 [Part] term:21603R-
+2013-10-29T06:24:08+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:24:08+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '21603R-%' limit 25
+2013-10-29T06:25:59+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:25:59+01:00 [Part] term:r1
+2013-10-29T06:25:59+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:25:59+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r1%' limit 25
+2013-10-29T06:26:16+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:26:16+01:00 [Part] term:r11
+2013-10-29T06:26:16+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:26:16+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r11%' limit 25
+2013-10-29T06:26:17+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:26:17+01:00 [Part] term:r1
+2013-10-29T06:26:17+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:26:17+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r1%' limit 25
+2013-10-29T06:26:40+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:26:40+01:00 [Part] term:r12
+2013-10-29T06:26:40+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:26:40+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r12%' limit 25
+2013-10-29T06:27:11+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T06:27:33+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:27:33+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:27:33+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:27:33+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:27:41+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:27:41+01:00 [Part] term:10
+2013-10-29T06:27:41+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:27:41+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-10-29T06:27:50+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:27:50+01:00 [Part] term:20
+2013-10-29T06:27:50+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:27:50+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T06:27:55+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:27:55+01:00 [Part] term:10
+2013-10-29T06:27:55+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:27:55+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-10-29T06:28:41+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:28:41+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:28:41+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:28:41+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:30:51+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:30:51+01:00 [Part] term:10
+2013-10-29T06:30:51+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:30:51+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-10-29T06:30:59+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:30:59+01:00 [Part] term:10
+2013-10-29T06:30:59+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:30:59+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-10-29T06:34:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:34:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:34:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:34:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:34:55+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:34:55+01:00 [Part] term:20
+2013-10-29T06:34:55+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:34:55+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T06:35:13+01:00 [Part] The class "Part" was initiated!
+2013-10-29T06:35:13+01:00 [Part] term:202
+2013-10-29T06:35:13+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T06:35:13+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '202%' limit 25
+2013-10-29T06:38:56+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:38:56+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:38:56+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:38:56+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:40:26+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:40:26+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:40:26+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:40:26+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:41:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:43:35+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:43:35+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:43:35+01:00 [Order] The class "Order" was initiated!
+2013-10-29T06:43:35+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:38:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:38:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:38:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:38:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:49:18+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T15:50:29+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T15:51:48+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T15:54:08+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:54:08+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:54:08+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:54:08+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:56:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:56:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:56:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T15:56:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:19:19+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:20:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:20:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:20:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:20:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:28+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:28+01:00 [Order] Order::GetOrderItem
+2013-10-29T16:23:28+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=67
+2013-10-29T16:23:36+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:23:36+01:00 [Part] term:21603R-1
+2013-10-29T16:23:36+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T16:23:36+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '21603R-1%' limit 25
+2013-10-29T16:23:43+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:23:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:50+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:23:50+01:00 [Order] UPDATE OrderItems SET bo_qty=2,pitch_id=520,order_number='130705815', discount=40,category_id='FS', part_number='21603R-16', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='n/a', carrier_part_number='n/a',description='SUPERLITE 520 CONVERSION CHROMOLY STEEL DRILLED FRONT RACE SPROCKET - YAMAHA YZF-R6 \'99-13',application='Application:\\nYamaha YZF-R6V 2006-13\\nYamaha FZ-6 2004-09',chain_length=0,msrp=33.95,qty=4,discount_price=13.58,unit_price=20.37,total=81.48 where order_item_id=67
+2013-10-29T16:23:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:55+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:55+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:23:55+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130705815',,'','','','','','n/a','','',0,0.00,1,0.00,2,0.00,81.48)
+2013-10-29T16:23:56+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:23:56+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:24:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:24:02+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:24:02+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130705815',,'','','','','','n/a','','',0,0.00,1,0.00,2,0.00,81.48)
+2013-10-29T16:24:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:24:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:24:08+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:24:08+01:00 [Part] term:r1
+2013-10-29T16:24:08+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T16:24:08+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r1%' limit 25
+2013-10-29T16:24:11+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:24:11+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T16:24:11+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:24:12+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T16:28:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:28:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:28:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:28:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:29:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:29:10+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:29:10+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:29:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:29:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:31:13+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:31:13+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:31:13+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:31:13+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:32:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:32:50+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:32:50+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:32:51+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:32:51+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:11+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:21+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:21+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:35:21+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705980',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:35:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:35:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:36:06+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:36:06+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:36:06+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705980',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:36:06+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:36:06+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:38:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:38:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:38:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:38:12+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:39:03+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:39:03+01:00 [Part] term:r1
+2013-10-29T16:39:03+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T16:39:03+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r1%' limit 25
+2013-10-29T16:39:06+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:39:06+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T16:39:06+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:39:07+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T16:40:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:46+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:46+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:40:46+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:40:46+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:46+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:55+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:55+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:40:55+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:40:55+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:40:55+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:41:54+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:41:54+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:41:54+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:41:54+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:42:08+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:42:08+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:42:08+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:42:09+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:42:09+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:42:34+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:42:34+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:42:34+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:42:35+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:42:35+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:44:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:44:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:44:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:44:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:45:27+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:45:27+01:00 [Part] term:r1
+2013-10-29T16:45:27+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T16:45:27+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'r1%' limit 25
+2013-10-29T16:45:30+01:00 [Part] The class "Part" was initiated!
+2013-10-29T16:45:30+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T16:45:30+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:45:31+01:00 [Kit] The class "Kit" was initiated!
+2013-10-29T16:47:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:47:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:47:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:47:39+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:47:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:47:50+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:47:50+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:47:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:47:50+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:48:15+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:48:15+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:48:15+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:48:15+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:48:15+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:48:25+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:48:25+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:48:25+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:48:26+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:48:26+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:52:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:52:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:52:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:52:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:10+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:22+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:22+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:56:22+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:56:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:56:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:58:28+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:58:28+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T16:58:28+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T16:58:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:58:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:58:31+01:00 [Order] The class "Order" was initiated!
+2013-10-29T16:58:32+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:05:58+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:05:58+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T17:05:58+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T17:06:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:06:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:06:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:06:02+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:06:45+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:06:45+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T17:06:45+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T17:06:46+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:06:46+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:07:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:07:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:07:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:07:38+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:08:03+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:08:03+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T17:08:03+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T17:08:04+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:08:04+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:08:23+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:08:23+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T17:08:23+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130705815',,'','','','','','','','',0,0.00,1,0.00,0,0.00,0.00)
+2013-10-29T17:08:24+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:08:24+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:09+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:09+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:09+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:09+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:16+01:00 [Part] The class "Part" was initiated!
+2013-10-29T17:09:16+01:00 [Part] term:20
+2013-10-29T17:09:16+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-29T17:09:16+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-29T17:09:18+01:00 [Part] The class "Part" was initiated!
+2013-10-29T17:09:21+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:21+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T17:09:21+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130705815',40,'FS','20210R-14','','','','','SUPERLITE 520 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA CR 125R \'04-07/CRF 250 \'04-13','',0,19.95,1,7.98,0,11.97,11.97)
+2013-10-29T17:09:21+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:21+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:30+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:30+01:00 [Order] Order::GetOrderItem
+2013-10-29T17:09:30+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=94
+2013-10-29T17:09:41+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:41+01:00 [Order] Order::UpdateOrderItem
+2013-10-29T17:09:41+01:00 [Order] UPDATE OrderItems SET bo_qty=0,pitch_id=520,order_number='130705815', discount=40,category_id='FS', part_number='20210R-14', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='SUPERLITE 520 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA CR 125R \'04-07/CRF 250 \'04-13',application='',chain_length=0,msrp=19.95,qty=2,discount_price=7.98,unit_price=11.97,total=23.94 where order_item_id=94
+2013-10-29T17:09:41+01:00 [Order] The class "Order" was initiated!
+2013-10-29T17:09:41+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:37+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:37+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:38+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:38+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:40+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:08:40+01:00 [Part] term:1`2
+2013-10-30T01:08:40+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-30T01:08:40+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '1`2%' limit 25
+2013-10-30T01:08:43+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:08:43+01:00 [Part] term:12
+2013-10-30T01:08:43+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-30T01:08:43+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '12%' limit 25
+2013-10-30T01:08:44+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:08:51+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:51+01:00 [Order] Order::UpdateOrderItem
+2013-10-30T01:08:51+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130706134',40,'RS','12323R-48','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - YAMAHA YZ 250F/450F \'99-13','',0,59.95,3,23.98,0,35.97,107.91)
+2013-10-30T01:08:51+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:08:51+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:41+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:42+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:42+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:42+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:44+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:42:44+01:00 [Part] term:10
+2013-10-30T01:42:44+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-30T01:42:44+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-10-30T01:42:46+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:42:54+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:54+01:00 [Order] Order::UpdateOrderItem
+2013-10-30T01:42:54+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130706136',40,'RS','10212R-47','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \'02-13','',0,59.95,2,23.98,0,35.97,71.94)
+2013-10-30T01:42:54+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:42:55+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:48+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:49+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:49+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:49+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:52+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:44:52+01:00 [Part] term:20
+2013-10-30T01:44:52+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-30T01:44:52+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-10-30T01:44:54+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:44:59+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:59+01:00 [Order] Order::UpdateOrderItem
+2013-10-30T01:44:59+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130706138',40,'FS','20206R-13','','','','','SUPERLITE 520 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA ','HONDA CR 125R 1987-2003',0,19.95,4,7.98,0,11.97,11.97)
+2013-10-30T01:44:59+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:44:59+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:45:11+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:45:11+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:45:47+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:45:47+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:06+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:07+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:07+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:07+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:09+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:49:09+01:00 [Part] term:pc
+2013-10-30T01:49:09+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-30T01:49:09+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'pc%' limit 25
+2013-10-30T01:49:10+01:00 [Part] The class "Part" was initiated!
+2013-10-30T01:49:21+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:21+01:00 [Order] Order::UpdateOrderItem
+2013-10-30T01:49:21+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (-999,'130706139',40,'CR','PCD-3G','','','','','ADS GOLD HARD ANODIZED BILLET ALLOY QUICK CHANGE SPROCKET CARRIER - DUCATI ','DUCATI 1098 SBK, 1198 SBK, 1198 DIAVEL,                1200 MULTISTRADA ',0,194.95,4,77.98,0,116.97,116.97)
+2013-10-30T01:49:21+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:21+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:28+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:28+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:41+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:41+01:00 [Order] Order::GetOrderItem
+2013-10-30T01:49:41+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=188
+2013-10-30T01:49:45+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:45+01:00 [Order] Order::UpdateOrderItem
+2013-10-30T01:49:45+01:00 [Order] UPDATE OrderItems SET bo_qty=0,pitch_id=-999,order_number='130706139', discount=40,category_id='CR', part_number='PCD-3G', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='ADS GOLD HARD ANODIZED BILLET ALLOY QUICK CHANGE SPROCKET CARRIER - DUCATI ',application='DUCATI 1098 SBK, 1198 SBK, 1198 DIAVEL,                1200 MULTISTRADA ',chain_length=0,msrp=194.95,qty=4,discount_price=77.98,unit_price=116.97,total=467.88 where order_item_id=188
+2013-10-30T01:49:45+01:00 [Order] The class "Order" was initiated!
+2013-10-30T01:49:45+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:07:56+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:07:56+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:07:56+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:07:56+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:10:17+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:10:17+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:10:17+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:10:17+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:11:01+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:11:01+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:11:01+01:00 [Order] The class "Order" was initiated!
+2013-10-30T06:11:01+01:00 [Order] The class "Order" was initiated!
+2013-10-31T18:36:16+01:00 [Order] The class "Order" was initiated!
+2013-10-31T18:36:16+01:00 [Order] The class "Order" was initiated!
+2013-10-31T18:36:16+01:00 [Order] The class "Order" was initiated!
+2013-10-31T18:36:16+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:12:31+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:12:32+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:12:32+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:12:32+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:12:36+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:12:36+01:00 [Part] term:dz
+2013-10-31T19:12:36+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:12:36+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'dz%' limit 25
+2013-10-31T19:12:40+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:12:40+01:00 [Part] term:dr
+2013-10-31T19:12:40+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:12:40+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'dr%' limit 25
+2013-10-31T19:12:41+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:12:41+01:00 [Part] term:drz
+2013-10-31T19:12:41+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:12:41+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'drz%' limit 25
+2013-10-31T19:12:47+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:12:47+01:00 [Part] term:da
+2013-10-31T19:12:47+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:12:47+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:12:50+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:28:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:28:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:28:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:28:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:29:02+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:29:02+01:00 [Part] term:da
+2013-10-31T19:29:02+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:29:02+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:29:06+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:30:40+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:30:40+01:00 [Part] term:da
+2013-10-31T19:30:40+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:30:40+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:30:41+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:32:26+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:32:26+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:32:26+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:32:26+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:32:31+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:32:31+01:00 [Part] term:da
+2013-10-31T19:32:31+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:32:31+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:32:34+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:35:22+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:35:22+01:00 [Part] term:da
+2013-10-31T19:35:22+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:35:22+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:35:24+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:35:39+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:35:39+01:00 [Part] term:da
+2013-10-31T19:35:39+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:35:39+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:35:42+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:36:33+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:36:33+01:00 [Part] term:da
+2013-10-31T19:36:33+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:36:33+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:36:34+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:36:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:36:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:36:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:36:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:36:47+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:36:47+01:00 [Part] term:da
+2013-10-31T19:36:47+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:36:47+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:36:50+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:37:42+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:37:42+01:00 [Part] term:da
+2013-10-31T19:37:42+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:37:42+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:37:44+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:38:22+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:38:22+01:00 [Part] term:da
+2013-10-31T19:38:22+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:38:22+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:38:24+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:38:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:38:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:38:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:38:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:17+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:17+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:17+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:17+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:35+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:35+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:35+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:35+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:39:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:42:34+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:42:34+01:00 [Part] term:da
+2013-10-31T19:42:34+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:42:34+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:42:36+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:44:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:44:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:44:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:44:57+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:45:12+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:45:12+01:00 [Part] term:da
+2013-10-31T19:45:12+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T19:45:12+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T19:45:13+01:00 [Part] The class "Part" was initiated!
+2013-10-31T19:45:28+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:45:28+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T19:45:28+01:00 [Order] INSERT INTO OrderItems (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (520,'130706145',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN','',0,5.20,1,2.08,0,3.12,3.12)
+2013-10-31T19:45:28+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:45:28+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:45:37+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:45:37+01:00 [Order] Order::GetOrderItem
+2013-10-31T19:45:37+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T19:51:59+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:51:59+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:51:59+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:51:59+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:52:04+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:52:04+01:00 [Order] Order::GetOrderItem
+2013-10-31T19:52:04+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T19:53:02+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:53:02+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:53:02+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:53:02+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:53:48+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:53:48+01:00 [Order] Order::GetOrderItem
+2013-10-31T19:53:48+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T19:54:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T19:54:56+01:00 [Order] Order::GetOrderItem
+2013-10-31T19:54:56+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:02:33+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:02:33+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:02:33+01:00 [Order] UPDATE OrderItems SET bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=0,msrp=5.2,qty=1,discount_price=2.08,unit_price=3.12,total=3.12 where order_item_id=189
+2013-10-31T20:02:33+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:02:33+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:03:45+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:03:45+01:00 [Part] term:da
+2013-10-31T20:03:45+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T20:03:45+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T20:03:47+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:05:27+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:05:27+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:05:27+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:05:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:05:41+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:05:41+01:00 [Order] UPDATE OrderItems SET bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=0,msrp=5.20,qty=1,discount_price=2.08,unit_price=3.12,total=3.12 where order_item_id=189
+2013-10-31T20:05:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:05:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:05:46+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:05:46+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:05:46+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:06:50+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:06:50+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:06:50+01:00 [Order] UPDATE OrderItems SET bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=0,msrp=6.24,qty=1,discount_price=2.50,unit_price=3.74,total=3.74 where order_item_id=189
+2013-10-31T20:06:50+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:06:50+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:10:23+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:10:23+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:10:23+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:10:39+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:10:39+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:10:39+01:00 [Order] UPDATE OrderItems SET bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=11,msrp=5.72,qty=1,discount_price=2.29,unit_price=3.43,total=3.43 where order_item_id=189
+2013-10-31T20:10:39+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:10:39+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:14:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:14:56+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:14:56+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:15:13+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:15:13+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:15:13+01:00 [Order] UPDATE OrderItems SET chain_orig_msrp=,bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=100,msrp=52.00,qty=1,discount_price=20.80,unit_price=31.20,total=31.20 where order_item_id=189
+2013-10-31T20:15:13+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:15:13+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:17:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:17:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:17:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:17:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:18:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:18:00+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:18:00+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:18:36+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:18:36+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:18:36+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=189
+2013-10-31T20:21:38+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:38+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:39+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:39+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:43+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:44+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:44+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:21:49+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:21:49+01:00 [Part] term:da
+2013-10-31T20:21:49+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T20:21:49+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T20:21:53+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:22:08+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:22:08+01:00 [Part] term:DA520E
+2013-10-31T20:22:08+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T20:22:08+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'DA520E%' limit 25
+2013-10-31T20:22:11+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:22:25+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:22:25+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:22:25+01:00 [Order] INSERT INTO OrderItems (chain_orig-msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.80,520,'130706145',40,'CH','DA520ERT2','','','','','DID 520ERT2 GOLD NON O-RING MX RACE CHAIN','',13,10.40,1,4.16,0,6.24,6.24)
+2013-10-31T20:22:25+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:22:25+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:23:45+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:23:45+01:00 [Part] term:da
+2013-10-31T20:23:45+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T20:23:45+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T20:23:46+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:23:53+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:23:53+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:23:53+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'130706145',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN','',12,6.24,1,2.50,0,3.74,3.74)
+2013-10-31T20:23:53+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:23:53+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:24:36+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:24:36+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:24:36+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:25:04+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:25:04+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:25:04+01:00 [Order] UPDATE OrderItems SET chain_orig_msrp=0.52,bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=13,msrp=6.76,qty=1,discount_price=2.70,unit_price=4.06,total=4.06 where order_item_id=190
+2013-10-31T20:25:05+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:25:05+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:25:11+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:25:11+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:25:11+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:26:40+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:26:40+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:26:40+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:26:40+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:26:44+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:26:44+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:26:44+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:29:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:00+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:05+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:05+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:29:05+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:29:55+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:55+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:55+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:55+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:58+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:29:58+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:29:58+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:30:10+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:30:10+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:30:10+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:30:10+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:30:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:30:41+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:30:41+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:31:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:31:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:31:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:31:52+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:31:56+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:31:56+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:31:56+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:33:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:33:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:33:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:33:41+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:33:45+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:33:45+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:33:45+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=190
+2013-10-31T20:34:01+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:01+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:34:01+01:00 [Order] UPDATE OrderItems SET chain_orig_msrp=0.52,bo_qty=0,pitch_id=520,order_number='130706145', discount=40,category_id='CH', part_number='DA520DZ2', frontSprocket_part_number='', rearSprocket_part_number='', chain_part_number='', carrier_part_number='',description='DID 520DZ2 GOLD/BLACK NON O-RING MX CHAIN',application='',chain_length=130,msrp=67.60,qty=1,discount_price=27.04,unit_price=40.56,total=40.56 where order_item_id=190
+2013-10-31T20:34:02+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:02+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:09+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:34:09+01:00 [Part] term:da
+2013-10-31T20:34:09+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T20:34:09+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2013-10-31T20:34:11+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:34:20+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:34:20+01:00 [Part] term:DA520
+2013-10-31T20:34:20+01:00 [Part] Part::MasterPartAutoComplete
+2013-10-31T20:34:20+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'DA520%' limit 25
+2013-10-31T20:34:23+01:00 [Part] The class "Part" was initiated!
+2013-10-31T20:34:33+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:33+01:00 [Order] Order::UpdateOrderItem
+2013-10-31T20:34:33+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (1.62,520,'130706145',40,'CH','DA520ERV3','','','','','DID 520ERV3 GOLD X-RING SEALED RACE CHAIN','',17,27.54,1,11.02,0,16.52,16.52)
+2013-10-31T20:34:33+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:33+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:39+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:34:39+01:00 [Order] Order::GetOrderItem
+2013-10-31T20:34:39+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=191
+2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!
+2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!

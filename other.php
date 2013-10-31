@@ -4,9 +4,13 @@
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	
-	function __autoload($class) {
+ 	// Start logging
+	include 'log4php/Logger.php';
+	Logger::configure('logconfig.xml');
+	$log = Logger::getLogger('myLogger');
+	 spl_autoload_register(function ($class) {
 		include 'classes/' . $class . '.class.php';
-	}
+	 });   
 	
 	// Create Object Customer and Request
 	$constants = new Constants;
@@ -55,10 +59,32 @@
 	<title><?php echo($partCat)?> Other Maintenance</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-  	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+	<!-- Form Validation Engine -->
+	<script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+
+
+  	<script>
+	$(function() {		
+		$("#formOther").validationEngine('attach');
+		$("#formOther").validationEngine('init', {promptPosition : "centerRight", scroll: false});
+		
+		$(document).on('click', '#submit', function(event) {
+			//event.preventDefault();
+			if( $("#formOther").validationEngine('validate') ) {
+				// validates
+				$("#formOther").submit();		
+			}
+		});
+
+	});
+	</script>
+  	
 </head>
 <body>
 <div id="wrapper">
@@ -86,7 +112,7 @@
 						<Label>Product Category</label>
 					</td>
 					<td colspan="3">
-						<select id="productCategory" name="frm[productCategory]">
+						<select class="validate[required]" id="productCategory" name="frm[productCategory]">
 						<option value="*">Select...</option>
 							<?php
 							 $utilityDB->LookupList($partCat, Constants::TABLE_CATEGORY_LIST);  
@@ -107,7 +133,7 @@ include 'inc/part_logic.inc.php';
 						<label>Stock Level</label>
 					</td>
 					<td>
-						<input id="stockLevel" name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>"/>
+						<input class="validate[required] text-input" id="stockLevel" name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>"/>
 					</td>
 				</tr>
 <!--				<tr>
@@ -140,7 +166,7 @@ include 'inc/part_logic.inc.php';
 						<label>MSRP</label>
 					</td>
 					<td colspan="3">
-						<input id="msrp" name="frm[msrp]" type="text" value="<?php echo $row['msrp']?>"/>
+						<input class="validate[required] text-input" id="msrp" name="frm[msrp]" type="text" value="<?php echo $row['msrp']?>"/>
 					</tr>
 				</tr>
 				<tr>
@@ -148,7 +174,7 @@ include 'inc/part_logic.inc.php';
 						<label>Dealer Cost</label>
 					</td>
 					<td colspan="3">
-						<input id="dealerCost" name="frm[dealerCost]" type="text" value="<?php echo $row['dealer_cost']?>"/>
+						<input class="validate[required] text-input" id="dealerCost" name="frm[dealerCost]" type="text" value="<?php echo $row['dealer_cost']?>"/>
 					</tr>
 				</tr>
 				<tr>
@@ -156,7 +182,7 @@ include 'inc/part_logic.inc.php';
 						<label>Import Cost</label>
 					</td>
 					<td colspan="3">
-						<input id="importCost" name="frm[importCost]" type="text" value="<?php echo $row['import_cost']?>"/>
+						<input class="validate[required] text-input" id="importCost" name="frm[importCost]" type="text" value="<?php echo $row['import_cost']?>"/>
 					</tr>
 				</tr>	
 

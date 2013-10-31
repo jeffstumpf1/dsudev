@@ -39,34 +39,26 @@
 
 <head>
 	<title>Order Entry</title>
+	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="css/square/square.css" rel="stylesheet">
+	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
+	<link href="css/square/square.css" rel="stylesheet">
 	
-	<script src="js/jquery-1.9.1.js"></script>
-	<script src="ui/jquery.ui.core.js"></script>
-	<script src="ui/jquery.ui.widget.js"></script>
-	<script src="ui/jquery.ui.menu.js"></script>
-
-	<script src="ui/jquery.ui.mouse.js"></script>
-	<script src="ui/jquery.ui.draggable.js"></script>
-	<script src="ui/jquery.ui.position.js"></script>
-	<script src="ui/jquery.ui.resizable.js"></script>
-	<script src="ui/jquery.ui.button.js"></script>
-	<script src="ui/jquery.ui.dialog.js"></script>
-	<script src="ui/jquery.ui.autocomplete.js"></script>	
-	<script src="ui/jquery.ui.datepicker.js"></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+	<!-- Form Validation Engine -->
+	<script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
+
 	<script src="js/jquery.printPage.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/customer.js"></script>
 	<script type="text/javascript" src="js/order.js"></script>  
 	<script type="text/javascript" src="js/part.js"></script>  
-	
-	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
-	<link href="css/square/square.css" rel="stylesheet">
-	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
-	
-
-	
 </head>
 
 

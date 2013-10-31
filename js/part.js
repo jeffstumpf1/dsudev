@@ -5,27 +5,30 @@ var $mp;
 var $kit; 
 var $fs;
 var $rs;    	
-    	$("#category").val(0);
-    	$("#createSubmit").attr('disabled','disabled');
-    	$('#discount-price').attr('disabled','disabled');
-    	$('#total').attr('disabled','disabled');
-    	$('#unit-price').attr('disabled','disabled');
-    	$('#stockLevel').attr('disabled','disabled');
-    	
-    	
-    	
-		$( "#search" ).on('mouseup', function() {
-			 $(this).select(); 	
-		});
-		
-		$("#category").change(function() {
-		  	$sel = $('#category').val();
-		 	if($sel != '*') {
-		 		$('#createSubmit').removeAttr('disabled');
-		 	} else
-		 	  $("#createSubmit").attr('disabled','disabled');  
-		});
+	$("#category").val(0);
+	$("#createSubmit").attr('disabled','disabled');
+	$('#discount-price').attr('disabled','disabled');
+	$('#total').attr('disabled','disabled');
+	$('#unit-price').attr('disabled','disabled');
+	$('#stockLevel').attr('disabled','disabled');
+	
+	$( "#search" ).on('mouseup', function() {
+		 $(this).select(); 	
+	});
+	
+	$("#category").change(function() {
+		$sel = $('#category').val();
+		if($sel != '*') {
+			$('#createSubmit').removeAttr('disabled');
+		} else
+		  $("#createSubmit").attr('disabled','disabled');  
+	});
 
+
+
+	$('input.calculate').keypress(function(event) {
+		CalculateLineItem(); 
+	});		
 
 
 	$(document).on('click', '.printPartTicket', function(event) {
@@ -72,10 +75,6 @@ var $rs;
 	}
 
 		
-	$('input.calculate').keypress(function(event) {
-		
-		CalculateLineItem(); 
-	});		
 		
 		
 		$('.actionStatus').click(function(e){
@@ -308,9 +307,8 @@ var $rs;
 		} 
 					
 		if ($mp.category_id == 'CH') {
-			//GetChainInfo($mp.part_number);
-			//var $chain = new Chain($mp.part_number);
-			//$('#entryChain').show();
+			$('#entryChain').show();
+			$('#originalMSRP').val(parseFloat( $mp.msrp).toFixed(2));
 		} 
 				
 		if ($mp.category_id == 'FS' || $mp.category_id == 'RS') {
@@ -416,9 +414,17 @@ var $rs;
 		event.preventDefault();
 		if ( $(this).val() == '') { $(this).val(1); }
 		LoadChainChart( $mp.pitch_id, $(this).val(), $kit.chain_part_number );	  	// if we had a previous chain selection its stored in #ch
-		
 		$('#h_ch').val( GetMSRPFromSTRING( $("input[type='radio']:checked").val()) );
 		CalculateKitItem();					  	
+	});
+
+
+	$( "#chainLengthEntry" ).change(function(event) {
+		event.preventDefault();
+		if ( $(this).val() == '') { $(this).val(1); }
+		var origMSRP = $('#originalMSRP').val();
+		$('#msrp').val( parseFloat($(this).val() * origMSRP).toFixed(2) );	
+		CalculateLineItem();	  	
 	});
 
 

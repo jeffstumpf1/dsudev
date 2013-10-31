@@ -432,8 +432,15 @@ class Order {
 
 		$description = addslashes($formData['description']);
 		$application = addslashes($formData['application']);
-		$chainLength = $formData['chainLength'];
-		if($chainLength=='') $chainLength=0;
+		// two chains kit and chain itself
+		if($category == 'KT') {
+			$chainLength = $formData['chainLength'];
+			if($chainLength=='') $chainLength=0;
+		} else if ($category=='CH'){
+			$chainLength = $formData['chainLengthEntry'];
+			$chain_orig_msrp = $formData['originalMSRP'];
+			if($chainLength=='') $chainLength=0;
+		}
 		$chain = $formData['h_chain'];
 		$msrp = $formData['msrp'];
 		$qty = $formData['qty'];
@@ -452,14 +459,15 @@ class Order {
 		}
 				
 		if( strtolower($recMode) == "e") {
-			$sql = "UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET bo_qty=". $boQty. ",pitch_id=".$pitch.",order_number='".$orderNumber."', discount=". $discount.",category_id='".$category."', part_number='".$partNumber."', frontSprocket_part_number='". $fs. "', rearSprocket_part_number='". $rs. "', chain_part_number='".$chain."', carrier_part_number='". $cr. "',description='".$description."',application='".$application."',chain_length=". $chainLength.",msrp=".$msrp.",qty=".$qty.",discount_price=".$discountPrice.",unit_price=".$unitPrice.",total=".$total." where order_item_id=".$id;
+			$sql = "UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET chain_orig_msrp=". $chain_orig_msrp. ",bo_qty=". $boQty. ",pitch_id=".$pitch.",order_number='".$orderNumber."', discount=". $discount.",category_id='".$category."', part_number='".$partNumber."', frontSprocket_part_number='". $fs. "', rearSprocket_part_number='". $rs. "', chain_part_number='".$chain."', carrier_part_number='". $cr. "',description='".$description."',application='".$application."',chain_length=". $chainLength.",msrp=".$msrp.",qty=".$qty.",discount_price=".$discountPrice.",unit_price=".$unitPrice.",total=".$total." where order_item_id=".$id;
 		}
 		
 		if( strtolower($recMode) == "a") {
-			$sql = "INSERT INTO ". Constants::TABLE_ORDER_ITEMS . " (pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (".$pitch.",'".$orderNumber. "',".$discount.",'". $category. "','".$partNumber."','".$fs."','". $rs. "','". $cr ."','". $chain ."','". $description."','".$application."',". $chainLength.",". $msrp. ",". $qty. ",". $discountPrice . ",". $boQty. ",". $unitPrice. ",". $total. ")";
+			$sql = "INSERT INTO ". Constants::TABLE_ORDER_ITEMS . " (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (".$chain_orig_msrp.",".$pitch.",'".$orderNumber. "',".$discount.",'". $category. "','".$partNumber."','".$fs."','". $rs. "','". $cr ."','". $chain ."','". $description."','".$application."',". $chainLength.",". $msrp. ",". $qty. ",". $discountPrice . ",". $boQty. ",". $unitPrice. ",". $total. ")";
 		}
 		$this->Log(__METHOD__);
 		$this->Log($sql);
+		echo $sql;
 		
 		$cmd = $this->db->query( $sql );
 		$retPartID = $cmd->insertID();

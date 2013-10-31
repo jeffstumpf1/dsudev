@@ -4,9 +4,13 @@
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	
-	function __autoload($class) {
+ 	// Start logging
+	include 'log4php/Logger.php';
+	Logger::configure('logconfig.xml');
+	$log = Logger::getLogger('myLogger');
+	 spl_autoload_register(function ($class) {
 		include 'classes/' . $class . '.class.php';
-	}
+	 });   
 	
 	// Create Object Customer and Request
 	$constants = new Constants;
@@ -58,12 +62,19 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<!-- Form Validation Engine -->
+	<script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+  	
     <script>
 		$(function() {
     		$( "#exp1" ).datepicker();
     		$( "#exp2" ).datepicker();
 			$('#submitCustomer').remove();
-			
+			$("#formCustomer").validationEngine('attach');
+			$("#formCustomer").validationEngine('init', {promptPosition : "centerRight", scroll: false});
+
 			$("#copyAddress").click(function(event) {
 				$("#billingAddress").val( $("#address").val() );
 				$("#billingCity").val( $("#city").val() );

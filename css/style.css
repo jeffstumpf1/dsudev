@@ -37,7 +37,7 @@ label, input, textarea  {
     line-height: 130%;
     }
 
-#customerTable, #partTable, #chainChartTable ,#formCustomer{
+#customerTable, #partTable, #chainChartTable ,#formCustomer, .report-table{
 	width: 100%;
 	font: 11px/24px Verdana, Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -45,7 +45,7 @@ label, input, textarea  {
 	margin-right:auto;
 }
 
-#customerTable th, #partTable th, #chainChartTable th {
+#customerTable th, #partTable th, #chainChartTable th , .report-table{
 	padding: 0 0.5em;
 	text-align: center;
 	}
@@ -56,7 +56,7 @@ label, input, textarea  {
 	background: #FFC;
 	}
 
-#customerTable td, #partTable td, #chainChartTable td {
+#customerTable td, #partTable td, #chainChartTable td , .report-table{
 	border-bottom: 1px solid #CCC;
 	padding: 0 0.5em;
 	}
@@ -68,7 +68,7 @@ label, input, textarea  {
 	width: 300px;
 	}
 
-#customerTable td+td ,#partTable td+td, #chainChartTable td+td {
+#customerTable td+td ,#partTable td+td, #chainChartTable td+td , .report-table{
 	border-left: 1px solid #CCC;
 	text-align: center;
 	}
@@ -219,12 +219,16 @@ background: white url('images/16x16-cc.gif') right center no-repeat;
 .fsPrintInvoice {float:left; margin:10px 10px 10px 10px; background-color:#efefef;width:300px;}
 .label #line-part-description, 
 
+/*  Reports */
+.fsReport {float:left; margin:10px 10px 10px 10px; background-color:#fff;width:450px;}
+
+
 { 
  	text-align: left; 
  }
 
 
-#entryKit, #entryChain, #entrySprocket { display: none }
+#entryKit, #entryChain, #entrySprocket, #entryChain { display: none }
 #entryPricing { display: block }
 
 

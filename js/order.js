@@ -268,6 +268,7 @@ var $rs;
 			$('#description').val('');
 			$('#application').val('');
 			$('#chainLength').val('');
+			$('#chainLengthEntry').val('');
 			$('#msrp').val('0.00');
 			$('#qty').val('1');
 			$('#discount-price').val('0.00');
@@ -277,6 +278,7 @@ var $rs;
 			$('#entryChain').hide();
 			$('#entrySprocket').hide();
 			$('#chainChart').hide();
+			$("#order-form").validationEngine('hide');
 	  }	
 				
 	});
@@ -407,10 +409,20 @@ var $rs;
 	
 	// Save the Item 
 	$(document).on('click', 'input#line-createItem', function(event) {
+		// Validation
+		//alert( $("#form-order").validationEngine('validate') );
+		//var chkError = $("#form-order").validationEngine('validate');
+		//if( chkError==false ) {
+		//	alert('We Have errors');
+		//	event.preventDefault();
+		//	return false;		
+		//}
+	
 		// have to enable fields
 		$('#discount-price').removeAttr('disabled');
 		$('#unit-price').removeAttr('disabled');
 		$('#total').removeAttr('disabled');
+		$('#originalMSRP').removeAttr('disabled');
 		$("#h_order").val( $('#orderNumber').text() );
 
 		$.ajax({
@@ -493,9 +505,6 @@ var $rs;
 	});
 
 	
-	
-
-
 	function handle_OrderItem(json) {
 		$oi = new OrderItem(json);
 		$('#partNumber').val( $oi.part_number );
@@ -507,6 +516,8 @@ var $rs;
 		$('#rearSprocket').val( $oi.rearSprocket_part_number );
 		$('#carrier').val( $oi.carrier_part_number );
 		$('#chainLength').val( $oi.chain_length );
+		$('#chainLengthEntry').val( $oi.chain_length );
+		$('#originalMSRP').val( $oi.chain_orig_msrp );
 		$('#h_chain').val( $oi.chain_part_number );
 		$('#msrp').val( $oi.msrp );
 		$('#qty').val( $oi.qty );
@@ -524,7 +535,9 @@ var $rs;
 			//LoadChainKitInfo($oi.part_number, $oi.order_item_id);
 			LoadChainChart( $oi.pitch_id, $oi.chain_length, $oi.chain_part_number);
 			$('#chainChart').show();			
-
+		} else if ( $oi.category_id == 'CH' ) {
+			$('#entryChain').show();
+			$('#originalMSRP').attr('disabled','disabled');
 		}
 	}
 
@@ -610,6 +623,7 @@ var $rs;
 		this.unit_price = obj.unit_price;
 		this.total = obj.total;
 		this.pitch_id = obj.pitch_id;
+		this.chain_orig_msrp = obj.chain_orig_msrp;
 	}
 		
 		

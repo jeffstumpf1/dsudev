@@ -7,6 +7,7 @@
  	// Initialize
  	$('#createOrderItem').attr('disabled');  // order banner form
 	$('#saveOrder').attr('disabled');  // order banner form
+	// Validations
 
 	// Get Values passed in on edits
 	$.urlParam = function(name){
@@ -210,8 +211,8 @@
  /******** Dialog's *********/
 	$( "#dialog-customer" ).dialog({
 	  autoOpen: false,
-	  height: 500,
-	  width: 650,
+	  height: 550,
+	  width: 680,
 	  modal: true,
 		Cancel: function() {
 				  $( this ).dialog( "close" );

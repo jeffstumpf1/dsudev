@@ -5,6 +5,7 @@ class Customer {
 	
 	private $debug='Off';
 	private $db;
+	private $log;
 	
 	public function __construct($debug, $db)  
     {  
@@ -13,7 +14,43 @@ class Customer {
     	if($this->debug=='On') {
         	echo 'The class "', __CLASS__, '" was initiated!<br />';  
         }
+        
+        try {
+        	$this->log = Logger::getLogger(__CLASS__);
+			$this->Log('The class "'. __CLASS__. '" was initiated!');
+
+		}
+			catch(Exception $e) {
+    		echo error($e->getMessage());
+		}
+
     }  
+
+	/** Logger can be used from any member method. */
+    public function Log($msg, $level=null) {
+    	$level = isset($level) ? $level : 'd';
+    	switch (strtolower( $level )) {
+    		case 't':
+    			$this->log->trace($msg);
+    			break;
+    		case 'd':
+    			$this->log->debug($msg);
+    			break;
+    		case 'i':
+    			$this->log->info($msg);
+    			break;
+    		case 'w':
+    			$this->log->warn($msg);
+    			break;
+    		case 'e':
+    			$this->log->error($msg);
+    			break;
+    		case 'f':
+    			$this->log->fatal($msg);
+    			break;
+    	}
+	}
+
 	
 	public function ListCustomers($search) {
 		$sql = "SELECT * FROM ". Constants::TABLE_CUSTOMER . " WHERE rec_status = 0 ORDER BY dba";
@@ -53,6 +90,8 @@ class Customer {
 	
 	public function GetCustomer($customer_number) {
 
+		if(!$customer_number) return;
+		
 		$sql = sprintf("select * from ". Constants::TABLE_CUSTOMER . " where rec_status='0' and customer_number='%s'", $customer_number); 
 		
 		// fetch data

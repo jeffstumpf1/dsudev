@@ -1,10 +1,7 @@
 <script>
-	$(function() {		
-		$("#formCustomer").validationEngine('attach');
-		$("#formCustomer").validationEngine('init', {promptPosition : "centerRight", scroll: false});
-	});
+	$("#formCustomer").validationEngine('attach');
+	$("#formCustomer").validationEngine('init', {promptPosition : "centerRight", scroll: false});
 </script>
-
 	 <form id="formCustomer" method="post" >
 			<table id="tableCustomerMaint" align="center">
 				<tr>
@@ -12,7 +9,7 @@
 						<Label>DBA Name</>
 					</td>
 					<td colspan="3">
-						<input id="dbaName" name="frm[dbaName]" type="text" value="<?php echo $row['dba']; ?>" />
+						<input data-prompt-position="topLeft" class="validate[required] text-input" id="dbaName" name="frm[dbaName]" type="text" value="<?php echo $row['dba']; ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -20,13 +17,13 @@
 						<label>Customer Number</label>
 					</td>
 					<td>
-						<input id="customerNumber" name="frm[customerNumber]" type="text" value="<?php echo $row['customer_number'];?>" />
+						<input class="validate[required] text-input" id="customerNumber" name="frm[customerNumber]" type="text" value="<?php echo $row['customer_number'];?>" />
 					</td>
 					<td align="right">
 						<label>Discount Level</label>
 					</td>
 					<td>
-						<input id="discountPct" name="frm[discountPct]" type="text" value="<?php echo $row['discount'];?>" />
+						<input data-prompt-position="topLeft" class="validate[required,custom[integer]] text-input"  id="discountPct" name="frm[discountPct]" type="text" value="<?php echo $row['discount'];?>" />
 					</td>
 				</tr>
 				<tr>
@@ -119,7 +116,7 @@
 						<label>email</label>
 					</td>
 					<td colspan="3">
-						<input class="validate[required,custom[email]]" id="email" name="frm[email]" type="text" value="<?php echo $row['email'];?>"/>
+						<input data-prompt-position="topLeft" class="validate[custom[email]]" id="email" name="frm[email]" type="text" value="<?php echo $row['email'];?>"/>
 					</td>
 				</tr>
 				<tr>

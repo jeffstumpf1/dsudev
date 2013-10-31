@@ -68,6 +68,7 @@ function WriteLabel($pdf, $row, $spacing) {
 	$rs = $row['rearSprocket_part_number'];
 	$cl = $row['chain_length'];
 
+
 	//Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
 	
 	$pdf->AddPage();
@@ -82,7 +83,10 @@ function WriteLabel($pdf, $row, $spacing) {
 	$pdf->Write($spacing, "\n".$application);
 	$pdf->Write($spacing, "\n\n".$desc);
 	if($cat=='KT') {
-		$pdf->Write(5, "\n"."FS: ".$fs. " / RS: ". $rs. " / CL: ". $cl);
+		$pdf->Write(5, "\n"."FS: ".$fs. " / RS: ". $rs. " / LENGTH: ". $cl);
+	}
+	if($cat=='CH') {
+		$pdf->Write(5, "\n"."LENGTH: ". $cl);
 	}
 }
 ?>

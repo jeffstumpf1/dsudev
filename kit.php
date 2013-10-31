@@ -4,9 +4,13 @@
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	
-	function __autoload($class) {
+ 	// Start logging
+	include 'log4php/Logger.php';
+	Logger::configure('logconfig.xml');
+	$log = Logger::getLogger('myLogger');
+	 spl_autoload_register(function ($class) {
 		include 'classes/' . $class . '.class.php';
-	}
+	 });   
 	
 	// Create Object Customer and Request
 	$constants = new Constants;
@@ -57,11 +61,18 @@
 	<title><?php echo($partCat)?>Chain Maintenance</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-  	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>	
-  	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
 	<link href="css/square/square.css" rel="stylesheet">
+
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+	<!-- Form Validation Engine -->
+	<script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
+	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+	
+	
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
 	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="js/kit.js"></script>
@@ -143,7 +154,7 @@ include 'inc/part_logic.inc.php';
 				</div>
 				<div class="kitSpacers">
 					<label class="titleTop" for="stockLevel">Stock Level</label><br/>
-					<input id="stockLevel"  name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>" />
+					<input class="validate[required] text-input" id="stockLevel"  name="frm[stockLevel]" type="text" value="<?php echo $row['stock_level']?>" />
 				</div>
 				
 			</div>
@@ -171,16 +182,16 @@ include 'inc/clip-list.inc.php';
 			<div class="group">
 				<div class="kitSpacers">
 					<label class="titleTop" for="fsPartNumber">Front Sprocket</label><br/>
-					<input id="fsPartNumber"  name="frm[fsPartNumber]" type="text" value="<?php echo $row['frontSprocket_part_number']?>" />
+					<input data-prompt-position="topLeft" class="validate[required] text-input" id="fsPartNumber"  name="frm[fsPartNumber]" type="text" value="<?php echo $row['frontSprocket_part_number']?>" />
 				</div>
 				
 				<div class="kitSpacers">
 					<label  class="titleTop" for="rsPartNumber">Rear Sprocket</label><br/>
-					<input id="rsPartNumber"  name="frm[rsPartNumber]" type="text" value="<?php echo $row['rearSprocket_part_number']?>" />
+					<input class="validate[required] text-input" id="rsPartNumber"  name="frm[rsPartNumber]" type="text" value="<?php echo $row['rearSprocket_part_number']?>" />
 				</div>
 				<div class="kitSpacers">
 					<label  class="titleTop" for="chainLength">Chain Length</label><br/>
-					<input id="chainLength"  name="frm[chainLength]" type="text" value="<?php echo $row['chain_length']?>" />
+					<input class="validate[required,custom[integer]] text-input" id="chainLength"  name="frm[chainLength]" type="text" value="<?php echo $row['chain_length']?>" />
 				</div>
 				<div class="kitSpacers">
 					<label  class="titleTop" for="crPartNumber">Carrier</label><br/>

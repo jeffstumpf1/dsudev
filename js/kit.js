@@ -31,6 +31,9 @@
 
 	
 	$('#log').show();
+	// Validations
+	$("#formChainKit").validationEngine('attach');
+	$("#formChainKit").validationEngine('init', {promptPosition : "centerRight", scroll: false});
 
  	// stops enter key submit the form
  	$('input').keypress(function(event){
@@ -44,7 +47,13 @@
  	// Process Form stuff here
  	$('#submit').click(function(event){
  		// validation code goes here
- 		$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
+		if( $("#formChainKit").validationEngine('validate') ) {
+			// validates
+			$("#formChainKit").submit(function(){
+  				$.blockUI({ message: '<h2><img src="images/16x16-cc.gif" /> Just a moment...</h2>' });
+			}); 		
+		}
+ 		
  	});
  	
 	$('#fsPartNumber').keypress(function(event){

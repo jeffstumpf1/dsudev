@@ -41,6 +41,7 @@
 	$json .= $utilityDB->BuildJSONKeyValue($row,"application");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_length");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_part_number");	
+	$json .= $utilityDB->BuildJSONKeyValue($row,"chain_orig_msrp");
 	$json .= $utilityDB->BuildJSONKeyValue($row,"msrp");	
 	$json .= $utilityDB->BuildJSONKeyValue($row,"qty");		
 	$json .= $utilityDB->BuildJSONKeyValue($row,"bo_qty");	
