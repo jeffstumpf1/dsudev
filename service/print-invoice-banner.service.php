@@ -41,9 +41,11 @@
 			<div class="kitSpacers">
 				<a class="btnPrint" title="Print Customer Invoice" target="_BLANK" href="print-invoice.php?order_number=<?php echo $order_number?>&tax_rate=<?php echo $tax_rate?>&code=0"><div class="printCustomer"></div></a>
 			</div>
+<!--
 			<div class="kitSpacers">
 				<a class="btnPrint" title="Print Invoice for Shop" target="_BLANK" href="print-invoice.php?order_number=<?php echo $order_number?>&tax_rate=<?php echo $tax_rate?>&code=1"><div class="printShop"></div></a>
 			</div>
+-->			
 			<div class="kitSpacers">
 				<a class="btnPrint" title="Print Packing Slip" target="_BLANK" href="print-invoice.php?order_number=<?php echo $order_number?>&tax_rate=<?php echo $tax_rate?>&code=2"><div class="printPacking"></div></a>
 			</div>

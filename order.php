@@ -1,6 +1,6 @@
 <?php 
 	header('Content-type: text/html; charset=utf-8');
-	
+	//require "inc/back-to-referer.inc.php";
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	

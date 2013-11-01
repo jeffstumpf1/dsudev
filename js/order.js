@@ -52,6 +52,7 @@ var $rs;
 			});
  	}
 
+
 	function ShowOrderBanner($orderNumber, $taxRate, $status) {
 	
 		$.ajax({
@@ -120,7 +121,6 @@ var $rs;
 			}
 		  }
 		});
-		
 	});
 
 
@@ -201,6 +201,27 @@ var $rs;
 	});
 
 
+        $(document).on('click', '.printTickets', function(event) {
+                event.preventDefault();
+                $id = $(this).parent().attr('oid');
+                $title = "Print Pick Tickets";
+                $( "#dialog-print-tickets" ).dialog({
+                 resizable: false,
+                 height:200,
+                 modal: true,
+                 title: $title,
+                 buttons: {
+                        "Print Ticket": function() {
+                         $( this ).dialog( "close" );
+                         PrintPickTickets($id);
+                        },
+                        Cancel: function() {
+                         $( this ).dialog( "close" );
+                        }
+                 }
+                });
+                
+        });
 
 	function ShipOrder($order_number) {
 	$.ajax({ 
@@ -212,7 +233,7 @@ var $rs;
 		  },
 		  success:function(data){
 		  	alert( data );
-			
+			location.reload();
 		  },
 		  error:function(){
 			alert('Error: Tickets Not Printed');
@@ -350,6 +371,7 @@ var $rs;
 		$tax_rate= $("#tax_rate").val();
 		$paymentTerms=$("#payment_terms").val();
 		SaveOrder($orderNumber, $customerNumber, $customerPO, $orderDate, $orderShipping, $tax_rate,"OPEN", $paymentTerms);
+		window.location.replace("order-list.php");
 	});
 	
 	

@@ -28,8 +28,7 @@
 	} else 
 		$rs = $orders->ListOrders($search);
 	
-		
-	$nextOrder = $orders->GetNextOrderNumber();
+
 ?>
 
 

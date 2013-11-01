@@ -31,7 +31,7 @@
 	$code = $request->GetParam('code');
 	switch ($code) {
 		case 0:
-			$msg = "CUSTOMER COPY";
+			$msg = "INVOICE";
 			break;
 		case 1:
 			$msg = "SHOP COPY";
