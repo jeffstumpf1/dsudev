@@ -757,3 +757,186 @@
 2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!
 2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!
 2013-10-31T20:58:12+01:00 [Order] The class "Order" was initiated!
+2013-11-01T02:08:10+01:00 [Order] The class "Order" was initiated!
+2013-11-01T02:08:10+01:00 [Order] The class "Order" was initiated!
+2013-11-01T02:08:10+01:00 [Order] The class "Order" was initiated!
+2013-11-01T02:08:10+01:00 [Order] The class "Order" was initiated!
+2013-11-01T02:58:10+01:00 [Order] The class "Order" was initiated!
+2013-11-01T02:59:41+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:01:28+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:03:31+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:04:27+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:05:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:05:45+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:05:45+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:05:45+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:05:46+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:11:00+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:17:08+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:18:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:19:04+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:20:11+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:21:08+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:22:27+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:24:48+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:25:44+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:26:50+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:29:01+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:30:12+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:31:52+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:31:52+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:31:52+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:31:52+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:32:07+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:32:07+01:00 [Part] term:20
+2013-11-01T03:32:07+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:32:07+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '20%' limit 25
+2013-11-01T03:32:10+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:32:10+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:32:15+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:32:15+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:32:15+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (,428,'130706122',35,'FS','20206K-17','','','','','SUPERLITE 428 PITCH CHROMOLY STEEL DRILLED FRONT KART SPROCKET ','HONDA CR 125 1987-2003',,14.95,1,5.23,0,9.72,9.72)
+2013-11-01T03:32:16+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:32:16+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:33:33+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:33:46+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:33:46+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:33:46+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:33:46+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:33:57+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:33:57+01:00 [Part] term:10
+2013-11-01T03:33:57+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:33:57+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-11-01T03:33:59+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:34:00+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:34:08+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:34:08+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:34:08+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (,520,'130706124',38,'RS','10212R-49','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \\\'02-13','',,59.95,1,22.78,0,37.17,37.17)
+2013-11-01T03:34:08+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:34:08+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:36:03+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:36:03+01:00 [Part] term:10
+2013-11-01T03:36:03+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:36:03+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-11-01T03:36:05+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:36:06+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:36:12+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:36:12+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:36:12+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0,520,'130706124',38,'RS','10212R-48','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \'02-13','',,59.95,1,22.78,0,37.17,37.17)
+2013-11-01T03:36:12+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:36:12+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:41:15+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:41:15+01:00 [Part] term:10
+2013-11-01T03:41:15+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:41:15+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-11-01T03:41:17+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:41:18+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:41:24+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:41:24+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:41:24+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0,520,'130706124',38,'RS','10212R-47','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \'02-13','',0,59.95,1,22.78,0,37.17,37.17)
+2013-11-01T03:41:25+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:41:25+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:41:57+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:25+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:25+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:25+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:25+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:33+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:42:33+01:00 [Part] term:10
+2013-11-01T03:42:33+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:42:33+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-11-01T03:42:35+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:42:36+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:42:41+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:41+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:42:41+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0,520,'130706128',40,'RS','10212R-47','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \'02-13','',0,59.95,1,23.98,0,35.97,35.97)
+2013-11-01T03:42:42+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:42+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:42:56+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:43:11+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:43:11+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:43:11+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:43:11+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:43:58+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:43:58+01:00 [Part] term:21
+2013-11-01T03:43:58+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:43:58+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '21%' limit 25
+2013-11-01T03:44:00+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:44:00+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:44:05+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:05+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:44:05+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0,530,'130706134',40,'FS','21602R-16','','','','','SUPERLITE 530 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - YAMAHA YZF-R6/FZ-6','',0,26.95,1,10.78,0,16.17,16.17)
+2013-11-01T03:44:06+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:06+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:17+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:17+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:17+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:17+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:36+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:37+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:37+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:44:37+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:46:24+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:46:24+01:00 [Part] term:10
+2013-11-01T03:46:24+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T03:46:24+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-11-01T03:46:27+01:00 [Part] The class "Part" was initiated!
+2013-11-01T03:46:27+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T03:46:31+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:46:31+01:00 [Order] Order::UpdateOrderItem
+2013-11-01T03:46:31+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0,520,'130706136',40,'RS','10212R-48','','','','','SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \'02-13','',0,59.95,1,23.98,0,35.97,35.97)
+2013-11-01T03:46:32+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:46:32+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:48:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:48:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:48:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:48:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:49:09+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:49:09+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:49:09+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:49:09+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:49:23+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:57:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:59:44+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:59:44+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:59:44+01:00 [Order] The class "Order" was initiated!
+2013-11-01T03:59:44+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:04:57+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:04:57+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:04:57+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:04:57+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:05:42+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:10:35+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:12:32+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:13:43+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:18:31+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:18:31+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:18:31+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:18:31+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:18:39+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:18:39+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:19:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:19:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:19:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:19:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:19:14+01:00 [Part] The class "Part" was initiated!
+2013-11-01T04:19:14+01:00 [Part] term:10
+2013-11-01T04:19:14+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T04:19:14+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10%' limit 25
+2013-11-01T04:19:19+01:00 [Part] The class "Part" was initiated!
+2013-11-01T04:19:19+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T04:19:23+01:00 [Part] The class "Part" was initiated!
+2013-11-01T04:19:23+01:00 [Part] term:10212R-
+2013-11-01T04:19:23+01:00 [Part] Part::MasterPartAutoComplete
+2013-11-01T04:19:23+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '10212R-%' limit 25
+2013-11-01T04:19:26+01:00 [Part] The class "Part" was initiated!
+2013-11-01T04:19:26+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-11-01T04:20:21+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:20:21+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:20:21+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:20:21+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:21:02+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:21:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:21:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:21:40+01:00 [Order] The class "Order" was initiated!
+2013-11-01T04:21:40+01:00 [Order] The class "Order" was initiated!

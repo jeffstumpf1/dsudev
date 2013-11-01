@@ -145,22 +145,28 @@ var $rs;
 			}
 		  }
 		});
-		
 	});
 
-	$(document).on('click', '.printTickets', function(event) {
+
+
+	$(document).on('click', '.actionShipping', function(event) {
 		event.preventDefault();
 		$id = $(this).parent().attr('oid');
-		$title = "Print Pick Tickets";
-		$( "#dialog-print-tickets" ).dialog({
+		$status = $(this).parent().attr('ostatus');
+		$title = "Ship Products";
+		if($status=='SHIPPED') {
+			alert($id + " is all ready SHIPPED.");
+			return false;
+		}
+		$( "#dialog-shipping" ).dialog({
 		  resizable: false,
 		  height:200,
 		  modal: true,
 		  title: $title,
 		  buttons: {
-			"Print Ticket": function() {
+			"Ship Order": function() {
 			  $( this ).dialog( "close" );
-			  PrintPickTickets($id);
+			  ShipOrder($id);
 			},
 			Cancel: function() {
 			  $( this ).dialog( "close" );
@@ -169,6 +175,8 @@ var $rs;
 		});
 		
 	});
+	
+	
 	
 	$(document).on('click', '.printTicket', function(event) {
 		event.preventDefault();
@@ -191,6 +199,28 @@ var $rs;
 		});
 		
 	});
+
+
+
+	function ShipOrder($order_number) {
+	$.ajax({ 
+		  type: 'POST',
+		  url: 'service/ship-order.service.php',
+		  data: { order_number: $order_number },
+		  beforeSend:function(){
+			// load a temporary image in a div
+		  },
+		  success:function(data){
+		  	alert( data );
+			
+		  },
+		  error:function(){
+			alert('Error: Tickets Not Printed');
+		  }
+		});
+	}
+
+
 
 	function PrintPickTicket($ID) {
 	$.ajax({ 

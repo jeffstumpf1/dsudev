@@ -412,6 +412,42 @@ class Order {
 	}	
 	
 
+	public function ShipOrder($order_number) {
+	
+		$sqlOrder = sprintf("UPDATE ". Constants::TABLE_ORDER ." SET order_status_code='SHIPPED' WHERE order_number='%s'", $order_number);
+		$sqlItems = sprintf("UPDATE ". Constants::TABLE_ORDER_ITEMS ." SET rec_status='5' WHERE order_number='%s'", $order_number);
+		
+		// Update Stock Levels
+		$rs = $this->GetOrderItems($order_number);
+		
+		while($row = $rs->fetch()) {
+			// loop through ordered parts
+			//print_r($row)."</p>";
+			$part_number = $row['part_number'];
+			$order_item_id = $row['order_item_id'];
+			$qty = $row['qty'];
+			// find the part in parts master
+			$tmp = $this->db->query( sprintf( "SELECT stock_level FROM ". Constants::TABLE_PART ." WHERE part_number='%s'", $part_number) );
+			$partRow = $tmp->fetch();
+			$stockLevel = $partRow['stock_level'];
+			$newStock = $stockLevel - $qty;
+			$tmp= null;
+			
+			$sql = sprintf("UPDATE ". Constants::TABLE_PART ." SET stock_level=%s	WHERE part_number='%s'", $newStock, $part_number);
+			$r1 = $this->db->query( $sql );
+
+		}
+		// Update Order and Order items to SHIPPED STATUS
+		$cmd = $this->db->query( $sqlOrder );
+		$cnt = $cmd->affected();
+		
+		$cmd = $this->db->query( $sqlItems );
+		$cnt = $cnt + $cmd->affected();
+		
+		return $cnt;
+	}
+
+/********************   ORDER ITEMS *********************/
 	
 	
 	function UpdateOrderItem($formData) {
@@ -429,7 +465,8 @@ class Order {
 		$fs = $formData['frontSprocket'];
 		$rs = $formData['rearSprocket'];
 		$cr = $formData['carrier'];
-
+		$chain_orig_msrp=0;
+		$chainLength=0;
 		$description = addslashes($formData['description']);
 		$application = addslashes($formData['application']);
 		// two chains kit and chain itself

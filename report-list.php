@@ -62,6 +62,21 @@
 			</div>
 		</fieldset>
 	</div>
+	
+	<div id="report-franchiseTaxSales" >
+		<fieldset class="fsReport" >
+		<legend>Franchise Sales Tax</legend>
+			<div class="kitSpacers">
+				<label for="from">From </label><input type="text" id="fromAllTax" name="fromAllTax" size="15"/> 
+				<label for="to"> to </label><input type="text" id="toAllTax" name="toTax" size="15"/>
+				<input type="button" id="button-franchiseSales" value="Get Report" />
+			</div>
+			<div class="group">
+				<div id="franchiseTaxSales"/>
+			</div>
+		</fieldset>
+	</div>
+	
 </div>
 	
 <div class="Push"></div>	

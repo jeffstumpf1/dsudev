@@ -109,7 +109,7 @@ label, input, textarea  {
 }
 
 /* Dialogs */
-#dialog-form, #dialog-confirm, #dialog-print, #dialog-print-tickets, #dialog-ticket {
+#dialog-form, #dialog-confirm, #dialog-print, #dialog-print-tickets, #dialog-ticket, #dialog-shipping {
 	display: none;
 }
 
@@ -191,6 +191,13 @@ label.titleTop {
 	background-image:url('images/usd.png');
 	width: 17px;
 	height: 26px;
+	margin: 3px 0 8px 15px;
+	float:left;	
+}
+.actionShipping {
+	background-image:url('images/ups.jpg');
+	width: 26px;
+	height: 27px;
 	margin: 3px 0 8px 15px;
 	float:left;	
 }

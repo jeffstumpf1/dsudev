@@ -21,12 +21,21 @@ $(function() {
 	$(document).on('click', '#button-allSales', function(event) {
 		$from = $('#fromAll').val();
 		$to = $('#toAll').val();	
-		
 		if(!$from) $from="01-01-2013";
 		if(!$to) $to="12-30-2013";	
 		GetAllSales( $from, $to );
 	
 	});
+
+	$(document).on('click', '#button-franchiseSales', function(event) {
+		$from = $('#fromAllTax').val();
+		$to = $('#toAllTax').val();	
+		if(!$from) $from="01-01-2013";
+		if(!$to) $to="12-30-2013";	
+		GetFranchiseTaxSales( true, $from, $to );
+	
+	});
+
 
 	/*
 	  Autocomplete box for customers
@@ -72,7 +81,7 @@ $(function() {
 		  },
 		  success:function(data){
 		  		$('#salesbyCustomer').html(data);
-		  		$('#report-salesbyCustomerDate').width( $('#report-salesbyCustomer').width() );
+		  		//$('#report-salesbyCustomerDate').width( $('#report-salesbyCustomer').width() );
 
 		  },
 		  error:function(){
@@ -125,6 +134,25 @@ $(function() {
 
 	}
 
+	function GetFranchiseTaxSales( $flag, $from, $to ) {
+
+		$.ajax({ 
+		  type: 'POST',
+		  url: 'service/report-GetSalesByCustomer.service.php',
+		  data: { flag: $flag, from: $from, to: $to},
+		  beforeSend:function(){
+			// load a temporary image in a div
+		  },
+		  success:function(data){
+		  		$('#franchiseTaxSales').html(data);
+		  },
+		  error:function(){
+			alert('Error: No Franchise Tax Sales, failed');
+		  }
+		});
+
+
+	}
 
 /**************************************************************/
   	$( "#from" ).datepicker({
@@ -168,5 +196,28 @@ $(function() {
 		}
 	});
 	$( "#toAll" ).datepicker("option", "dateFormat", "mm-dd-yy");
+	
+	
+	
+	$( "#fromAllTax" ).datepicker({
+  		defaultDate: "+1w",
+  		changeMonth: true,
+  		numberOfMonths: 3,
+  		onClose: function( selectedDate ) {
+  			$( "#toAllTax" ).datepicker( "option", "minDate", selectedDate );
+  		}  
+  	});
+  	$( "#fromAllTax" ).datepicker("option", "dateFormat", "mm-dd-yy");
+  	
+	$( "#toAllTax" ).datepicker({
+		defaultDate: "+1w",
+		changeMonth: true,
+		numberOfMonths: 3,
+		onClose: function( selectedDate ) {
+		$( "#fromAllTax" ).datepicker( "option", "maxDate", selectedDate );
+		}
+	});
+	$( "#toAllTax" ).datepicker("option", "dateFormat", "mm-dd-yy");
+	
 });
 

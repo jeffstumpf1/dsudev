@@ -38,7 +38,10 @@ class Utility {
 		$retVal = 0;
 		switch ($out) {
 			case '$':
-				$retVal = money_format('$%i', $val);
+				if($val==0 || val=='') {
+					$retVal = '';
+				} else
+					$retVal = money_format('$%i', $val);
 				break;
 			case '':
 				$retVal = money_format('%i', $val);
