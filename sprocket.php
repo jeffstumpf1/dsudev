@@ -273,6 +273,7 @@ include 'inc/brand-list.inc.php';
 		<input id="partID" name="frm[partID]" value="<?php echo $part_id ?>" type="hidden"/>
 		<input id="sprocketID" name="frm[sprocketID]" value="<?php echo $row['sprocket_id'] ?>" type="hidden"/>	
 		<input id="recsStatus" name="frm[recStatus]" value="<?php echo $row['rec_status'] ?>" type="hidden"/>	
+		</p>
 		</div>
 </div>
 	<div id="footer">

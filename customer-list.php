@@ -87,7 +87,7 @@
 			<div id="searchBox">
 			  <form id="frmSearch">				
 				<input id="search" name="search" type="text" value="<?php echo $search ?>" />
-				<input type="submit" value="Search" />
+				<input type="submit" value="Search" id="submit"/>
 			</div>
 		</div>
 		<table id="customerTable">

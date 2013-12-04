@@ -1,219 +1,65 @@
 DEBUG - 
-DEBUG - Part Number:927
-DEBUG - GetMasterPartByPartNumber(927)
-DEBUG - 
-DEBUG - Part Number:971
-DEBUG - 
-DEBUG - Part Number:20510R-16
-DEBUG - GetMasterPartByPartNumber(20510R-16)
-DEBUG - 
-DEBUG - Part Number:20510R-16
-DEBUG - GetMasterPartByPartNumber(20510R-16)
-DEBUG - 
-DEBUG - Part Number:20510R-16
-DEBUG - GetMasterPartByPartNumber(20510R-16)
-DEBUG - 
-DEBUG - Part Number:971
-DEBUG - 
-DEBUG - Part Number:971
-DEBUG - 
-DEBUG - Part Number:971 Category:KT
-DEBUG - 
-DEBUG - Part Number:971 Category:KT
-DEBUG - ListKits(971)
-DEBUG - 
-DEBUG - Part Number:971 Category:KT
-DEBUG - ListKits(971)
-DEBUG - MySQLResult Object
-(
-    [mysql] => MySQL Object
-        (
-            [host] => localhost
-            [dbUser] => dsuAdmin
-            [dbPass] => drive$ystem
-            [dbName] => dsu
-            [dbConn] => Resource id #4
-            [connectError] => 
-        )
-
-    [query] => Resource id #8
-    [rows_affected] => 
-)
-
-DEBUG - 
-DEBUG - Part Number:971 Category:KT
-DEBUG - ListKits(971)
+DEBUG - Part Number:20206K-19 Category:FS
+DEBUG - GetMasterPartByPartNumber(20206K-19)
 DEBUG - Array
 (
-    [part_id] => 947
-    [part_number] => R1060023-8
-    [part_description] => SUPERLITE 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING CHAIN - HONDA CBR 600RR 2007-2013
-    [part_application] => CBR 600RR 2007-2013
-    [stock_level] => 0
-    [category_id] => KT
-    [pitch_id] => 520
-    [msrp] => 267.1
-    [dealer_cost] => 173.86
-    [import_cost] => 88.48
-    [rec_status] => 0
-    [create_dt] => 
-    [modified_dt] => 
-    [chain_kit_id] => 16
-    [product_brand_id] => *
-    [frontSprocket_part_number] => 20608R-16
-    [rearSprocket_part_number] => 10618R-42
-    [carrier_part_number] => 
-    [chain_length] => 112
-    [fs_price] => 20608R-16|34.95:22.37:4.68
-    [rs_price] => 10618R-42|52.95:33.89:7.64
-    [ch_price] => DA520ERV3|179.20:117.60:76.16
-    [cr_price] => 
-    [chain_part_number] => DA520ERV3-8
-    [clip_id] => *
-)
-
-DEBUG - 
-DEBUG - Part Number:954 Category:KT
-DEBUG - ListKits(954)
-DEBUG - Array
-(
-    [part_id] => 947
-    [part_number] => R1060023-8
-    [part_description] => SUPERLITE 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING CHAIN - HONDA CBR 600RR 2007-2013
-    [part_application] => CBR 600RR 2007-2013
-    [stock_level] => 0
-    [category_id] => KT
-    [pitch_id] => 520
-    [msrp] => 267.1
-    [dealer_cost] => 173.86
-    [import_cost] => 88.48
-    [rec_status] => 0
-    [create_dt] => 
-    [modified_dt] => 
-    [chain_kit_id] => 16
-    [product_brand_id] => *
-    [frontSprocket_part_number] => 20608R-16
-    [rearSprocket_part_number] => 10618R-42
-    [carrier_part_number] => 
-    [chain_length] => 112
-    [fs_price] => 20608R-16|34.95:22.37:4.68
-    [rs_price] => 10618R-42|52.95:33.89:7.64
-    [ch_price] => DA520ERV3|179.20:117.60:76.16
-    [cr_price] => 
-    [chain_part_number] => DA520ERV3-8
-    [clip_id] => *
-)
-
-DEBUG - 
-DEBUG - Part Number:20206K-15 Category:FS
-DEBUG - GetMasterPartByPartNumber(20206K-15)
-DEBUG - Array
-(
-    [part_id] => 321
-    [part_number] => 20206K-15
-    [part_description] => SUPERLITE 428 PITCH CHROMOLY STEEL DRILLED FRONT KART SPROCKET - HONDA CR 125 '87-03 
-    [part_application] => 
+    [part_id] => 325
+    [part_number] => 20206K-19
+    [part_description] => SUPERLITE 428 PITCH CHROMOLY STEEL DRILLED FRONT KART SPROCKET 
+    [part_application] => HONDA CR 125 1987-2003
     [stock_level] => 0
     [category_id] => FS
     [pitch_id] => 428
     [msrp] => 14.95
     [dealer_cost] => 4.25
-    [import_cost] => 1.87
+    [import_cost] => 2.14
     [rec_status] => 0
     [create_dt] => CURRENT_TIMESTAMP
     [modified_dt] => 
 )
 
 DEBUG - 
-DEBUG - Part Number:67 Category:
-DEBUG - GetMasterPartByPartNumber(67)
-DEBUG - 
-DEBUG - 
-DEBUG - Part Number:79 Category:
-DEBUG - GetMasterPartByPartNumber(79)
-DEBUG - 
-DEBUG - 
-DEBUG - Part Number:20206K-15 Category:FS
-DEBUG - GetMasterPartByPartNumber(20206K-15)
+DEBUG - Part Number:20206K-17 Category:FS
+DEBUG - GetMasterPartByPartNumber(20206K-17)
 DEBUG - Array
 (
-    [part_id] => 321
-    [part_number] => 20206K-15
-    [part_description] => SUPERLITE 428 PITCH CHROMOLY STEEL DRILLED FRONT KART SPROCKET - HONDA CR 125 '87-03 
-    [part_application] => 
+    [part_id] => 323
+    [part_number] => 20206K-17
+    [part_description] => SUPERLITE 428 PITCH CHROMOLY STEEL DRILLED FRONT KART SPROCKET 
+    [part_application] => HONDA CR 125 1987-2003
     [stock_level] => 0
     [category_id] => FS
     [pitch_id] => 428
     [msrp] => 14.95
     [dealer_cost] => 4.25
-    [import_cost] => 1.87
+    [import_cost] => 2.02
     [rec_status] => 0
     [create_dt] => CURRENT_TIMESTAMP
     [modified_dt] => 
 )
 
 DEBUG - 
-DEBUG - Part Number:20206K-18 Category:FS
-DEBUG - GetMasterPartByPartNumber(20206K-18)
+DEBUG - Part Number:20210R-13 Category:FSTicket Number:3
+DEBUG - GetMasterPartByPartNumber(20210R-13)
 DEBUG - Array
 (
-    [part_id] => 324
-    [part_number] => 20206K-18
-    [part_description] => SUPERLITE 428 PITCH CHROMOLY STEEL DRILLED FRONT KART SPROCKET - HONDA CR 125 '87-03 
-    [part_application] => 
-    [stock_level] => 0
-    [category_id] => FS
-    [pitch_id] => 428
-    [msrp] => 14.95
-    [dealer_cost] => 4.25
-    [import_cost] => 2.08
-    [rec_status] => 0
-    [create_dt] => CURRENT_TIMESTAMP
-    [modified_dt] => 
-)
-
-DEBUG - 
-DEBUG - Part Number:20511R-14 Category:FS
-DEBUG - GetMasterPartByPartNumber(20511R-14)
-DEBUG - Array
-(
-    [part_id] => 336
-    [part_number] => 20511R-14
-    [part_description] => SUPERLITE 520 CONVERSION CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA CBR 600F2/F3 '91-98
-    [part_application] => 
+    [part_id] => 327
+    [part_number] => 20210R-13
+    [part_description] => SUPERLITE 520 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA 
+    [part_application] => HONDA CR 125R 2004-2007/CRF 250 2004-2013
     [stock_level] => 0
     [category_id] => FS
     [pitch_id] => 520
-    [msrp] => 31.95
-    [dealer_cost] => 20.45
-    [import_cost] => 4.09
+    [msrp] => 19.95
+    [dealer_cost] => 12.77
+    [import_cost] => 2.94
     [rec_status] => 0
     [create_dt] => CURRENT_TIMESTAMP
     [modified_dt] => 
 )
 
 DEBUG - 
-DEBUG - Part Number:20602R-17 Category:FS
-DEBUG - GetMasterPartByPartNumber(20602R-17)
-DEBUG - Array
-(
-    [part_id] => 343
-    [part_number] => 20602R-17
-    [part_description] => SUPERLITE 530 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA VFR 800/CBR 1100XX
-    [part_application] => 
-    [stock_level] => 0
-    [category_id] => FS
-    [pitch_id] => 530
-    [msrp] => 29.95
-    [dealer_cost] => 19.17
-    [import_cost] => 4.47
-    [rec_status] => 0
-    [create_dt] => CURRENT_TIMESTAMP
-    [modified_dt] => 
-)
-
-DEBUG - 
-DEBUG - Part Number:20602R-15 Category:FSTicket Number:3
+DEBUG - Part Number:20602R-15 Category:FSTicket Number:1
 DEBUG - GetMasterPartByPartNumber(20602R-15)
 DEBUG - Array
 (
@@ -233,19 +79,231 @@ DEBUG - Array
 )
 
 DEBUG - 
-DEBUG - Part Number:20311R-13 Category:FSTicket Number:3
-DEBUG - GetMasterPartByPartNumber(20311R-13)
+DEBUG - Part Number:1042 Category:KTTicket Number:1
+DEBUG - ListKits(1042)
 DEBUG - Array
 (
-    [part_id] => 329
-    [part_number] => 20311R-13
-    [part_description] => SUPERLITE 520 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA CR 250 '88-08/CRF 450 '02-13
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1042 Category:KTTicket Number:1
+DEBUG - ListKits(1042)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1042 Category:KTTicket Number:1
+DEBUG - ListKits(1042)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1042 Category:KTTicket Number:1
+DEBUG - ListKits(1042)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1053 Category:KTTicket Number:1
+DEBUG - ListKits(1053)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1028 Category:KTTicket Number:1
+DEBUG - ListKits(1028)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:20504R-14 Category:FSTicket Number:1
+DEBUG - GetMasterPartByPartNumber(20504R-14)
+DEBUG - Array
+(
+    [part_id] => 331
+    [part_number] => 20504R-14
+    [part_description] => SUPERLITE 530 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA
+    [part_application] => HONDA CBR 600F2/F3 1991-1996
+    [stock_level] => 0
+    [category_id] => FS
+    [pitch_id] => 530
+    [msrp] => 31.95
+    [dealer_cost] => 20.45
+    [import_cost] => 4.5
+    [rec_status] => 0
+    [create_dt] => CURRENT_TIMESTAMP
+    [modified_dt] => 
+)
+
+DEBUG - 
+DEBUG - Part Number:28401R-17 Category:FSTicket Number:1
+DEBUG - GetMasterPartByPartNumber(28401R-17)
+DEBUG - Array
+(
+    [part_id] => 427
+    [part_number] => 28401R-17
+    [part_description] => SUPERLITE 525 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - MULTI FIT
     [part_application] => 
     [stock_level] => 0
     [category_id] => FS
-    [pitch_id] => 520
-    [msrp] => 19.95
-    [dealer_cost] => 12.77
+    [pitch_id] => 525
+    [msrp] => 24.95
+    [dealer_cost] => 15.97
     [import_cost] => 2.94
     [rec_status] => 0
     [create_dt] => CURRENT_TIMESTAMP
@@ -253,22 +311,234 @@ DEBUG - Array
 )
 
 DEBUG - 
-DEBUG - Part Number:20311R-13 Category:FSTicket Number:3
-DEBUG - GetMasterPartByPartNumber(20311R-13)
+DEBUG - Part Number:1018 Category:KTTicket Number:1
+DEBUG - ListKits(1018)
 DEBUG - Array
 (
-    [part_id] => 329
-    [part_number] => 20311R-13
-    [part_description] => SUPERLITE 520 PITCH CHROMOLY STEEL DRILLED FRONT SPROCKET - HONDA CR 250 '88-08/CRF 450 '02-13
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1015 Category:KTTicket Number:1
+DEBUG - ListKits(1015)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1018 Category:KTTicket Number:1
+DEBUG - ListKits(1018)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:1041 Category:KTTicket Number:1
+DEBUG - ListKits(1041)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:10212R-52 Category:RSTicket Number:1
+DEBUG - GetMasterPartByPartNumber(10212R-52)
+DEBUG - Array
+(
+    [part_id] => 553
+    [part_number] => 10212R-52
+    [part_description] => SUPERLITE RS8 SERIES 520 PITCH BLACK STEEL REAR MX SPROCKET - HONDA CRF 250/450 \'02-13
     [part_application] => 
     [stock_level] => 0
-    [category_id] => FS
+    [category_id] => RS
     [pitch_id] => 520
-    [msrp] => 19.95
-    [dealer_cost] => 12.77
-    [import_cost] => 2.94
+    [msrp] => 62.95
+    [dealer_cost] => 40.29
+    [import_cost] => 16.96
     [rec_status] => 0
     [create_dt] => CURRENT_TIMESTAMP
     [modified_dt] => 
+)
+
+DEBUG - 
+DEBUG - Part Number:PCD-3G Category:CRTicket Number:1
+DEBUG - GetMasterPartByPartNumber(PCD-3G)
+DEBUG - Array
+(
+    [part_id] => 967
+    [part_number] => PCD-3G
+    [part_description] => ADS GOLD HARD ANODIZED BILLET ALLOY QUICK CHANGE SPROCKET CARRIER - DUCATI 
+    [part_application] => DUCATI 1098 SBK, 1198 SBK, 1198 DIAVEL,                1200 MULTISTRADA 
+    [stock_level] => 0
+    [category_id] => CR
+    [pitch_id] => 
+    [msrp] => 194.95
+    [dealer_cost] => 124.77
+    [import_cost] => 45
+    [rec_status] => 0
+    [create_dt] => CURRENT_TIMESTAMP
+    [modified_dt] => 
+)
+
+DEBUG - 
+DEBUG - Part Number:1013 Category:KTTicket Number:1
+DEBUG - ListKits(1013)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
+)
+
+DEBUG - 
+DEBUG - Part Number:993 Category:KTTicket Number:1
+DEBUG - ListKits(993)
+DEBUG - Array
+(
+    [part_id] => 947
+    [part_number] => R1060023-8
+    [part_description] => SUPERLITE RS7 520 CONVERSION STEEL SPROCKET SET W/DID 520ERV3 GOLD X-RING RACE CHAIN - HONDA
+    [part_application] => CBR 600RR 2007-2013
+    [stock_level] => 0
+    [category_id] => KT
+    [pitch_id] => 520
+    [msrp] => 267.1
+    [dealer_cost] => 167.14
+    [import_cost] => 88.48
+    [rec_status] => 0
+    [create_dt] => 
+    [modified_dt] => 
+    [chain_kit_id] => 16
+    [product_brand_id] => *
+    [frontSprocket_part_number] => 20608R-16
+    [rearSprocket_part_number] => 10618R-42
+    [carrier_part_number] => 
+    [chain_length] => 112
+    [ch_price] => DA520ERV3|179.20:110.88:76.16
+    [rs_price] => 10618R-42|52.95:33.89:7.64
+    [fs_price] => 20608R-16|34.95:22.37:4.68
+    [cr_price] => 0
+    [chain_part_number] => DA520ERV3-8
+    [clip_id] => *
 )
 

@@ -286,10 +286,10 @@
 			  },
 			  success:function(data){
 				$('#chainChart').html(data);
-				$('#chainChartTable input').iCheck({		// icheck style applied
-					checkboxClass: 'icheckbox_square',
-					radioClass: 'iradio_square',
-				});
+				//$('#chainChartTable input').iCheck({		// icheck style applied
+				//	checkboxClass: 'icheckbox_square',
+				//	radioClass: '.iradio_square',
+				//});
 				// We need to have a value in chain part item
 				if( $('#ch').val() != '') {
 					$('#ch').val( $("input:radio[name='iCheck']:checked").val() );			// Save the newly calculated values to refresh the save

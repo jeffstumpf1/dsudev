@@ -53,13 +53,13 @@
 		<div class="group" id="entryKit">		
 			<div class="kitSpacers">
 				<div class="ui-widget">
-					<label for="frontSprocket">Front Sprocket</label><br/>
+					<label for="frontSprocket">Front Sprocket</label>&nbsp;<label id="fsStockLevel"></label><br/>
 					<input class="validate[required] text-input" id="frontSprocket"  name="frm[frontSprocket]" type="text" value="<?php echo $row['part_number']?>" size="25"/>
 				</div>
 			</div>
 			<div class="kitSpacers">
 				<div class="ui-widget">
-					<label for="rearSprocket">Rear Sprocket</label><br/>
+					<label for="rearSprocket">Rear Sprocket</label>&nbsp;<label id="rsStockLevel"></label><br/>
 					<input id="rearSprocket"  name="frm[rearSprocket]" type="text" value="<?php echo $row['part_number']?>" size="25"/>
 				</div>
 			</div>			
@@ -78,7 +78,7 @@
 -->			
 			<div class="kitSpacers">
 				<div class="ui-widget">
-					<label for="carrier">Carrier</label><br/>
+					<label for="carrier">Carrier</label>&nbsp;<label id="crStockLevel"></label><br/>
 					<input class="" id="carrier" name="frm[carrier]" type="text" value="" size="25"/>
 				</div>
 			</div>

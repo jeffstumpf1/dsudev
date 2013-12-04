@@ -32,6 +32,10 @@
 	while ($row = $rs->fetch() ) {
 		
 		for($i=0;$i<$row['qty'];$i++) {		
+			$tmpRow = $order->GetOrder($row['order_number']);
+			//print_r($tmpRow);
+			$row['dba'] = $tmpRow['dba'];
+			$row['customer_number'] = $tmpRow['customer_number'];
 			WriteLabel($pdf, $row, $spacing);
 		}
 		
@@ -67,6 +71,9 @@ function WriteLabel($pdf, $row, $spacing) {
 	$fs = $row['frontSprocket_part_number'];
 	$rs = $row['rearSprocket_part_number'];
 	$cl = $row['chain_length'];
+	$custName = $row['dba'];
+	$custNumber = $row['customer_number'];
+	
 
 
 	//Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
@@ -76,17 +83,21 @@ function WriteLabel($pdf, $row, $spacing) {
 	$pdf->SetAutoPageBreak(3);
 	$pdf->SetY(3) ;
 	$pdf->SetFont('Arial','B',14);
-	$pdf->Write(3, "PART#"."  ".$part." : ".$pitch."\n");
+	$pdf->Write(3, "PART#"."  ".$part." : ".$pitch);
+	$pdf->SetFont('Arial','',7);
+	$pdf->Write(3, "  | ".$custName." - ". $custNumber."\n");
+
 	$pdf->Line(2, 8, 100, 8);
 	$pdf->SetFont('Arial','B',10);
 	//$pdf->Text(5, 15, $address) ;
 	$pdf->Write($spacing, "\n".$application);
 	$pdf->Write($spacing, "\n\n".$desc);
 	if($cat=='KT') {
-		$pdf->Write(5, "\n"."FS: ".$fs. " / RS: ". $rs. " / LENGTH: ". $cl);
+		$pdf->Write(5, "\n"."FS: ".$fs. " / RS: ". $rs. " / Length: ". $cl." / CR: ". $cr);
 	}
 	if($cat=='CH') {
 		$pdf->Write(5, "\n"."LENGTH: ". $cl);
 	}
+	
 }
 ?>

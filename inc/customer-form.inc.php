@@ -91,6 +91,7 @@
 							<?php
 							 echo $utilityDB->GetStateList($db, $row['billing_state']);  
 							?>
+
 						</select>
 					</td>
 					<td>

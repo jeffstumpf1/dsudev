@@ -13,7 +13,7 @@
 {
 	float: left;
 	width: 100%;
-	background: #333;
+	background: #ff0000;
 }
 
 #navigation ul
@@ -40,7 +40,7 @@
 	text-align: center;
 }
 
-#navigation li a:hover { background: #666; }
+#navigation li a:hover { background: #fff; color:#666}
 
 #content
 {
@@ -62,10 +62,11 @@
 #footer
 {
 	clear: both;
-	background: #ccc;
+	background: #333;
 	text-align: right;
 	padding: 5px;
 	height: .5%;
+	color: #ccc;
 }
 
 /* Kit Layout */

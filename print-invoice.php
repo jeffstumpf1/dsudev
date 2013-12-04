@@ -85,7 +85,7 @@ body {
 
 #items{
 	width: 100%;
-	font: 8px Verdana, Arial, Helvetica, sans-serif;
+	font: 9px Verdana, Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
 	margin-left:auto;
 	margin-right:auto;
@@ -139,16 +139,17 @@ body {
 			<h3>BILL TO ADDRESS:</h3>
 			<span class="labelSpan"><?php echo $orderRow['dba']?></br></span>
 			<span class="labelSpan"><?php echo $orderRow['billing_address']?></br></span>
-			<span class="labelSpan"><?php echo $orderRow['billing_city']?>, <?php echo $cust['billing_state']?></br></span>
+			<span class="labelSpan"><?php echo $orderRow['billing_city']?>, <?php echo $orderRow['billing_state']?></br></span>
 			<span class="labelSpan"><?php echo $orderRow['billing_zip']?></br></span>
 			<span class="labelSpan"><?php echo $orderRow['phone1']?></br></span>
+			<span class="labelSpan"><?php echo $orderRow['email']?></br></span>
 			</span>
 		</div>
 		<div id="shipTo">
 			<h3>SHIP TO ADDRESS:</h3>
 			<span class="labelSpan"><?php echo $orderRow['dba']?></br></span>
 			<span class="labelSpan"><?php echo $orderRow['address']?></br></span>
-			<span class="labelSpan"><?php echo $orderRow['city']?>, <?php echo $cust['state']?></br></span>
+			<span class="labelSpan"><?php echo $orderRow['city']?>, <?php echo $orderRow['state']?></br></span>
 			<span class="labelSpan"><?php echo $orderRow['zip']?></br></span>
 			<span class="labelSpan"><?php echo $orderRow['phone1']?></br></span>
 		</div>

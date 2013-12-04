@@ -1,6 +1,12 @@
 .MainTable{padding-top:59px;}
+
 .menu{position:fixed;width:100%;}
+
 /*new style for search and new menu*/
+
+
+
+
 
 
 
@@ -8,7 +14,15 @@
 
 
 
+
+
+
+
   clear: both;
+
+
+
+
 
 
 
@@ -16,7 +30,15 @@
 
 
 
+
+
+
+
   }
+
+
+
+
 
 
 
@@ -24,7 +46,15 @@
 
 
 
+
+
+
+
 	 border:0px;} 
+
+
+
+
 
 
 
@@ -32,7 +62,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 	outline:none;}
+
+
+
+
 
 
 
@@ -40,7 +78,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 	position:relative;
+
+
+
+
 
 
 
@@ -48,7 +94,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 	width: 960px;
+
+
+
+
 
 
 
@@ -56,7 +110,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 	margin-left: auto;
+
+
+
+
 
 
 
@@ -64,7 +126,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 .search-txtbox {
+
+
+
+
 
 
 
@@ -72,7 +142,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 	position:relative;
+
+
+
+
 
 
 
@@ -80,7 +158,15 @@ input:focus, select:focus{
 
 
 
+
+
+
+
 -moz-border-radius: 8px;
+
+
+
+
 
 
 
@@ -88,7 +174,15 @@ border-radius: 8px;
 
 
 
+
+
+
+
 border: solid 1px #B6B5B5;
+
+
+
+
 
 
 
@@ -96,11 +190,27 @@ height: 25px;
 
 
 
+
+
+
+
 padding:2px;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -112,7 +222,15 @@ padding:2px;
 
 
 
+
+
+
+
 	border: 1px solid #CFDAD9;
+
+
+
+
 
 
 
@@ -120,11 +238,23 @@ padding:2px;
 
 
 
+
+
+
+
 	-moz-box-shadow: 0px 0px 8px #000;
 
 
 
+
+
+
+
 	-webkit-box-shadow: 0px 0px 8px #000;
+
+
+
+
 
 
 
@@ -136,7 +266,19 @@ padding:2px;
 
 
 
+
+
+
+
+
+
+
+
 .srch-btn {
+
+
+
+
 
 
 
@@ -144,7 +286,15 @@ padding:2px;
 
 
 
+
+
+
+
 	position:relative;
+
+
+
+
 
 
 
@@ -152,7 +302,15 @@ padding:2px;
 
 
 
+
+
+
+
 	-moz-border-radius: 8px;
+
+
+
+
 
 
 
@@ -160,7 +318,15 @@ padding:2px;
 
 
 
+
+
+
+
 	border:none;
+
+
+
+
 
 
 
@@ -168,7 +334,15 @@ padding:2px;
 
 
 
+
+
+
+
 	width:70px;
+
+
+
+
 
 
 
@@ -176,7 +350,15 @@ padding:2px;
 
 
 
+
+
+
+
 	font-weight:bold;
+
+
+
+
 
 
 
@@ -184,11 +366,23 @@ padding:2px;
 
 
 
+
+
+
+
 	background-color: #CFDAD9;
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -196,11 +390,31 @@ padding:2px;
 
 
 
+
+
+
+
 	background-color:#98AFAD;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -216,7 +430,15 @@ padding:2px;
 
 
 
+
+
+
+
 .nav-menu {
+
+
+
+
 
 
 
@@ -224,7 +446,15 @@ padding:2px;
 
 
 
+
+
+
+
 	font-size: 14px;
+
+
+
+
 
 
 
@@ -232,7 +462,15 @@ padding:2px;
 
 
 
+
+
+
+
 	text-align: center;
+
+
+
+
 
 
 
@@ -240,7 +478,15 @@ padding:2px;
 
 
 
+
+
+
+
 	margin-right: auto;
+
+
+
+
 
 
 
@@ -248,7 +494,15 @@ padding:2px;
 
 
 
+
+
+
+
 	list-style:none;
+
+
+
+
 
 
 
@@ -260,7 +514,19 @@ padding:2px;
 
 
 
+
+
+
+
+
+
+
+
 .nav-menu li{
+
+
+
+
 
 
 
@@ -268,11 +534,23 @@ padding:2px;
 
 
 
+
+
+
+
 	margin-left:15px;
 
 
 
+
+
+
+
 	margin-right:15px;
+
+
+
+
 
 
 
@@ -288,35 +566,79 @@ padding:2px;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 .sub-menu {
+
+
+
+
 
 
 
 background-color: #426965;
 
+
+
 border: 1px solid #D3D1D1;
+
+
 
 list-style-type: none;
 
+
+
 width: 133px;
+
+
 
 position: absolute;
 
+
+
 top: 11px;
+
+
 
 padding: 5px;
 
+
+
 border-radius: 0px 0px 8px 8px;
+
+
 
 behavior: url(PIE.htc);
 
+
+
 -webkit-border-radius: 0px 0px 8px 8px;
+
+
 
 -moz-border-radius: 0px 0px 8px 8px;
 
+
+
 z-index: 99;
 
+
+
 }
+
+
+
+
 
 
 
@@ -324,7 +646,15 @@ z-index: 99;
 
 
 
+
+
+
+
 .sub-menu a{
+
+
+
+
 
 
 
@@ -332,11 +662,23 @@ z-index: 99;
 
 
 
+
+
+
+
 	color: #2C5755;
 
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -344,7 +686,15 @@ z-index: 99;
 
 
 
+
+
+
+
 	display:inline-block;
+
+
+
+
 
 
 
@@ -352,11 +702,23 @@ z-index: 99;
 
 
 
+
+
+
+
 	color:#FFF;
 
 
 
+
+
+
+
 	background-color: #2C5755;
+
+
+
+
 
 
 
@@ -364,7 +726,15 @@ z-index: 99;
 
 
 
+
+
+
+
 .nav-holder a{
+
+
+
+
 
 
 
@@ -372,7 +742,15 @@ z-index: 99;
 
 
 
+
+
+
+
 	padding-top: 6px;
+
+
+
+
 
 
 
@@ -380,7 +758,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	
+
+
+
+
 
 
 
@@ -388,7 +774,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	text-decoration:underline;}		
+
+
+
+
 
 
 
@@ -396,7 +790,15 @@ display: inline-block;}
 
 
 
+
+
+
+
   {
+
+
+
+
 
 
 
@@ -404,7 +806,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	min-height:30px;
+
+
+
+
 
 
 
@@ -412,7 +822,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	padding: 6px;
+
+
+
+
 
 
 
@@ -420,7 +838,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	behavior: url(PIE.htc);
+
+
+
+
 
 
 
@@ -428,7 +854,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	-moz-border-radius: 0px 0px 8px 8px;
+
+
+
+
 
 
 
@@ -436,7 +870,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	background-color: #2C5755;
+
+
+
+
 
 
 
@@ -444,7 +886,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 .small-lbl {
+
+
+
+
 
 
 
@@ -452,7 +902,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	font-size: 13px;
+
+
+
+
 
 
 
@@ -460,11 +918,31 @@ display: inline-block;}
 
 
 
+
+
+
+
 	color: #B3D8DD;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -484,7 +962,19 @@ display: inline-block;}
 
 
 
+
+
+
+
+
+
+
+
 /* Controls the page background colors and margings */
+
+
+
+
 
 
 
@@ -492,7 +982,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 {
+
+
+
+
 
 
 
@@ -500,7 +998,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	margin-top: 0px;
+
+
+
+
 
 
 
@@ -508,7 +1014,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	margin-bottom: 0px;
+
+
+
+
 
 
 
@@ -516,7 +1030,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	color: #FFF;
+
+
+
+
 
 
 
@@ -528,7 +1050,19 @@ display: inline-block;}
 
 
 
+
+
+
+
+
+
+
+
 /* main table */
+
+
+
+
 
 
 
@@ -536,11 +1070,23 @@ display: inline-block;}
 
 
 
+
+
+
+
  {
 
 
 
+
+
+
+
    font-family: Verdana, Arial, Helvetica, sans-serif;
+
+
+
+
 
 
 
@@ -556,7 +1102,23 @@ display: inline-block;}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 /* Report Title */
+
+
+
+
 
 
 
@@ -564,7 +1126,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	font-family: "Times New Roman", Times, serif;
+
+
+
+
 
 
 
@@ -572,7 +1142,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	font-weight: bold;
+
+
+
+
 
 
 
@@ -580,7 +1158,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	background-color: #CFDAD9;
+
+
+
+
 
 
 
@@ -588,7 +1174,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	border-bottom-width: 2px;
+
+
+
+
 
 
 
@@ -596,7 +1190,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	border-bottom-style: solid;
+
+
+
+
 
 
 
@@ -604,7 +1206,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	border-bottom-color: #999999;
+
+
+
+
 
 
 
@@ -612,7 +1222,19 @@ display: inline-block;}
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -624,7 +1246,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 .Separator 
+
+
+
+
 
 
 
@@ -632,7 +1262,15 @@ display: inline-block;}
 
 
 
+
+
+
+
 	background-color: #6E8D88;
+
+
+
+
 
 
 
@@ -640,7 +1278,19 @@ display: inline-block;}
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -652,23 +1302,51 @@ display: inline-block;}
 
 
 
+
+
+
+
 .MainGroup {
+
+
+
+
 
 
 
 font-family: Arial, Helvetica, sans-serif;
 
+
+
 font-size: 14px;
+
+
 
 font-weight: bold;
 
+
+
 color: #2C5755;
+
+
 
 background-color: #97B3B0;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -680,29 +1358,59 @@ background-color: #97B3B0;
 
 
 
+
+
+
+
 .SubGroup{
+
+
 
 font-family: "Courier New", Courier, monospace;
 
+
+
 font-size: 13px;
+
+
 
 font-weight: bold;
 
+
+
 color: #066;
+
+
 
 background-color: #DFE9E7;
 
+
+
 border-top-width: 1px;
+
+
 
 border-bottom-width: 1px;
 
+
+
 border-top-style: solid;
+
+
 
 border-bottom-style: solid;
 
+
+
 border-top-color: white;
 
+
+
 border-bottom-color: white;
+
+
+
+
 
 
 
@@ -714,7 +1422,19 @@ border-bottom-color: white;
 
 
 
+
+
+
+
+
+
+
+
 /* records Table Header */
+
+
+
+
 
 
 
@@ -722,7 +1442,15 @@ border-bottom-color: white;
 
 
 
+
+
+
+
  {
+
+
+
+
 
 
 
@@ -730,7 +1458,15 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 	font-size: 12px;
+
+
+
+
 
 
 
@@ -738,7 +1474,15 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 	color: #333333;
+
+
+
+
 
 
 
@@ -746,7 +1490,23 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -762,7 +1522,15 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 .ColumnHeader
+
+
+
+
 
 
 
@@ -770,7 +1538,15 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 	font-family: Geneva, Arial, Helvetica, sans-serif;
+
+
+
+
 
 
 
@@ -778,7 +1554,15 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 	font-weight: bold;
+
+
+
+
 
 
 
@@ -786,11 +1570,31 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 	background-color: #2C5755;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -806,23 +1610,51 @@ border-bottom-color: white;
 
 
 
+
+
+
+
 .TableCell
+
+
+
+
 
 
 
  {
 
+
+
 font-family: Verdana, Arial, Helvetica, sans-serif;
+
+
 
 font-size: 13px;
 
+
+
 color: black;
+
+
 
 background-color: #FDFFFF;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -834,7 +1666,15 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 .AlternateTableCell{
+
+
+
+
 
 
 
@@ -842,7 +1682,15 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 	font-size: 13px;
+
+
+
+
 
 
 
@@ -850,11 +1698,27 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 	background-color: #C5D1D0;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -870,7 +1734,19 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
+
+
+
+
  .menu {
+
+
+
+
 
 
 
@@ -878,7 +1754,15 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 	color: #FFFFFF;
+
+
+
+
 
 
 
@@ -886,7 +1770,15 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 	background-image: url(images/glass-cell.png);
+
+
+
+
 
 
 
@@ -894,7 +1786,23 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -910,7 +1818,15 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 {
+
+
+
+
 
 
 
@@ -918,7 +1834,15 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
 	background-color: #458986;
+
+
+
+
 
 
 
@@ -934,7 +1858,23 @@ background-color: #FDFFFF;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 a:visited {
+
+
+
+
 
 
 
@@ -942,7 +1882,15 @@ a:visited {
 
 
 
+
+
+
+
 	font-weight: bold;
+
+
+
+
 
 
 
@@ -950,7 +1898,15 @@ a:visited {
 
 
 
+
+
+
+
 	}
+
+
+
+
 
 
 
@@ -958,7 +1914,15 @@ a:link {
 
 
 
+
+
+
+
 	font-family: Tahoma, Geneva, sans-serif;
+
+
+
+
 
 
 
@@ -966,7 +1930,15 @@ a:link {
 
 
 
+
+
+
+
 	font-weight: bold;
+
+
+
+
 
 
 
@@ -974,7 +1946,15 @@ a:link {
 
 
 
+
+
+
+
 	}	
+
+
+
+
 
 
 
@@ -982,7 +1962,15 @@ a:link {
 
 
 
+
+
+
+
    
+
+
+
+
 
 
 
@@ -990,7 +1978,15 @@ a:link {
 
 
 
+
+
+
+
 .TableFooter
+
+
+
+
 
 
 
@@ -998,7 +1994,15 @@ a:link {
 
 
 
+
+
+
+
 	font-family: Verdana, Arial, Helvetica, sans-serif;
+
+
+
+
 
 
 
@@ -1006,8 +2010,16 @@ a:link {
 
 
 
+
+
+
+
   #close_search{
 
+
+
 	 position:absolute;
+
+
 
 	 right:5px;}                

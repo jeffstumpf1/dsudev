@@ -1,19 +1,24 @@
-2013-10-26T01:08:15+02:00 [Part] The class "Part" was initiated!
-2013-10-26T01:08:32+02:00 [Part] The class "Part" was initiated!
-2013-10-26T01:08:32+02:00 [Part] Part::GetKit
-2013-10-26T01:08:32+02:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_id = 'R1060022-3'
-2013-10-26T01:13:51+02:00 [Part] The class "Part" was initiated!
-2013-10-26T01:13:51+02:00 [Part] Part::GetKit
-2013-10-26T01:13:51+02:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R1060022-3'
-2013-10-26T01:57:00+02:00 [Part] The class "Part" was initiated!
-2013-10-26T01:57:00+02:00 [Part] Part::GetKit
-2013-10-26T01:57:00+02:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R1060023-8'
-2013-10-26T01:57:10+02:00 [Part] The class "Part" was initiated!
-2013-10-26T01:57:10+02:00 [Part] Part::GetKit
-2013-10-26T01:57:10+02:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R1475023-3'
-2013-10-26T01:57:23+02:00 [Part] The class "Part" was initiated!
-2013-10-26T01:57:23+02:00 [Part] Part::GetKit
-2013-10-26T01:57:23+02:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R1460017-3'
-2013-10-28T18:06:36+01:00 [Part] The class "Part" was initiated!
-2013-10-28T20:30:54+01:00 [Part] The class "Part" was initiated!
-2013-10-28T20:32:00+01:00 [Part] The class "Part" was initiated!
+2013-10-25T19:18:25-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:25:47-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:28:28-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:28:41-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:29:37-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:30:19-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:30:27-07:00 [Part] The class "Part" was initiated!
+2013-10-28T10:31:36-07:00 [Part] The class "Part" was initiated!
+2013-10-28T12:54:57-07:00 [Part] The class "Part" was initiated!
+2013-10-28T12:54:57-07:00 [Part] Part::GetKit
+2013-10-28T12:54:57-07:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R5079602-3'
+2013-10-28T12:59:38-07:00 [Part] The class "Part" was initiated!
+2013-10-28T12:59:38-07:00 [Part] Part::GetKit
+2013-10-28T12:59:38-07:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'Q5074801-6'
+2013-10-28T13:00:07-07:00 [Part] The class "Part" was initiated!
+2013-10-28T13:00:07-07:00 [Part] Part::GetKit
+2013-10-28T13:00:07-07:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R5079602-3'
+2013-10-28T13:01:43-07:00 [Part] The class "Part" was initiated!
+2013-10-28T13:01:43-07:00 [Part] Part::GetKit
+2013-10-28T13:01:43-07:00 [Part] select a.*, b.* from PartMaster a, ChainKit b where a.part_number = b.part_number and a.category_id='KT' and a.rec_status=0 and a.part_number = 'R50A1200-8'
+2013-10-28T13:02:13-07:00 [Part] The class "Part" was initiated!
+2013-10-28T18:15:04-07:00 [Order] The class "Order" was initiated!
+2013-10-28T18:15:04-07:00 [Order] Order::GetOrderItem
+2013-10-28T18:15:04-07:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=180

@@ -371,7 +371,7 @@ var $rs;
 		$tax_rate= $("#tax_rate").val();
 		$paymentTerms=$("#payment_terms").val();
 		SaveOrder($orderNumber, $customerNumber, $customerPO, $orderDate, $orderShipping, $tax_rate,"OPEN", $paymentTerms);
-		window.location.replace("order-list.php");
+		
 	});
 	
 	
@@ -422,7 +422,7 @@ var $rs;
 			  	}
 				ShowOrderBanner( $orderNumber, $tax_rate, $status ); 
 			  	alert('Order Updated');
-				//window.location.replace("order-list.php");
+				window.location.replace("order-list.php");
 			  	
 			  },
 			  error:function(){

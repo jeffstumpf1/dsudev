@@ -30,7 +30,7 @@
 	<title>Chain Chart</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  	<link rel="stylesheet" href="css/smoothness/jquery-ui-1.10.3.custom.css" />
   	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   	  	<script src="js/part.js"></script>

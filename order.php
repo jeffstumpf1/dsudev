@@ -1,6 +1,6 @@
 <?php 
 	header('Content-type: text/html; charset=utf-8');
-	//require "inc/back-to-referer.inc.php";
+	require "inc/back-to-referer.inc.php";
 	$debug = 'Off';
 	require_once 'db/global.inc.php';
 	
@@ -43,7 +43,7 @@
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/square/square.css" rel="stylesheet">
 	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
-	<link href="css/square/square.css" rel="stylesheet">
+<!--	<link href="css/square/square.css" rel="stylesheet"> -->
 	
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	

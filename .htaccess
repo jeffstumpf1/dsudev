@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "DS Inventory requires authentication"
+AuthUserFile /home/content/78/11570878/html/.htpasswd
+Require valid-user

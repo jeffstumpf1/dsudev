@@ -10,7 +10,7 @@
 	$log = Logger::getLogger('myLogger');
 	 spl_autoload_register(function ($class) {
 		include 'classes/' . $class . '.class.php';
-	});   
+	 });   
 	 	
 	// Create Object Customer and Request
 	$constants = new Constants;
@@ -233,6 +233,7 @@ include 'inc/brand-list.inc.php';
 			<input id="partID" name="frm[partID]" value="<?php echo $part_id; ?>" type="hidden" />
 			<input id="chainID" name="frm[chainID]" value="<?php echo $row['chain_id']; ?>" type="hidden" />	
 			<input id="recStatus" name="frm[recStatus]" value="<?php echo $row['rec_status']; ?>" type="hidden" />
+			</p>
 		</div>
 		
 </div>

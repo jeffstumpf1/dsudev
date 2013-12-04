@@ -62,11 +62,11 @@
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
-	<link href="css/square/square.css" rel="stylesheet">
 
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-  	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	
-	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <!--<link href="css/square/square.css" rel="stylesheet">-->
+        	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
 	<!-- Form Validation Engine -->
 	<script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
@@ -74,8 +74,11 @@
 	
 	
 	<script type="text/javascript" src="js/jquery.icheck.js"></script>
+	
 	<script type="text/javascript" src="js/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="js/kit.js"></script>
+	
+
 </head>
 <body>
 
@@ -195,7 +198,7 @@ include 'inc/clip-list.inc.php';
 				</div>
 				<div class="kitSpacers">
 					<label  class="titleTop" for="crPartNumber">Carrier</label><br/>
-					<input id="crPartNumber"  name="frm[crPartNumber]" type="text" value="<?php echo $row['carrier_part_number']?>" />
+					<input class="validate[required] text-input" id="crPartNumber"  name="frm[crPartNumber]" type="text" value="<?php echo $row['carrier_part_number']?>" />
 				</div>
 			</div>
 			<div class="group">

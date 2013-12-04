@@ -107,9 +107,9 @@ class Order {
 	}
 
 	public function ListOrders($search) {
-		$sql = sprintf( "SELECT a.*, b.dba FROM ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b WHERE a.customer_number=b.customer_number AND a.rec_status='0' ORDER BY a.order_number LIMIT ".Constants::LIMIT_ROWS);
+		$sql = sprintf( "SELECT a.*, b.dba FROM ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b WHERE a.customer_number=b.customer_number AND a.rec_status='0' ORDER BY a.order_date  DESC LIMIT ".Constants::LIMIT_ROWS );
 		if( $search ) {
-			$sql = sprintf("select a.*, b.dba from ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b where a.customer_number=b.customer_number AND rec_status='0' and order_number like '%s%s'", $search,'%'); 
+			$sql = sprintf("select a.*, b.dba from ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b where a.customer_number=b.customer_number AND a.rec_status='0' and order_number like '%s%s'", $search,'%'); 
 		}
 		
 		// fetch data
@@ -183,7 +183,23 @@ class Order {
 		return $rs;
 	}
 	
-	
+
+
+    
+	// Bring back one order or a set 
+	public function GetBOOrderItems() {
+    	$sql = "SELECT a.dba, a.customer_number, b.* FROM ". Constants::TABLE_CUSTOMER. " a," .Constants::TABLE_ORDER_ITEMS ." b WHERE b.bo_qty > 0 ";		
+        echo $sql;
+		// fetch data
+		$rs = $this->db->query( $sql);  
+		if($this->debug=='On') {
+			echo __METHOD__, " - ", $sql, "<p />";  
+			print_r($rs). "<p/>";
+		}
+		
+		return $rs;
+	}
+
 	
 	// Sums order totals less shipping
 	public function SummarizeOrder($order_number, $tax_rate) {
@@ -421,20 +437,34 @@ class Order {
 		$rs = $this->GetOrderItems($order_number);
 		
 		while($row = $rs->fetch()) {
-			// loop through ordered parts
-			//print_r($row)."</p>";
+		//print_r($row);
+			//loop through ordered parts
+			$category = $row['category_id'];
 			$part_number = $row['part_number'];
 			$order_item_id = $row['order_item_id'];
 			$qty = $row['qty'];
 			// find the part in parts master
-			$tmp = $this->db->query( sprintf( "SELECT stock_level FROM ". Constants::TABLE_PART ." WHERE part_number='%s'", $part_number) );
-			$partRow = $tmp->fetch();
-			$stockLevel = $partRow['stock_level'];
-			$newStock = $stockLevel - $qty;
-			$tmp= null;
-			
-			$sql = sprintf("UPDATE ". Constants::TABLE_PART ." SET stock_level=%s	WHERE part_number='%s'", $newStock, $part_number);
-			$r1 = $this->db->query( $sql );
+			switch ($category) {
+				case 'KT';
+					$this->InventoryPart( $row['frontSprocket_part_number'], 'KT', 1 );
+					$this->InventoryPart( $row['rearSprocket_part_number'], 'KT', 1 );
+				  	$this->InventoryPart( $row['carrierSprocket_part_number'], 'KT', 1 );
+				  	$pos = strpos($row['chain_part_number'],"-");
+					if($pos>0) {
+						$part = substr($part,0, $pos);
+					} else
+						$part = $row['chain_part_number'];
+
+				  	$this->InventoryPart( $part, 'CH', $row['chain_length'] );
+					break;
+				case 'CH';
+					$this->InventoryPart( $row['part_number'], 'CH', $row['chain_length'] );
+					break;
+			    default;
+					$this->InventoryPart( $part_number, $category, $qty );
+					break;
+			}
+
 
 		}
 		// Update Order and Order items to SHIPPED STATUS
@@ -445,6 +475,29 @@ class Order {
 		$cnt = $cnt + $cmd->affected();
 		
 		return $cnt;
+	}
+	
+	private function InventoryPart($part, $cat, $qty) {
+		//echo $part, $cat , $qty ,"</br>";
+		if($cat=='CH'){
+			$tmp = $this->db->query( sprintf( "SELECT stock_level FROM ". Constants::TABLE_PART ." WHERE part_number='%s'", $part) );
+			$partRow = $tmp->fetch();
+			$stockLevel = $partRow['stock_level'];
+			$newStock = $stockLevel - $qty;
+			$tmp= null;
+			$sql = sprintf("UPDATE ". Constants::TABLE_PART ." SET stock_level=%s	WHERE part_number='%s'", $newStock, $part);
+			$r1 = $this->db->query( $sql );
+		} else {
+			$tmp = $this->db->query( sprintf( "SELECT stock_level FROM ". Constants::TABLE_PART ." WHERE part_number='%s'", $part) );
+			$partRow = $tmp->fetch();
+			$stockLevel = $partRow['stock_level'];
+			$newStock = $stockLevel - $qty;
+			$tmp= null;
+			$sql = sprintf("UPDATE ". Constants::TABLE_PART ." SET stock_level=%s	WHERE part_number='%s'", $newStock, $part);
+			$r1 = $this->db->query( $sql );
+		}
+		//echo $sql;
+		//die();
 	}
 
 /********************   ORDER ITEMS *********************/

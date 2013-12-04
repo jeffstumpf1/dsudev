@@ -93,7 +93,7 @@
 			<div id="searchBox">
 			  <form id="frmSearch">				
 				<input id="search" name="search" type="text" value="<?php echo $search ?>" />
-				<input type="submit" value="Search" />
+				<input type="submit" value="Search" id="submit"/>
 			</div>
 		</div>
 		<table id="customerTable">
@@ -117,9 +117,11 @@
 			
 			<tr class="row">
 				<td><!- Action -->
+                <?php if( $row['order_status_code']!='SHIPPED' ) { ?>
 					<a title="Edit Order" href="order.php?tax_rate=<?php echo floatval($row['tax_rate'])?>&customer_number=<?php echo $row['customer_number']?>&order_number=<?php echo $row['order_number'];?>&status=<?php echo $row['order_status_code']?>"><div class="actionEdit"></div></a>
 					<a href="" title="Delete Order" class="delete" oid="<?php echo $row['order_number'];?>" pn="<?php echo $row['order_id'];?>" ct="<?php echo $row['customer_number']?>"><div class="actionOrder"></div></a>
-					<a title="Print Customer Invoice" href="print-invoice.php?order_number=<?php echo $row['order_number'];?>&tax_rate=<?php echo $row['tax_rate']?>&code=0" target="_BLANK"><div class="actionPrint"></div></a>
+				<?php } ?>	
+                    <a title="Print Customer Invoice" href="print-invoice.php?order_number=<?php echo $row['order_number'];?>&tax_rate=<?php echo $row['tax_rate']?>&code=0" target="_BLANK"><div class="actionPrint"></div></a>
 					<a title="Ship Product" href="" oid="<?php echo $row['order_number'];?>" ostatus="<?php echo $row['order_status_code'];?>" ><div class="actionShipping"></div></a>
 				</td>
 				<td> 

@@ -48,7 +48,7 @@
 ?>	
 
 <?php if (!$flag) { ?>
-<table id="partTable" style="width:425px">
+<table id="partTable" >
 	<tr >
 		<th style="text-align:left;">Customer</th>
 		<th>Date</th>
@@ -61,7 +61,7 @@
 <?php	 while ($row = $rs->fetch()) { ?>
 	<tr class="row">
 		<td nowrap="true" style="text-align:left;"><?php echo $row['dba'] ?></td>
-		<td style="text-align:center;"><?php echo $row['order_date'] ?></td>
+		<td style="text-align:center;"  nowrap="true"><?php echo $row['order_date'] ?></td>
 		<td style="text-align:center;"><?php echo $row['Count'] ?></td>
 		<td style="text-align:right;"><?php echo $utility->NumberFormat( $row['Subtotal'],'$') ?></td>
 		<td style="text-align:right;"><?php echo $utility->NumberFormat( $row['Shipping'],'$') ?></td>

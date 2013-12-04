@@ -141,6 +141,7 @@ var $rs;
     select: function( event, ui ) {
     	event.preventDefault();
 		$('#frontSprocket').val(ui.item.value);
+		$('#fsStockLevel').text( "[" + GetStockLevel(ui.item.value)+ "]")
 		$('#h_fs').val( GetMSRPFromSTRING(ui.item.id) );
 		CalculateKitItem();
 		}
@@ -168,6 +169,7 @@ var $rs;
     select: function( event, ui ) {
 		event.preventDefault();
 		$('#rearSprocket').val(ui.item.value);
+		$('#rsStockLevel').text( "[" + GetStockLevel(ui.item.value)+ "]")
 		$('#h_rs').val( GetMSRPFromSTRING(ui.item.id) );
 		CalculateKitItem();
 		}
@@ -193,6 +195,7 @@ var $rs;
 		select: function( event, ui ) { 
 		event.preventDefault();
 		$('#carrier').val(ui.item.value);
+		$('#crStockLevel').text( "[" + GetStockLevel(ui.item.value)+ "]")
 		$('#h_misc').val( GetMSRPFromSTRING(ui.item.id) );
 		CalculateKitItem();
 		} 
@@ -243,11 +246,33 @@ var $rs;
 		$('#frontSprocket').val( $kit.frontSprocket_part_number );
 		$('#rearSprocket').val( $kit.rearSprocket_part_number );
 		$('#carrier').val( $kit.carrier_part_number );
+		$('#fsStockLevel').text( "[" + GetStockLevel($kit.frontSprocket_part_number)+ "]");		
+		$('#rsStockLevel').text( "[" + GetStockLevel($kit.rearSprocket_part_number) + "]");
+		$('#crStockLevel').text( "[" + GetStockLevel($kit.carrier_part_number)+ "]");
 		$('#chainLength').val( $kit.chain_length );
 		$('#partNumber').val( $kit.part_number );
+        $('#h_chain').val( $kit.chain_part_number );
 		LoadChainChart( $mp.pitch_id, $kit.chain_length, $kit.chain_part_number);
 		$('#chainChart').show();			
 	}
+	
+
+	function GetStockLevel($part_number) {
+		var stk=0;
+		if ($part_number == 0) return 0;
+		$.ajax({
+		  url: "service/select-stockLevel.service.php",
+		  dataType: "json",
+		  async: false,
+		  data: { part_number : $part_number },
+		  success: function(data) {
+			  	//alert(data);
+				stk = data;
+			  }
+		});
+		
+		return stk;
+	}	
 	
 	function LoadMasterPart($part_number) {
 
@@ -396,10 +421,10 @@ var $rs;
 			  },
 			  success:function(data){
 				$('#chainChart').html(data);
-				$('#chainChartTable input').iCheck({		// icheck style applied
-					checkboxClass: 'icheckbox_square',
-					radioClass: 'iradio_square',
-				});
+				//$('#chainChartTable input').iCheck({		// icheck style applied
+				//	checkboxClass: 'icheckbox_square',
+				//	radioClass: 'iradio_square',
+				//});
 				// We need to have a value in chain part item
 
 			  },
