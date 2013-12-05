@@ -10993,3 +10993,76 @@ CBR 600RR/900/929/954/1000RR/RC-51/VFR 750F ',0,34.95,1,24.46,0,10.49,10.49)
 2013-12-04T04:58:48+01:00 [Order] The class "Order" was initiated!
 2013-12-04T04:58:48+01:00 [Order] The class "Order" was initiated!
 2013-12-04T04:58:48+01:00 [Order] The class "Order" was initiated!
+2013-12-04T21:09:43+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:09:52+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-04T21:09:55+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-04T21:12:04+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:12:15+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:30:05+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:37:19+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:39:02+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:41:16+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:43:56+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T21:45:07+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T22:02:24+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:02:24+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:02:24+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:02:24+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:02:30+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:02:30+01:00 [Order] Order::GetOrderItem
+2013-12-04T22:02:30+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=645
+2013-12-04T22:02:31+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T22:05:53+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:05:53+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:05:53+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:05:53+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:06:27+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:06:27+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:06:27+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:06:27+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:06:32+01:00 [Part] The class "Part" was initiated!
+2013-12-04T22:06:32+01:00 [Part] term:a1
+2013-12-04T22:06:32+01:00 [Part] Part::MasterPartAutoComplete
+2013-12-04T22:06:32+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'a1%' limit 25
+2013-12-04T22:06:34+01:00 [Part] The class "Part" was initiated!
+2013-12-04T22:06:34+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T22:06:34+01:00 [Order] The class "Order" was initiated!
+2013-12-04T22:06:35+01:00 [Part] The class "Part" was initiated!
+2013-12-04T22:06:35+01:00 [Part] The class "Part" was initiated!
+2013-12-04T22:06:36+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T22:18:54+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T22:22:14+01:00 [Kit] The class "Kit" was initiated!
+2013-12-04T23:54:41+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T00:31:05+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:31:05+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:31:05+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:31:05+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:36:01+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:36:01+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:36:01+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:36:01+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:37:21+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:37:21+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:37:21+01:00 [Order] The class "Order" was initiated!
+2013-12-05T00:37:21+01:00 [Order] The class "Order" was initiated!
+2013-12-05T19:24:51+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:24:55+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-05T19:27:01+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:27:04+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-05T19:27:20+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:27:26+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-05T19:27:47+01:00 [Order] The class "Order" was initiated!
+2013-12-05T19:27:47+01:00 [Order] The class "Order" was initiated!
+2013-12-05T19:27:47+01:00 [Order] The class "Order" was initiated!
+2013-12-05T19:27:47+01:00 [Order] The class "Order" was initiated!
+2013-12-05T19:27:50+01:00 [Order] The class "Order" was initiated!
+2013-12-05T19:27:50+01:00 [Order] Order::GetOrderItem
+2013-12-05T19:27:50+01:00 [Order] Select * from OrderItems where order_number <> '' and order_item_id=645
+2013-12-05T19:27:50+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:27:53+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-05T19:29:23+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:29:25+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-05T19:32:00+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:32:03+01:00 [Sprocket] The class "Sprocket" was initiated!
+2013-12-05T19:34:36+01:00 [Kit] The class "Kit" was initiated!
+2013-12-05T19:34:39+01:00 [Sprocket] The class "Sprocket" was initiated!

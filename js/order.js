@@ -605,10 +605,10 @@ var $rs;
 			  },
 			  success:function(data){
 				$('#chainChart').html(data);
-				$('#chainChartTable input').iCheck({		// icheck style applied
-					checkboxClass: 'icheckbox_square',
-					radioClass: 'iradio_square',
-				});
+				//$('#chainChartTable input').iCheck({		// icheck style applied
+				//	checkboxClass: 'icheckbox_flat-red',
+				//	radioClass: 'iradio_flat-red',
+				//});
 				// We need to have a value in chain part item
 
 			  },

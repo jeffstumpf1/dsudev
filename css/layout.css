@@ -13,8 +13,8 @@
 {
 	float: left;
 	width: 100%;
-	background: #ff0000;
-}
+    background: url("images/ui-bg_highlight-soft_15_cc0000_1x100.png") repeat-x scroll 50% 50% #CC0000;
+    border: 1px solid #E3A1A1;}
 
 #navigation ul
 {

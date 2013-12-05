@@ -39,18 +39,10 @@
 	<title>Order Listing <?php echo( $searchInput); ?><?php echo $cust; ?></title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
+	<link href="css/blitzer/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+  	<script src="js/jquery-1.9.1.js"></script>
+  	<script src="js/jquery-ui-1.10.3.custom.js"></script>	
 
-	<script src="js/jquery-1.9.1.js"></script>
-	<script src="ui/jquery.ui.core.js"></script>
-	<script src="ui/jquery.ui.widget.js"></script>
-	<script src="ui/jquery.ui.dialog.js"></script>
-	<script src="ui/jquery.ui.menu.js"></script>
-	<script src="ui/jquery.ui.mouse.js"></script>
-	<script src="ui/jquery.ui.draggable.js"></script>
-	<script src="ui/jquery.ui.position.js"></script>
-	<script src="ui/jquery.ui.resizable.js"></script>
-	<script src="ui/jquery.ui.button.js"></script>
 	<script type="text/javascript" src="js/order.js"></script>  
 	<script>
 		$(function() {			

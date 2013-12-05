@@ -66,8 +66,10 @@ input, textarea  {
 	}
 
 #customerTable td, #partTable td, #chainChartTable td , .report-table{
-	border-bottom: 1px solid #CCC;
+	border-bottom: 1px solid #fff;
 	padding: 0 0.5em;
+/*	background-color: #666;
+	color: #fff;*/
 	}
 #customerTable td:first-child, #partTable td:first-child, #chainChartTable td:first-child {
 	text-align: center;
@@ -259,8 +261,7 @@ background: white url('images/16x16-cc.gif') right center no-repeat;
 #createOrderItem,
 #copyAddress
 {
-background:#ff0000;
 color: #fff;
-border: 1px solid #eee;
-border-radius: 20px;
+    background: url("images/ui-bg_highlight-soft_15_cc0000_1x100.png") repeat-x scroll 50% 50% #CC0000;
+    border: 1px solid #E3A1A1;border-radius: 20px;
 }

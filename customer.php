@@ -107,6 +107,7 @@
 		<div id="">
 		<?php include 'inc/customer-form.inc.php';?>
 		</div>
+		</p>
 </div>
 	<div id="footer">
 		Copyright © Site name, 20XX

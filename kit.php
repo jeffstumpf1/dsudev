@@ -61,12 +61,10 @@
 	<title><?php echo($partCat)?>Chain Maintenance</title>
 	<link href="css/layout.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link href="/themes/base/jquery.ui.all.css" rel="stylesheet">
-
-         <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-        <!--<link href="css/square/square.css" rel="stylesheet">-->
-        	<link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
+	<link href="css/blitzer/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+  	<script src="js/jquery-1.9.1.js"></script>
+  	<script src="js/jquery-ui-1.10.3.custom.js"></script>	
+        <link rel="stylesheet" href="css/validationEngine.jquery.css" type="text/css"/>
 	<!-- Form Validation Engine -->
 	<script src="js/jquery.validationEngine-en.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
