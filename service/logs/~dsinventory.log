@@ -11066,3 +11066,152 @@ CBR 600RR/900/929/954/1000RR/RC-51/VFR 750F ',0,34.95,1,24.46,0,10.49,10.49)
 2013-12-05T19:32:03+01:00 [Sprocket] The class "Sprocket" was initiated!
 2013-12-05T19:34:36+01:00 [Kit] The class "Kit" was initiated!
 2013-12-05T19:34:39+01:00 [Sprocket] The class "Sprocket" was initiated!
+2014-01-21T17:28:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:28:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:28:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:28:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:28:39+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:28:39+01:00 [Part] term:ShipOrder
+2014-01-21T17:28:39+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:28:39+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'ShipOrder%' limit 25
+2014-01-21T17:28:44+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:28:44+01:00 [Part] term:da
+2014-01-21T17:28:44+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:28:44+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:28:49+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:29:53+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:29:53+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:29:53+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:29:53+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:29:58+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:29:58+01:00 [Part] term:DA520DZ2
+2014-01-21T17:29:58+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:29:58+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'DA520DZ2%' limit 25
+2014-01-21T17:30:19+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:30:19+01:00 [Part] term:da
+2014-01-21T17:30:19+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:30:19+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:30:22+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:30:30+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:30:30+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:30:30+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106396',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',100,52.00,1,20.80,0,31.20,31.20)
+2014-01-21T17:30:30+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:30:30+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:30:38+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:30:38+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:31:11+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:33:51+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:33:51+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:33:51+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:33:51+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:33:59+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:33:59+01:00 [Part] term:da
+2014-01-21T17:33:59+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:33:59+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:34:01+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:34:08+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:34:08+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:34:08+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106395',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',100,52.00,1,20.80,0,31.20,31.20)
+2014-01-21T17:34:08+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:34:08+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:34:16+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:34:16+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:34:16+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:34:35+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:48+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:48+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:48+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:38:53+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:38:53+01:00 [Part] term:da
+2014-01-21T17:38:53+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:38:53+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:38:55+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:39:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:39:02+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:39:02+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106393',36,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',100,52.00,1,18.72,0,33.28,33.28)
+2014-01-21T17:39:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:39:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:39:25+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:13+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:13+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:13+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:13+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:45+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:46+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:46+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:46+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:48+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:43:48+01:00 [Part] term:da
+2014-01-21T17:43:48+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:43:48+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:43:50+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:43:59+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:59+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:43:59+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106397',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',100,52.00,1,20.80,0,31.20,31.20)
+2014-01-21T17:43:59+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:43:59+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:44:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:31+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:47:31+01:00 [Part] term:da
+2014-01-21T17:47:31+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:47:31+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:47:32+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:47:40+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:40+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:47:40+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106398',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',100,52.00,1,20.80,0,31.20,31.20)
+2014-01-21T17:47:40+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:40+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:47:50+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:28+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:31+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:50:31+01:00 [Part] term:da
+2014-01-21T17:50:31+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:50:31+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:50:33+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:50:43+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:43+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:50:43+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106399',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',100,52.00,1,20.80,0,31.20,31.20)
+2014-01-21T17:50:43+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:50:43+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:51:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:34+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:37+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:56:37+01:00 [Part] term:da
+2014-01-21T17:56:37+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:56:37+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:56:38+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:56:49+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:49+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:56:49+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106400',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',300,156.00,1,62.40,0,93.60,93.60)
+2014-01-21T17:56:49+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:56:49+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:57:11+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:01+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:02+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:04+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:58:04+01:00 [Part] term:da
+2014-01-21T17:58:04+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-21T17:58:04+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like 'da%' limit 25
+2014-01-21T17:58:07+01:00 [Part] The class "Part" was initiated!
+2014-01-21T17:58:40+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:40+01:00 [Order] Order::UpdateOrderItem
+2014-01-21T17:58:40+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0.52,520,'131106401',40,'CH','DA520DZ2','','','','','DID 520DZ2 GOLD & BLACK NON O-RING MX/OFFROAD CHAIN','',200,104.00,2,41.60,0,62.40,124.80)
+2014-01-21T17:58:40+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:40+01:00 [Order] The class "Order" was initiated!
+2014-01-21T17:58:48+01:00 [Order] The class "Order" was initiated!

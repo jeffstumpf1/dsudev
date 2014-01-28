@@ -159,16 +159,20 @@ class Report {
 	}
 
 	
-	function GetAllSales($from, $to) {
+	function GetAllSales($from, $to, $typ) {
+	// echo $from, $to, $typ;
+	 
 		$sql = sprintf("	SELECT a.dba , a.customer_number, count(b.order_number) as 'Count', 
 			Round(sum(b.order_total),2) as 'Total',
 			Round(sum(b.order_total) - sum(b.order_tax) - sum(b.order_shipping),2) as 'Subtotal',
 			sum(b.order_shipping) as 'Shipping', sum(b.order_tax) as 'Tax', b.order_date 
 			from Customer a 
 			inner join Orders b on a.customer_number = b.customer_number
-			group by a.customer_number, b.order_date
-			having  (b.order_date >= '%s' AND b.order_date <= '%s')
-			order by  b.order_date Desc;", $from, $to);
+			group by a.customer_number, a.customer_type, b.order_date
+			having  (b.order_date >= '%s' AND b.order_date <= '%s' AND a.customer_type='%s')
+			order by  b.order_date Desc;", $from, $to, $typ);
+			
+
 
 		//$sql = sprintf("call GetCustomerSalesbyCustomerTotals('%s');", $customer_number );
 		$this->Log(__METHOD__);
@@ -184,14 +188,14 @@ class Report {
 		return $rs;
 	}
 		
-	function GetAllSalesTotalDate($from, $to) {
+	function GetAllSalesTotalDate($from, $to, $typ) {
 		$sql = sprintf("SELECT count(b.order_number) as 'Count', 
 			Round(sum(b.order_total),2) as 'Total' , 
 			Round(sum(b.order_total) - sum(b.order_tax) - sum(b.order_shipping),2) as 'Subtotal',
 			sum(b.order_shipping) as 'Shipping', 
 			sum(b.order_tax) as 'Tax'
 			 from Customer a inner join Orders b on a.customer_number = b.customer_number 
-			and (b.order_date >= '%s' AND b.order_date <= '%s') ", $from, $to);
+			and (b.order_date >= '%s' AND b.order_date <= '%s' AND a.customer_type='%s') ", $from, $to, $typ);
 
 		$this->Log(__METHOD__);
 		$this->Log($sql);

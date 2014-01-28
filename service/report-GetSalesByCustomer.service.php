@@ -26,6 +26,7 @@
 	$from = $request->getParam('from');
 	$to = $request->getParam('to');
 	$flag = $request->getParam('flag');
+	$typ = $request->getParam('typ');
 
 	if(!$from && !$to) {
 		//echo "1";
@@ -40,8 +41,8 @@
 		//print_r($row);
 	} else {
 		//echo "3";
-		$rs = $report->GetAllSales( $from, $to );
-		$total = $report->GetAllSalesTotalDate( $from, $to);
+		$rs = $report->GetAllSales( $from, $to, $typ);
+		$total = $report->GetAllSalesTotalDate( $from, $to, $typ);
 	}
 	//print_r($total);
 	//$row['Subtotal'];

@@ -1,6 +1,6 @@
 <?php
 // order.class.php
-	
+    
 class Order {
 	
 	public $debug='Off';
@@ -107,7 +107,7 @@ class Order {
 	}
 
 	public function ListOrders($search) {
-		$sql = sprintf( "SELECT a.*, b.dba FROM ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b WHERE a.customer_number=b.customer_number AND a.rec_status='0' ORDER BY a.order_date  DESC LIMIT ".Constants::LIMIT_ROWS );
+		$sql = sprintf( "SELECT a.*, b.dba FROM ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b WHERE a.customer_number=b.customer_number AND a.rec_status='0' ORDER BY a.order_number  DESC LIMIT ".Constants::LIMIT_ROWS );
 		if( $search ) {
 			$sql = sprintf("select a.*, b.dba from ". Constants::TABLE_ORDER ." a, ".Constants::TABLE_CUSTOMER." b where a.customer_number=b.customer_number AND a.rec_status='0' and order_number like '%s%s'", $search,'%'); 
 		}
@@ -411,7 +411,7 @@ class Order {
 	
 	
 	public function SaveNotes($order, $notes) {
-		echo __METHOD__, " - ", $order, $notes, "<p />";  
+		//echo __METHOD__, " - ", $order, $notes, "<p />";  
 		$sql = sprintf("UPDATE ".Constants::TABLE_ORDER." SET special_instructions='". $notes ."' WHERE order_number='%s'", $order);
 		$cmd = $this->db->query( $sql );
 		$cnt = $cmd->affected();
@@ -446,22 +446,23 @@ class Order {
 			// find the part in parts master
 			switch ($category) {
 				case 'KT';
-					$this->InventoryPart( $row['frontSprocket_part_number'], 'KT', 1 );
-					$this->InventoryPart( $row['rearSprocket_part_number'], 'KT', 1 );
-				  	$this->InventoryPart( $row['carrierSprocket_part_number'], 'KT', 1 );
+					$this->InventoryPart( $row['frontSprocket_part_number'], 'KT', 1, 0 );
+					$this->InventoryPart( $row['rearSprocket_part_number'], 'KT', 1, 0 );
+				  	$this->InventoryPart( $row['carrier_part_number'], 'KT', 1, 0 );
 				  	$pos = strpos($row['chain_part_number'],"-");
 					if($pos>0) {
-						$part = substr($part,0, $pos);
+						$part = substr($row['chain_part_number'],0, $pos);
 					} else
 						$part = $row['chain_part_number'];
+					echo $part, "</br>";
 
-				  	$this->InventoryPart( $part, 'CH', $row['chain_length'] );
+				  	$this->InventoryPart( $part, 'CH', 1 ,$row['chain_length'] );
 					break;
 				case 'CH';
-					$this->InventoryPart( $row['part_number'], 'CH', $row['chain_length'] );
+					$this->InventoryPart( $row['part_number'], 'CH',$row['qty'], $row['chain_length'] );
 					break;
 			    default;
-					$this->InventoryPart( $part_number, $category, $qty );
+					$this->InventoryPart( $part_number, $category, $qty, 1 );
 					break;
 			}
 
@@ -477,27 +478,20 @@ class Order {
 		return $cnt;
 	}
 	
-	private function InventoryPart($part, $cat, $qty) {
+	private function InventoryPart($part, $cat, $qty, $cl) {
 		//echo $part, $cat , $qty ,"</br>";
-		if($cat=='CH'){
 			$tmp = $this->db->query( sprintf( "SELECT stock_level FROM ". Constants::TABLE_PART ." WHERE part_number='%s'", $part) );
 			$partRow = $tmp->fetch();
 			$stockLevel = $partRow['stock_level'];
-			$newStock = $stockLevel - $qty;
+            if ($cat=='CH') {
+                $newStock = $stockLevel - ($qty * $cl);
+            } else
+			    $newStock = $stockLevel - $qty;
 			$tmp= null;
 			$sql = sprintf("UPDATE ". Constants::TABLE_PART ." SET stock_level=%s	WHERE part_number='%s'", $newStock, $part);
 			$r1 = $this->db->query( $sql );
-		} else {
-			$tmp = $this->db->query( sprintf( "SELECT stock_level FROM ". Constants::TABLE_PART ." WHERE part_number='%s'", $part) );
-			$partRow = $tmp->fetch();
-			$stockLevel = $partRow['stock_level'];
-			$newStock = $stockLevel - $qty;
-			$tmp= null;
-			$sql = sprintf("UPDATE ". Constants::TABLE_PART ." SET stock_level=%s	WHERE part_number='%s'", $newStock, $part);
-			$r1 = $this->db->query( $sql );
-		}
-		//echo $sql;
-		//die();
+		//echo $sql,"</br>";
+		
 	}
 
 /********************   ORDER ITEMS *********************/

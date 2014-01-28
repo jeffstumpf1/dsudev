@@ -33,7 +33,7 @@
 		<legend>Sales by Customer YTD</legend>
 			<div class="kitSpacers">
 				<input type="text" id="customerDBA" style="width: 250px;" />
-				<input type="hidden" id="customerNumber" />
+				<input type="hidden" id="customerNumber" />   
 			</div>
 			<div class="group">
 				<div id="salesbyCustomer"/>
@@ -46,7 +46,6 @@
 			<div class="kitSpacers">
 				<label for="from">From </label><input type="text" id="from" name="from" size="15"/> 
 				<label for="to"> to </label><input type="text" id="to" name="to" size="15"/>
-				<input type="button" id="button-salesbyCustomerDate" value="Get Report" />
 			</div>
 			<div class="group">
 				<div id="salesbyCustomerDate"/>
@@ -63,6 +62,11 @@
 			<div class="kitSpacers">
 				<label for="from">From </label><input type="text" id="fromAll" name="fromAll" size="15"/> 
 				<label for="to"> to </label><input type="text" id="toAll" name="to" size="15"/>
+				<label for="typeDlr">Type </label>
+				<select id="typeDlr" name="typeDlr">
+					<option value="D">Dealer</option>
+					<option value="R">Retail</option>
+				</select>
 				<input type="button" id="button-allSales" value="Get Report" />
 			</div>
 			<div class="group">

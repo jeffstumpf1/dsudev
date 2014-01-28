@@ -21,9 +21,10 @@ $(function() {
 	$(document).on('click', '#button-allSales', function(event) {
 		$from = $('#fromAll').val();
 		$to = $('#toAll').val();	
+		$typ = $('#typeDlr').val();
 		if(!$from) $from="01-01-2013";
 		if(!$to) $to="12-30-2013";	
-		GetAllSales( $from, $to );
+		GetAllSales( $from, $to, $typ );
 	
 	});
 
@@ -114,12 +115,12 @@ $(function() {
 	}
 
 
-	function GetAllSales( $from, $to ) {
+	function GetAllSales( $from, $to, $typ) {
 
 		$.ajax({ 
 		  type: 'POST',
 		  url: 'service/report-GetSalesByCustomer.service.php',
-		  data: { from: $from, to: $to},
+		  data: { from: $from, to: $to, typ: $typ},
 		  beforeSend:function(){
 			// load a temporary image in a div
 		  },
