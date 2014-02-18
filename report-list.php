@@ -46,6 +46,7 @@
 			<div class="kitSpacers">
 				<label for="from">From </label><input type="text" id="from" name="from" size="15"/> 
 				<label for="to"> to </label><input type="text" id="to" name="to" size="15"/>
+				<input type="button" id="button-salesbyCustomerDate" value="Get Report" />
 			</div>
 			<div class="group">
 				<div id="salesbyCustomerDate"/>
@@ -66,6 +67,7 @@
 				<select id="typeDlr" name="typeDlr">
 					<option value="D">Dealer</option>
 					<option value="R">Retail</option>
+					<option value="W">Wholesale</option>
 				</select>
 				<input type="button" id="button-allSales" value="Get Report" />
 			</div>

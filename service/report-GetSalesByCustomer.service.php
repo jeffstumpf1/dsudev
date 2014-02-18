@@ -70,7 +70,7 @@
 		<td style="text-align:right;"><?php echo $utility->NumberFormat( $row['Total'],'$') ?></td>
 	</tr>
   <?php    } ?>
-  	<tr style="font-weight: normal; color:#666">
+  	<tr style="font-weight: bold; color:#333">
 		<td ></td>
 		<td style="text-align:right;">Totals:</td>
 		<td style="text-align:center;"><?php echo $total['Count'] ?></td>

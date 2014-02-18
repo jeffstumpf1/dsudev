@@ -11215,3 +11215,16 @@ CBR 600RR/900/929/954/1000RR/RC-51/VFR 750F ',0,34.95,1,24.46,0,10.49,10.49)
 2014-01-21T17:58:40+01:00 [Order] The class "Order" was initiated!
 2014-01-21T17:58:40+01:00 [Order] The class "Order" was initiated!
 2014-01-21T17:58:48+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:34:50+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:34:51+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:34:51+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:34:51+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:34:53+01:00 [Part] The class "Part" was initiated!
+2014-01-29T19:34:53+01:00 [Part] term:345
+2014-01-29T19:34:53+01:00 [Part] Part::MasterPartAutoComplete
+2014-01-29T19:34:53+01:00 [Part] select part_number from PartMaster where rec_status='0' and part_number like '345%' limit 25
+2014-01-29T19:35:07+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:35:07+01:00 [Order] Order::UpdateOrderItem
+2014-01-29T19:35:07+01:00 [Order] INSERT INTO OrderItems (chain_orig_msrp, pitch_id, order_number, discount, category_id, part_number, frontSprocket_part_number, rearSprocket_part_number, carrier_part_number, chain_part_number, description, application, chain_length, msrp, qty, discount_price, bo_qty, unit_price, total) VALUES (0,-999,'131106402',23,'','345','','','','','','',0,200,1,4.60,0,15.40,15.40)
+2014-01-29T19:35:07+01:00 [Order] The class "Order" was initiated!
+2014-01-29T19:35:07+01:00 [Order] The class "Order" was initiated!
